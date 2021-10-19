@@ -30,6 +30,10 @@ describe("unaryPrioritiesCalc simple cases", () => {
   it("[2, **, +, 4, **]", () => {
     expect(unaryPrioritiesCalc([2, "**", "+", 4, "**"])).toEqual([4, "+", 16]);
   });
+
+  it("[4, !, *, 4, !]", () => {
+    expect(unaryPrioritiesCalc([4, "!", "*", 4, "!"])).toEqual([24, "*", 24]);
+  });
 });
 
 describe("binaryExpPrioritiesCalc simple cases", () => {

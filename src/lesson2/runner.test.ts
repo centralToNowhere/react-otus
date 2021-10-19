@@ -20,6 +20,10 @@ describe("Runner simple cases", () => {
   it("3 **", () => {
     expect(runner("3 **")).toEqual(9);
   });
+
+  it("3! **", () => {
+    expect(runner("3 ! **")).toEqual(36);
+  });
 });
 
 describe("Runner tripled/mixed cases", () => {
@@ -53,6 +57,10 @@ describe("Runner tripled/mixed cases", () => {
 
   it("2 ^ 2 ^ 2 + ( 4 + 2 ^ 2 ^ 2 ) ^ 2", () => {
     expect(runner("2 ^ 2 ^ 2 + ( 4 + 2 ^ 2 ^ 2 ) ^ 2")).toEqual(416);
+  });
+
+  it("2 ^ 2 ^ 2 + ( 4 ! + 2 ^ 2 ^ 2 ) ^ 2", () => {
+    expect(runner("2 ^ 2 ^ 2 + ( 4 ! + 2 ^ 2 ^ 2 ) ^ 2")).toEqual(1616);
   });
 
   it("( 5 + 7 ) **", () => {
