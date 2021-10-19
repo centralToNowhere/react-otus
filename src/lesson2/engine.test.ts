@@ -1,4 +1,24 @@
-import { firstPrioritiesCalc, secondPrioritiesCalc } from "./engine";
+import {
+  bracketPrioritiesCalc,
+  firstPrioritiesCalc,
+  secondPrioritiesCalc,
+} from "./engine";
+
+describe("bracketsPrioritiesCalc simple cases", () => {
+  it("[(, 2, *, 16, )]", () => {
+    expect(bracketPrioritiesCalc(["(", 2, "*", 16, ")"])).toEqual(32);
+  });
+
+  it("[2, *, (, 2, +, 16, )]", () => {
+    expect(bracketPrioritiesCalc([2, "*", "(", 2, "+", 16, ")"])).toEqual(36);
+  });
+
+  it("[2, *, (, 2, +, (, 2, +, 16, ), )]", () => {
+    expect(
+      bracketPrioritiesCalc([2, "*", "(", 2, "+", "(", 2, "+", 16, ")", ")"])
+    ).toEqual(40);
+  });
+});
 
 describe("firstPrioritiesCalc simple cases", () => {
   it("[1, * 32]", () => {

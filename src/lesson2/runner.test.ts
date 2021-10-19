@@ -37,3 +37,33 @@ describe("Runner long cases", () => {
     expect(runner("20 - 10 * 10 / 5 - 3")).toEqual(-3);
   });
 });
+
+describe("Runner cases with brackets", () => {
+  it("( 20 + 1 ) * 10 - 5 * 3", () => {
+    expect(runner("( 20 + 1 ) * 10 - 5 * 3")).toEqual(195);
+  });
+
+  it("( ( 20 + 1 ) * 10 - 5 ) * 3", () => {
+    expect(runner("( ( 20 + 1 ) * 10 - 5 ) * 3")).toEqual(615);
+  });
+
+  it("( 20 + 1 ) * ( ( 10 - 5 ) / ( 3 + 4 ) )", () => {
+    expect(runner("( 20 + 1 ) * ( ( 10 - 5 ) / ( 3 + 4 ) )")).toEqual(15);
+  });
+
+  it("( 20 + 1 ) * 10 - ( ( 5 - 3 ) / 2 )", () => {
+    expect(runner("( 20 + 1 ) * 10 - ( ( 5 - 3 ) / 2 )")).toEqual(209);
+  });
+
+  it("( ( 20 + 1 ) / ( 2 - 4 ) ) + 3", () => {
+    expect(runner("( ( 20 + 1 ) / ( 2 - 4 ) ) + 3")).toEqual(-7.5);
+  });
+});
+
+describe("Runner cases with brackets errors", () => {
+  it("( ( 20 + 1) / ( 2 - 4 ) ) + 3", () => {
+    expect(() => runner("( ( 20 + 1) / ( 2 - 4 ) ) + 3")).toThrow(
+      TypeError("Unexpected string")
+    );
+  });
+});
