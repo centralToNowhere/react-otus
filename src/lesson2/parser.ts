@@ -1,6 +1,7 @@
 import { isNumber } from "./helpers";
 import { mathOperators } from "./mathOperators";
 import { Brackets } from "./brackets";
+import { unaryOperators } from "./mathOperators";
 
 export type ParsedLineType = (number | string)[];
 
@@ -29,19 +30,26 @@ export const parser = (line: string): ParsedLineType | null => {
   return stack.reduce<ParsedLineType>((result, item, key) => {
     const prevItem = stack[key - 1];
 
-    const isValidNumberPush = !isNumber(prevItem) && isNumber(item);
-    const isValidOperatorPush =
-      (isNumber(prevItem) || prevItem === Brackets.Closing) &&
+    const isValidNumberPush: boolean = !isNumber(prevItem) && isNumber(item);
+
+    const isValidOperatorPush: boolean =
+      (isNumber(prevItem) ||
+        prevItem === Brackets.Closing ||
+        Boolean(~unaryOperators.indexOf(prevItem))) &&
       !isNumber(item) &&
       mathOperators.hasOwnProperty(item);
-    const isValidOpeningBracketPush =
+
+    const isValidOpeningBracketPush: boolean =
       item === Brackets.Opening &&
       (mathOperators.hasOwnProperty(prevItem) ||
         prevItem === Brackets.Opening ||
         !prevItem);
-    const isValidClosingBracketPush =
+
+    const isValidClosingBracketPush: boolean =
       item === Brackets.Closing &&
-      (isNumber(prevItem) || prevItem === Brackets.Closing);
+      (isNumber(prevItem) ||
+        prevItem === Brackets.Closing ||
+        Boolean(~unaryOperators.indexOf(prevItem)));
 
     if (isValidNumberPush) {
       result.push(Number(item));

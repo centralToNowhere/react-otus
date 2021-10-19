@@ -1,7 +1,9 @@
 import {
   bracketPrioritiesCalc,
+  binaryExpPrioritiesCalc,
   firstPrioritiesCalc,
   secondPrioritiesCalc,
+  unaryPrioritiesCalc,
 } from "./engine";
 
 describe("bracketsPrioritiesCalc simple cases", () => {
@@ -17,6 +19,36 @@ describe("bracketsPrioritiesCalc simple cases", () => {
     expect(
       bracketPrioritiesCalc([2, "*", "(", 2, "+", "(", 2, "+", 16, ")", ")"])
     ).toEqual(40);
+  });
+});
+
+describe("unaryPrioritiesCalc simple cases", () => {
+  it("[2, **, +, 4]", () => {
+    expect(unaryPrioritiesCalc([2, "**", "+", 4])).toEqual([4, "+", 4]);
+  });
+
+  it("[2, **, +, 4, **]", () => {
+    expect(unaryPrioritiesCalc([2, "**", "+", 4, "**"])).toEqual([4, "+", 16]);
+  });
+});
+
+describe("binaryExpPrioritiesCalc simple cases", () => {
+  it("[2, ^, 4]", () => {
+    expect(binaryExpPrioritiesCalc([2, "^", 4])).toEqual([16]);
+  });
+
+  it("[3, *, 2, ^, 4]", () => {
+    expect(binaryExpPrioritiesCalc([3, "*", 2, "^", 4])).toEqual([3, "*", 16]);
+  });
+
+  it("[2, ^, 2, ^, 2]", () => {
+    expect(binaryExpPrioritiesCalc([2, "^", 2, "^", 2])).toEqual([16]);
+  });
+
+  it("[23 + 3, ^, 2, ^, 4 / 124]", () => {
+    expect(
+      binaryExpPrioritiesCalc([23, "+", 3, "^", 2, "^", 4, "/", 124])
+    ).toEqual([23, "+", 43046721, "/", 124]);
   });
 });
 

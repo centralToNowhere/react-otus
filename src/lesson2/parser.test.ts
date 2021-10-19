@@ -1,5 +1,4 @@
 import { parser } from "./parser";
-import { runner } from "./runner";
 
 describe("Parser correct cases", () => {
   it("1 + 32", () => {
@@ -51,6 +50,18 @@ describe("Parser correct cases", () => {
       ")",
     ]);
   });
+
+  it("2 ** * 5", () => {
+    expect(parser("2 ** * 5")).toEqual([2, "**", "*", 5]);
+  });
+
+  it("2 ^ 5", () => {
+    expect(parser("2 ^ 5")).toEqual([2, "^", 5]);
+  });
+
+  it("2 ^ 5 **", () => {
+    expect(parser("2 ^ 5 **")).toEqual([2, "^", 5, "**"]);
+  });
 });
 
 describe("Parser invalid cases", () => {
@@ -77,8 +88,16 @@ describe("Parser invalid cases", () => {
   });
 
   it("( ( 20 + 1 / ( 2 - 4 ) ) + 3", () => {
-    expect(() => runner("( ( 20 + 1 / ( 2 - 4 ) ) + 3")).toThrow(
+    expect(() => parser("( ( 20 + 1 / ( 2 - 4 ) ) + 3")).toThrow(
       TypeError("Unexpected string")
     );
+  });
+
+  it("2 *** 5", () => {
+    expect(() => parser("2 *** 5")).toThrow(TypeError("Unexpected string"));
+  });
+
+  it("** 2", () => {
+    expect(() => parser("** 2")).toThrow(TypeError("Unexpected string"));
   });
 });

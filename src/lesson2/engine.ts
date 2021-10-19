@@ -6,8 +6,80 @@ import {
   mathOperatorsPriorities,
 } from "./mathOperators";
 import { Brackets } from "./brackets";
+import { ExpOperators } from "./mathOperators";
 
-const [FIRST, SECOND] = mathPriorities;
+const [UNARY, , FIRST, SECOND] = mathPriorities;
+
+export const binaryExpPrioritiesCalc = (
+  stack: ParsedLineType
+): ParsedLineType => {
+  let insideExp = false;
+  let expStartIndex: number;
+  const initialStackLength: number = stack.length;
+
+  if (!~stack.indexOf(ExpOperators.Pow)) {
+    return stack;
+  }
+
+  return stack.reduce<ParsedLineType>((result, nextItem, currentIndex) => {
+    result.push(nextItem);
+
+    const prevItem = result[result.length - 3];
+    const item = result[result.length - 2];
+
+    if (isNumber(String(item)) && nextItem === ExpOperators.Pow) {
+      insideExp = true;
+      expStartIndex = result.length - 2;
+    }
+
+    if (insideExp) {
+      if (isNumber(String(item)) && nextItem !== ExpOperators.Pow) {
+        insideExp = false;
+        result = binaryExpPrioritiesCalc([
+          ...result.slice(0, expStartIndex),
+          mathOperators[ExpOperators.Pow](
+            Number(result[result.length - 4]),
+            Number(item)
+          ),
+          nextItem,
+        ]);
+      } else if (currentIndex === initialStackLength - 1) {
+        insideExp = false;
+
+        if (isNumber(String(nextItem))) {
+          result = binaryExpPrioritiesCalc([
+            ...result.slice(0, expStartIndex),
+            mathOperators[ExpOperators.Pow](Number(prevItem), Number(nextItem)),
+          ]);
+        }
+      }
+    }
+
+    return result;
+  }, []);
+};
+
+export const unaryPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
+  stack.reduce<ParsedLineType>((result, nextItem) => {
+    const item = result[result.length - 1];
+
+    result.push(nextItem);
+
+    if (
+      !isNumber(String(nextItem)) &&
+      mathOperatorsPriorities[nextItem] === UNARY
+    ) {
+      if (!mathOperators[nextItem]) {
+        throw new TypeError("Unexpected stack!");
+      }
+      result = [
+        ...result.slice(0, -2),
+        mathOperators[nextItem](Number(item), NaN),
+      ];
+    }
+
+    return result;
+  }, []);
 
 export const firstPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
   stack.reduce<ParsedLineType>((result, nextItem) => {
@@ -42,19 +114,21 @@ export const secondPrioritiesCalc = (stack: ParsedLineType): number =>
     return result;
   }, Number(stack[0]));
 
-export const simplePrioritiesCalc = (stack: ParsedLineType): number => {
-  const firstPrioritiesRes = firstPrioritiesCalc(stack);
+export const mathPrioritiesCalc = (stack: ParsedLineType): number => {
+  const unaryPrioritiesRes = unaryPrioritiesCalc(stack);
 
-  if (firstPrioritiesRes.length === 1) {
-    return Number(firstPrioritiesRes[0]);
+  if (unaryPrioritiesRes.length === 1) {
+    return Number(unaryPrioritiesRes[0]);
   }
 
-  return secondPrioritiesCalc(firstPrioritiesRes);
+  return secondPrioritiesCalc(
+    firstPrioritiesCalc(binaryExpPrioritiesCalc(unaryPrioritiesRes))
+  );
 };
 
 export const bracketPrioritiesCalc = (stack: ParsedLineType): number => {
   if (!~stack.indexOf(Brackets.Opening)) {
-    return simplePrioritiesCalc(stack);
+    return mathPrioritiesCalc(stack);
   }
 
   let openingBracketIndex = -1;
@@ -62,7 +136,7 @@ export const bracketPrioritiesCalc = (stack: ParsedLineType): number => {
   let notClosedBrackets = 0;
   let indexShift = 0;
 
-  return simplePrioritiesCalc(
+  return mathPrioritiesCalc(
     stack.reduce<ParsedLineType>((result, nextItem, currentIndex) => {
       const openingBracketFound: boolean = nextItem === Brackets.Opening;
       const closingBracketFound: boolean = nextItem === Brackets.Closing;
@@ -90,7 +164,7 @@ export const bracketPrioritiesCalc = (stack: ParsedLineType): number => {
             result.slice(openingBracketIndex + 1, closingBracketIndex)
           ),
         ];
-        indexShift = currentIndex;
+        indexShift += closingBracketIndex - openingBracketIndex;
       }
 
       return result;
