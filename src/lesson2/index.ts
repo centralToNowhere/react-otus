@@ -7,23 +7,33 @@ const rl = createInterface({
   output: process.stdout,
 });
 
-const question = (): Promise<null> =>
-  new Promise((resolve) => {
+const question = (): Promise<string> => {
+  return new Promise((resolve, reject) => {
     rl.question("> ", (answer: string) => {
-      const result = runner(answer);
+      try {
+        const result = runner(answer);
 
-      if (result) {
-        console.log(`Result: ${result}`);
+        if (result) {
+          resolve(String(result));
+        }
+      } catch (e) {
+        reject(e);
       }
-
-      resolve();
     });
   });
+};
 
-async function app(): Promise<null> {
-  while (true) {
-    await question();
-  }
-}
+const app = (): void => {
+  question()
+    .then((result) => {
+      console.log(`Result: ${result}`);
+    })
+    .catch((e) => {
+      console.log(e.message);
+    })
+    .finally(() => {
+      app();
+    });
+};
 
 app();

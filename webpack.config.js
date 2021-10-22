@@ -1,12 +1,10 @@
 const path = require("path");
 
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: "./src/lesson2/index.ts",
   devtool: "source-map",
   resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
+    extensions: [".ts"],
   },
   output: {
     path: path.join(__dirname, "/build"),
@@ -21,12 +19,4 @@ module.exports = {
       },
     ],
   },
-  devServer: {
-    historyApiFallback: true,
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "./src/index.html",
-    }),
-  ],
 };
