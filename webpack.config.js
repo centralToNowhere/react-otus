@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./src/lesson2/index.ts",
+  entry: "./src/index.ts",
   devtool: "source-map",
   resolve: {
     extensions: [".ts"],
@@ -13,7 +13,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|ts)x?$/,
+        test: /\.ts/,
         loader: "babel-loader",
         exclude: /node_modules/,
       },
