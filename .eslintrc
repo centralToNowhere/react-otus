@@ -23,7 +23,10 @@
     },
     {
       "files": ["**/?(*.)+(spec|test).[jt]s?(x)"],
-      "extends": ["plugin:testing-library/react"]
+      "extends": ["plugin:testing-library/react"],
+      "rules": {
+        "testing-library/no-node-access": ["off"]
+      }
     }
   ]
 }

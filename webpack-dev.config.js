@@ -9,7 +9,7 @@ const config = {
   mode: "development",
   devServer: {
     open: true,
-    host: "localhost",
+    host: "0.0.0.0",
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -22,6 +22,10 @@ const config = {
         test: /\.(ts|tsx|js)$/i,
         loader: "babel-loader",
         exclude: ["/node_modules/"],
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,

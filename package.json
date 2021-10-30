@@ -14,7 +14,10 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "watch": "webpack --watch",
-    "serve": "webpack serve  --config ./webpack-dev.config.js --entry ./src/lesson3/index.tsx"
+    "serve": "webpack serve  --config ./webpack-dev.config.js --entry ./src/lesson3/index.tsx",
+    "loki:test": "npm run build-storybook && npx loki --requireReference --reactUri file:./storybook-static",
+    "loki:update": "npm run build-storybook && npx loki update --requireReference --reactUri file:./storybook-static",
+    "loki:approve": "npx loki approve"
   },
   "husky": {
     "hooks": {
@@ -57,13 +60,16 @@
     "babel-jest": "^27.3.1",
     "babel-loader": "^8.2.3",
     "core-js": "^3.18.3",
+    "css-loader": "^6.5.0",
     "eslint": "^8.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-testing-library": "^5.0.0",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^4.2.3",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^27.3.1",
+    "loki": "^0.28.1",
     "prettier": "^2.4.1",
     "typescript": "^4.4.4",
     "webpack": "^5.59.1",
@@ -72,10 +78,26 @@
   },
   "dependencies": {
     "@types/react-dom": "^17.0.10",
+    "modern-normalize": "^1.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "browserslist": [
     "defaults"
-  ]
+  ],
+  "loki": {
+    "configurations": {
+      "chrome.laptop": {
+        "target": "chrome.docker",
+        "width": 1366,
+        "height": 768,
+        "deviceScaleFactor": 1,
+        "mobile": false
+      },
+      "chrome.iphone7": {
+        "target": "chrome.docker",
+        "preset": "iPhone 7"
+      }
+    }
+  }
 }

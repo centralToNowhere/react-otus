@@ -1,7 +1,13 @@
 import React from "react";
+import Field from "./components/Field";
+import ErrorBoundary from "./components/error/Error";
 
 const App = () => {
-  return <h1>Hello, TypeScript!</h1>;
+  return (
+    <ErrorBoundary>
+      <Field rowSize={10} backgroundColor={"white"} />
+    </ErrorBoundary>
+  );
 };
 
 export default App;

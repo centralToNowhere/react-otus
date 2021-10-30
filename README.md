@@ -5,7 +5,12 @@
     - eslint
     - jest + react-testing-library + jest-dom
     - storybook
-
+2. Реализован компонент - поле с ячейками, которые меняют свое состояние по клику
+    - TDD
+    - Добавлены stories для компонентов Field и Cell
+    - Добавлно визуальное тестирование (loki)
+    - Responsive дизайн
+    - Вывод сообщения об ошибке в ErrorBoundary
 
 ---
 
