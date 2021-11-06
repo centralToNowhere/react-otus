@@ -10,8 +10,8 @@ const config = {
   },
   mode: "development",
   devServer: {
-    open: ["http://localhost:8082"],
-    host: "0.0.0.0",
+    open: true,
+    host: "localhost",
     port: 8082
   },
   plugins: [

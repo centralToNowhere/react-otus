@@ -13,7 +13,6 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --fix ./",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "watch": "webpack --watch",
     "serve": "webpack serve --config ./webpack-dev.config.js  --entry ./src/lesson3/index.tsx",
     "loki:test": "npm run build-storybook && npx loki --requireReference --reactUri file:./storybook-static",
     "loki:update": "npm run build-storybook && npx loki update --requireReference --reactUri file:./storybook-static",
