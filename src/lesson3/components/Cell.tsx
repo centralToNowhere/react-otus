@@ -1,40 +1,37 @@
 import React from "react";
-import { Cell } from "./Field";
 
-interface CellProps extends Cell {
-  width: number;
-  onCellClick: (number: number) => void;
+export interface ICell {
+  number: number;
+  backgroundColor: string;
+  alive: boolean;
 }
 
-const CellElement = (props: CellProps) => {
-  const { width, number, backgroundColor, alive, onCellClick } = props;
+type CellProps = ICell;
 
-  const cellContainerStyles = {
-    width,
-    height: width,
-  };
-
-  const cellStyles: object = {
-    backgroundColor: alive ? backgroundColor : null,
-    fontSize: width / 2,
-    lineHeight: `${width}px`,
-  };
-
-  function handleClick() {
-    onCellClick(number);
+export function isCell(cell: ICell | unknown): cell is ICell {
+  if (cell === null || typeof cell !== "object") {
+    return false;
   }
 
   return (
-    <div
-      className="container-cell"
-      style={cellContainerStyles}
-      onClick={handleClick}
-    >
-      <div className="cell" style={cellStyles} data-testid="cell">
-        {alive ? number : null}
-      </div>
+    "number" in (cell as ICell) &&
+    "backgroundColor" in (cell as ICell) &&
+    "alive" in (cell as ICell)
+  );
+}
+
+const Cell = (props: CellProps) => {
+  const { number, backgroundColor, alive } = props;
+
+  const cellStyles: object = {
+    backgroundColor: alive ? backgroundColor : null,
+  };
+
+  return (
+    <div className="cell" style={cellStyles} data-testid="cell">
+      {alive ? number : null}
     </div>
   );
 };
 
-export default CellElement;
+export default Cell;

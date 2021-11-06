@@ -1,17 +1,18 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const config = {
   entry: "./src/lesson3/index.tsx",
   output: {
     path: path.resolve(__dirname, "dist"),
+    filename: "[name].[contenthash:8].js",
   },
   mode: "production",
-  devServer: {
-    open: true,
-    host: "localhost",
-  },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash:8].css",
+    }),
     new HtmlWebpackPlugin({
       template: "index.html",
     }),
@@ -25,7 +26,22 @@ const config = {
       },
       {
         test: /\.css$/i,
-        use: ["css-loader"],
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  [
+                    "autoprefixer",
+                  ],
+                ],
+              },
+            },
+          },
+        ],
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,

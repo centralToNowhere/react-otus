@@ -6,6 +6,8 @@ import Field, {
   getRandomCellsByRowSize,
   isValidCells,
 } from "./Field";
+import store from "../redux/store";
+import { Provider } from "react-redux";
 
 describe("test methods", () => {
   it("getRandomColor should return a string", () => {
@@ -106,7 +108,11 @@ describe("test methods", () => {
 
   // with react
   it("should render field with 100 cells (row size input)", () => {
-    render(<Field rowSize={10} />);
+    render(
+      <Provider store={store}>
+        <Field rowSize={10} />
+      </Provider>
+    );
     const cells = screen.queryAllByTestId("cell");
 
     expect(cells).toHaveLength(100);
@@ -124,7 +130,11 @@ describe("test methods", () => {
       ],
     ];
 
-    render(<Field inputCells={inputCells} />);
+    render(
+      <Provider store={store}>
+        <Field inputCells={inputCells} />
+      </Provider>
+    );
     const cells = screen.queryAllByText(/\d+/g);
 
     expect(cells).toHaveLength(4);
@@ -146,7 +156,11 @@ describe("test methods", () => {
       ],
     ];
 
-    render(<Field rowSize={5} inputCells={inputCells} />);
+    render(
+      <Provider store={store}>
+        <Field rowSize={5} inputCells={inputCells} />
+      </Provider>
+    );
     const cells = screen.queryAllByText(/\d+/g);
 
     expect(cells).toHaveLength(4);
@@ -159,7 +173,11 @@ describe("test methods", () => {
   it("should hide cell on click", () => {
     const bg = "rgb(220,228,138)";
     const inputCells = [[{ number: 1, backgroundColor: bg, alive: true }]];
-    render(<Field rowSize={1} inputCells={inputCells} />);
+    render(
+      <Provider store={store}>
+        <Field rowSize={1} inputCells={inputCells} />
+      </Provider>
+    );
 
     const cell = screen.getByText("1");
     fireEvent.click(cell);
@@ -175,7 +193,11 @@ describe("test methods", () => {
       [{ number: 1, backgroundColor: "rgb(220,228,138)", alive: false }],
     ];
 
-    render(<Field rowSize={1} inputCells={inputCells} />);
+    render(
+      <Provider store={store}>
+        <Field rowSize={1} inputCells={inputCells} />
+      </Provider>
+    );
 
     const cell = screen.getByTestId("cell");
     fireEvent.click(cell);
@@ -198,7 +220,11 @@ describe("test methods", () => {
       ],
     ];
 
-    render(<Field inputCells={inputCells} />);
+    render(
+      <Provider store={store}>
+        <Field inputCells={inputCells} />
+      </Provider>
+    );
 
     const cell = screen.getByText("3");
     fireEvent.click(cell);

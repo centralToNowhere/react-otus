@@ -1,6 +1,8 @@
 import React from "react";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
+import store from "./redux/store";
+import { Provider } from "react-redux";
 import App from "./App";
 import Field from "./components/Field";
 
@@ -20,7 +22,11 @@ describe("index tests", () => {
   });
 
   it("should render random cells", () => {
-    render(<Field rowSize="10" backgroundColor="white" />);
+    render(
+      <Provider store={store}>
+        <Field rowSize="10" backgroundColor="white" />
+      </Provider>
+    );
     const cells = screen.queryAllByTestId("cell");
 
     expect(cells).toHaveLength(100);

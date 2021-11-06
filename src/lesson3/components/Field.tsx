@@ -1,25 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./field.css";
 import ListCells from "./ListCells";
-
-export interface Cell {
-  number: number;
-  backgroundColor: string;
-  alive: boolean;
-}
-
-function isCell(cell: Cell | unknown): cell is Cell {
-  return (
-    "backgroundColor" in (cell as Cell) &&
-    "alive" in (cell as Cell) &&
-    "number" in (cell as Cell)
-  );
-}
+import { ICell, isCell } from "./Cell";
 
 interface FieldProps {
   rowSize?: number;
   backgroundColor?: string;
-  inputCells?: Cell[][];
+  inputCells?: ICell[][];
 }
 
 interface FieldSizes {
@@ -37,12 +24,12 @@ export const getRandomColor = (): string => {
   }, "rgb(");
 };
 
-export const getRandomCellsByRowSize = (rowSize: number): Cell[][] => {
-  const arr: Cell[][] = [];
+export const getRandomCellsByRowSize = (rowSize: number): ICell[][] => {
+  const arr: ICell[][] = [];
 
   for (let i = 0; i < rowSize; i++) {
     for (let j = 0; j < rowSize; j++) {
-      const cell: Cell = {
+      const cell: ICell = {
         number: i * rowSize + j + 1,
         backgroundColor: getRandomColor(),
         alive: Boolean(Math.round(Math.random())),
@@ -59,13 +46,17 @@ export const getRandomCellsByRowSize = (rowSize: number): Cell[][] => {
   return arr;
 };
 
-export const isValidCells = (cells: [][] | Cell[][]): boolean => {
+export const isValidCells = (cells: [][] | ICell[][]): boolean => {
   if (!Array.isArray(cells)) {
     return false;
   }
 
   cells = cells as []; // cells probably an array here
   const sideLength = cells.length;
+
+  if (sideLength === 0) {
+    return false;
+  }
 
   for (let i = 0; i < sideLength; i++) {
     if (!Array.isArray(cells[i]) || cells[i].length !== sideLength) {
@@ -129,12 +120,10 @@ const calcCellSize = (
 
 const Field = (props: FieldProps) => {
   const { rowSize = 10, backgroundColor, inputCells = [[]] } = props;
-  const cellsValid = isValidCells(inputCells);
-  const randomCells = !cellsValid;
 
-  const [cells, setCells] = useState(
-    (cellsValid ? inputCells : null) || getRandomCellsByRowSize(rowSize)
-  );
+  const cells = isValidCells(inputCells)
+    ? inputCells
+    : getRandomCellsByRowSize(rowSize);
   const cellPadding = 5;
   const maxCellSize = 50;
   const { cellSize, fieldWidth } = calcCellSize(
@@ -148,31 +137,6 @@ const Field = (props: FieldProps) => {
     width: fieldWidth,
   };
 
-  useEffect(() => {
-    if (randomCells) {
-      setCells(getRandomCellsByRowSize(rowSize));
-    }
-  }, [rowSize]);
-
-  useEffect(() => {
-    if (isValidCells(inputCells)) {
-      setCells(inputCells);
-    }
-  }, [inputCells]);
-
-  const onCellClick = (number: number): void => {
-    setCells((prevCells: Cell[][]) => {
-      return prevCells.map((row) => {
-        return row.map((cell) => {
-          return {
-            ...cell,
-            alive: cell.number === number ? !cell.alive : cell.alive,
-          };
-        });
-      });
-    });
-  };
-
   return (
     <div className="container">
       <div className="field" data-testid="field" style={fieldStyles}>
@@ -180,7 +144,6 @@ const Field = (props: FieldProps) => {
           cells={cells}
           cellSize={cellSize}
           cellPadding={cellPadding}
-          onCellClick={onCellClick}
         />
       </div>
     </div>

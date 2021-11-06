@@ -1,24 +1,17 @@
 import React from "react";
 import "@testing-library/jest-dom";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Cell from "./Cell";
 
 describe("cell tests", () => {
-  it("should render a cell", () => {
-    const handleClick = jest.fn();
+  it("should render alive cell", () => {
     const width = 30;
     const bg = "rgb(123,231,132)";
     const number = 1;
     const alive = true;
 
     render(
-      <Cell
-        width={width}
-        onCellClick={handleClick}
-        number={number}
-        backgroundColor={bg}
-        alive={alive}
-      />
+      <Cell width={width} number={number} backgroundColor={bg} alive={alive} />
     );
 
     const cell = screen.getByText(String(number));
@@ -29,25 +22,20 @@ describe("cell tests", () => {
     });
   });
 
-  it("should call click handler", () => {
-    const handleClick = jest.fn();
+  it("should render dead cell", () => {
     const width = 30;
     const bg = "rgb(123,231,132)";
     const number = 1;
-    const alive = true;
+    const alive = false;
 
     render(
-      <Cell
-        width={width}
-        onCellClick={handleClick}
-        number={number}
-        backgroundColor={bg}
-        alive={alive}
-      />
+      <Cell width={width} number={number} backgroundColor={bg} alive={alive} />
     );
 
-    fireEvent.click(screen.getByText(String(number)));
-    expect(handleClick).toBeCalledWith(number);
-    expect(handleClick).toHaveBeenCalledTimes(1);
+    const cell = screen.getByTestId("cell");
+    expect(cell).toBeEmptyDOMElement();
+    expect(cell).not.toHaveStyle({
+      backgroundColor: bg,
+    });
   });
 });

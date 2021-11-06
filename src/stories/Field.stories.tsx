@@ -1,17 +1,47 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Field from "../lesson3/components/Field";
+import { Provider } from "react-redux";
+import testStore from "../lesson3/redux/testStore";
 
 export default {
   component: Field,
   title: "Components/Field",
 } as ComponentMeta<typeof Field>;
 
-const Template: ComponentStory<typeof Field> = (args) => <Field {...args} />;
+const Template: ComponentStory<typeof Field> = (args) => {
+  return (
+    <Provider store={testStore}>
+      <Field {...args} />
+    </Provider>
+  );
+};
 
-export const Random = Template.bind({});
-Random.args = {
+export const Random5 = Template.bind({});
+Random5.args = {
+  rowSize: 5,
+};
+
+export const Random10 = Template.bind({});
+Random10.args = {
   rowSize: 10,
+};
+
+export const Random20 = Template.bind({});
+Random20.args = {
+  rowSize: 20,
+};
+
+export const RedRandom5 = Template.bind({});
+RedRandom5.args = {
+  rowSize: 5,
+  backgroundColor: "red",
+};
+
+export const GreenRandom5 = Template.bind({});
+GreenRandom5.args = {
+  rowSize: 5,
+  backgroundColor: "green",
 };
 
 export const Certain = Template.bind({});

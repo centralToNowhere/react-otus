@@ -4,3 +4,5 @@ coverage
 dist
 node_modules
 storybook-static
+webpack-dev.config.js
+webpack-prod.config.js
