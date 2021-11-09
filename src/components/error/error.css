@@ -1,0 +1,13 @@
+.container-error {
+    margin: 0 auto;
+    text-align: center;
+    width: max(300px, 100%);
+}
+
+.container-error > h1 {
+    color: #333333;
+}
+
+.container-error > p {
+    color: dimgrey;
+}
