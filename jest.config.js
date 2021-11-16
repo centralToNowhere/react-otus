@@ -1,5 +1,9 @@
 module.exports = {
-  testPathIgnorePatterns: ["<rootDir>/node_modules", "<rootDir>/dist"],
+  testPathIgnorePatterns: [
+    "<rootDir>/node_modules",
+    "<rootDir>/dist",
+    "<rootDir>/build",
+  ],
   setupFilesAfterEnv: ["<rootDir>/src/lesson3/index.test.js"],
   clearMocks: true,
   coverageDirectory: "coverage",

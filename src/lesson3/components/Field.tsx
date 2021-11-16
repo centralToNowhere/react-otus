@@ -1,7 +1,9 @@
 import React from "react";
 import "./field.css";
-import ListCells from "./ListCells";
-import { ICell, isCell } from "./Cell";
+import Cell, { ICell, isCell } from "./Cell";
+import { setCellsAction, switchAliveOrDeadAction } from "../redux/actions";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { IState } from "../redux/store";
 
 interface FieldProps {
   rowSize?: number;
@@ -51,7 +53,6 @@ export const isValidCells = (cells: [][] | ICell[][]): boolean => {
     return false;
   }
 
-  cells = cells as []; // cells probably an array here
   const sideLength = cells.length;
 
   if (sideLength === 0) {
@@ -62,8 +63,6 @@ export const isValidCells = (cells: [][] | ICell[][]): boolean => {
     if (!Array.isArray(cells[i]) || cells[i].length !== sideLength) {
       return false;
     }
-
-    cells[i] = cells[i] as [];
 
     for (let j = 0; j < sideLength; j++) {
       if (!isCell(cells[i][j])) {
@@ -120,6 +119,7 @@ const calcCellSize = (
 
 const Field = (props: FieldProps) => {
   const { rowSize = 10, backgroundColor, inputCells = [[]] } = props;
+  const dispatch = useDispatch();
 
   const cells = isValidCells(inputCells)
     ? inputCells
@@ -137,14 +137,43 @@ const Field = (props: FieldProps) => {
     width: fieldWidth,
   };
 
+  const listStyle = {
+    padding: cellPadding,
+  };
+
+  dispatch(setCellsAction(cells));
+
+  const renderCells = (): JSX.Element[] => {
+    const cellNumbers: number[] = useSelector((state: IState) => {
+      return state.cells.map((c: ICell) => {
+        return c.number;
+      });
+    }, shallowEqual);
+
+    return cellNumbers.map((number) => {
+      return (
+        <Cell
+          key={number}
+          number={number}
+          width={cellSize}
+          onCellClick={(n) => {
+            dispatch(switchAliveOrDeadAction(n));
+          }}
+        />
+      );
+    });
+  };
+
   return (
     <div className="container">
       <div className="field" data-testid="field" style={fieldStyles}>
-        <ListCells
-          cells={cells}
-          cellSize={cellSize}
-          cellPadding={cellPadding}
-        />
+        <div
+          className="container-list"
+          data-testid="list-cells"
+          style={listStyle}
+        >
+          {renderCells()}
+        </div>
       </div>
     </div>
   );

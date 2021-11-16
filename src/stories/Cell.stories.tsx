@@ -1,9 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import CellContainer, {
-  ICellContainerProps,
-} from "../lesson3/components/CellContainer";
-import { ICell } from "../lesson3/components/Cell";
+import Cell, { ICell, ICellProps } from "../lesson3/components/Cell";
 import { Provider } from "react-redux";
 import testStore from "../lesson3/redux/testStore";
 import {
@@ -12,7 +9,7 @@ import {
 } from "../lesson3/redux/actions";
 
 export default {
-  component: CellContainer,
+  component: Cell,
   title: "Components/Cell",
   args: {
     alive: true,
@@ -23,11 +20,9 @@ export default {
       testStore.dispatch(switchAliveOrDeadAction(1));
     },
   },
-} as ComponentMeta<typeof CellContainer>;
+} as ComponentMeta<typeof Cell>;
 
-const Template: ComponentStory<typeof Object> = (
-  args: ICell & ICellContainerProps
-) => {
+const Template: ComponentStory<typeof Object> = (args: ICell & ICellProps) => {
   testStore.dispatch(
     setCellsAction([
       [
@@ -42,7 +37,7 @@ const Template: ComponentStory<typeof Object> = (
 
   return (
     <Provider store={testStore}>
-      <CellContainer {...args} />
+      <Cell {...args} />
     </Provider>
   );
 };

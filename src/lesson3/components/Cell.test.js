@@ -1,17 +1,53 @@
 import React from "react";
-import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import Cell from "./Cell";
+import { Provider } from "react-redux";
+import testStore from "../redux/testStore";
+import { setCellsAction } from "../redux/actions";
 
-describe("cell tests", () => {
+afterAll(() => {
+  testStore.dispatch(setCellsAction([[]]));
+});
+
+describe("test cell", () => {
+  const width = 30;
+  const number = 1;
+  const bg = "rgb(220,228,138)";
+  const handleClick = jest.fn();
+
+  it("should call click handler", () => {
+    testStore.dispatch(
+      setCellsAction([[{ number: number, backgroundColor: bg, alive: true }]])
+    );
+
+    render(
+      <Provider store={testStore}>
+        <Cell number={number} width={width} onCellClick={handleClick} />
+      </Provider>
+    );
+
+    const cell = screen.getByText(String(number));
+    fireEvent.click(cell);
+
+    expect(handleClick).toHaveBeenCalledWith(number);
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+
   it("should render alive cell", () => {
     const width = 30;
     const bg = "rgb(123,231,132)";
     const number = 1;
     const alive = true;
+    const handleClick = jest.fn();
+
+    testStore.dispatch(
+      setCellsAction([[{ number: number, backgroundColor: bg, alive: alive }]])
+    );
 
     render(
-      <Cell width={width} number={number} backgroundColor={bg} alive={alive} />
+      <Provider store={testStore}>
+        <Cell width={width} number={number} onCellClick={handleClick} />
+      </Provider>
     );
 
     const cell = screen.getByText(String(number));
@@ -27,9 +63,16 @@ describe("cell tests", () => {
     const bg = "rgb(123,231,132)";
     const number = 1;
     const alive = false;
+    const handleClick = jest.fn();
+
+    testStore.dispatch(
+      setCellsAction([[{ number: number, backgroundColor: bg, alive: alive }]])
+    );
 
     render(
-      <Cell width={width} number={number} backgroundColor={bg} alive={alive} />
+      <Provider store={testStore}>
+        <Cell width={width} number={number} onCellClick={handleClick} />
+      </Provider>
     );
 
     const cell = screen.getByTestId("cell");
