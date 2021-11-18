@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
-import "./error.css";
+import "@/components/error/error.css";
 
 class Error extends React.Component<any, any> {
   constructor(props: React.PropsWithChildren<any>) {

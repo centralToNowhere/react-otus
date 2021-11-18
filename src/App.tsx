@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import ErrorBoundary from "./components/error/Error";
+import ErrorBoundary from "@/components/error/Error";
 
 const App: FC = () => {
   return (

@@ -3,6 +3,10 @@
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
     "module": "commonjs",
+    "lib": [
+      "es2019",
+      "DOM"
+    ],
     "moduleResolution": "node",
     "target": "ES2015",
     "allowJs": true,
@@ -13,7 +17,13 @@
     "outDir": "./build",
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
   },
   "include": ["src/**/*"]
 }
