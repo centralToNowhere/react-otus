@@ -1,0 +1,21 @@
+module.exports = {
+  verbose: true,
+  testPathIgnorePatterns: [
+    "<rootDir>/node_modules",
+    "<rootDir>/dist",
+    "<rootDir>/build",
+  ],
+  setupFilesAfterEnv: ["<rootDir>/src/jest-setup.js"],
+  clearMocks: true,
+  coverageDirectory: "coverage",
+  collectCoverage: true,
+  coverageReporters: ["json", "html"],
+  testEnvironment: "jsdom",
+  transform: {
+    "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
+  },
+  moduleNameMapper: {
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+    "^@/(.*)$": "<rootDir>/src/$1",
+  },
+};
