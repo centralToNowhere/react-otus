@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`form tests should render input 1`] = `
+<DocumentFragment>
+  <form
+    class="css-p3c1cq"
+    data-testid="interactive-number-drawing-form"
+  >
+    <label
+      class="css-0"
+      for="number-input"
+    >
+      Введите целое число:
+    </label>
+    <input
+      class="css-0"
+      id="number-input"
+      name="number-input"
+      type="text"
+      value=""
+    />
+  </form>
+</DocumentFragment>
+`;

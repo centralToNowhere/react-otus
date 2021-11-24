@@ -7,19 +7,22 @@ const config = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[contenthash:4].js",
+    assetModuleFilename: '[name][ext]'
   },
   mode: "development",
+  devtool: "source-map",
   devServer: {
     open: true,
-    host: "localhost",
-    port: 8082
+    hot: true,
+    port: 3000,
+    historyApiFallback: true,
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash:4].css",
     }),
     new HtmlWebpackPlugin({
-      template: "index.html",
+      template: "./public/index.html",
     }),
   ],
   module: {
@@ -47,6 +50,10 @@ const config = {
             },
           },
         ],
+      },
+      {
+        test: /figures\.json/,
+        type: 'asset/resource'
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,

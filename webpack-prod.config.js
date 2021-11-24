@@ -7,14 +7,16 @@ const config = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[contenthash:8].js",
+    assetModuleFilename: '[name][ext]'
   },
   mode: "production",
+  devtool: "eval",
   plugins: [
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash:8].css",
     }),
     new HtmlWebpackPlugin({
-      template: "index.html",
+      template: "./public/index.html",
     }),
   ],
   module: {
@@ -42,6 +44,10 @@ const config = {
             },
           },
         ],
+      },
+      {
+        test: /figures\.json/,
+        type: 'asset/resource'
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
