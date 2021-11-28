@@ -142,12 +142,19 @@ export class Field extends React.Component<IFieldProps, IFieldState> {
     };
   }
 
+  /**
+   * Возвращает массив всех задествованных в отображении строки ячеек в координатах поля
+   * @param cellsInCol
+   * @param cellsInRow
+   * @param inputString
+   * @returns ICell[]
+   */
   calcActiveCells(
     cellsInCol: number,
     cellsInRow: number,
     inputString: string
   ): ICell[] {
-    const { x1, y1, x2, y2 } = this.getDrawAreaTLBR(
+    const { x1, y1, y2 } = this.getDrawAreaTLBR(
       cellsInCol,
       cellsInRow,
       inputString
@@ -171,36 +178,52 @@ export class Field extends React.Component<IFieldProps, IFieldState> {
             prevCharWidth +
             (charIndex !== 0 ? this.props.cellsBetweenChars : 0); // offset between chars
           offsetY = Math.round((y2 + 1 - y1 - figureHeight) / 2);
+          prevCharWidth = figureWidth;
 
           allCells = allCells.concat(
-            figuresInfo.matrix.reduce(
-              (figureCells: ICell[], currentRow, rowIndex) => {
-                figureCells = figureCells.concat(
-                  currentRow.reduce(
-                    (rowCells: ICell[], currentCell, cellIndex) => {
-                      if (currentCell === 1) {
-                        rowCells.push({
-                          x: x1 + cellIndex + offsetX,
-                          y: y1 + rowIndex + offsetY,
-                        });
-                      }
-
-                      return rowCells;
-                    },
-                    []
-                  )
-                );
-
-                return figureCells;
-              },
-              []
-            )
+            this.getFigureActiveCells(figuresInfo, offsetX, offsetY, y1, x1)
           );
-          prevCharWidth = figureWidth;
         }
 
         return allCells;
       }, []);
+  }
+
+  /**
+   * Вохвращает массив ячеек, образующих фигуру в координатах поля
+   * @param figuresInfo
+   * @param offsetX
+   * @param offsetY
+   * @param top
+   * @param left
+   * @returns ICell[]
+   */
+  getFigureActiveCells(
+    figuresInfo: IFigureInfo,
+    offsetX: number,
+    offsetY: number,
+    top: number,
+    left: number
+  ): ICell[] {
+    return figuresInfo.matrix.reduce(
+      (figureCells: ICell[], currentRow, rowIndex) => {
+        figureCells = figureCells.concat(
+          currentRow.reduce((rowCells: ICell[], currentCell, cellIndex) => {
+            if (currentCell === 1) {
+              rowCells.push({
+                x: left + cellIndex + offsetX,
+                y: top + rowIndex + offsetY,
+              });
+            }
+
+            return rowCells;
+          }, [])
+        );
+
+        return figureCells;
+      },
+      []
+    );
   }
 
   updateActiveCells() {
