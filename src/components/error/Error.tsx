@@ -2,7 +2,15 @@
 import React from "react";
 import "@/components/error/error.css";
 
-class Error extends React.Component<any, any> {
+interface ErrorProps {
+  children: React.ReactNode;
+}
+
+interface ErrorState {
+  errorMsg: string;
+}
+
+class Error extends React.Component<ErrorProps, ErrorState> {
   constructor(props: React.PropsWithChildren<any>) {
     super(props);
     this.state = {
