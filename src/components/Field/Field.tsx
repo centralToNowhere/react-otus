@@ -269,13 +269,11 @@ export class Field extends React.Component<IFieldProps, IFieldState> {
   }
 
   componentDidMount() {
-    console.log("field mounted!");
     this.subscribeOnClicks();
     this.updateActiveCells();
   }
 
   componentWillUnmount() {
-    console.log("field will unmounted soon!");
     this.unsubscribeFromClicks();
   }
 
