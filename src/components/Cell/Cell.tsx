@@ -12,7 +12,18 @@ export interface ICellProps {
   number: number;
 }
 
+export const minCellSize = 10;
+
 type StyledCellProps = Omit<ICellProps, "number">;
+
+export const isCell = (cell: ICell): cell is ICell => {
+  return (
+    cell !== null &&
+    typeof cell === "object" &&
+    typeof cell.x === "number" &&
+    typeof cell.y === "number"
+  );
+};
 
 export class Cell extends React.Component<ICellProps> {
   constructor(props: ICellProps) {
@@ -20,11 +31,11 @@ export class Cell extends React.Component<ICellProps> {
   }
 
   shouldComponentUpdate(nextProps: Readonly<ICellProps>): boolean {
-    if (nextProps.isActive === this.props.isActive) {
-      return false;
-    }
-
-    return true;
+    return (
+      nextProps.size !== this.props.size ||
+      nextProps.isActive !== this.props.isActive ||
+      nextProps.number !== this.props.number
+    );
   }
 
   render() {
@@ -33,7 +44,9 @@ export class Cell extends React.Component<ICellProps> {
         size={this.props.size}
         isActive={this.props.isActive}
         data-testid="cell"
-      />
+      >
+        {this.props.number}
+      </StyledCell>
     );
   }
 }
@@ -42,5 +55,9 @@ const StyledCell = styled.div<StyledCellProps>`
   width: ${(props) => props.size}px;
   height: ${(props) => props.size}px;
   background: ${(props) => (props.isActive ? "black" : "")};
-  outline: 1px solid ${(props) => (props.isActive ? "white" : "black")};
+  color: ${(props) => (props.isActive ? "white" : "black")};
+  outline: 1px solid white;
+  transition: 0.5s ease background;
+  text-align: center;
+  line-height: ${(props) => props.size}px;
 `;

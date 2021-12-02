@@ -1,2 +1,2 @@
-export { Form, isPossibleInput } from "./Form";
-export type { IFormProps } from "./Form";
+export { Form, isValidNumericString } from "./Form";
+export type { FormProps } from "./Form";

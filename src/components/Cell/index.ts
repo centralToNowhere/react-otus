@@ -1,2 +1,2 @@
-export { Cell } from "./Cell";
+export { Cell, isCell, minCellSize } from "./Cell";
 export type { ICell, ICellProps } from "./Cell";

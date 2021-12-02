@@ -1,8 +1,4 @@
-import { addDecorator } from "@storybook/react";
-import { initializeWorker, mswDecorator } from "msw-storybook-addon";
-
-initializeWorker();
-addDecorator(mswDecorator);
+import "@/styles/reset.css";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -12,4 +8,5 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  layout: "fullscreen"
 }

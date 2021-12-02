@@ -1,2 +1,2 @@
 export { Field } from "./Field";
-export type { IFiguresMap, IFieldProps } from "./Field";
+export type { IFieldProps } from "./Field";

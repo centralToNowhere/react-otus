@@ -1,18 +1,14 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { Field, IFieldProps } from "./Field";
-import figures from "./figures.json";
 
 export default {
   title: "Components/Field",
   component: Field,
   args: {
     cellSize: 40,
-    cellsBetweenChars: 1,
-    inputString: "123",
-    figuresMap: figures["figures"],
-    fieldWidthPx: 600,
-    fieldHeightPX: 400,
+    cellsInRow: 35,
+    cellsInCol: 7,
   },
 } as Meta;
 
@@ -22,10 +18,22 @@ export const FieldSmall = Template.bind({});
 
 FieldSmall.args = {
   cellSize: 20,
+  cellsInRow: 20,
+  cellsInCol: 5,
+};
+
+export const FieldMedium = Template.bind({});
+
+FieldMedium.args = {
+  cellSize: 35,
+  cellsInRow: 30,
+  cellsInCol: 10,
 };
 
 export const FieldBig = Template.bind({});
 
 FieldBig.args = {
-  cellSize: 10,
+  cellSize: 40,
+  cellsInRow: 42,
+  cellsInCol: 10,
 };

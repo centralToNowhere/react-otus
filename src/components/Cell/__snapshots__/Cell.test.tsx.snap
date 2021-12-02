@@ -3,9 +3,11 @@
 exports[`Cell tests should render cell 1`] = `
 <DocumentFragment>
   <div
-    class="css-1yhk0hl"
+    class="css-1a5l1a"
     data-testid="cell"
     size="30"
-  />
+  >
+    1
+  </div>
 </DocumentFragment>
 `;

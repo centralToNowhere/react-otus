@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import ErrorBoundary from "@/components/error/Error";
 import styled from "@emotion/styled";
+import { COLORS } from "@/styles/ui-styled";
 import { FieldContainer } from "@/components/FieldContainer";
 import "./styles/reset.css";
 
@@ -10,9 +11,10 @@ const App: FC = () => {
       <AppBox data-testid={"react-lifecycle"}>
         <FieldContainer
           cellSize={40}
-          cellsBetweenChars={1}
-          fieldWidthPx={window.innerWidth}
-          fieldHeightPx={window.innerHeight / 2}
+          maxFieldWidth={window.innerWidth}
+          maxFieldHeight={window.innerHeight / 2}
+          capacity={50}
+          speed={1}
         />
       </AppBox>
     </ErrorBoundary>
@@ -21,7 +23,7 @@ const App: FC = () => {
 
 const AppBox = styled.div`
   height: 100vh;
-  background: #e8d5f0;
+  background: ${COLORS.secondary};
 `;
 
 export default App;
