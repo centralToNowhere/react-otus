@@ -63,16 +63,12 @@ const isValidCellSizeString = (cellSizeString: unknown): boolean => {
   );
 };
 
-export const isValidPositiveNumericString = (
-  capacityString: unknown
-): boolean => {
-  return isValidNumericString(capacityString) && Number(capacityString) > 0;
+export const isValidPositiveNumericString = (str: unknown): boolean => {
+  return isValidNumericString(str) && Number(str) > 0;
 };
 
-export const isValidNonNegativeNumericString = (
-  capacityString: unknown
-): boolean => {
-  return isValidNumericString(capacityString) && Number(capacityString) >= 0;
+export const isValidNonNegativeNumericString = (str: unknown): boolean => {
+  return isValidNumericString(str) && Number(str) >= 0;
 };
 
 const floatPattern = "([0-9]*[.])?[0-9]+";
@@ -169,6 +165,7 @@ export class Form extends React.Component<FormProps, IFormState> {
   };
 
   validateCapacity = (capacityString: unknown): boolean => {
+    console.log(capacityString);
     if (isValidNonNegativeNumericString(capacityString)) {
       this.setErrorState("capacity", false);
       return true;
@@ -335,7 +332,6 @@ export class Form extends React.Component<FormProps, IFormState> {
               pattern={floatPattern}
               step="1"
               name="field-height"
-              autoFocus={true}
               value={this.state.maxFieldHeightString}
               autoComplete="off"
               onChange={this.onChangeFn(
@@ -359,7 +355,6 @@ export class Form extends React.Component<FormProps, IFormState> {
               pattern={numberPattern}
               step="1"
               name="cell-size-input"
-              autoFocus={true}
               value={this.state.cellSizeString}
               autoComplete="off"
               onChange={this.onChangeFn(
@@ -387,7 +382,6 @@ export class Form extends React.Component<FormProps, IFormState> {
               min="0"
               step="1"
               name="capacity-percentage"
-              autoFocus={true}
               value={this.state.capacityString}
               autoComplete="off"
               onChange={this.onChangeFn(
@@ -411,7 +405,6 @@ export class Form extends React.Component<FormProps, IFormState> {
               pattern={floatPattern}
               step="0.1"
               name="speed-change"
-              autoFocus={true}
               value={this.state.speedString}
               autoComplete="off"
               onChange={this.onChangeFn(

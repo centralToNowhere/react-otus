@@ -32,8 +32,17 @@ const inputsData = [
     callbackName: "onCapacityChange",
     labelText: "Процент заполненности:",
     testValues: {
-      shouldCallOnChange: ["1", "10", "100", "1000", "0.1", "0"],
-      shouldNotCallOnChange: ["-1", "", "qwerty"],
+      shouldCallOnChange: [
+        "1",
+        "10",
+        "100",
+        "1000",
+        "0.1",
+        "0",
+        "-1",
+        "qwerty",
+      ],
+      shouldNotCallOnChange: [""],
     },
   },
   {
@@ -140,53 +149,48 @@ describe("form tests", () => {
 });
 
 describe("input onChange tests", () => {
-  inputsData.forEach((inputData) => {
-    it(`should call ${inputData.callbackName} in ${Form.inputDelay} ms for all valid input strings`, () => {
-      const callback = jest.fn();
+  inputsData.forEach((field) => {
+    field.testValues.shouldCallOnChange.forEach((validTestValue) => {
+      it(`should call ${field.callbackName} in ${Form.inputDelay} ms for valid input ${validTestValue}`, async () => {
+        const callback = jest.fn();
 
-      render(<Form {...{ [inputData.callbackName]: callback }} />);
+        render(<Form {...{ [field.callbackName]: callback }} />);
 
-      const input: HTMLInputElement = screen.getByLabelText(
-        inputData.labelText
-      );
-      inputData.testValues.shouldCallOnChange.forEach(
-        async (validTestValue) => {
-          userEvent.type(input, validTestValue);
-          await waitFor(
-            () => {
-              expect(callback).toHaveBeenCalledTimes(1);
-              input.value = "";
-            },
-            {
-              timeout: Form.inputDelay + 500,
-            }
-          );
-        }
-      );
+        const input: HTMLInputElement = screen.getByLabelText(field.labelText);
+
+        userEvent.clear(input);
+        userEvent.type(input, validTestValue);
+        await waitFor(
+          () => {
+            expect(callback).toHaveBeenCalledTimes(1);
+          },
+          {
+            timeout: Form.inputDelay + 100,
+          }
+        );
+      });
     });
 
-    it(`should not call ${inputData.callbackName} for invalid input strings`, () => {
-      const callback = jest.fn();
+    field.testValues.shouldNotCallOnChange.forEach(async (invalidTestValue) => {
+      await it(`should not call ${field.callbackName} for invalid input ${invalidTestValue}`, () => {
+        const callback = jest.fn();
 
-      render(<Form {...{ [inputData.callbackName]: callback }} />);
+        render(<Form {...{ [field.callbackName]: callback }} />);
+        const input: HTMLInputElement = screen.getByLabelText(field.labelText);
 
-      const input: HTMLInputElement = screen.getByLabelText(
-        inputData.labelText
-      );
-      inputData.testValues.shouldNotCallOnChange.forEach(
-        async (invalidTestValue) => {
-          userEvent.type(input, invalidTestValue);
-          await waitFor(
-            () => {
+        userEvent.clear(input);
+        userEvent.type(input, invalidTestValue);
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            try {
               expect(callback).toHaveBeenCalledTimes(0);
-              input.value = "";
-            },
-            {
-              timeout: Form.inputDelay + 500,
+              resolve(true);
+            } catch (e) {
+              reject(e);
             }
-          );
-        }
-      );
+          }, Form.inputDelay + 100);
+        });
+      });
     });
   });
 });
