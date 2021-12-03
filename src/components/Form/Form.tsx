@@ -135,7 +135,7 @@ export class Form extends React.Component<FormProps, IFormState> {
         },
         cellSize: {
           show: false,
-          msg: "Expected number greater than 10",
+          msg: "Expected number >= 10",
         },
         speed: {
           show: false,
