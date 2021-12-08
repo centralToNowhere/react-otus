@@ -2,11 +2,12 @@ import React from "react";
 import userEvent from "@testing-library/user-event/dist";
 import { render, screen, waitFor } from "@testing-library/react";
 import { Form, isValidNumericString } from "./Form";
+import { l10n } from "@/l10n/ru";
 
 const inputsData = [
   {
     callbackName: "onCellSizeChange",
-    labelText: "Размер ячейки:",
+    labelText: l10n.cellSizeLabel,
     testValues: {
       shouldCallOnChange: ["10", "100", "1000"],
       shouldNotCallOnChange: ["1", "9", "-1", "", "0"],
@@ -14,7 +15,7 @@ const inputsData = [
   },
   {
     callbackName: "onMaxFieldWidthChange",
-    labelText: "Макс. ширина:",
+    labelText: l10n.maxWidthLabel,
     testValues: {
       shouldCallOnChange: ["1", "10", "100", "1000", "0"],
       shouldNotCallOnChange: ["-1", "", "qwerty"],
@@ -22,7 +23,7 @@ const inputsData = [
   },
   {
     callbackName: "onMaxFieldHeightChange",
-    labelText: "Макс. высота:",
+    labelText: l10n.maxHeightLabel,
     testValues: {
       shouldCallOnChange: ["1", "10", "100", "1000", "0"],
       shouldNotCallOnChange: ["-1", "", "qwerty"],
@@ -30,7 +31,7 @@ const inputsData = [
   },
   {
     callbackName: "onCapacityChange",
-    labelText: "Процент заполненности:",
+    labelText: l10n.capacityLabel,
     testValues: {
       shouldCallOnChange: [
         "1",
@@ -47,7 +48,7 @@ const inputsData = [
   },
   {
     callbackName: "onSpeedChange",
-    labelText: "Обновлений в секунду:",
+    labelText: l10n.speedLabel,
     testValues: {
       shouldCallOnChange: ["1", "10", "100", "1000", "0.1"],
       shouldNotCallOnChange: ["-1", "0", "", "qwerty"],
@@ -68,7 +69,7 @@ describe("form tests", () => {
   it("should render cellSize input", () => {
     const { asFragment } = render(<Form />);
 
-    const input: HTMLInputElement = screen.getByLabelText("Размер ячейки:");
+    const input: HTMLInputElement = screen.getByLabelText(l10n.cellSizeLabel);
 
     expect(input).toBeInTheDocument();
     expect(asFragment()).toMatchSnapshot();
@@ -77,9 +78,7 @@ describe("form tests", () => {
   it("should render capacity-percentage input", () => {
     const { asFragment } = render(<Form />);
 
-    const input: HTMLInputElement = screen.getByLabelText(
-      "Процент заполненности:"
-    );
+    const input: HTMLInputElement = screen.getByLabelText(l10n.capacityLabel);
 
     expect(input).toBeInTheDocument();
     expect(asFragment()).toMatchSnapshot();
@@ -88,7 +87,7 @@ describe("form tests", () => {
   it("should render width input", () => {
     const { asFragment } = render(<Form />);
 
-    const input: HTMLInputElement = screen.getByLabelText("Макс. ширина:");
+    const input: HTMLInputElement = screen.getByLabelText(l10n.maxWidthLabel);
 
     expect(input).toBeInTheDocument();
     expect(asFragment()).toMatchSnapshot();
@@ -97,7 +96,7 @@ describe("form tests", () => {
   it("should render height input", () => {
     const { asFragment } = render(<Form />);
 
-    const input: HTMLInputElement = screen.getByLabelText("Макс. высота:");
+    const input: HTMLInputElement = screen.getByLabelText(l10n.maxHeightLabel);
 
     expect(input).toBeInTheDocument();
     expect(asFragment()).toMatchSnapshot();
@@ -106,7 +105,7 @@ describe("form tests", () => {
   it("should render speed-change", () => {
     const { asFragment } = render(<Form />);
 
-    const input = screen.getByLabelText("Обновлений в секунду:");
+    const input = screen.getByLabelText(l10n.speedLabel);
 
     expect(input).toBeInTheDocument();
     expect(asFragment()).toMatchSnapshot();
@@ -115,7 +114,7 @@ describe("form tests", () => {
   it("should render start button", () => {
     const { asFragment } = render(<Form />);
 
-    const button: HTMLButtonElement = screen.getByText("Старт");
+    const button: HTMLButtonElement = screen.getByText(l10n.buttonStart);
 
     expect(button).toBeInTheDocument();
     expect(asFragment()).toMatchSnapshot();
@@ -124,7 +123,7 @@ describe("form tests", () => {
   it("should render stop button", () => {
     const { asFragment } = render(<Form />);
 
-    const button: HTMLButtonElement = screen.getByText("Стоп");
+    const button: HTMLButtonElement = screen.getByText(l10n.buttonStop);
 
     expect(button).toBeInTheDocument();
     expect(asFragment()).toMatchSnapshot();
@@ -133,7 +132,7 @@ describe("form tests", () => {
   it("should render reset button", () => {
     const { asFragment } = render(<Form />);
 
-    const button: HTMLButtonElement = screen.getByText("Сброс");
+    const button: HTMLButtonElement = screen.getByText(l10n.buttonReset);
 
     expect(button).toBeInTheDocument();
     expect(asFragment()).toMatchSnapshot();
@@ -192,5 +191,43 @@ describe("input onChange tests", () => {
         });
       });
     });
+  });
+});
+
+describe("buttons tests", () => {
+  it("should run onStart", () => {
+    const onStart = jest.fn();
+
+    render(<Form onStart={onStart} />);
+
+    const buttonStart: HTMLButtonElement = screen.getByText(l10n.buttonStart);
+
+    userEvent.click(buttonStart);
+
+    expect(onStart).toHaveBeenCalled();
+  });
+
+  it("should run onStop", () => {
+    const onStop = jest.fn();
+
+    render(<Form onStop={onStop} />);
+
+    const buttonStop: HTMLButtonElement = screen.getByText(l10n.buttonStop);
+
+    userEvent.click(buttonStop);
+
+    expect(onStop).toHaveBeenCalled();
+  });
+
+  it("should run onReset", () => {
+    const onReset = jest.fn();
+
+    render(<Form onReset={onReset} />);
+
+    const buttonReset: HTMLButtonElement = screen.getByText(l10n.buttonReset);
+
+    userEvent.click(buttonReset);
+
+    expect(onReset).toHaveBeenCalled();
   });
 });

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { COLORS } from "@/styles/ui-styled";
 
 export interface ICell {
   x: number;
@@ -54,8 +55,9 @@ export class Cell extends React.Component<ICellProps> {
 const StyledCell = styled.div<StyledCellProps>`
   width: ${(props) => props.size}px;
   height: ${(props) => props.size}px;
-  background: ${(props) => (props.isActive ? "black" : "")};
-  color: ${(props) => (props.isActive ? "white" : "black")};
+  background: ${(props) => (props.isActive ? COLORS.activeCellBg : "")};
+  color: ${(props) =>
+    props.isActive ? COLORS.activeCellColor : COLORS.activeCellBg};
   outline: 1px solid white;
   transition: 0.5s ease background;
   text-align: center;

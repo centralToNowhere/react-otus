@@ -11,6 +11,8 @@ import {
   __RewireAPI__ as FieldContainerRewire,
 } from "@/components/FieldContainer/FieldContainer";
 import { ICell } from "@/components/Cell";
+import { COLORS } from "@/styles/ui-styled";
+import { l10n } from "@/l10n/ru";
 
 /**
  * Зачем я использую babel-plugin-rewire-ts?
@@ -181,19 +183,22 @@ describe("FieldContainer tests", () => {
       />
     );
 
-    const cells = screen.getAllByText(/^(1|12|23|34|45|56|67|78|89|100)$/, {
-      selector: "[data-testid=cell]",
-    });
+    const activeCells = screen.getAllByText(
+      /^(1|12|23|34|45|56|67|78|89|100)$/,
+      {
+        selector: "[data-testid=cell]",
+      }
+    );
 
-    const startButton = screen.getByText("Старт");
+    const startButton = screen.getByText(l10n.buttonStart);
 
     userEvent.click(startButton);
 
     await Promise.all(
-      cells.map((cell: HTMLElement) => {
+      activeCells.map((cell: HTMLElement) => {
         return waitFor(() => {
           expect(cell).toHaveStyle({
-            background: "black",
+            background: COLORS.activeCellBg,
           });
         });
       })
@@ -236,8 +241,8 @@ describe("FieldContainer tests", () => {
       />
     );
 
-    const buttonStart = screen.getByText("Старт");
-    const buttonStop = screen.getByText("Стоп");
+    const buttonStart = screen.getByText(l10n.buttonStart);
+    const buttonStop = screen.getByText(l10n.buttonStop);
 
     userEvent.click(buttonStart);
 
@@ -249,15 +254,15 @@ describe("FieldContainer tests", () => {
           return waitFor(() => {
             expect(getRandomCellsMocked).toHaveBeenCalled();
           }).then(async (): Promise<void> => {
-            const cells = screen.getAllByText(cellsToFindRegExp, {
+            const activeCells = screen.getAllByText(cellsToFindRegExp, {
               selector: "[data-testid=cell]",
             });
 
             await Promise.all(
-              cells.map((cell: HTMLElement): Promise<void> => {
+              activeCells.map((cell: HTMLElement): Promise<void> => {
                 return waitFor(() => {
                   expect(cell).toHaveStyle({
-                    background: "black",
+                    background: COLORS.activeCellBg,
                   });
                 });
               })
@@ -277,6 +282,65 @@ describe("FieldContainer tests", () => {
         expect(getRandomCellsMocked).toHaveBeenCalledTimes(currentTicks);
         resolve();
       }, 2 * gameCycleTimeout);
+    });
+
+    FieldContainerRewire.__ResetDependency__("getRandomCells");
+  });
+
+  it("should reset all properties to initial", async () => {
+    const cellSize = 10;
+    const maxFieldWidth = 100;
+    const maxFieldHeight = 100;
+    const capacity = 50;
+    const speed = 10;
+    const gameCycleTimeout = getGameCycleTimeout(speed);
+
+    render(
+      <FieldContainer
+        cellSize={cellSize}
+        maxFieldWidth={maxFieldWidth}
+        maxFieldHeight={maxFieldHeight}
+        capacity={capacity}
+        speed={speed}
+      />
+    );
+
+    const buttonStart = screen.getByText(l10n.buttonStart);
+    const buttonReset = screen.getByText(l10n.buttonReset);
+
+    userEvent.click(buttonStart);
+
+    await new Promise<void>((resolve) => {
+      setTimeout(() => {
+        userEvent.click(buttonReset);
+        resolve();
+      }, 3 * gameCycleTimeout);
+    });
+
+    const cells = screen.getAllByTestId("cell");
+
+    await Promise.all(
+      cells.map((cell: HTMLElement) => {
+        return waitFor(() => {
+          expect(cell).not.toHaveStyle({
+            background: COLORS.activeCellBg,
+          });
+        });
+      })
+    );
+
+    const cellsLengthExpected =
+      Math.floor(maxFieldWidth / cellSize) *
+      Math.floor(maxFieldHeight / cellSize);
+    expect(cells.length).toBe(cellsLengthExpected);
+
+    const form: HTMLFormElement = screen.getByTestId("field-form");
+    expect(form).toHaveFormValues({
+      fieldWidth: maxFieldWidth,
+      fieldHeight: maxFieldHeight,
+      cellSize: cellSize,
+      capacityPercentage: String(capacity),
+      speedChange: speed,
     });
   });
 });

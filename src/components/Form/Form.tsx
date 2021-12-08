@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { COLORS } from "@/styles/ui-styled";
 import { minCellSize } from "@/components/Cell";
+import { l10n } from "@/l10n/ru";
 
 type ControlCallback<T = void> = (value: T) => void;
 type Callback<E, T> = (e: E) => T;
@@ -300,13 +301,13 @@ export class Form extends React.Component<FormProps, IFormState> {
         <input autoComplete="off" hidden />
         <FormGroup>
           <FormField>
-            <FormLabel htmlFor="field-width">Макс. ширина:</FormLabel>
+            <FormLabel htmlFor="field-width">{l10n.maxWidthLabel}</FormLabel>
             <FormInput
               id="field-width"
               type="number"
               pattern={floatPattern}
               step="1"
-              name="field-width"
+              name="fieldWidth"
               autoFocus={true}
               value={this.state.maxFieldWidthString}
               autoComplete="off"
@@ -324,13 +325,13 @@ export class Form extends React.Component<FormProps, IFormState> {
           </FormField>
 
           <FormField>
-            <FormLabel htmlFor="field-height">Макс. высота:</FormLabel>
+            <FormLabel htmlFor="field-height">{l10n.maxHeightLabel}</FormLabel>
             <FormInput
               id="field-height"
               type="number"
               pattern={floatPattern}
               step="1"
-              name="field-height"
+              name="fieldHeight"
               value={this.state.maxFieldHeightString}
               autoComplete="off"
               onChange={this.onChangeFn(
@@ -347,13 +348,13 @@ export class Form extends React.Component<FormProps, IFormState> {
           </FormField>
 
           <FormField>
-            <FormLabel htmlFor="cell-size-input">Размер ячейки:</FormLabel>
+            <FormLabel htmlFor="cell-size">{l10n.cellSizeLabel}</FormLabel>
             <FormInput
-              id="cell-size-input"
+              id="cell-size"
               type="number"
               pattern={numberPattern}
               step="1"
-              name="cell-size-input"
+              name="cellSize"
               value={this.state.cellSizeString}
               autoComplete="off"
               onChange={this.onChangeFn(
@@ -371,7 +372,7 @@ export class Form extends React.Component<FormProps, IFormState> {
 
           <FormField>
             <FormLabel htmlFor="capacity-percentage">
-              Процент заполненности:
+              {l10n.capacityLabel}
             </FormLabel>
             <p>{this.state.capacityString} %</p>
             <FormInput
@@ -380,7 +381,7 @@ export class Form extends React.Component<FormProps, IFormState> {
               max="100"
               min="0"
               step="1"
-              name="capacity-percentage"
+              name="capacityPercentage"
               value={this.state.capacityString}
               autoComplete="off"
               onChange={this.onChangeFn(
@@ -397,13 +398,13 @@ export class Form extends React.Component<FormProps, IFormState> {
           </FormField>
 
           <FormField>
-            <FormLabel htmlFor="speed-change">Обновлений в секунду:</FormLabel>
+            <FormLabel htmlFor="speed-change">{l10n.speedLabel}</FormLabel>
             <FormInput
               id="speed-change"
               type="number"
               pattern={floatPattern}
               step="0.1"
-              name="speed-change"
+              name="speedChange"
               value={this.state.speedString}
               autoComplete="off"
               onChange={this.onChangeFn(
@@ -426,9 +427,9 @@ export class Form extends React.Component<FormProps, IFormState> {
               <FormButton
                 type="button"
                 onClick={this.onButtonClickFn(this.props.onStart)}
-                name="start-button"
+                name="startButton"
               >
-                Старт
+                {l10n.buttonStart}
               </FormButton>
             </FormButtonContainer>
           </FormField>
@@ -438,9 +439,9 @@ export class Form extends React.Component<FormProps, IFormState> {
               <FormButton
                 type="button"
                 onClick={this.onButtonClickFn(this.props.onStop)}
-                name="stop-button"
+                name="stopButton"
               >
-                Стоп
+                {l10n.buttonStop}
               </FormButton>
             </FormButtonContainer>
           </FormField>
@@ -450,9 +451,9 @@ export class Form extends React.Component<FormProps, IFormState> {
               <FormButton
                 type="reset"
                 onClick={this.onButtonClickFn(this.props.onReset)}
-                name="reset-button"
+                name="resetButton"
               >
-                Сброс
+                {l10n.buttonReset}
               </FormButton>
             </FormButtonContainer>
           </FormField>

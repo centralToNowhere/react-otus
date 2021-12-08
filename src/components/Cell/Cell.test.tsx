@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { Cell } from "./Cell";
+import { COLORS } from "@/styles/ui-styled";
 
 describe("Cell tests", () => {
   it("should render cell", () => {
@@ -20,7 +21,7 @@ describe("Cell tests", () => {
     const cell = screen.getByTestId("cell");
 
     expect(cell).toHaveStyle({
-      background: "black",
+      background: COLORS.activeCellBg,
     });
   });
 
@@ -30,7 +31,7 @@ describe("Cell tests", () => {
     const cell = screen.getByTestId("cell");
 
     expect(cell).not.toHaveStyle({
-      background: "black",
+      background: COLORS.activeCellBg,
     });
   });
 });
