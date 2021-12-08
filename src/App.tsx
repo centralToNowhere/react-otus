@@ -14,7 +14,7 @@ const App: FC = () => {
           maxFieldWidth={window.innerWidth}
           maxFieldHeight={window.innerHeight / 2}
           capacity={50}
-          speed={1}
+          speed={2}
         />
       </AppBox>
     </ErrorBoundary>

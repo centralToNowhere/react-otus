@@ -165,7 +165,6 @@ export class Form extends React.Component<FormProps, IFormState> {
   };
 
   validateCapacity = (capacityString: unknown): boolean => {
-    console.log(capacityString);
     if (isValidNonNegativeNumericString(capacityString)) {
       this.setErrorState("capacity", false);
       return true;

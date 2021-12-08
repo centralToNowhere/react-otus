@@ -21,6 +21,39 @@ interface IFieldContainerState {
   activeCells: ICell[];
 }
 
+export const createFormKey = (): number => {
+  return Math.round(Math.random() * 10000);
+};
+
+export const getRandomCells = (
+  cellsInRow: number,
+  cellsInCol: number,
+  percentage: number
+): ICell[] => {
+  return Array.from(Array(cellsInCol)).reduce(
+    (allCells, colCells, i): ICell[] => {
+      allCells = allCells.concat(
+        Array.from(Array(cellsInRow)).reduce((rowCells, cell, j): ICell[] => {
+          if (Math.random() < percentage) {
+            rowCells.push({
+              x: j,
+              y: i,
+            });
+          }
+          return rowCells;
+        }, [])
+      );
+
+      return allCells;
+    },
+    []
+  );
+};
+
+export const getGameCycleTimeout = (speed: number): number => {
+  return 1000 / speed;
+};
+
 export class FieldContainer extends React.Component<
   FieldContainerProps,
   IFieldContainerState
@@ -61,11 +94,7 @@ export class FieldContainer extends React.Component<
     this.clearInterval = this.clearInterval.bind(this);
 
     this.gameCycleInterval = null;
-    this.formKey = this.createFormKey();
-  }
-
-  createFormKey(): number {
-    return Math.round(Math.random() * 10000);
+    this.formKey = createFormKey();
   }
 
   getCellsInRow(): number {
@@ -131,7 +160,11 @@ export class FieldContainer extends React.Component<
   onStart(): void {
     if (this.gameCycleInterval === null) {
       this.gameCycleInterval = setInterval(() => {
-        const cells = this.getRandomCells();
+        const cells = getRandomCells(
+          this.getCellsInRow(),
+          this.getCellsInCol(),
+          this.state.capacity / 100
+        );
 
         this.setState((prevState) => {
           return {
@@ -139,7 +172,7 @@ export class FieldContainer extends React.Component<
             activeCells: cells,
           };
         });
-      }, 1000 / Number(this.state.speed));
+      }, getGameCycleTimeout(this.state.speed));
     }
   }
 
@@ -163,31 +196,7 @@ export class FieldContainer extends React.Component<
     });
 
     // leads to Form unmounting btw; reset fields to initial values
-    this.formKey = this.createFormKey();
-  }
-
-  getRandomCells(): ICell[] {
-    const cellsInRow = this.getCellsInRow();
-    const cellsInCol = this.getCellsInCol();
-
-    return Array.from(Array(cellsInCol)).reduce(
-      (allCells, colCells, i): ICell[] => {
-        allCells = allCells.concat(
-          Array.from(Array(cellsInRow)).reduce((rowCells, cell, j): ICell[] => {
-            if (Math.random() < Number(this.state.capacity / 100)) {
-              rowCells.push({
-                x: j,
-                y: i,
-              });
-            }
-            return rowCells;
-          }, [])
-        );
-
-        return allCells;
-      },
-      []
-    );
+    this.formKey = createFormKey();
   }
 
   clearInterval(): void {
@@ -207,30 +216,28 @@ export class FieldContainer extends React.Component<
 
     return (
       <Container>
-        <>
-          <Field
-            cellSize={this.state.cellSize}
-            activeCells={this.state.activeCells}
-            cellsInCol={cellsInCol}
-            cellsInRow={cellsInRow}
-          />
-          <Form
-            key={this.formKey}
-            onCellSizeChange={this.onCellSizeChange}
-            onCapacityChange={this.onCapacityChange}
-            onMaxFieldWidthChange={this.onMaxFieldWidthChange}
-            onMaxFieldHeightChange={this.onMaxFieldHeightChange}
-            onSpeedChange={this.onSpeedChange}
-            onStart={this.onStart}
-            onStop={this.onStop}
-            onReset={this.onReset}
-            cellSize={this.props.cellSize}
-            capacity={this.props.capacity}
-            maxFieldWidth={this.props.maxFieldWidth}
-            maxFieldHeight={this.props.maxFieldHeight}
-            speed={this.props.speed}
-          />
-        </>
+        <Field
+          cellSize={this.state.cellSize}
+          activeCells={this.state.activeCells}
+          cellsInCol={cellsInCol}
+          cellsInRow={cellsInRow}
+        />
+        <Form
+          key={this.formKey}
+          onCellSizeChange={this.onCellSizeChange}
+          onCapacityChange={this.onCapacityChange}
+          onMaxFieldWidthChange={this.onMaxFieldWidthChange}
+          onMaxFieldHeightChange={this.onMaxFieldHeightChange}
+          onSpeedChange={this.onSpeedChange}
+          onStart={this.onStart}
+          onStop={this.onStop}
+          onReset={this.onReset}
+          cellSize={this.props.cellSize}
+          capacity={this.props.capacity}
+          maxFieldWidth={this.props.maxFieldWidth}
+          maxFieldHeight={this.props.maxFieldHeight}
+          speed={this.props.speed}
+        />
       </Container>
     );
   }
