@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-&& git checkout gh-pages-lesson6 \
+git checkout gh-pages-lesson6 \
 && git merge lesson6 --no-edit \
 && npm run build \
 && mv dist/* ./ \
