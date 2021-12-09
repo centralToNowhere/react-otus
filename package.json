@@ -1,7 +1,7 @@
 {
-  "name": "lesson5-component-lifecycle",
+  "name": "lesson6-lists-events-forms",
   "version": "1.0.0",
-  "description": "",
+  "description": "Lists, events, forms",
   "main": "src/index.tsx",
   "scripts": {
     "build": "npm run build:prod",
@@ -31,9 +31,9 @@
   "author": "RojkovD",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/centralToNowhere/react-ts-template/issues"
+    "url": "https://github.com/centralToNowhere/react-otus/issues"
   },
-  "homepage": "https://github.com/centralToNowhere/react-ts-template#readme",
+  "homepage": "https://github.com/centralToNowhere/react-otus/tree/lesson6",
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/plugin-transform-runtime": "^7.16.4",
