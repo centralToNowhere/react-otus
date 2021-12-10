@@ -6,4 +6,5 @@ git checkout gh-pages-lesson6 \
 && mv dist/* ./ \
 && git add . \
 && git commit -m "updated github pages" \
-&& git push origin gh-pages-lesson6 \
+&& git push origin gh-pages-lesson6 --no-verify \
+&& git checkout lesson6 \
