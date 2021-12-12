@@ -3,21 +3,21 @@ import styled from "@emotion/styled";
 import { COLORS } from "@/styles/ui-styled";
 import { Cell, ICell, isCell } from "@/components/Cell";
 
-export interface IFieldProps {
+export interface IGameFieldProps {
   cellSize: number;
   activeCells?: ICell[];
   cellsInRow: number;
   cellsInCol: number;
 }
 
-type FieldProps = typeof Field.defaultProps & IFieldProps;
+type GameFieldProps = typeof GameField.defaultProps & IGameFieldProps;
 
-export class Field extends React.Component<FieldProps> {
+export class GameField extends React.Component<GameFieldProps> {
   static defaultProps = {
     activeCells: [] as ICell[],
   };
 
-  constructor(props: FieldProps) {
+  constructor(props: GameFieldProps) {
     super(props);
 
     this.isActiveCell = this.isActiveCell.bind(this);
@@ -46,12 +46,8 @@ export class Field extends React.Component<FieldProps> {
     );
   }
 
-  shouldComponentUpdate(nextProps: Readonly<IFieldProps>): boolean {
-    if (nextProps.cellSize < 10) {
-      return false;
-    }
-
-    return true;
+  shouldComponentUpdate(nextProps: Readonly<IGameFieldProps>): boolean {
+    return nextProps.cellSize >= 10;
   }
 
   render() {

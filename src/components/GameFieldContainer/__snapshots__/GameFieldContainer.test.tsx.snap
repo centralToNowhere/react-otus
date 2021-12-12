@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FieldContainer tests should correctly render field and form 1`] = `
+exports[`GameFieldContainer tests should correctly render field and form 1`] = `
 <DocumentFragment>
   <div
     class="css-1oskuwq"

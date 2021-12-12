@@ -1,15 +1,15 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { Field } from "./Field";
+import { GameField } from "./GameField";
 
 const cellSize = 40;
 const cellsInRow = 15;
 const cellsInCol = 10;
 
-describe("Field tests", () => {
-  it("should render field", () => {
+describe("GameField tests", () => {
+  it("should render game field", () => {
     const { asFragment } = render(
-      <Field
+      <GameField
         cellSize={cellSize}
         cellsInRow={cellsInRow}
         cellsInCol={cellsInCol}
@@ -24,7 +24,7 @@ describe("Field tests", () => {
 
   it("should render 150 inactive cells", () => {
     render(
-      <Field
+      <GameField
         cellSize={cellSize}
         cellsInRow={cellsInRow}
         cellsInCol={cellsInCol}

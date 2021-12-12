@@ -3,13 +3,13 @@ import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event/dist";
 import {
-  FieldContainer,
+  GameFieldContainer,
   getRandomCells,
   createFormKey,
   getGameCycleTimeout,
   // @ts-ignore
-  __RewireAPI__ as FieldContainerRewire,
-} from "@/components/FieldContainer/FieldContainer";
+  __RewireAPI__ as GameFieldContainerRewire,
+} from "@/components/GameFieldContainer/GameFieldContainer";
 import { ICell } from "@/components/Cell";
 import { COLORS } from "@/styles/ui-styled";
 import { l10n } from "@/l10n/ru";
@@ -90,9 +90,9 @@ beforeEach(() => {
   jest.clearAllMocks();
 });
 
-describe("FieldContainer tests", () => {
+describe("GameFieldContainer tests", () => {
   it("should correctly render field and form", async () => {
-    const { asFragment } = render(<FieldContainer />);
+    const { asFragment } = render(<GameFieldContainer />);
 
     const field = screen.getByTestId("field");
     expect(field).toBeInTheDocument();
@@ -151,7 +151,7 @@ describe("FieldContainer tests", () => {
 
   it("should render 100 cells with numbers", () => {
     render(
-      <FieldContainer
+      <GameFieldContainer
         cellSize={10}
         maxFieldWidth={100}
         maxFieldHeight={100}
@@ -171,10 +171,10 @@ describe("FieldContainer tests", () => {
   });
 
   it("should start game cycle", async () => {
-    FieldContainerRewire.__Rewire__("getRandomCells", getRandomCellsMocked);
+    GameFieldContainerRewire.__Rewire__("getRandomCells", getRandomCellsMocked);
 
     render(
-      <FieldContainer
+      <GameFieldContainer
         cellSize={10}
         maxFieldWidth={100}
         maxFieldHeight={100}
@@ -204,7 +204,7 @@ describe("FieldContainer tests", () => {
       })
     );
 
-    FieldContainerRewire.__ResetDependency__("getRandomCells");
+    GameFieldContainerRewire.__ResetDependency__("getRandomCells");
   });
 
   it("should change cells 10 times every 100ms and then stop game cycle", async () => {
@@ -220,7 +220,10 @@ describe("FieldContainer tests", () => {
           };
         })
       );
-      FieldContainerRewire.__Rewire__("getRandomCells", getRandomCellsMocked);
+      GameFieldContainerRewire.__Rewire__(
+        "getRandomCells",
+        getRandomCellsMocked
+      );
 
       return new RegExp(
         `^(${[...Array(checks).keys()].reduce((acc, current, i) => {
@@ -232,7 +235,7 @@ describe("FieldContainer tests", () => {
     };
 
     render(
-      <FieldContainer
+      <GameFieldContainer
         cellSize={10}
         maxFieldWidth={100}
         maxFieldHeight={100}
@@ -284,7 +287,7 @@ describe("FieldContainer tests", () => {
       }, 2 * gameCycleTimeout);
     });
 
-    FieldContainerRewire.__ResetDependency__("getRandomCells");
+    GameFieldContainerRewire.__ResetDependency__("getRandomCells");
   });
 
   it("should reset all properties to initial", async () => {
@@ -296,7 +299,7 @@ describe("FieldContainer tests", () => {
     const gameCycleTimeout = getGameCycleTimeout(speed);
 
     render(
-      <FieldContainer
+      <GameFieldContainer
         cellSize={cellSize}
         maxFieldWidth={maxFieldWidth}
         maxFieldHeight={maxFieldHeight}

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FieldMaxHeight tests should render max height input 1`] = `
+<DocumentFragment>
+  <div
+    class="css-mkf0o6"
+  >
+    <label
+      class="css-1wnvjz2"
+      for="field-height"
+    >
+      Макс. высота:
+    </label>
+    <input
+      autocomplete="off"
+      class="css-16tc96n"
+      id="field-height"
+      name="fieldHeight"
+      pattern="([0-9]*[.])?[0-9]+"
+      step="1"
+      type="number"
+      value="500"
+    />
+  </div>
+</DocumentFragment>
+`;

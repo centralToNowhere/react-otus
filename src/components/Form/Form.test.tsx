@@ -67,75 +67,67 @@ describe("form tests", () => {
   });
 
   it("should render cellSize input", () => {
-    const { asFragment } = render(<Form />);
+    render(<Form />);
 
     const input: HTMLInputElement = screen.getByLabelText(l10n.cellSizeLabel);
 
     expect(input).toBeInTheDocument();
-    expect(asFragment()).toMatchSnapshot();
   });
 
   it("should render capacity-percentage input", () => {
-    const { asFragment } = render(<Form />);
+    render(<Form />);
 
     const input: HTMLInputElement = screen.getByLabelText(l10n.capacityLabel);
 
     expect(input).toBeInTheDocument();
-    expect(asFragment()).toMatchSnapshot();
   });
 
   it("should render width input", () => {
-    const { asFragment } = render(<Form />);
+    render(<Form />);
 
     const input: HTMLInputElement = screen.getByLabelText(l10n.maxWidthLabel);
 
     expect(input).toBeInTheDocument();
-    expect(asFragment()).toMatchSnapshot();
   });
 
   it("should render height input", () => {
-    const { asFragment } = render(<Form />);
+    render(<Form />);
 
     const input: HTMLInputElement = screen.getByLabelText(l10n.maxHeightLabel);
 
     expect(input).toBeInTheDocument();
-    expect(asFragment()).toMatchSnapshot();
   });
 
   it("should render speed-change", () => {
-    const { asFragment } = render(<Form />);
+    render(<Form />);
 
     const input = screen.getByLabelText(l10n.speedLabel);
 
     expect(input).toBeInTheDocument();
-    expect(asFragment()).toMatchSnapshot();
   });
 
   it("should render start button", () => {
-    const { asFragment } = render(<Form />);
+    render(<Form />);
 
     const button: HTMLButtonElement = screen.getByText(l10n.buttonStart);
 
     expect(button).toBeInTheDocument();
-    expect(asFragment()).toMatchSnapshot();
   });
 
   it("should render stop button", () => {
-    const { asFragment } = render(<Form />);
+    render(<Form />);
 
     const button: HTMLButtonElement = screen.getByText(l10n.buttonStop);
 
     expect(button).toBeInTheDocument();
-    expect(asFragment()).toMatchSnapshot();
   });
 
   it("should render reset button", () => {
-    const { asFragment } = render(<Form />);
+    render(<Form />);
 
     const button: HTMLButtonElement = screen.getByText(l10n.buttonReset);
 
     expect(button).toBeInTheDocument();
-    expect(asFragment()).toMatchSnapshot();
   });
 
   it("isValidNumericString should return valid results", () => {

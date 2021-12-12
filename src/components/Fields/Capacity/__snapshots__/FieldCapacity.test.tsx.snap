@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FieldCapacity tests should render capacity input 1`] = `
+<DocumentFragment>
+  <div
+    class="css-mkf0o6"
+  >
+    <label
+      class="css-1wnvjz2"
+      for="capacity-percentage"
+    >
+      Процент заполненности:
+    </label>
+    <p>
+      50 %
+    </p>
+    <input
+      autocomplete="off"
+      class="css-16tc96n"
+      id="capacity-percentage"
+      max="100"
+      min="0"
+      name="capacityPercentage"
+      step="1"
+      type="range"
+      value="50"
+    />
+  </div>
+</DocumentFragment>
+`;
