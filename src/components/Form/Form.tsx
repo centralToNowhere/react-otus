@@ -1,11 +1,16 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { COLORS } from "@/styles/ui-styled";
 import { minCellSize } from "@/components/Cell";
 import { l10n } from "@/l10n/ru";
+import { FieldMaxWidth } from "@/components/Fields/MaxWidth/FieldMaxWidth";
+import { FieldMaxHeight } from "@/components/Fields/MaxHeight/FieldMaxHeight";
+import { FieldCellSize } from "@/components/Fields/CellSize/FieldCellSize";
+import { FieldCapacity } from "@/components/Fields/Capacity/FieldCapacity";
+import { FieldSpeed } from "@/components/Fields/Speed/FieldSpeed";
+import { ButtonGameControl } from "@/components/Buttons/ButtonGameControl";
 
-type ControlCallback<T = void> = (value: T) => void;
-type Callback<E, T> = (e: E) => T;
+export type ControlCallback<T = void> = (value: T) => void;
+export type Callback<E, T> = (e: E) => T;
 export type FormProps = typeof Form.defaultProps & {
   cellSize?: number;
   onCellSizeChange?: ControlCallback<string>;
@@ -31,12 +36,25 @@ type InputProperties =
   | "capacity"
   | "speed";
 
-type IInputErrors = {
+type InputErrors = {
   [key in InputProperties]: {
     show: boolean;
     msg: string;
   };
 };
+
+export interface IFieldProps<T extends keyof InputErrors> {
+  value: string;
+  onChange: Callback<React.ChangeEvent<HTMLInputElement>, void>;
+  onBlur: Callback<React.FocusEvent<HTMLInputElement>, void>;
+  error: InputErrors[T];
+}
+
+export interface IButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  onClick: Callback<React.FormEvent<HTMLButtonElement>, void>;
+  content: string;
+}
 
 interface IFormState {
   cellSizeString: string;
@@ -44,7 +62,7 @@ interface IFormState {
   maxFieldWidthString: string;
   maxFieldHeightString: string;
   speedString: string;
-  errors: IInputErrors;
+  errors: InputErrors;
 }
 
 export const isValidNumericString = (
@@ -71,9 +89,6 @@ export const isValidPositiveNumericString = (str: unknown): boolean => {
 export const isValidNonNegativeNumericString = (str: unknown): boolean => {
   return isValidNumericString(str) && Number(str) >= 0;
 };
-
-const floatPattern = "([0-9]*[.])?[0-9]+";
-const numberPattern = "[0-9]*";
 
 export class Form extends React.Component<FormProps, IFormState> {
   static defaultProps = {
@@ -196,7 +211,7 @@ export class Form extends React.Component<FormProps, IFormState> {
     return false;
   };
 
-  setErrorState = (property: keyof IInputErrors, show: boolean): void => {
+  setErrorState = (property: keyof InputErrors, show: boolean): void => {
     this.setState((prevState) => {
       return {
         ...prevState,
@@ -262,24 +277,24 @@ export class Form extends React.Component<FormProps, IFormState> {
     };
   };
 
-  onButtonClickFn = <T,>(
-    fn: () => T
-  ): Callback<React.FormEvent<HTMLButtonElement>, T> => {
+  onButtonClickFn = (
+    fn: () => void
+  ): Callback<React.FormEvent<HTMLButtonElement>, void> => {
     return (e: React.FormEvent<HTMLButtonElement>) => {
       e.preventDefault();
-      return fn();
+      fn();
     };
   };
 
-  onBlurFn = <T,>(
-    onChange: (value: string) => T,
-    validator: (value: string) => T
-  ): Callback<React.FocusEvent<HTMLInputElement>, T | void> => {
+  onBlurFn = (
+    onChange: (value: string) => void,
+    validator: (value: string) => boolean
+  ): Callback<React.FocusEvent<HTMLInputElement>, void> => {
     return (e: React.FocusEvent<HTMLInputElement>) => {
       this.clearTimer();
 
       if (validator(e.target.value)) {
-        return onChange(e.target.value);
+        onChange(e.target.value);
       }
     };
   };
@@ -300,163 +315,95 @@ export class Form extends React.Component<FormProps, IFormState> {
       <FormElement ref={this.formRef} data-testid={"field-form"}>
         <input autoComplete="off" hidden />
         <FormGroup>
-          <FormField>
-            <FormLabel htmlFor="field-width">{l10n.maxWidthLabel}</FormLabel>
-            <FormInput
-              id="field-width"
-              type="number"
-              pattern={floatPattern}
-              step="1"
-              name="fieldWidth"
-              autoFocus={true}
-              value={this.state.maxFieldWidthString}
-              autoComplete="off"
-              onChange={this.onChangeFn(
-                this.props.onMaxFieldWidthChange,
-                "maxFieldWidthString",
-                this.validateFieldWidth
-              )}
-              onBlur={this.onBlurFn(
-                this.props.onMaxFieldWidthChange,
-                this.validateFieldWidth
-              )}
-            />
-            {this.showError(this.state.errors.fieldWidth)}
-          </FormField>
+          <FieldMaxWidth
+            value={this.state.maxFieldWidthString}
+            onChange={this.onChangeFn(
+              this.props.onMaxFieldWidthChange,
+              "maxFieldWidthString",
+              this.validateFieldWidth
+            )}
+            onBlur={this.onBlurFn(
+              this.props.onMaxFieldWidthChange,
+              this.validateFieldWidth
+            )}
+            error={this.state.errors.fieldWidth}
+          />
 
-          <FormField>
-            <FormLabel htmlFor="field-height">{l10n.maxHeightLabel}</FormLabel>
-            <FormInput
-              id="field-height"
-              type="number"
-              pattern={floatPattern}
-              step="1"
-              name="fieldHeight"
-              value={this.state.maxFieldHeightString}
-              autoComplete="off"
-              onChange={this.onChangeFn(
-                this.props.onMaxFieldHeightChange,
-                "maxFieldHeightString",
-                this.validateFieldHeight
-              )}
-              onBlur={this.onBlurFn(
-                this.props.onMaxFieldHeightChange,
-                this.validateFieldHeight
-              )}
-            />
-            {this.showError(this.state.errors.fieldHeight)}
-          </FormField>
+          <FieldMaxHeight
+            value={this.state.maxFieldHeightString}
+            onChange={this.onChangeFn(
+              this.props.onMaxFieldHeightChange,
+              "maxFieldHeightString",
+              this.validateFieldHeight
+            )}
+            onBlur={this.onBlurFn(
+              this.props.onMaxFieldHeightChange,
+              this.validateFieldHeight
+            )}
+            error={this.state.errors.fieldHeight}
+          />
 
-          <FormField>
-            <FormLabel htmlFor="cell-size">{l10n.cellSizeLabel}</FormLabel>
-            <FormInput
-              id="cell-size"
-              type="number"
-              pattern={numberPattern}
-              step="1"
-              name="cellSize"
-              value={this.state.cellSizeString}
-              autoComplete="off"
-              onChange={this.onChangeFn(
-                this.props.onCellSizeChange,
-                "cellSizeString",
-                this.validateCellSize
-              )}
-              onBlur={this.onBlurFn(
-                this.props.onCellSizeChange,
-                this.validateCellSize
-              )}
-            />
-            {this.showError(this.state.errors.cellSize)}
-          </FormField>
+          <FieldCellSize
+            value={this.state.cellSizeString}
+            onChange={this.onChangeFn(
+              this.props.onCellSizeChange,
+              "cellSizeString",
+              this.validateCellSize
+            )}
+            onBlur={this.onBlurFn(
+              this.props.onCellSizeChange,
+              this.validateCellSize
+            )}
+            error={this.state.errors.cellSize}
+          />
 
-          <FormField>
-            <FormLabel htmlFor="capacity-percentage">
-              {l10n.capacityLabel}
-            </FormLabel>
-            <p>{this.state.capacityString} %</p>
-            <FormInput
-              id="capacity-percentage"
-              type="range"
-              max="100"
-              min="0"
-              step="1"
-              name="capacityPercentage"
-              value={this.state.capacityString}
-              autoComplete="off"
-              onChange={this.onChangeFn(
-                this.props.onCapacityChange,
-                "capacityString",
-                this.validateCapacity
-              )}
-              onBlur={this.onBlurFn(
-                this.props.onCapacityChange,
-                this.validateCapacity
-              )}
-            />
-            {this.showError(this.state.errors.capacity)}
-          </FormField>
+          <FieldCapacity
+            value={this.state.capacityString}
+            onChange={this.onChangeFn(
+              this.props.onCapacityChange,
+              "capacityString",
+              this.validateCapacity
+            )}
+            onBlur={this.onBlurFn(
+              this.props.onCapacityChange,
+              this.validateCapacity
+            )}
+            error={this.state.errors.capacity}
+          />
 
-          <FormField>
-            <FormLabel htmlFor="speed-change">{l10n.speedLabel}</FormLabel>
-            <FormInput
-              id="speed-change"
-              type="number"
-              pattern={floatPattern}
-              step="0.1"
-              name="speedChange"
-              value={this.state.speedString}
-              autoComplete="off"
-              onChange={this.onChangeFn(
-                this.props.onSpeedChange,
-                "speedString",
-                this.validateSpeed
-              )}
-              onBlur={this.onBlurFn(
-                this.props.onSpeedChange,
-                this.validateSpeed
-              )}
-            />
-            {this.showError(this.state.errors.speed)}
-          </FormField>
+          <FieldSpeed
+            value={this.state.speedString}
+            onChange={this.onChangeFn(
+              this.props.onSpeedChange,
+              "speedString",
+              this.validateSpeed
+            )}
+            onBlur={this.onBlurFn(this.props.onSpeedChange, this.validateSpeed)}
+            error={this.state.errors.speed}
+          />
         </FormGroup>
 
         <FormGroup>
-          <FormField>
-            <FormButtonContainer>
-              <FormButton
-                type="button"
-                onClick={this.onButtonClickFn(this.props.onStart)}
-                name="startButton"
-              >
-                {l10n.buttonStart}
-              </FormButton>
-            </FormButtonContainer>
-          </FormField>
+          <ButtonGameControl
+            type={"button"}
+            onClick={this.onButtonClickFn(this.props.onStart)}
+            name={"startButton"}
+            content={l10n.buttonStart}
+          />
 
-          <FormField>
-            <FormButtonContainer>
-              <FormButton
-                type="button"
-                onClick={this.onButtonClickFn(this.props.onStop)}
-                name="stopButton"
-              >
-                {l10n.buttonStop}
-              </FormButton>
-            </FormButtonContainer>
-          </FormField>
+          <ButtonGameControl
+            type={"button"}
+            onClick={this.onButtonClickFn(this.props.onStop)}
+            name={"stopButton"}
+            content={l10n.buttonStop}
+          />
 
-          <FormField>
-            <FormButtonContainer>
-              <FormButton
-                type="reset"
-                onClick={this.onButtonClickFn(this.props.onReset)}
-                name="resetButton"
-              >
-                {l10n.buttonReset}
-              </FormButton>
-            </FormButtonContainer>
-          </FormField>
+          <ButtonGameControl
+            type={"reset"}
+            onClick={this.onButtonClickFn(this.props.onReset)}
+            name={"resetButton"}
+            content={l10n.buttonReset}
+          />
         </FormGroup>
       </FormElement>
     );
@@ -484,60 +431,4 @@ const FormGroup = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   max-width: 600px;
-`;
-
-const FormField = styled.div`
-  display: inline-flex;
-  flex-direction: column;
-  flex: 0 0 calc(100% / 3 - 40px);
-  margin: 20px;
-  justify-content: end;
-
-  input,
-  button {
-    margin: 5px 0 0 0;
-    min-width: 100px;
-  }
-
-  div.error-container {
-    position: relative;
-  }
-
-  p.error-msg {
-    position: absolute;
-    line-height: 1em;
-    font-size: 1em;
-    color: red;
-  }
-`;
-
-const FormLabel = styled.label`
-  display: inline;
-`;
-
-const FormInput = styled.input`
-  background: inherit;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  display: block;
-  outline: 0;
-  width: 100px;
-
-  &:focus {
-    border-bottom: 2px solid ${COLORS.accent};
-  }
-`;
-
-const FormButtonContainer = styled.div`
-  display: inline-block;
-`;
-
-const FormButton = styled.button`
-  background: inherit;
-
-  &:focus {
-    outline: 2px solid ${COLORS.accent};
-    border: 2px solid transparent;
-  }
 `;

@@ -1,10 +1,10 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import { Field, IFieldProps } from "./Field";
+import { GameField, IGameFieldProps } from "./GameField";
 
 export default {
-  title: "Components/Field",
-  component: Field,
+  title: "Components/GameField",
+  component: GameField,
   args: {
     cellSize: 40,
     cellsInRow: 35,
@@ -12,7 +12,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<IFieldProps> = (args) => <Field {...args} />;
+const Template: Story<IGameFieldProps> = (args) => <GameField {...args} />;
 
 export const FieldSmall = Template.bind({});
 

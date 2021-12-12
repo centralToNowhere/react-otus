@@ -2,14 +2,14 @@ import React, { FC } from "react";
 import ErrorBoundary from "@/components/error/Error";
 import styled from "@emotion/styled";
 import { COLORS } from "@/styles/ui-styled";
-import { FieldContainer } from "@/components/FieldContainer";
+import { GameFieldContainer } from "@/components/GameFieldContainer";
 import "./styles/reset.css";
 
 const App: FC = () => {
   return (
     <ErrorBoundary>
       <AppBox data-testid={"react-lifecycle"}>
-        <FieldContainer
+        <GameFieldContainer
           cellSize={40}
           maxFieldWidth={window.innerWidth}
           maxFieldHeight={window.innerHeight / 2}

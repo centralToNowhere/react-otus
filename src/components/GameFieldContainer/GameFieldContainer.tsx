@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { Form } from "@/components/Form";
-import { Field } from "@/components/Field";
+import { GameField } from "@/components/GameField";
 import { ICell } from "@/components/Cell";
 
-export type FieldContainerProps = typeof FieldContainer.defaultProps & {
+export type GameFieldContainerProps = typeof GameFieldContainer.defaultProps & {
   cellSize?: number;
   maxFieldWidth?: number;
   maxFieldHeight?: number;
@@ -12,7 +12,7 @@ export type FieldContainerProps = typeof FieldContainer.defaultProps & {
   speed?: number;
 };
 
-interface IFieldContainerState {
+interface IGameFieldContainerState {
   cellSize: number;
   maxFieldWidth: number;
   maxFieldHeight: number;
@@ -54,9 +54,9 @@ export const getGameCycleTimeout = (speed: number): number => {
   return 1000 / speed;
 };
 
-export class FieldContainer extends React.Component<
-  FieldContainerProps,
-  IFieldContainerState
+export class GameFieldContainer extends React.Component<
+  GameFieldContainerProps,
+  IGameFieldContainerState
 > {
   static defaultProps = {
     cellSize: 30,
@@ -69,7 +69,7 @@ export class FieldContainer extends React.Component<
   private gameCycleInterval: ReturnType<typeof setInterval> | null;
   private formKey: number;
 
-  constructor(props: FieldContainerProps) {
+  constructor(props: GameFieldContainerProps) {
     super(props);
 
     this.state = {
@@ -106,7 +106,7 @@ export class FieldContainer extends React.Component<
   }
 
   onCellSizeChange(value: string): void {
-    this.setState((prevState: IFieldContainerState) => {
+    this.setState((prevState: IGameFieldContainerState) => {
       return {
         ...prevState,
         cellSize: Number(value),
@@ -115,7 +115,7 @@ export class FieldContainer extends React.Component<
   }
 
   onCapacityChange(value: string): void {
-    this.setState((prevState: IFieldContainerState) => {
+    this.setState((prevState: IGameFieldContainerState) => {
       return {
         ...prevState,
         capacity: Number(value),
@@ -124,7 +124,7 @@ export class FieldContainer extends React.Component<
   }
 
   onMaxFieldWidthChange(value: string): void {
-    this.setState((prevState: IFieldContainerState) => {
+    this.setState((prevState: IGameFieldContainerState) => {
       return {
         ...prevState,
         maxFieldWidth: Number(value),
@@ -133,7 +133,7 @@ export class FieldContainer extends React.Component<
   }
 
   onMaxFieldHeightChange(value: string): void {
-    this.setState((prevState: IFieldContainerState) => {
+    this.setState((prevState: IGameFieldContainerState) => {
       return {
         ...prevState,
         maxFieldHeight: Number(value),
@@ -149,7 +149,7 @@ export class FieldContainer extends React.Component<
       }, 0);
     }
 
-    this.setState((prevState: IFieldContainerState) => {
+    this.setState((prevState: IGameFieldContainerState) => {
       return {
         ...prevState,
         speed: Number(value),
@@ -216,7 +216,7 @@ export class FieldContainer extends React.Component<
 
     return (
       <Container>
-        <Field
+        <GameField
           cellSize={this.state.cellSize}
           activeCells={this.state.activeCells}
           cellsInCol={cellsInCol}
