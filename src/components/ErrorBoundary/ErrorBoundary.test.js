@@ -2,9 +2,8 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 
 import React from "react";
-import "@testing-library/jest-dom";
 import { render } from "@testing-library/react";
-import ErrorBoundary from "./Error";
+import { ErrorBoundary } from "./ErrorBoundary";
 
 beforeAll(() => {
   jest.spyOn(console, "error").mockImplementation(() => {});

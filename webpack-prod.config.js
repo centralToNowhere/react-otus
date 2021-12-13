@@ -14,7 +14,7 @@ const config = {
       filename: "[name].[contenthash:8].css",
     }),
     new HtmlWebpackPlugin({
-      template: "index.html",
+      template: "./public/index.html",
     }),
   ],
   module: {

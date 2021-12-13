@@ -9,17 +9,19 @@ const config = {
     filename: "[name].[contenthash:4].js",
   },
   mode: "development",
+  devtool: "eval-source-map",
   devServer: {
     open: true,
+    hot: true,
     host: "localhost",
-    port: 8082
+    port: 3000
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash:4].css",
     }),
     new HtmlWebpackPlugin({
-      template: "index.html",
+      template: "./public/index.html",
     }),
   ],
   module: {

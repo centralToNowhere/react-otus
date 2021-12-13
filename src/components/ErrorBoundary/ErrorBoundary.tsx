@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
-import "@/components/error/error.css";
+import "@/components/ErrorBoundary/ErrorBoundary.css";
 
-class Error extends React.Component<any, any> {
+export class ErrorBoundary extends React.Component<any, any> {
   constructor(props: React.PropsWithChildren<any>) {
     super(props);
     this.state = {
@@ -31,5 +31,3 @@ class Error extends React.Component<any, any> {
     return this.props.children;
   }
 }
-
-export default Error;

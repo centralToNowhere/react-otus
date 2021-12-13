@@ -10,5 +10,21 @@
     ],
     "@babel/preset-react",
     "@babel/preset-typescript"
-  ]
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "regenerator": true
+      }
+    ]
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        "@babel/plugin-transform-runtime",
+        "rewire-ts"
+      ]
+    }
+  }
 }
