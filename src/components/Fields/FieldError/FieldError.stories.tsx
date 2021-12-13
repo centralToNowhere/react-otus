@@ -18,9 +18,3 @@ export const ShowError = Template.bind({});
 ShowError.args = {
   show: true,
 };
-
-export const NoError = Template.bind({});
-
-NoError.args = {
-  show: false,
-};

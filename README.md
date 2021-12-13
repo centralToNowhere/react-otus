@@ -1,5 +1,5 @@
-# react-ts-template
-ДЗ5 Component lifecycle
+# Otus homework branch
+Lists, events, forms
 
-`npm install`<br>
+`npm ci`<br>
 `npm run serve`
