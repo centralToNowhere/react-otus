@@ -2,9 +2,9 @@
 
 git checkout gh-pages-lesson6 \
 && git merge lesson6 --no-edit \
+&& rm -rf docs/* \
 && npm run check \
 && npm run build \
-&& rm -rf docs/* \
 && mv dist/* docs \
 && git add . \
 && git commit -m "updated github pages" --no-verify \
