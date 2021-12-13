@@ -1,2 +1,5 @@
-# react-ts-template
-Template for react - typescript projects
+# Otus homework branch
+Functional programming
+
+`npm ci`<br>
+`npm run serve`
