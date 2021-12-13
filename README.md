@@ -1,4 +1,4 @@
-# react-ts-template
+# Otus homework branch
 Lists, events, forms
 
 `npm ci`<br>
