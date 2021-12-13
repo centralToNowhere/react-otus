@@ -7,10 +7,9 @@ const config = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[contenthash:4].js",
-    assetModuleFilename: '[name][ext]'
   },
   mode: "development",
-  devtool: "source-map",
+  devtool: "eval-source-map",
   devServer: {
     open: true,
     hot: true,
@@ -50,10 +49,6 @@ const config = {
             },
           },
         ],
-      },
-      {
-        test: /figures\.json/,
-        type: 'asset/resource'
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
