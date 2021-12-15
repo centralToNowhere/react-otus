@@ -1,4 +1,10 @@
-import { getTopName, Team, QsObj, createQs, parseQs } from "./ramdaPureFunctions";
+import {
+  getTopName,
+  Team,
+  QsObj,
+  createQs,
+  parseQs,
+} from "./ramdaPureFunctions";
 
 test("getTopName", () => {
   const teams: Team[] = [
@@ -24,6 +30,26 @@ test("createQs", () => {
   );
 });
 
+test("createQs empty object", () => {
+  const qsObj = {};
+
+  expect(createQs(qsObj)).toBe("");
+});
+
+test("createQs not all props", () => {
+  type NotAllPropsQsObj = {
+    page: string;
+    pageSize: string;
+  };
+
+  const qsObj: NotAllPropsQsObj = {
+    page: "2",
+    pageSize: "10",
+  };
+
+  expect(createQs(qsObj)).toBe("?page=2&pageSize=10");
+});
+
 test("parseQs", () => {
   const qs = "?page=2&pageSize=10&total=205&somethingElse=value";
 
@@ -33,4 +59,10 @@ test("parseQs", () => {
     total: "205",
     somethingElse: "value",
   });
+});
+
+test("parseQs empty qs", () => {
+  const qs = "";
+
+  expect(() => parseQs(qs)).toThrowError(`expected query, got ${qs}`);
 });

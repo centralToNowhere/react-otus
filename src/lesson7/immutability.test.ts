@@ -4,7 +4,7 @@ import {
   SomeArray,
   originalTeamToExpectedTeam,
   originalArrayToExpectedArray,
-  originalTeamToExpectedTeamTask3
+  originalTeamToExpectedTeamTask3,
 } from "./immutability";
 
 // Задание 1
@@ -30,7 +30,9 @@ test("array to array", () => {
 
   const expectedArray = ["two", 3, 4, 5];
 
-  expect(originalArrayToExpectedArray(originalArray as SomeArray)).toEqual(expectedArray);
+  expect(originalArrayToExpectedArray(originalArray as SomeArray)).toEqual(
+    expectedArray
+  );
 });
 
 // Задание 3

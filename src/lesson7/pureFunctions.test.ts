@@ -34,3 +34,9 @@ test("parseQs", () => {
     somethingElse: "value",
   });
 });
+
+test("parseQs empty qs", () => {
+  const qs = "";
+
+  expect(() => parseQs(qs)).toThrowError(`expected query, got ${qs}`);
+});
