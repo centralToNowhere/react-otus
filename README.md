@@ -2,4 +2,4 @@
 Functional programming
 
 `npm ci`<br>
-`npm run serve`
+`npm run test`
