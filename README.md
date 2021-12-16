@@ -1,5 +1,5 @@
 # Otus homework branch
-Lists, events, forms
+React patterns
 
 `npm ci`<br>
 `npm run serve`
