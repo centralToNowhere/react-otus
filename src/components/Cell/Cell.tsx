@@ -26,17 +26,9 @@ export const isCell = (cell: ICell): cell is ICell => {
   );
 };
 
-export class Cell extends React.Component<ICellProps> {
+export class Cell extends React.PureComponent<ICellProps> {
   constructor(props: ICellProps) {
     super(props);
-  }
-
-  shouldComponentUpdate(nextProps: Readonly<ICellProps>): boolean {
-    return (
-      nextProps.size !== this.props.size ||
-      nextProps.isActive !== this.props.isActive ||
-      nextProps.number !== this.props.number
-    );
   }
 
   render() {
