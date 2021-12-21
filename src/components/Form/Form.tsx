@@ -52,7 +52,7 @@ export interface IFieldProps<T extends keyof InputErrors> {
 
 export interface IButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  onClick: Callback<React.FormEvent<HTMLButtonElement>, void>;
+  onClick: Callback<React.MouseEvent<HTMLButtonElement>, void>;
   content: string;
 }
 
@@ -277,13 +277,20 @@ export class Form extends React.Component<FormProps, IFormState> {
     };
   };
 
-  onButtonClickFn = (
-    fn: () => void
-  ): Callback<React.FormEvent<HTMLButtonElement>, void> => {
-    return (e: React.FormEvent<HTMLButtonElement>) => {
-      e.preventDefault();
-      fn();
-    };
+  onButtonClickFn = (e: React.MouseEvent<HTMLButtonElement>): void => {
+    const target = e.target as HTMLButtonElement;
+
+    switch (target.getAttribute("name")) {
+      case "startButton":
+        this.props.onStart();
+        break;
+      case "stopButton":
+        this.props.onStop();
+        break;
+      case "resetButton":
+        this.props.onReset();
+        break;
+    }
   };
 
   onBlurFn = (
@@ -386,21 +393,21 @@ export class Form extends React.Component<FormProps, IFormState> {
         <FormGroup>
           <ButtonGameControl
             type={"button"}
-            onClick={this.onButtonClickFn(this.props.onStart)}
+            onClick={this.onButtonClickFn}
             name={"startButton"}
             content={l10n.buttonStart}
           />
 
           <ButtonGameControl
             type={"button"}
-            onClick={this.onButtonClickFn(this.props.onStop)}
+            onClick={this.onButtonClickFn}
             name={"stopButton"}
             content={l10n.buttonStop}
           />
 
           <ButtonGameControl
             type={"reset"}
-            onClick={this.onButtonClickFn(this.props.onReset)}
+            onClick={this.onButtonClickFn}
             name={"resetButton"}
             content={l10n.buttonReset}
           />
