@@ -19,9 +19,3 @@ const Template: Story<IFieldProps> = (args: IFieldProps) => {
 };
 
 export const SpeedInput = Template.bind({});
-
-export const SpeedInputWithError = Template.bind({});
-
-SpeedInputWithError.args = {
-  value: "qwerty",
-};
