@@ -11,13 +11,6 @@ describe("FieldMaxHeight tests", () => {
         onChange={() => {
           // empty function
         }}
-        onBlur={() => {
-          // empty function
-        }}
-        error={{
-          show: false,
-          msg: "Expected non-negative number",
-        }}
       />
     );
 

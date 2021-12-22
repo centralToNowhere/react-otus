@@ -11,13 +11,6 @@ describe("FieldCellSize tests", () => {
         onChange={() => {
           // empty function
         }}
-        onBlur={() => {
-          // empty function
-        }}
-        error={{
-          show: false,
-          msg: "Expected number >= 10",
-        }}
       />
     );
 

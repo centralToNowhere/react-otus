@@ -11,17 +11,10 @@ export default {
     onChange: () => {
       // empty function
     },
-    onBlur: () => {
-      // empty function
-    },
-    error: {
-      show: false,
-      msg: "Expected positive number",
-    },
   },
 } as Meta;
 
-const Template: Story<IFieldProps<"speed">> = (args: IFieldProps<"speed">) => {
+const Template: Story<IFieldProps> = (args: IFieldProps) => {
   return <FieldSpeed {...args} />;
 };
 
@@ -30,8 +23,5 @@ export const SpeedInput = Template.bind({});
 export const SpeedInputWithError = Template.bind({});
 
 SpeedInputWithError.args = {
-  error: {
-    show: true,
-    msg: "Expected positive number",
-  },
+  value: "qwerty",
 };

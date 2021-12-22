@@ -1,7 +1,7 @@
 import React from "react";
 import userEvent from "@testing-library/user-event/dist";
 import { render, screen, waitFor } from "@testing-library/react";
-import { Form, isValidNumericString } from "./Form";
+import { Form } from "./Form";
 import { l10n } from "@/l10n/ru";
 
 const inputsData = [
@@ -128,14 +128,6 @@ describe("form tests", () => {
     const button: HTMLButtonElement = screen.getByText(l10n.buttonReset);
 
     expect(button).toBeInTheDocument();
-  });
-
-  it("isValidNumericString should return valid results", () => {
-    expect(isValidNumericString("1.5")).toBe(true);
-    expect(isValidNumericString("1,5")).toBe(false);
-    expect(isValidNumericString("q23")).toBe(false);
-    expect(isValidNumericString("")).toBe(false);
-    expect(isValidNumericString("4")).toBe(true);
   });
 });
 
