@@ -81,67 +81,55 @@ export class GameFieldContainer extends React.Component<
       activeCells: [],
     };
 
-    this.getCellsInCol = this.getCellsInCol.bind(this);
-    this.getCellsInRow = this.getCellsInRow.bind(this);
-    this.onCellSizeChange = this.onCellSizeChange.bind(this);
-    this.onCapacityChange = this.onCapacityChange.bind(this);
-    this.onMaxFieldWidthChange = this.onMaxFieldWidthChange.bind(this);
-    this.onMaxFieldHeightChange = this.onMaxFieldHeightChange.bind(this);
-    this.onSpeedChange = this.onSpeedChange.bind(this);
-    this.onStart = this.onStart.bind(this);
-    this.onStop = this.onStop.bind(this);
-    this.onReset = this.onReset.bind(this);
-    this.clearInterval = this.clearInterval.bind(this);
-
     this.gameCycleInterval = null;
     this.formKey = createFormKey();
   }
 
-  getCellsInRow(): number {
+  getCellsInRow = (): number => {
     return Math.floor(this.state.maxFieldWidth / this.state.cellSize);
-  }
+  };
 
-  getCellsInCol(): number {
+  getCellsInCol = (): number => {
     return Math.floor(this.state.maxFieldHeight / this.state.cellSize);
-  }
+  };
 
-  onCellSizeChange(value: string): void {
+  onCellSizeChange = (value: string): void => {
     this.setState((prevState: IGameFieldContainerState) => {
       return {
         ...prevState,
         cellSize: Number(value),
       };
     });
-  }
+  };
 
-  onCapacityChange(value: string): void {
+  onCapacityChange = (value: string): void => {
     this.setState((prevState: IGameFieldContainerState) => {
       return {
         ...prevState,
         capacity: Number(value),
       };
     });
-  }
+  };
 
-  onMaxFieldWidthChange(value: string): void {
+  onMaxFieldWidthChange = (value: string): void => {
     this.setState((prevState: IGameFieldContainerState) => {
       return {
         ...prevState,
         maxFieldWidth: Number(value),
       };
     });
-  }
+  };
 
-  onMaxFieldHeightChange(value: string): void {
+  onMaxFieldHeightChange = (value: string): void => {
     this.setState((prevState: IGameFieldContainerState) => {
       return {
         ...prevState,
         maxFieldHeight: Number(value),
       };
     });
-  }
+  };
 
-  onSpeedChange(value: string): void {
+  onSpeedChange = (value: string): void => {
     if (this.gameCycleInterval !== null) {
       this.onStop();
       setTimeout(() => {
@@ -155,32 +143,37 @@ export class GameFieldContainer extends React.Component<
         speed: Number(value),
       };
     });
-  }
+  };
 
-  onStart(): void {
+  setRandomCells = (): void => {
+    const cells = getRandomCells(
+      this.getCellsInRow(),
+      this.getCellsInCol(),
+      this.state.capacity / 100
+    );
+
+    this.setState((prevState) => {
+      return {
+        ...prevState,
+        activeCells: cells,
+      };
+    });
+  };
+
+  onStart = (): void => {
     if (this.gameCycleInterval === null) {
-      this.gameCycleInterval = setInterval(() => {
-        const cells = getRandomCells(
-          this.getCellsInRow(),
-          this.getCellsInCol(),
-          this.state.capacity / 100
-        );
-
-        this.setState((prevState) => {
-          return {
-            ...prevState,
-            activeCells: cells,
-          };
-        });
-      }, getGameCycleTimeout(this.state.speed));
+      this.gameCycleInterval = setInterval(
+        this.setRandomCells,
+        getGameCycleTimeout(this.state.speed)
+      );
     }
-  }
+  };
 
-  onStop(): void {
+  onStop = (): void => {
     this.clearInterval();
-  }
+  };
 
-  onReset(): void {
+  onReset = (): void => {
     this.onStop();
     this.onCellSizeChange(String(this.props.cellSize));
     this.onSpeedChange(String(this.props.speed));
@@ -197,13 +190,17 @@ export class GameFieldContainer extends React.Component<
 
     // leads to Form unmounting btw; reset fields to initial values
     this.formKey = createFormKey();
-  }
+  };
 
-  clearInterval(): void {
+  clearInterval = (): void => {
     if (this.gameCycleInterval !== null) {
       clearInterval(this.gameCycleInterval);
       this.gameCycleInterval = null;
     }
+  };
+
+  componentDidMount() {
+    this.setRandomCells();
   }
 
   componentWillUnmount() {
