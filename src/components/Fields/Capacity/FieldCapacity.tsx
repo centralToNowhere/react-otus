@@ -14,6 +14,7 @@ import {
   onDirtyBlurHandler,
   onDirtyChangeHandler,
 } from "@/components/Fields/FieldHandlers";
+import styled from "@emotion/styled";
 
 export const FieldCapacity: React.FC<IFieldProps> = (props) => {
   const [capacityString, setCapacityString] = useState<string>(props.value);
@@ -61,7 +62,7 @@ export const FieldCapacity: React.FC<IFieldProps> = (props) => {
         {l10n.capacityLabel}
       </LabelField>
       <p>{capacityString} %</p>
-      <InputField
+      <InputFieldCapacity
         id="capacity-percentage"
         type="range"
         max="100"
@@ -77,3 +78,9 @@ export const FieldCapacity: React.FC<IFieldProps> = (props) => {
     </FormField>
   );
 };
+
+const InputFieldCapacity = styled(InputField)`
+  &:focus {
+    border-bottom: 0;
+  }
+`
