@@ -30,14 +30,14 @@ import { l10n } from "@/l10n/ru";
  *
   describe("impossible to mock foo", () => {
     it("no mocks for you cause of babel static binding foo inside bar - no way", () => {
-      jest.doMock("./hell", () => {
+      jest.doMock("./funnyExports", () => {
         return {
-          ...jest.requireActual("./hell"),
+          ...jest.requireActual("./funnyExports"),
           foo: jest.fn().mockReturnValue("bar")
         }
       });
 
-      const { bar } = require("./hell")
+      const { bar } = require("./funnyExports")
       expect(bar()).toBe("bar") // foo не переопределилась, не благодари
     })
   })
@@ -92,7 +92,9 @@ beforeEach(() => {
 
 describe("GameFieldContainer tests", () => {
   it("should correctly render field and form", async () => {
+    jest.spyOn(global.Math, "random").mockReturnValue(0);
     const { asFragment } = render(<GameFieldContainer />);
+    jest.spyOn(global.Math, "random").mockRestore();
 
     const field = screen.getByTestId("field");
     expect(field).toBeInTheDocument();
