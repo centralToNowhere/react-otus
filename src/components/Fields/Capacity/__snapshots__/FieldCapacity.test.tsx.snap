@@ -16,7 +16,7 @@ exports[`FieldCapacity tests should render capacity input 1`] = `
     </p>
     <input
       autocomplete="off"
-      class="css-16tc96n"
+      class="css-s9p6fx"
       id="capacity-percentage"
       max="100"
       min="0"

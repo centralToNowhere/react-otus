@@ -19,9 +19,3 @@ const Template: Story<IFieldProps> = (args: IFieldProps) => {
 };
 
 export const CapacityInput = Template.bind({});
-
-export const MaxHeightWithError = Template.bind({});
-
-MaxHeightWithError.args = {
-  value: "qwerty",
-};

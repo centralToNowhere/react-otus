@@ -19,9 +19,3 @@ const Template: Story<IFieldProps> = (args: IFieldProps) => {
 };
 
 export const MaxWidthInput = Template.bind({});
-
-export const MaxWidthInputWithError = Template.bind({});
-
-MaxWidthInputWithError.args = {
-  value: "qwerty",
-};

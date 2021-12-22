@@ -19,9 +19,3 @@ const Template: Story<IFieldProps> = (args: IFieldProps) => {
 };
 
 export const CellSizeInput = Template.bind({});
-
-export const CellSizeInputWithError = Template.bind({});
-
-CellSizeInputWithError.args = {
-  value: "qwerty",
-};
