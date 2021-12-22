@@ -11,19 +11,10 @@ export default {
     onChange: () => {
       // empty function
     },
-    onBlur: () => {
-      // empty function
-    },
-    error: {
-      show: false,
-      msg: "Expected number >= 10",
-    },
   },
 } as Meta;
 
-const Template: Story<IFieldProps<"cellSize">> = (
-  args: IFieldProps<"cellSize">
-) => {
+const Template: Story<IFieldProps> = (args: IFieldProps) => {
   return <FieldCellSize {...args} />;
 };
 
@@ -32,8 +23,5 @@ export const CellSizeInput = Template.bind({});
 export const CellSizeInputWithError = Template.bind({});
 
 CellSizeInputWithError.args = {
-  error: {
-    show: true,
-    msg: "Expected number >= 10",
-  },
+  value: "qwerty",
 };

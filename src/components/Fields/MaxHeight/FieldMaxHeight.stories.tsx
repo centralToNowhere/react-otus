@@ -11,19 +11,10 @@ export default {
     onChange: () => {
       // empty function
     },
-    onBlur: () => {
-      // empty function
-    },
-    error: {
-      show: false,
-      msg: "Expected non-negative number",
-    },
   },
 } as Meta;
 
-const Template: Story<IFieldProps<"fieldHeight">> = (
-  args: IFieldProps<"fieldHeight">
-) => {
+const Template: Story<IFieldProps> = (args: IFieldProps) => {
   return <FieldMaxHeight {...args} />;
 };
 
@@ -32,8 +23,5 @@ export const MaxHeightInput = Template.bind({});
 export const MaxHeightInputWithError = Template.bind({});
 
 MaxHeightInputWithError.args = {
-  error: {
-    show: true,
-    msg: "Expected non-negative number",
-  },
+  value: "qwerty",
 };
