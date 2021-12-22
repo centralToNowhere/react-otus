@@ -83,4 +83,4 @@ const InputFieldCapacity = styled(InputField)`
   &:focus {
     border-bottom: 0;
   }
-`
+`;
