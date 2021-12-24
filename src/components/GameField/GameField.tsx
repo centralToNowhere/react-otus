@@ -17,18 +17,12 @@ export class GameField extends React.Component<GameFieldProps> {
     activeCells: [] as ICell[],
   };
 
-  constructor(props: GameFieldProps) {
-    super(props);
-
-    this.isActiveCell = this.isActiveCell.bind(this);
-  }
-
-  isActiveCell(cell: ICell): boolean {
+  isActiveCell = (cell: ICell): boolean => {
     return !!this.props.activeCells.find(
       (activeCell: ICell) =>
         isCell(activeCell) && activeCell.x === cell.x && activeCell.y === cell.y
     );
-  }
+  };
 
   renderCells() {
     const cellsInCol = this.props.cellsInCol;

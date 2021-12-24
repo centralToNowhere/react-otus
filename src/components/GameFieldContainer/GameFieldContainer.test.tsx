@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React from "react";
+import React, { FC, useReducer } from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event/dist";
 import {
@@ -9,10 +9,14 @@ import {
   getGameCycleTimeout,
   // @ts-ignore
   __RewireAPI__ as GameFieldContainerRewire,
+  GameFieldContainerProps,
 } from "@/components/GameFieldContainer/GameFieldContainer";
 import { ICell } from "@/components/Cell";
 import { COLORS } from "@/styles/ui-styled";
 import { l10n } from "@/l10n/ru";
+import { AppReducer, IAppState, initialState } from "@/state";
+// @ts-ignore
+import { __RewireAPI__ as AppReducerRewire } from "@/state/AppReducer";
 
 /**
  * Зачем я использую babel-plugin-rewire-ts?
@@ -90,10 +94,42 @@ beforeEach(() => {
   jest.clearAllMocks();
 });
 
+afterEach(() => {
+  AppReducerRewire.__ResetDependency__("initialState");
+});
+
+const GameFieldContainerWithDispatch: FC<
+  Omit<GameFieldContainerProps, "dispatch">
+> = (props) => {
+  const mockInitialState = {
+    cellSize: props.cellSize,
+    maxFieldWidth: props.maxFieldWidth,
+    maxFieldHeight: props.maxFieldHeight,
+    capacity: props.capacity,
+    speed: props.speed,
+    activeCells: props.activeCells,
+  };
+
+  AppReducerRewire.__Rewire__("initialState", mockInitialState);
+  const [state, dispatch] = useReducer(AppReducer, initialState as IAppState);
+
+  return (
+    <GameFieldContainer
+      cellSize={state.cellSize}
+      maxFieldWidth={state.maxFieldWidth}
+      maxFieldHeight={state.maxFieldHeight}
+      capacity={state.capacity}
+      speed={state.speed}
+      activeCells={state.activeCells}
+      dispatch={dispatch}
+    />
+  );
+};
+
 describe("GameFieldContainer tests", () => {
   it("should correctly render field and form", async () => {
     jest.spyOn(global.Math, "random").mockReturnValue(0);
-    const { asFragment } = render(<GameFieldContainer />);
+    const { asFragment } = render(<GameFieldContainerWithDispatch />);
     jest.spyOn(global.Math, "random").mockRestore();
 
     const field = screen.getByTestId("field");
@@ -153,7 +189,7 @@ describe("GameFieldContainer tests", () => {
 
   it("should render 100 cells with numbers", () => {
     render(
-      <GameFieldContainer
+      <GameFieldContainerWithDispatch
         cellSize={10}
         maxFieldWidth={100}
         maxFieldHeight={100}
@@ -176,7 +212,7 @@ describe("GameFieldContainer tests", () => {
     GameFieldContainerRewire.__Rewire__("getRandomCells", getRandomCellsMocked);
 
     render(
-      <GameFieldContainer
+      <GameFieldContainerWithDispatch
         cellSize={10}
         maxFieldWidth={100}
         maxFieldHeight={100}
@@ -237,7 +273,7 @@ describe("GameFieldContainer tests", () => {
     };
 
     render(
-      <GameFieldContainer
+      <GameFieldContainerWithDispatch
         cellSize={10}
         maxFieldWidth={100}
         maxFieldHeight={100}
@@ -301,7 +337,7 @@ describe("GameFieldContainer tests", () => {
     const gameCycleTimeout = getGameCycleTimeout(speed);
 
     render(
-      <GameFieldContainer
+      <GameFieldContainerWithDispatch
         cellSize={cellSize}
         maxFieldWidth={maxFieldWidth}
         maxFieldHeight={maxFieldHeight}
