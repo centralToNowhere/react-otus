@@ -132,6 +132,16 @@ describe("form tests", () => {
 });
 
 describe("input onChange tests", () => {
+  const originalInputDelay = Form.inputDelay;
+
+  beforeAll(() => {
+    Form.inputDelay = 100;
+  });
+
+  afterAll(() => {
+    Form.inputDelay = originalInputDelay;
+  });
+
   inputsData.forEach((field) => {
     field.testValues.shouldCallOnChange.forEach((validTestValue) => {
       it(`should call ${field.callbackName} in ${Form.inputDelay} ms for valid input ${validTestValue}`, async () => {
