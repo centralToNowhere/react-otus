@@ -25,12 +25,9 @@ export const FieldMaxWidth: React.FC<IFieldProps> = (props) => {
     msg: "Expected non-negative number",
   });
 
-  const validateFieldWidth = useCallback(
-    (fieldWidthString: unknown): boolean => {
-      return isValidNonNegativeNumericString(fieldWidthString);
-    },
-    []
-  );
+  const validateFieldWidth = (fieldWidthString: unknown): boolean => {
+    return isValidNonNegativeNumericString(fieldWidthString);
+  };
 
   const onChangeDebounced = useCallback(
     debounce<string>(
@@ -45,21 +42,15 @@ export const FieldMaxWidth: React.FC<IFieldProps> = (props) => {
     []
   );
 
-  const onChange = useCallback(
-    onDirtyChangeHandler((value) => {
-      setMaxFieldWidthString(value);
-      onChangeDebounced(value);
-    }),
-    []
-  );
+  const onChange = onDirtyChangeHandler((value) => {
+    setMaxFieldWidthString(value);
+    onChangeDebounced(value);
+  });
 
-  const onBlur = useCallback(
-    onDirtyBlurHandler((value) => {
-      onChangeDebounced.clear();
-      onBlurHandler(props.onChange, validateFieldWidth, setError)(value);
-    }),
-    []
-  );
+  const onBlur = onDirtyBlurHandler((value) => {
+    onChangeDebounced.clear();
+    onBlurHandler(props.onChange, validateFieldWidth, setError)(value);
+  });
 
   return (
     <FormField>

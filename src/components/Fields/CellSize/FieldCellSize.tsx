@@ -23,9 +23,9 @@ export const FieldCellSize: React.FC<IFieldProps> = (props) => {
     msg: "Expected number >= 10",
   });
 
-  const validateCellSize = useCallback((value: unknown): boolean => {
+  const validateCellSize = (value: unknown): boolean => {
     return isValidCellSizeString(value);
-  }, []);
+  };
 
   const onChangeDebounced = useCallback(
     debounce<string>(
@@ -40,21 +40,15 @@ export const FieldCellSize: React.FC<IFieldProps> = (props) => {
     []
   );
 
-  const onChange = useCallback(
-    onDirtyChangeHandler((value) => {
-      setCellSizeString(value);
-      onChangeDebounced(value);
-    }),
-    []
-  );
+  const onChange = onDirtyChangeHandler((value) => {
+    setCellSizeString(value);
+    onChangeDebounced(value);
+  });
 
-  const onBlur = useCallback(
-    onDirtyBlurHandler((value) => {
-      onChangeDebounced.clear();
-      onBlurHandler(props.onChange, validateCellSize, setError)(value);
-    }),
-    []
-  );
+  const onBlur = onDirtyBlurHandler((value) => {
+    onChangeDebounced.clear();
+    onBlurHandler(props.onChange, validateCellSize, setError)(value);
+  });
 
   return (
     <FormField>

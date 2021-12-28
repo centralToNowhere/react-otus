@@ -23,9 +23,9 @@ export const FieldCapacity: React.FC<IFieldProps> = (props) => {
     msg: "Expected non-negative number",
   });
 
-  const validateCapacity = useCallback((value: unknown): boolean => {
+  const validateCapacity = (value: unknown): boolean => {
     return isValidNonNegativeNumericString(value);
-  }, []);
+  };
 
   const onChangeDebounced = useCallback(
     debounce<string>(
@@ -40,21 +40,15 @@ export const FieldCapacity: React.FC<IFieldProps> = (props) => {
     []
   );
 
-  const onChange = useCallback(
-    onDirtyChangeHandler((value) => {
-      setCapacityString(value);
-      onChangeDebounced(value);
-    }),
-    []
-  );
+  const onChange = onDirtyChangeHandler((value) => {
+    setCapacityString(value);
+    onChangeDebounced(value);
+  });
 
-  const onBlur = useCallback(
-    onDirtyBlurHandler((value) => {
-      onChangeDebounced.clear();
-      onBlurHandler(props.onChange, validateCapacity, setError)(value);
-    }),
-    []
-  );
+  const onBlur = onDirtyBlurHandler((value) => {
+    onChangeDebounced.clear();
+    onBlurHandler(props.onChange, validateCapacity, setError)(value);
+  });
 
   return (
     <FormField>
