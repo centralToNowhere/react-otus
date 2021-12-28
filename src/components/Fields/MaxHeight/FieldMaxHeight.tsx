@@ -25,9 +25,9 @@ export const FieldMaxHeight: React.FC<IFieldProps> = (props) => {
     msg: "Expected non-negative number",
   });
 
-  const validateFieldHeight = useCallback((value: unknown): boolean => {
+  const validateFieldHeight = (value: unknown): boolean => {
     return isValidNonNegativeNumericString(value);
-  }, []);
+  };
 
   const onChangeDebounced = useCallback(
     debounce<string>(
@@ -42,21 +42,15 @@ export const FieldMaxHeight: React.FC<IFieldProps> = (props) => {
     []
   );
 
-  const onChange = useCallback(
-    onDirtyChangeHandler((value: string) => {
-      setMaxFieldHeightString(value);
-      onChangeDebounced(value);
-    }),
-    []
-  );
+  const onChange = onDirtyChangeHandler((value: string) => {
+    setMaxFieldHeightString(value);
+    onChangeDebounced(value);
+  });
 
-  const onBlur = useCallback(
-    onDirtyBlurHandler((value) => {
-      onChangeDebounced.clear();
-      onBlurHandler(props.onChange, validateFieldHeight, setError)(value);
-    }),
-    []
-  );
+  const onBlur = onDirtyBlurHandler((value) => {
+    onChangeDebounced.clear();
+    onBlurHandler(props.onChange, validateFieldHeight, setError)(value);
+  });
 
   return (
     <FormField>

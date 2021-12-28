@@ -7,7 +7,7 @@ export const debounce = <T>(
   callback: (value: T) => void,
   delay = 1000
 ): Debounced<T> => {
-  let timeout: ReturnType<typeof setTimeout> | null = null;
+  let timeout: ReturnType<typeof window.setTimeout> | null = null;
 
   const clearDebounce = () => {
     if (timeout !== null) {

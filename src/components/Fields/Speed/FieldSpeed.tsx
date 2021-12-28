@@ -22,9 +22,9 @@ export const FieldSpeed: React.FC<IFieldProps> = (props) => {
     msg: "Expected positive number",
   });
 
-  const validateSpeed = useCallback((value: unknown): boolean => {
+  const validateSpeed = (value: unknown): boolean => {
     return isValidPositiveNumericString(value);
-  }, []);
+  };
 
   const onChangeDebounced = useCallback(
     debounce<string>(
@@ -34,21 +34,15 @@ export const FieldSpeed: React.FC<IFieldProps> = (props) => {
     []
   );
 
-  const onChange = useCallback(
-    onDirtyChangeHandler((value: string) => {
-      setSpeedString(value);
-      onChangeDebounced(value);
-    }),
-    []
-  );
+  const onChange = onDirtyChangeHandler((value: string) => {
+    setSpeedString(value);
+    onChangeDebounced(value);
+  });
 
-  const onBlur = useCallback(
-    onDirtyBlurHandler((value: string) => {
-      onChangeDebounced.clear();
-      onBlurHandler(props.onChange, validateSpeed, setError)(value);
-    }),
-    []
-  );
+  const onBlur = onDirtyBlurHandler((value: string) => {
+    onChangeDebounced.clear();
+    onBlurHandler(props.onChange, validateSpeed, setError)(value);
+  });
 
   return (
     <FormField>
