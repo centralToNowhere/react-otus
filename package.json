@@ -1,7 +1,7 @@
 {
-  "name": "lesson6-lists-events-forms",
+  "name": "lesson8-react-patterns",
   "version": "1.0.0",
-  "description": "Lists, events, forms",
+  "description": "React patterns",
   "main": "src/index.tsx",
   "scripts": {
     "build": "npm run build:prod",
@@ -33,7 +33,7 @@
   "bugs": {
     "url": "https://github.com/centralToNowhere/react-otus/issues"
   },
-  "homepage": "https://github.com/centralToNowhere/react-otus/tree/lesson6",
+  "homepage": "https://github.com/centralToNowhere/react-otus/tree/lesson8",
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/plugin-transform-runtime": "^7.16.4",

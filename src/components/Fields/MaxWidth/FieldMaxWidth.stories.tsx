@@ -11,29 +11,11 @@ export default {
     onChange: () => {
       // empty function
     },
-    onBlur: () => {
-      // empty function
-    },
-    error: {
-      show: false,
-      msg: "Expected non-negative number",
-    },
   },
 } as Meta;
 
-const Template: Story<IFieldProps<"fieldWidth">> = (
-  args: IFieldProps<"fieldWidth">
-) => {
+const Template: Story<IFieldProps> = (args: IFieldProps) => {
   return <FieldMaxWidth {...args} />;
 };
 
 export const MaxWidthInput = Template.bind({});
-
-export const MaxWidthInputWithError = Template.bind({});
-
-MaxWidthInputWithError.args = {
-  error: {
-    show: true,
-    msg: "Expected non-negative number",
-  },
-};

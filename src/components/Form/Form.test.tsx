@@ -1,7 +1,7 @@
 import React from "react";
 import userEvent from "@testing-library/user-event/dist";
 import { render, screen, waitFor } from "@testing-library/react";
-import { Form, isValidNumericString } from "./Form";
+import { Form } from "./Form";
 import { l10n } from "@/l10n/ru";
 
 const inputsData = [
@@ -129,17 +129,19 @@ describe("form tests", () => {
 
     expect(button).toBeInTheDocument();
   });
-
-  it("isValidNumericString should return valid results", () => {
-    expect(isValidNumericString("1.5")).toBe(true);
-    expect(isValidNumericString("1,5")).toBe(false);
-    expect(isValidNumericString("q23")).toBe(false);
-    expect(isValidNumericString("")).toBe(false);
-    expect(isValidNumericString("4")).toBe(true);
-  });
 });
 
 describe("input onChange tests", () => {
+  const originalInputDelay = Form.inputDelay;
+
+  beforeAll(() => {
+    Form.inputDelay = 100;
+  });
+
+  afterAll(() => {
+    Form.inputDelay = originalInputDelay;
+  });
+
   inputsData.forEach((field) => {
     field.testValues.shouldCallOnChange.forEach((validTestValue) => {
       it(`should call ${field.callbackName} in ${Form.inputDelay} ms for valid input ${validTestValue}`, async () => {

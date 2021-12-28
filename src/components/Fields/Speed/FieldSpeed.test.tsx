@@ -11,13 +11,6 @@ describe("FieldSpeed tests", () => {
         onChange={() => {
           // empty function
         }}
-        onBlur={() => {
-          // empty function
-        }}
-        error={{
-          show: false,
-          msg: "Expected positive number",
-        }}
       />
     );
 
