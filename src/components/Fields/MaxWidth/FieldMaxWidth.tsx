@@ -1,16 +1,16 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { l10n } from "@/l10n/ru";
 import { InputField, LabelField } from "@/components/Fields";
 import { FormField } from "@/components/Form/FormField";
 import {
   InputPatterns,
-  onChangeHandler,
+  useOnChangeHandler,
   onBlurHandler,
 } from "@/components/Fields";
 import { FieldError } from "@/components/Fields/FieldError/FieldError";
 import { Form, IFieldProps } from "@/components/Form";
 import { isValidNonNegativeNumericString } from "@/utils";
-import { debounce } from "@/utils/Debounce";
+import { useDebounce } from "@/utils/Debounce";
 import {
   onDirtyBlurHandler,
   onDirtyChangeHandler,
@@ -25,22 +25,21 @@ export const FieldMaxWidth: React.FC<IFieldProps> = (props) => {
     msg: "Expected non-negative number",
   });
 
-  const validateFieldWidth = (fieldWidthString: unknown): boolean => {
-    return isValidNonNegativeNumericString(fieldWidthString);
-  };
+  const validateFieldWidth = useCallback(
+    (fieldWidthString: unknown): boolean => {
+      return isValidNonNegativeNumericString(fieldWidthString);
+    },
+    []
+  );
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const onChangeDebounced = useCallback(
-    debounce<string>(
-      onChangeHandler(
-        props.onChange,
-        validateFieldWidth,
-        setMaxFieldWidthString,
-        setError
-      ),
-      Form.inputDelay
+  const onChangeDebounced = useDebounce<string>(
+    useOnChangeHandler(
+      props.onChange,
+      validateFieldWidth,
+      setMaxFieldWidthString,
+      setError
     ),
-    [props.onChange]
+    Form.inputDelay
   );
 
   const onChange = onDirtyChangeHandler((value) => {

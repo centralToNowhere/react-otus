@@ -4,12 +4,12 @@ import {
   InputField,
   LabelField,
   onBlurHandler,
-  onChangeHandler,
+  useOnChangeHandler,
 } from "@/components/Fields";
 import { FormField } from "@/components/Form/FormField";
 import { FieldError } from "@/components/Fields/FieldError/FieldError";
 import { Form, IFieldProps } from "@/components/Form";
-import { debounce, isValidNonNegativeNumericString } from "@/utils";
+import { useDebounce, isValidNonNegativeNumericString } from "@/utils";
 import {
   onDirtyBlurHandler,
   onDirtyChangeHandler,
@@ -23,22 +23,18 @@ export const FieldCapacity: React.FC<IFieldProps> = (props) => {
     msg: "Expected non-negative number",
   });
 
-  const validateCapacity = (value: unknown): boolean => {
+  const validateCapacity = useCallback((value: unknown): boolean => {
     return isValidNonNegativeNumericString(value);
-  };
+  }, []);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const onChangeDebounced = useCallback(
-    debounce<string>(
-      onChangeHandler(
-        props.onChange,
-        validateCapacity,
-        setCapacityString,
-        setError
-      ),
-      Form.inputDelay
+  const onChangeDebounced = useDebounce<string>(
+    useOnChangeHandler(
+      props.onChange,
+      validateCapacity,
+      setCapacityString,
+      setError
     ),
-    [props.onChange]
+    Form.inputDelay
   );
 
   const onChange = onDirtyChangeHandler((value) => {

@@ -3,13 +3,13 @@ import { l10n } from "@/l10n/ru";
 import {
   InputPatterns,
   onBlurHandler,
-  onChangeHandler,
+  useOnChangeHandler,
 } from "@/components/Fields";
 import { InputField, LabelField } from "@/components/Fields";
 import { FormField } from "@/components/Form/FormField";
 import { FieldError } from "@/components/Fields/FieldError/FieldError";
 import { Form, IFieldProps } from "@/components/Form";
-import { debounce, isValidPositiveNumericString } from "@/utils";
+import { useDebounce, isValidPositiveNumericString } from "@/utils";
 import {
   onDirtyBlurHandler,
   onDirtyChangeHandler,
@@ -22,17 +22,13 @@ export const FieldSpeed: React.FC<IFieldProps> = (props) => {
     msg: "Expected positive number",
   });
 
-  const validateSpeed = (value: unknown): boolean => {
+  const validateSpeed = useCallback((value: unknown): boolean => {
     return isValidPositiveNumericString(value);
-  };
+  }, []);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const onChangeDebounced = useCallback(
-    debounce<string>(
-      onChangeHandler(props.onChange, validateSpeed, setSpeedString, setError),
-      Form.inputDelay
-    ),
-    [props.onChange]
+  const onChangeDebounced = useDebounce<string>(
+    useOnChangeHandler(props.onChange, validateSpeed, setSpeedString, setError),
+    Form.inputDelay
   );
 
   const onChange = onDirtyChangeHandler((value: string) => {

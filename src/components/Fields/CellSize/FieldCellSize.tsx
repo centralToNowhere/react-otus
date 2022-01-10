@@ -4,13 +4,13 @@ import {
   InputField,
   LabelField,
   onBlurHandler,
-  onChangeHandler,
+  useOnChangeHandler,
 } from "@/components/Fields";
 import { FormField } from "@/components/Form/FormField";
 import { InputPatterns } from "@/components/Fields";
 import { FieldError } from "@/components/Fields/FieldError/FieldError";
 import { Form, IFieldProps } from "@/components/Form";
-import { debounce, isValidCellSizeString } from "@/utils";
+import { useDebounce, isValidCellSizeString } from "@/utils";
 import {
   onDirtyBlurHandler,
   onDirtyChangeHandler,
@@ -23,22 +23,18 @@ export const FieldCellSize: React.FC<IFieldProps> = (props) => {
     msg: "Expected number >= 10",
   });
 
-  const validateCellSize = (value: unknown): boolean => {
+  const validateCellSize = useCallback((value: unknown): boolean => {
     return isValidCellSizeString(value);
-  };
+  }, []);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const onChangeDebounced = useCallback(
-    debounce<string>(
-      onChangeHandler(
-        props.onChange,
-        validateCellSize,
-        setCellSizeString,
-        setError
-      ),
-      Form.inputDelay
+  const onChangeDebounced = useDebounce<string>(
+    useOnChangeHandler(
+      props.onChange,
+      validateCellSize,
+      setCellSizeString,
+      setError
     ),
-    [props.onChange]
+    Form.inputDelay
   );
 
   const onChange = onDirtyChangeHandler((value) => {
