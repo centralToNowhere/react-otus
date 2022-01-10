@@ -27,6 +27,7 @@ export const FieldCellSize: React.FC<IFieldProps> = (props) => {
     return isValidCellSizeString(value);
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const onChangeDebounced = useCallback(
     debounce<string>(
       onChangeHandler(
@@ -37,7 +38,7 @@ export const FieldCellSize: React.FC<IFieldProps> = (props) => {
       ),
       Form.inputDelay
     ),
-    []
+    [props.onChange]
   );
 
   const onChange = onDirtyChangeHandler((value) => {

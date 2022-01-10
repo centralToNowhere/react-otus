@@ -27,6 +27,7 @@ export const FieldCapacity: React.FC<IFieldProps> = (props) => {
     return isValidNonNegativeNumericString(value);
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const onChangeDebounced = useCallback(
     debounce<string>(
       onChangeHandler(
@@ -37,7 +38,7 @@ export const FieldCapacity: React.FC<IFieldProps> = (props) => {
       ),
       Form.inputDelay
     ),
-    []
+    [props.onChange]
   );
 
   const onChange = onDirtyChangeHandler((value) => {

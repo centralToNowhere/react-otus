@@ -26,12 +26,13 @@ export const FieldSpeed: React.FC<IFieldProps> = (props) => {
     return isValidPositiveNumericString(value);
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const onChangeDebounced = useCallback(
     debounce<string>(
       onChangeHandler(props.onChange, validateSpeed, setSpeedString, setError),
       Form.inputDelay
     ),
-    []
+    [props.onChange]
   );
 
   const onChange = onDirtyChangeHandler((value: string) => {
