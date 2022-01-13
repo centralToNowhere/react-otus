@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Registration screen tests should render registration screen 1`] = `
+<DocumentFragment>
+  <div
+    class="css-14zx4vh"
+  >
+    <div
+      class="css-1q1o94m"
+    />
+    <div
+      class="css-1agrbza"
+    >
+      <h1>
+        Conway's Game of Life
+      </h1>
+      <form
+        class="css-pbhukz-Form"
+      >
+        <div
+          class="css-kc1r18-Form"
+        >
+          <div
+            class="css-1nid3yf-Form"
+          >
+            <label
+              class="css-1wnvjz2"
+              for="register-player-input"
+            >
+              Введите имя игрока
+            </label>
+            <input
+              aria-label="playerName"
+              class="css-1mwyr01-Form"
+              id="register-player-input"
+              name="playerName"
+              value=""
+            />
+          </div>
+          <button
+            class="css-k66o32-Form"
+            name="startGameAsPlayer"
+            type="button"
+          >
+            Начать игру
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -3,7 +3,7 @@
 exports[`form tests should render form 1`] = `
 <DocumentFragment>
   <form
-    class="css-q0xgww"
+    class="css-8f5e31"
     data-testid="field-form"
   >
     <input
@@ -128,7 +128,7 @@ exports[`form tests should render form 1`] = `
           class="css-7kp13n"
         >
           <button
-            class="css-1078a0b"
+            class="css-1eqjh9"
             name="startButton"
             type="button"
           >
@@ -143,7 +143,7 @@ exports[`form tests should render form 1`] = `
           class="css-7kp13n"
         >
           <button
-            class="css-1078a0b"
+            class="css-1eqjh9"
             name="stopButton"
             type="button"
           >
@@ -158,7 +158,7 @@ exports[`form tests should render form 1`] = `
           class="css-7kp13n"
         >
           <button
-            class="css-1078a0b"
+            class="css-1eqjh9"
             name="resetButton"
             type="reset"
           >

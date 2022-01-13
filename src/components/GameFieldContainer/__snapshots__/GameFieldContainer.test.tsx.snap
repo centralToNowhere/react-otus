@@ -2376,172 +2376,208 @@ exports[`GameFieldContainer tests should correctly render field and form 1`] = `
         338
       </div>
     </div>
-    <form
-      class="css-q0xgww"
-      data-testid="field-form"
+    <div
+      class="css-14zx4vh"
     >
-      <input
-        autocomplete="off"
-        hidden=""
-      />
-      <div
-        class="css-1i5r8zv"
+      <form
+        class="css-1lv538n-PlayerContainer"
       >
         <div
-          class="css-mkf0o6"
+          class="css-gvhoyb-PlayerContainer"
         >
-          <label
-            class="css-1wnvjz2"
-            for="field-width"
-          >
-            Макс. ширина:
-          </label>
-          <input
-            autocomplete="off"
-            class="css-16tc96n"
-            id="field-width"
-            name="fieldWidth"
-            pattern="([0-9]*[.])?[0-9]+"
-            step="1"
-            type="number"
-            value="800"
+          <p
+            class="player-name"
           />
-        </div>
-        <div
-          class="css-mkf0o6"
-        >
-          <label
-            class="css-1wnvjz2"
-            for="field-height"
+          <div
+            class="player-stats"
           >
-            Макс. высота:
-          </label>
-          <input
-            autocomplete="off"
-            class="css-16tc96n"
-            id="field-height"
-            name="fieldHeight"
-            pattern="([0-9]*[.])?[0-9]+"
-            step="1"
-            type="number"
-            value="400"
-          />
-        </div>
-        <div
-          class="css-mkf0o6"
-        >
-          <label
-            class="css-1wnvjz2"
-            for="cell-size"
+            <p>
+              Cтатистика
+            </p>
+            <ul>
+              <li>
+                Очки: 25
+              </li>
+              <li>
+                Количество кликов: 34
+              </li>
+            </ul>
+          </div>
+          <button
+            class="css-1lmxtj9-PlayerContainer"
+            type="button"
           >
-            Размер ячейки:
-          </label>
-          <input
-            autocomplete="off"
-            class="css-16tc96n"
-            id="cell-size"
-            name="cellSize"
-            pattern="[0-9]*"
-            step="1"
-            type="number"
-            value="30"
-          />
+            Выйти
+          </button>
         </div>
-        <div
-          class="css-mkf0o6"
-        >
-          <label
-            class="css-1wnvjz2"
-            for="capacity-percentage"
-          >
-            Процент заполненности:
-          </label>
-          <p>
-            50 %
-          </p>
-          <input
-            autocomplete="off"
-            class="css-s9p6fx"
-            id="capacity-percentage"
-            max="100"
-            min="0"
-            name="capacityPercentage"
-            step="1"
-            type="range"
-            value="50"
-          />
-        </div>
-        <div
-          class="css-mkf0o6"
-        >
-          <label
-            class="css-1wnvjz2"
-            for="speed-change"
-          >
-            Обновлений в секунду:
-          </label>
-          <input
-            autocomplete="off"
-            class="css-16tc96n"
-            id="speed-change"
-            name="speedChange"
-            pattern="([0-9]*[.])?[0-9]+"
-            step="0.1"
-            type="number"
-            value="1"
-          />
-        </div>
-      </div>
-      <div
-        class="css-1i5r8zv"
+      </form>
+      <form
+        class="css-8f5e31"
+        data-testid="field-form"
       >
+        <input
+          autocomplete="off"
+          hidden=""
+        />
         <div
-          class="css-mkf0o6"
+          class="css-1i5r8zv"
         >
           <div
-            class="css-7kp13n"
+            class="css-mkf0o6"
           >
-            <button
-              class="css-1078a0b"
-              name="startButton"
-              type="button"
+            <label
+              class="css-1wnvjz2"
+              for="field-width"
             >
-              Старт
-            </button>
+              Макс. ширина:
+            </label>
+            <input
+              autocomplete="off"
+              class="css-16tc96n"
+              id="field-width"
+              name="fieldWidth"
+              pattern="([0-9]*[.])?[0-9]+"
+              step="1"
+              type="number"
+              value="800"
+            />
+          </div>
+          <div
+            class="css-mkf0o6"
+          >
+            <label
+              class="css-1wnvjz2"
+              for="field-height"
+            >
+              Макс. высота:
+            </label>
+            <input
+              autocomplete="off"
+              class="css-16tc96n"
+              id="field-height"
+              name="fieldHeight"
+              pattern="([0-9]*[.])?[0-9]+"
+              step="1"
+              type="number"
+              value="400"
+            />
+          </div>
+          <div
+            class="css-mkf0o6"
+          >
+            <label
+              class="css-1wnvjz2"
+              for="cell-size"
+            >
+              Размер ячейки:
+            </label>
+            <input
+              autocomplete="off"
+              class="css-16tc96n"
+              id="cell-size"
+              name="cellSize"
+              pattern="[0-9]*"
+              step="1"
+              type="number"
+              value="30"
+            />
+          </div>
+          <div
+            class="css-mkf0o6"
+          >
+            <label
+              class="css-1wnvjz2"
+              for="capacity-percentage"
+            >
+              Процент заполненности:
+            </label>
+            <p>
+              50 %
+            </p>
+            <input
+              autocomplete="off"
+              class="css-s9p6fx"
+              id="capacity-percentage"
+              max="100"
+              min="0"
+              name="capacityPercentage"
+              step="1"
+              type="range"
+              value="50"
+            />
+          </div>
+          <div
+            class="css-mkf0o6"
+          >
+            <label
+              class="css-1wnvjz2"
+              for="speed-change"
+            >
+              Обновлений в секунду:
+            </label>
+            <input
+              autocomplete="off"
+              class="css-16tc96n"
+              id="speed-change"
+              name="speedChange"
+              pattern="([0-9]*[.])?[0-9]+"
+              step="0.1"
+              type="number"
+              value="1"
+            />
           </div>
         </div>
         <div
-          class="css-mkf0o6"
+          class="css-1i5r8zv"
         >
           <div
-            class="css-7kp13n"
+            class="css-mkf0o6"
           >
-            <button
-              class="css-1078a0b"
-              name="stopButton"
-              type="button"
+            <div
+              class="css-7kp13n"
             >
-              Стоп
-            </button>
+              <button
+                class="css-1eqjh9"
+                name="startButton"
+                type="button"
+              >
+                Старт
+              </button>
+            </div>
           </div>
-        </div>
-        <div
-          class="css-mkf0o6"
-        >
           <div
-            class="css-7kp13n"
+            class="css-mkf0o6"
           >
-            <button
-              class="css-1078a0b"
-              name="resetButton"
-              type="reset"
+            <div
+              class="css-7kp13n"
             >
-              Сброс
-            </button>
+              <button
+                class="css-1eqjh9"
+                name="stopButton"
+                type="button"
+              >
+                Стоп
+              </button>
+            </div>
+          </div>
+          <div
+            class="css-mkf0o6"
+          >
+            <div
+              class="css-7kp13n"
+            >
+              <button
+                class="css-1eqjh9"
+                name="resetButton"
+                type="reset"
+              >
+                Сброс
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </DocumentFragment>
 `;

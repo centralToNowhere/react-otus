@@ -4,4 +4,6 @@ export * from "./SetCellSizeAction";
 export * from "./SetFieldHeightAction";
 export * from "./SetFieldWidthAction";
 export * from "./SetSpeedAction";
+export * from "./ResetGameStateAction";
 export * from "./ResetStateAction";
+export * from "./Player";

@@ -7,4 +7,12 @@ export const l10n = {
   buttonStart: "Старт",
   buttonStop: "Стоп",
   buttonReset: "Сброс",
+
+  // Экран решистрации
+  gameHeading: "Conway's Game of Life",
+  buttonStartGameAsPlayer: "Начать игру",
+
+  // Контейнер игрока
+  registerPlayerLabel: "Введите имя игрока",
+  logoutButton: "Выйти"
 };

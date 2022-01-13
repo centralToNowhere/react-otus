@@ -1,12 +1,12 @@
 import { AppReducer, IAppState, initialState } from "@/state/AppReducer";
 import {
-  ResetStateAction,
+  ResetGameStateAction,
   SetActiveCellsAction,
   SetCellSizeAction,
   SetCapacityAction,
   SetFieldHeightAction,
   SetFieldWidthAction,
-  SetSpeedAction,
+  SetSpeedAction, SetPlayerAction, ResetStateAction,
 } from "@/state/actions";
 import { ICell } from "@/components/Cell";
 
@@ -78,6 +78,43 @@ describe("AppReducer tests", () => {
     });
   });
 
+  it("player should be set to {registered: true, name: Ivan}", () => {
+    const player = {
+      registered: true,
+      name: "Ivan"
+    };
+
+    expect(AppReducer(initialState, SetPlayerAction(player))).toEqual({
+      ...initialState,
+      player,
+    });
+  });
+
+  it("only game state should be reset to initial", () => {
+    const player = {
+      registered: true,
+      name: "Ivan",
+    };
+
+    const currentState: IAppState = {
+      maxFieldWidth: 100,
+      maxFieldHeight: 100,
+      cellSize: 12,
+      capacity: 85,
+      speed: 6,
+      player: player,
+      activeCells: [
+        { x: 5, y: 8 },
+        { x: 2, y: 4 },
+      ],
+    };
+
+    expect(AppReducer(currentState, ResetGameStateAction())).toEqual({
+      ...initialState,
+      player: player
+    });
+  });
+
   it("state should be reset to initial", () => {
     const currentState: IAppState = {
       maxFieldWidth: 100,
@@ -85,6 +122,10 @@ describe("AppReducer tests", () => {
       cellSize: 12,
       capacity: 85,
       speed: 6,
+      player: {
+        registered: true,
+        name: "Ivan",
+      },
       activeCells: [
         { x: 5, y: 8 },
         { x: 2, y: 4 },
