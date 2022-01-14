@@ -9,19 +9,19 @@ exports[`Registration screen tests should render registration screen 1`] = `
       class="css-1q1o94m"
     />
     <div
-      class="css-1agrbza"
+      class="css-2xdsfc"
     >
       <h1>
         Conway's Game of Life
       </h1>
       <form
-        class="css-pbhukz-Form"
+        class="css-11przyw-PlayerRegistrationForm"
       >
         <div
-          class="css-kc1r18-Form"
+          class="css-17wa1du-PlayerRegistrationForm"
         >
           <div
-            class="css-1nid3yf-Form"
+            class="css-1avd8c4-PlayerRegistrationForm"
           >
             <label
               class="css-1wnvjz2"
@@ -30,15 +30,14 @@ exports[`Registration screen tests should render registration screen 1`] = `
               Введите имя игрока
             </label>
             <input
-              aria-label="playerName"
-              class="css-1mwyr01-Form"
+              class="css-1epispg-PlayerRegistrationForm"
               id="register-player-input"
               name="playerName"
               value=""
             />
           </div>
           <button
-            class="css-k66o32-Form"
+            class="css-14tin8v-PlayerRegistrationForm"
             name="startGameAsPlayer"
             type="button"
           >

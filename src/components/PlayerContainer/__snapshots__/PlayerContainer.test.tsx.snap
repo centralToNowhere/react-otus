@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlayerContainer tests should render PlayerContainer 1`] = `
+<DocumentFragment>
+  <form
+    class="css-178kgl8-PlayerContainer"
+  >
+    <div
+      class="css-dfbobh-PlayerContainer"
+    >
+      <h1
+        class="player-name"
+      >
+        Ivan
+      </h1>
+      <div
+        class="player-stats"
+      >
+        <h2>
+          Статистика
+        </h2>
+        <ul>
+          <li>
+            Очки: 0
+          </li>
+          <li>
+            Количество кликов: 0
+          </li>
+        </ul>
+      </div>
+      <button
+        class="css-nxm8or-PlayerContainer"
+        type="button"
+      >
+        Выйти
+      </button>
+    </div>
+  </form>
+</DocumentFragment>
+`;

@@ -2,7 +2,6 @@ import React from "react";
 import styled from "@emotion/styled";
 import { COLORS } from "@/styles/ui-styled";
 import { Cell, ICell, isCell } from "@/components/Cell";
-import {SetPlayerAction} from "@/state/actions";
 
 export interface IGameFieldProps {
   cellSize: number;

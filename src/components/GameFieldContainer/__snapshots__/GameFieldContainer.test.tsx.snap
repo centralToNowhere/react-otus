@@ -2380,31 +2380,31 @@ exports[`GameFieldContainer tests should correctly render field and form 1`] = `
       class="css-14zx4vh"
     >
       <form
-        class="css-1lv538n-PlayerContainer"
+        class="css-178kgl8-PlayerContainer"
       >
         <div
-          class="css-gvhoyb-PlayerContainer"
+          class="css-dfbobh-PlayerContainer"
         >
-          <p
+          <h1
             class="player-name"
           />
           <div
             class="player-stats"
           >
-            <p>
-              Cтатистика
-            </p>
+            <h2>
+              Статистика
+            </h2>
             <ul>
               <li>
-                Очки: 25
+                Очки: 0
               </li>
               <li>
-                Количество кликов: 34
+                Количество кликов: 0
               </li>
             </ul>
           </div>
           <button
-            class="css-1lmxtj9-PlayerContainer"
+            class="css-nxm8or-PlayerContainer"
             type="button"
           >
             Выйти

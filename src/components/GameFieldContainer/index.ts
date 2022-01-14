@@ -4,4 +4,7 @@ export {
   getRandomCells,
   getGameCycleTimeout,
 } from "./GameFieldContainer";
-export type { GameFieldContainerProps } from "./GameFieldContainer";
+export type {
+  GameFieldContainerProps,
+  GameFieldContainerDefaultProps,
+} from "./GameFieldContainer";

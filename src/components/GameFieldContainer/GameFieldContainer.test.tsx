@@ -15,8 +15,11 @@ import { ICell } from "@/components/Cell";
 import { COLORS } from "@/styles/ui-styled";
 import { l10n } from "@/l10n/ru";
 import { AppReducer, IAppState, initialState } from "@/state";
-// @ts-ignore
-import {__RewireAPI__ as AppReducerRewire, defaultPlayer} from "@/state/AppReducer";
+import {
+  // @ts-ignore
+  __RewireAPI__ as AppReducerRewire,
+  defaultPlayer,
+} from "@/state/AppReducer";
 
 /**
  * Зачем я использую babel-plugin-rewire-ts?
@@ -108,7 +111,7 @@ const GameFieldContainerWithDispatch: FC<
     capacity: props.capacity,
     speed: props.speed,
     activeCells: props.activeCells,
-    player: defaultPlayer
+    player: defaultPlayer,
   };
 
   AppReducerRewire.__Rewire__("initialState", mockInitialState);

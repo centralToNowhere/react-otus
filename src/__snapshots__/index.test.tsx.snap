@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index tests should render App 1`] = `
+<DocumentFragment>
+  <div
+    class="css-12q621u"
+    data-testid="react-lifecycle"
+  >
+    <div
+      class="css-14zx4vh"
+    >
+      <div
+        class="css-1q1o94m"
+      />
+      <div
+        class="css-2xdsfc"
+      >
+        <h1>
+          Conway's Game of Life
+        </h1>
+        <form
+          class="css-11przyw-PlayerRegistrationForm"
+        >
+          <div
+            class="css-17wa1du-PlayerRegistrationForm"
+          >
+            <div
+              class="css-1avd8c4-PlayerRegistrationForm"
+            >
+              <label
+                class="css-1wnvjz2"
+                for="register-player-input"
+              >
+                Введите имя игрока
+              </label>
+              <input
+                class="css-1epispg-PlayerRegistrationForm"
+                id="register-player-input"
+                name="playerName"
+                value=""
+              />
+            </div>
+            <button
+              class="css-14tin8v-PlayerRegistrationForm"
+              name="startGameAsPlayer"
+              type="button"
+            >
+              Начать игру
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import {COLORS} from "@/styles/ui-styled";
+import { COLORS } from "@/styles/ui-styled";
 
 export const FormButton = styled.button`
   background: inherit;

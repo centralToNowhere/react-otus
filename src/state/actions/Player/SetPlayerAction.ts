@@ -1,4 +1,5 @@
-import { IPlayer, AppAction } from "@/state";
+import { AppAction } from "@/state";
+import { IPlayer } from "@/state/actions";
 
 interface ISetPlayerAction extends AppAction {
   type: "setPlayer";
@@ -9,7 +10,7 @@ export const SetPlayerAction = (player: IPlayer) => {
   return {
     type: "setPlayer",
     payload: player,
-  }
+  };
 };
 
 export function isSetPlayerAction(

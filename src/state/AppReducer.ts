@@ -1,7 +1,7 @@
 import { ICell } from "@/components/Cell";
 import * as Actions from "./actions";
 import { IPlayer } from "@/state/actions/Player/Player";
-import {getPlayer} from "@/auth/Auth";
+import { getPlayer } from "@/auth/Auth";
 
 export interface IAppState {
   cellSize: number;
@@ -10,7 +10,7 @@ export interface IAppState {
   capacity: number;
   speed: number;
   activeCells: ICell[];
-  player: IPlayer
+  player: IPlayer;
 }
 
 export interface AppAction {
@@ -19,8 +19,8 @@ export interface AppAction {
 
 export const defaultPlayer: IPlayer = {
   registered: false,
-  name: null
-}
+  name: null,
+};
 
 export const initialState: IAppState = {
   cellSize: 40,
@@ -29,7 +29,7 @@ export const initialState: IAppState = {
   capacity: 50,
   speed: 2,
   activeCells: [],
-  player: getPlayer() || defaultPlayer
+  player: getPlayer() || defaultPlayer,
 };
 
 export const AppReducer = (state: IAppState, action: AppAction): IAppState => {
@@ -78,8 +78,8 @@ export const AppReducer = (state: IAppState, action: AppAction): IAppState => {
   if (Actions.isSetPlayerAction(action)) {
     return {
       ...state,
-      player: action.payload
-    }
+      player: action.payload,
+    };
   }
 
   if (Actions.isResetGameStateAction(action)) {
@@ -90,14 +90,14 @@ export const AppReducer = (state: IAppState, action: AppAction): IAppState => {
       maxFieldHeight: initialState.maxFieldHeight,
       maxFieldWidth: initialState.maxFieldWidth,
       speed: initialState.speed,
-      cellSize: initialState.cellSize
+      cellSize: initialState.cellSize,
     };
   }
 
   if (Actions.isResetStateAction(action)) {
     return {
-      ...initialState
-    }
+      ...initialState,
+    };
   }
 
   return state;

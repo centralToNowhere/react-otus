@@ -14,5 +14,8 @@ export const l10n = {
 
   // Контейнер игрока
   registerPlayerLabel: "Введите имя игрока",
-  logoutButton: "Выйти"
+  logoutButton: "Выйти",
+  statistics: "Статистика",
+  score: "Очки:",
+  clicksCount: "Количество кликов:",
 };

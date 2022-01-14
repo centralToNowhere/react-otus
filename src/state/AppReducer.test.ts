@@ -6,7 +6,9 @@ import {
   SetCapacityAction,
   SetFieldHeightAction,
   SetFieldWidthAction,
-  SetSpeedAction, SetPlayerAction, ResetStateAction,
+  SetSpeedAction,
+  SetPlayerAction,
+  ResetStateAction,
 } from "@/state/actions";
 import { ICell } from "@/components/Cell";
 
@@ -81,7 +83,7 @@ describe("AppReducer tests", () => {
   it("player should be set to {registered: true, name: Ivan}", () => {
     const player = {
       registered: true,
-      name: "Ivan"
+      name: "Ivan",
     };
 
     expect(AppReducer(initialState, SetPlayerAction(player))).toEqual({
@@ -111,7 +113,7 @@ describe("AppReducer tests", () => {
 
     expect(AppReducer(currentState, ResetGameStateAction())).toEqual({
       ...initialState,
-      player: player
+      player: player,
     });
   });
 

@@ -3,14 +3,16 @@ import styled from "@emotion/styled";
 import { Form } from "@/components/Form";
 import { GameField } from "@/components/GameField";
 import { ICell } from "@/components/Cell";
-import { IPlayer, AppAction } from "@/state";
+import { AppAction } from "@/state";
 import {
+  IPlayer,
   ResetGameStateAction,
   SetActiveCellsAction,
   SetCapacityAction,
   SetCellSizeAction,
   SetFieldHeightAction,
-  SetFieldWidthAction, SetPlayerAction,
+  SetFieldWidthAction,
+  SetPlayerAction,
   SetSpeedAction,
 } from "@/state/actions";
 import { defaultPlayer } from "@/state/AppReducer";
@@ -117,6 +119,10 @@ export class GameFieldContainer extends React.Component<GameFieldContainerDefaul
     this.props.dispatch(SetFieldHeightAction(Number(value)));
   };
 
+  onPlayerUnregister = (): void => {
+    this.props.dispatch(SetPlayerAction(defaultPlayer));
+  };
+
   onSpeedChange = (value: string): void => {
     if (this.gameCycleInterval !== null) {
       this.onStop();
@@ -155,7 +161,7 @@ export class GameFieldContainer extends React.Component<GameFieldContainerDefaul
     this.onStop();
     this.props.dispatch(ResetGameStateAction());
 
-    // leads to Form unmounting btw; reset fields to initial values
+    // leads to PlayerRegistrationForm unmounting btw; reset fields to initial values
     this.formKey = createFormKey();
   };
 
@@ -187,7 +193,10 @@ export class GameFieldContainer extends React.Component<GameFieldContainerDefaul
           cellsInRow={cellsInRow}
         />
         <ControlContainer>
-          <PlayerContainer player={this.props.player} dispatch={this.props.dispatch}/>
+          <PlayerContainer
+            player={this.props.player}
+            onPlayerUnregister={this.onPlayerUnregister}
+          />
           <Form
             key={this.formKey}
             onCellSizeChange={this.onCellSizeChange}
@@ -206,7 +215,7 @@ export class GameFieldContainer extends React.Component<GameFieldContainerDefaul
           />
         </ControlContainer>
       </Container>
-  );
+    );
   }
 }
 

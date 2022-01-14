@@ -1,7 +1,7 @@
 {
-  "name": "lesson8-react-patterns",
+  "name": "lesson9-react-router",
   "version": "1.0.0",
-  "description": "React patterns",
+  "description": "React router",
   "main": "src/index.tsx",
   "scripts": {
     "build": "npm run build:prod",
@@ -33,7 +33,7 @@
   "bugs": {
     "url": "https://github.com/centralToNowhere/react-otus/issues"
   },
-  "homepage": "https://github.com/centralToNowhere/react-otus/tree/lesson8",
+  "homepage": "https://github.com/centralToNowhere/react-otus/tree/lesson9",
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/plugin-transform-runtime": "^7.16.4",
