@@ -1,1 +1,1 @@
-export const basename = "/";
+export const basename = "/react-otus";
