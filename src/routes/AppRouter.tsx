@@ -10,7 +10,6 @@ import {
 } from "@/components/RegistrationScreen/RegistrationScreen";
 import { usePlayerRegistration, withAuthProtection } from "@/auth/Auth";
 import { routeNames } from "@/routes/routeNames";
-import {basename} from "@/routes/basename";
 
 export type AppRouterProps = GameFieldContainerDefaultProps &
   IRegistrationScreenProps;
@@ -26,7 +25,7 @@ export const AppRouter: FC<Omit<AppRouterProps, "navigate">> = (props) => {
   return (
     <Routes>
       <Route
-        path={`${basename}${routeNames.game}`}
+        path={routeNames.game}
         element={
           <AuthGameFieldContainer
             cellSize={props.cellSize}
@@ -41,7 +40,7 @@ export const AppRouter: FC<Omit<AppRouterProps, "navigate">> = (props) => {
         }
       />
       <Route
-        path={`${basename}${routeNames.registration}`}
+        path={routeNames.registration}
         element={
           <RegistrationScreen
             player={props.player}

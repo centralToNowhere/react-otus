@@ -6,7 +6,7 @@ import { COLORS } from "@/styles/ui-styled";
 import "./styles/reset.css";
 import { AppRouter } from "@/routes/AppRouter";
 import { BrowserRouter } from "react-router-dom";
-// import { basename } from "@/routes";
+import { basename } from "@/routes";
 
 export const App: FC = () => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
@@ -14,7 +14,7 @@ export const App: FC = () => {
   return (
     <ErrorBoundary>
       <AppBox data-testid={"react-lifecycle"}>
-        <BrowserRouter>
+        <BrowserRouter basename={basename}>
           <AppRouter
             cellSize={state.cellSize}
             maxFieldWidth={state.maxFieldWidth}
