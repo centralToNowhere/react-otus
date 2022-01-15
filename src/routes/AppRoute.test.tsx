@@ -2,7 +2,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { l10n } from "@/l10n/ru";
 import userEvent from "@testing-library/user-event/dist";
 import React, { FC, useReducer } from "react";
-import { AppRouter, AppRouterProps } from "@/routes/AppRoutes";
+import { AppRouter, AppRouterProps } from "@/routes/AppRouter";
 import { AppReducer, initialState } from "@/state";
 import { MemoryRouter } from "react-router-dom";
 
