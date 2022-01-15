@@ -5,14 +5,18 @@ import { GameField } from "@/components/GameField";
 import { ICell } from "@/components/Cell";
 import { AppAction } from "@/state";
 import {
-  ResetStateAction,
+  IPlayer,
+  ResetGameStateAction,
   SetActiveCellsAction,
   SetCapacityAction,
   SetCellSizeAction,
   SetFieldHeightAction,
   SetFieldWidthAction,
+  SetPlayerAction,
   SetSpeedAction,
 } from "@/state/actions";
+import { defaultPlayer } from "@/state/AppReducer";
+import { PlayerContainer } from "@/components/PlayerContainer";
 
 export type GameFieldContainerProps = {
   cellSize?: number;
@@ -21,6 +25,7 @@ export type GameFieldContainerProps = {
   capacity?: number;
   speed?: number;
   activeCells?: ICell[];
+  player?: IPlayer;
   dispatch: React.Dispatch<AppAction>;
 };
 
@@ -32,6 +37,7 @@ export type GameFieldContainerDefaultProps =
     capacity?: number;
     speed?: number;
     activeCells?: ICell[];
+    player: IPlayer;
     dispatch: React.Dispatch<AppAction>;
   };
 
@@ -75,6 +81,7 @@ export class GameFieldContainer extends React.Component<GameFieldContainerDefaul
     maxFieldHeight: 400,
     capacity: 50,
     speed: 1,
+    player: defaultPlayer,
     activeCells: [] as ICell[],
   };
 
@@ -110,6 +117,10 @@ export class GameFieldContainer extends React.Component<GameFieldContainerDefaul
 
   onMaxFieldHeightChange = (value: string): void => {
     this.props.dispatch(SetFieldHeightAction(Number(value)));
+  };
+
+  onPlayerUnregister = (): void => {
+    this.props.dispatch(SetPlayerAction(defaultPlayer));
   };
 
   onSpeedChange = (value: string): void => {
@@ -148,9 +159,9 @@ export class GameFieldContainer extends React.Component<GameFieldContainerDefaul
 
   onReset = (): void => {
     this.onStop();
-    this.props.dispatch(ResetStateAction());
+    this.props.dispatch(ResetGameStateAction());
 
-    // leads to Form unmounting btw; reset fields to initial values
+    // leads to PlayerRegistrationForm unmounting btw; reset fields to initial values
     this.formKey = createFormKey();
   };
 
@@ -181,22 +192,28 @@ export class GameFieldContainer extends React.Component<GameFieldContainerDefaul
           cellsInCol={cellsInCol}
           cellsInRow={cellsInRow}
         />
-        <Form
-          key={this.formKey}
-          onCellSizeChange={this.onCellSizeChange}
-          onCapacityChange={this.onCapacityChange}
-          onMaxFieldWidthChange={this.onMaxFieldWidthChange}
-          onMaxFieldHeightChange={this.onMaxFieldHeightChange}
-          onSpeedChange={this.onSpeedChange}
-          onStart={this.onStart}
-          onStop={this.onStop}
-          onReset={this.onReset}
-          cellSize={this.props.cellSize}
-          capacity={this.props.capacity}
-          maxFieldWidth={this.props.maxFieldWidth}
-          maxFieldHeight={this.props.maxFieldHeight}
-          speed={this.props.speed}
-        />
+        <ControlContainer>
+          <PlayerContainer
+            player={this.props.player}
+            onPlayerUnregister={this.onPlayerUnregister}
+          />
+          <Form
+            key={this.formKey}
+            onCellSizeChange={this.onCellSizeChange}
+            onCapacityChange={this.onCapacityChange}
+            onMaxFieldWidthChange={this.onMaxFieldWidthChange}
+            onMaxFieldHeightChange={this.onMaxFieldHeightChange}
+            onSpeedChange={this.onSpeedChange}
+            onStart={this.onStart}
+            onStop={this.onStop}
+            onReset={this.onReset}
+            cellSize={this.props.cellSize}
+            capacity={this.props.capacity}
+            maxFieldWidth={this.props.maxFieldWidth}
+            maxFieldHeight={this.props.maxFieldHeight}
+            speed={this.props.speed}
+          />
+        </ControlContainer>
       </Container>
     );
   }
@@ -205,5 +222,11 @@ export class GameFieldContainer extends React.Component<GameFieldContainerDefaul
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+`;
+
+const ControlContainer = styled.div`
+  display: flex;
+  flex-direction: row;
   align-items: center;
 `;

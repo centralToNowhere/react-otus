@@ -7,6 +7,7 @@ import { FieldCellSize } from "@/components/Fields/CellSize/FieldCellSize";
 import { FieldCapacity } from "@/components/Fields/Capacity/FieldCapacity";
 import { FieldSpeed } from "@/components/Fields/Speed/FieldSpeed";
 import { ButtonGameControl } from "@/components/Buttons/ButtonGameControl";
+import { FormElement } from "@/components/Form";
 
 export type ControlCallback<T = void> = (value: T) => void;
 export type Callback<E, T> = (e: E) => T;
@@ -150,22 +151,6 @@ export class Form extends React.Component<FormProps> {
     );
   }
 }
-
-const FormElement = styled.form`
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  border-radius: 10px;
-
-  input,
-  label,
-  button,
-  p {
-    line-height: 1.2;
-    font-size: 1.2em;
-  }
-`;
 
 const FormGroup = styled.div`
   display: flex;

@@ -3,10 +3,10 @@
 exports[`FieldCapacity tests should render capacity input 1`] = `
 <DocumentFragment>
   <div
-    class="css-mkf0o6"
+    class="css-w6s8l8-FormField e1jhpckf0"
   >
     <label
-      class="css-1wnvjz2"
+      class="css-m0dhjx-LabelField e16iqet90"
       for="capacity-percentage"
     >
       Процент заполненности:
@@ -16,7 +16,7 @@ exports[`FieldCapacity tests should render capacity input 1`] = `
     </p>
     <input
       autocomplete="off"
-      class="css-s9p6fx"
+      class="css-1qphvf3-InputField-InputFieldCapacity e1ec6q4r0"
       id="capacity-percentage"
       max="100"
       min="0"

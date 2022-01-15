@@ -3,17 +3,17 @@
 exports[`FieldCellSize tests should render cell size input 1`] = `
 <DocumentFragment>
   <div
-    class="css-mkf0o6"
+    class="css-w6s8l8-FormField e1jhpckf0"
   >
     <label
-      class="css-1wnvjz2"
+      class="css-m0dhjx-LabelField e16iqet90"
       for="cell-size"
     >
       Размер ячейки:
     </label>
     <input
       autocomplete="off"
-      class="css-16tc96n"
+      class="css-iol0j7-InputField el9r7ir0"
       id="cell-size"
       name="cellSize"
       pattern="[0-9]*"

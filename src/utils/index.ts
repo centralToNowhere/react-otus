@@ -4,5 +4,5 @@ export {
   isValidPositiveNumericString,
   isValidNonNegativeNumericString,
 } from "./Validators";
-export { debounce } from "./Debounce";
+export { useDebounce } from "./Debounce";
 export type { Debounced } from "./Debounce";

@@ -3,8 +3,9 @@ import ErrorBoundary from "@/components/error/Error";
 import { AppReducer, initialState } from "@/state";
 import styled from "@emotion/styled";
 import { COLORS } from "@/styles/ui-styled";
-import { GameFieldContainer } from "@/components/GameFieldContainer";
 import "./styles/reset.css";
+import { AppRouter } from "@/routes/AppRoutes";
+import { BrowserRouter } from "react-router-dom";
 
 export const App: FC = () => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
@@ -12,21 +13,24 @@ export const App: FC = () => {
   return (
     <ErrorBoundary>
       <AppBox data-testid={"react-lifecycle"}>
-        <GameFieldContainer
-          cellSize={state.cellSize}
-          maxFieldWidth={state.maxFieldWidth}
-          maxFieldHeight={state.maxFieldHeight}
-          capacity={state.capacity}
-          speed={state.speed}
-          activeCells={state.activeCells}
-          dispatch={dispatch}
-        />
+        <BrowserRouter>
+          <AppRouter
+            cellSize={state.cellSize}
+            maxFieldWidth={state.maxFieldWidth}
+            maxFieldHeight={state.maxFieldHeight}
+            capacity={state.capacity}
+            speed={state.speed}
+            activeCells={state.activeCells}
+            player={state.player}
+            dispatch={dispatch}
+          />
+        </BrowserRouter>
       </AppBox>
     </ErrorBoundary>
   );
 };
 
 const AppBox = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   background: ${COLORS.secondary};
 `;

@@ -3,7 +3,7 @@
 exports[`form tests should render form 1`] = `
 <DocumentFragment>
   <form
-    class="css-q0xgww"
+    class="css-abmnln-FormElement e13yua9l0"
     data-testid="field-form"
   >
     <input
@@ -11,20 +11,20 @@ exports[`form tests should render form 1`] = `
       hidden=""
     />
     <div
-      class="css-1i5r8zv"
+      class="css-1vttlkg-FormGroup eitwqru0"
     >
       <div
-        class="css-mkf0o6"
+        class="css-w6s8l8-FormField e1jhpckf0"
       >
         <label
-          class="css-1wnvjz2"
+          class="css-m0dhjx-LabelField e16iqet90"
           for="field-width"
         >
           Макс. ширина:
         </label>
         <input
           autocomplete="off"
-          class="css-16tc96n"
+          class="css-iol0j7-InputField el9r7ir0"
           id="field-width"
           name="fieldWidth"
           pattern="([0-9]*[.])?[0-9]+"
@@ -34,17 +34,17 @@ exports[`form tests should render form 1`] = `
         />
       </div>
       <div
-        class="css-mkf0o6"
+        class="css-w6s8l8-FormField e1jhpckf0"
       >
         <label
-          class="css-1wnvjz2"
+          class="css-m0dhjx-LabelField e16iqet90"
           for="field-height"
         >
           Макс. высота:
         </label>
         <input
           autocomplete="off"
-          class="css-16tc96n"
+          class="css-iol0j7-InputField el9r7ir0"
           id="field-height"
           name="fieldHeight"
           pattern="([0-9]*[.])?[0-9]+"
@@ -54,17 +54,17 @@ exports[`form tests should render form 1`] = `
         />
       </div>
       <div
-        class="css-mkf0o6"
+        class="css-w6s8l8-FormField e1jhpckf0"
       >
         <label
-          class="css-1wnvjz2"
+          class="css-m0dhjx-LabelField e16iqet90"
           for="cell-size"
         >
           Размер ячейки:
         </label>
         <input
           autocomplete="off"
-          class="css-16tc96n"
+          class="css-iol0j7-InputField el9r7ir0"
           id="cell-size"
           name="cellSize"
           pattern="[0-9]*"
@@ -74,10 +74,10 @@ exports[`form tests should render form 1`] = `
         />
       </div>
       <div
-        class="css-mkf0o6"
+        class="css-w6s8l8-FormField e1jhpckf0"
       >
         <label
-          class="css-1wnvjz2"
+          class="css-m0dhjx-LabelField e16iqet90"
           for="capacity-percentage"
         >
           Процент заполненности:
@@ -87,7 +87,7 @@ exports[`form tests should render form 1`] = `
         </p>
         <input
           autocomplete="off"
-          class="css-s9p6fx"
+          class="css-1qphvf3-InputField-InputFieldCapacity e1ec6q4r0"
           id="capacity-percentage"
           max="100"
           min="0"
@@ -98,17 +98,17 @@ exports[`form tests should render form 1`] = `
         />
       </div>
       <div
-        class="css-mkf0o6"
+        class="css-w6s8l8-FormField e1jhpckf0"
       >
         <label
-          class="css-1wnvjz2"
+          class="css-m0dhjx-LabelField e16iqet90"
           for="speed-change"
         >
           Обновлений в секунду:
         </label>
         <input
           autocomplete="off"
-          class="css-16tc96n"
+          class="css-iol0j7-InputField el9r7ir0"
           id="speed-change"
           name="speedChange"
           pattern="([0-9]*[.])?[0-9]+"
@@ -119,16 +119,16 @@ exports[`form tests should render form 1`] = `
       </div>
     </div>
     <div
-      class="css-1i5r8zv"
+      class="css-1vttlkg-FormGroup eitwqru0"
     >
       <div
-        class="css-mkf0o6"
+        class="css-w6s8l8-FormField e1jhpckf0"
       >
         <div
-          class="css-7kp13n"
+          class="css-sabgvl-FormButtonContainer en0zom90"
         >
           <button
-            class="css-1078a0b"
+            class="css-elonfh-FormButton eqsv5tc0"
             name="startButton"
             type="button"
           >
@@ -137,13 +137,13 @@ exports[`form tests should render form 1`] = `
         </div>
       </div>
       <div
-        class="css-mkf0o6"
+        class="css-w6s8l8-FormField e1jhpckf0"
       >
         <div
-          class="css-7kp13n"
+          class="css-sabgvl-FormButtonContainer en0zom90"
         >
           <button
-            class="css-1078a0b"
+            class="css-elonfh-FormButton eqsv5tc0"
             name="stopButton"
             type="button"
           >
@@ -152,13 +152,13 @@ exports[`form tests should render form 1`] = `
         </div>
       </div>
       <div
-        class="css-mkf0o6"
+        class="css-w6s8l8-FormField e1jhpckf0"
       >
         <div
-          class="css-7kp13n"
+          class="css-sabgvl-FormButtonContainer en0zom90"
         >
           <button
-            class="css-1078a0b"
+            class="css-elonfh-FormButton eqsv5tc0"
             name="resetButton"
             type="reset"
           >
