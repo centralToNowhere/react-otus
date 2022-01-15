@@ -1,11 +1,9 @@
 import React, { FC } from "react";
 import { l10n } from "@/l10n/ru";
 import { PlayerRegistrationForm } from "@/components/RegistrationScreen/PlayerRegistrationForm";
-import { useNavigate } from "react-router-dom";
 import { IPlayer } from "@/state/actions";
 import styled from "@emotion/styled";
 import { COLORS } from "@/styles/ui-styled";
-import { routeNames } from "@/routes/routeNames";
 
 export interface IRegistrationScreenProps {
   player: IPlayer;
@@ -18,11 +16,9 @@ export const RegistrationScreen: FC<IRegistrationScreenProps> = (props) => {
     : () => {
         //empty
       };
-  const navigate = useNavigate();
 
   const onPlayerRegName = (playerName: string | null) => {
     onPlayerRegistration(playerName);
-    navigate(routeNames.game, { replace: true });
   };
 
   return (
@@ -63,5 +59,9 @@ const RegistrationContainer = styled(ColumnContainer)`
     font-size: 2em;
     margin: 20px;
     display: block;
+  }
+
+  form {
+    background: ${COLORS.secondary};
   }
 `;

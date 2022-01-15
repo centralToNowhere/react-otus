@@ -1,7 +1,8 @@
 import React, { FC, useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { AppAction } from "@/state";
 import { IPlayer, SetPlayerAction } from "@/state/actions";
+import { routeNames } from "@/routes/routeNames";
 
 export const storageKeyPlayerName = "playerName";
 export const withAuthProtection = <P extends { player: IPlayer }>(
@@ -38,6 +39,9 @@ export const usePlayerRegistration = (
   player: IPlayer,
   dispatch: React.Dispatch<AppAction>
 ): ((playerName: string | null) => void) => {
+  const navigate = useNavigate();
+  console.log(navigate);
+
   useEffect(() => {
     setPlayer(player);
   }, [player]);
@@ -50,6 +54,7 @@ export const usePlayerRegistration = (
           name: playerName,
         })
       );
+      navigate(routeNames.game, { replace: true });
     }
   };
 };

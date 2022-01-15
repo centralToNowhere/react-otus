@@ -16,6 +16,9 @@ export default {
     onPlayerRegistration: () => {
       //empty
     },
+    navigate: () => {
+      //empty
+    },
   },
 } as Meta;
 

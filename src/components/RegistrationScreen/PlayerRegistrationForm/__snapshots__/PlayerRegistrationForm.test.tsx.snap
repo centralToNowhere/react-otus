@@ -3,29 +3,29 @@
 exports[`PlayerRegistrationForm tests should render player registration form 1`] = `
 <DocumentFragment>
   <form
-    class="css-11przyw-PlayerRegistrationForm"
+    class="css-zd27lc-FormElement-PlayerRegistrationForm e13yua9l0"
   >
     <div
-      class="css-17wa1du-PlayerRegistrationForm"
+      class="css-1kwn5te-FormField-PlayerRegistrationForm e1jhpckf0"
     >
       <div
-        class="css-1avd8c4-PlayerRegistrationForm"
+        class="css-1hui9kv-PlayerRegistrationForm"
       >
         <label
-          class="css-1wnvjz2"
+          class="css-m0dhjx-LabelField e16iqet90"
           for="register-player-input"
         >
           Введите имя игрока
         </label>
         <input
-          class="css-1epispg-PlayerRegistrationForm"
+          class="css-gtg0cp-InputField-PlayerRegistrationForm el9r7ir0"
           id="register-player-input"
           name="playerName"
           value=""
         />
       </div>
       <button
-        class="css-14tin8v-PlayerRegistrationForm"
+        class="css-1vcab0e-FormButton-PlayerRegistrationForm eqsv5tc0"
         name="startGameAsPlayer"
         type="button"
       >

@@ -1,48 +1,29 @@
-import React, { FC, useReducer } from "react";
+import React, { FC } from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import {
   IRegistrationScreenProps,
   RegistrationScreen,
 } from "./RegistrationScreen";
 import { l10n } from "@/l10n/ru";
-import {
-  AppReducer,
-  defaultPlayer,
-  IAppState,
-  initialState,
-} from "@/state/AppReducer";
+import { defaultPlayer } from "@/state/AppReducer";
 
-import { BrowserRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event/dist";
-import { usePlayerRegistration, storageKeyPlayerName } from "@/auth/Auth";
 
-const RegistrationScreenWithDispatch: FC<IRegistrationScreenProps> = (
-  props
-) => {
-  const [state, dispatch] = useReducer(AppReducer, {
-    ...initialState,
-    player: props.player,
-  } as IAppState);
-
-  const onPlayerRegistration = props.onPlayerRegistration
-    ? props.onPlayerRegistration
-    : //eslint-disable-next-line react-hooks/rules-of-hooks
-      usePlayerRegistration(state.player, dispatch);
+const RegistrationScreenTest: FC<IRegistrationScreenProps> = (props) => {
+  const onPlayerRegistration = props.onPlayerRegistration;
 
   return (
-    <BrowserRouter>
-      <RegistrationScreen
-        player={state.player}
-        onPlayerRegistration={onPlayerRegistration}
-      />
-    </BrowserRouter>
+    <RegistrationScreen
+      player={props.player}
+      onPlayerRegistration={onPlayerRegistration}
+    />
   );
 };
 
 describe("Registration screen tests", () => {
   it("should render registration screen", () => {
     const { asFragment } = render(
-      <RegistrationScreenWithDispatch player={defaultPlayer} />
+      <RegistrationScreenTest player={defaultPlayer} />
     );
 
     const header: HTMLHeadingElement = screen.getByText(l10n.gameHeading);
@@ -61,7 +42,7 @@ describe("Registration screen tests", () => {
 
   it("if player already registered, should show his name as input's initial value", async () => {
     render(
-      <RegistrationScreenWithDispatch
+      <RegistrationScreenTest
         player={{
           registered: true,
           name: "Konstantin",
@@ -80,8 +61,9 @@ describe("Registration screen tests", () => {
 
   it("should call onPlayerRegistration callback on button click", async () => {
     const callback = jest.fn();
+
     render(
-      <RegistrationScreenWithDispatch
+      <RegistrationScreenTest
         onPlayerRegistration={callback}
         player={defaultPlayer}
       />
@@ -100,8 +82,9 @@ describe("Registration screen tests", () => {
 
   it("should call onPlayerRegistration callback on button enter", async () => {
     const callback = jest.fn();
+
     render(
-      <RegistrationScreenWithDispatch
+      <RegistrationScreenTest
         onPlayerRegistration={callback}
         player={defaultPlayer}
       />
@@ -118,47 +101,24 @@ describe("Registration screen tests", () => {
     });
   });
 
-  it("should save player data to localStorage after player registration", async () => {
-    const storageSetItemSpy = jest.spyOn(Storage.prototype, "setItem");
+  it("should call onPlayerRegistration callback on enter keydown", async () => {
+    const callback = jest.fn();
 
-    const player = {
-      registered: true,
-      name: "Konstantin",
-    };
-
-    render(<RegistrationScreenWithDispatch player={defaultPlayer} />);
+    render(
+      <RegistrationScreenTest
+        onPlayerRegistration={callback}
+        player={defaultPlayer}
+      />
+    );
 
     const playerNameInput: HTMLInputElement = screen.getByLabelText(
       l10n.registerPlayerLabel
     );
-    const gameStartButton: HTMLButtonElement = screen.getByText(
-      l10n.buttonStartGameAsPlayer
-    );
 
-    userEvent.type(playerNameInput, "Konstantin");
-    userEvent.click(gameStartButton);
+    userEvent.type(playerNameInput, "{enter}");
 
     await waitFor(() => {
-      expect(storageSetItemSpy).toHaveBeenCalledWith(
-        storageKeyPlayerName,
-        JSON.stringify(player)
-      );
-    });
-  });
-
-  it("should not render game field if player name not set", async () => {
-    render(<RegistrationScreenWithDispatch player={defaultPlayer} />);
-
-    const gameStartButton: HTMLButtonElement = screen.getByText(
-      l10n.buttonStartGameAsPlayer
-    );
-
-    userEvent.click(gameStartButton);
-
-    const field = screen.queryByTestId("field");
-
-    await waitFor(() => {
-      expect(field).toBe(null);
+      expect(callback).toHaveBeenCalledTimes(1);
     });
   });
 });

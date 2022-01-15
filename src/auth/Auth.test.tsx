@@ -1,17 +1,25 @@
 import React, { FC } from "react";
 import { render, screen, waitFor } from "@testing-library/react";
-import { storageKeyPlayerName, usePlayerRegistration } from "@/auth/Auth";
 import userEvent from "@testing-library/user-event/dist";
-import { SetPlayerAction } from "@/state/actions";
+import { IPlayer, SetPlayerAction } from "@/state/actions";
+import * as ReactRouter from "react-router-dom";
+import { storageKeyPlayerName, usePlayerRegistration } from "@/auth/Auth";
+import { routeNames } from "@/routes/routeNames";
 
-const DummyComponent: FC<{ dispatch: () => void }> = (props) => {
-  const onPlayerRegister = usePlayerRegistration(
-    {
-      registered: true,
-      name: "Oleg",
-    },
-    props.dispatch
-  );
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: jest.fn(jest.fn),
+}));
+
+afterAll(() => {
+  jest.restoreAllMocks();
+});
+
+const DummyComponent: FC<{
+  player: IPlayer;
+  dispatch: () => void;
+}> = (props) => {
+  const onPlayerRegister = usePlayerRegistration(props.player, props.dispatch);
 
   return (
     <>
@@ -30,7 +38,17 @@ const DummyComponent: FC<{ dispatch: () => void }> = (props) => {
 describe("Auth tests", () => {
   it("should call onPlayerRegister", async () => {
     const dispatch = jest.fn();
-    render(<DummyComponent dispatch={dispatch} />);
+    render(
+      <ReactRouter.MemoryRouter initialEntries={["/"]}>
+        <DummyComponent
+          player={{
+            registered: true,
+            name: "Oleg",
+          }}
+          dispatch={dispatch}
+        />
+      </ReactRouter.MemoryRouter>
+    );
 
     const button = screen.getByRole("button");
 
@@ -49,7 +67,17 @@ describe("Auth tests", () => {
   it("should save player to localstorage", async () => {
     const dispatch = jest.fn();
     const storageSetItemSpy = jest.spyOn(Storage.prototype, "setItem");
-    render(<DummyComponent dispatch={dispatch} />);
+    render(
+      <ReactRouter.MemoryRouter initialEntries={["/"]}>
+        <DummyComponent
+          player={{
+            registered: true,
+            name: "Oleg",
+          }}
+          dispatch={dispatch}
+        />
+      </ReactRouter.MemoryRouter>
+    );
 
     const button = screen.getByRole("button");
 
@@ -63,6 +91,35 @@ describe("Auth tests", () => {
           name: "Oleg",
         })
       );
+    });
+  });
+
+  it("should call navigate with args", async () => {
+    const dispatch = jest.fn();
+    const navigate = jest.fn();
+
+    jest.spyOn(ReactRouter, "useNavigate").mockReturnValue(navigate);
+
+    render(
+      <ReactRouter.MemoryRouter initialEntries={["/"]}>
+        <DummyComponent
+          player={{
+            registered: true,
+            name: "Oleg",
+          }}
+          dispatch={dispatch}
+        />
+      </ReactRouter.MemoryRouter>
+    );
+
+    const button = screen.getByRole("button");
+
+    userEvent.click(button);
+
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledWith(routeNames.game, {
+        replace: true,
+      });
     });
   });
 });

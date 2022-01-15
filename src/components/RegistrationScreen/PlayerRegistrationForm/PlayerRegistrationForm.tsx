@@ -1,4 +1,10 @@
-import React, { FC, useCallback, useState, SyntheticEvent } from "react";
+import React, {
+  FC,
+  useCallback,
+  useState,
+  SyntheticEvent,
+  KeyboardEvent,
+} from "react";
 import { l10n } from "@/l10n/ru";
 import { IPlayer } from "@/state/actions";
 import { FormField } from "@/components/Form/FormField";
@@ -22,6 +28,12 @@ export const PlayerRegistrationForm: FC<IRegistrationFormProps> = (props) => {
     [setPlayerName]
   );
 
+  const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      registerPlayer();
+    }
+  };
+
   const registerPlayer = () => {
     props.onPlayerRegistration(playerName);
   };
@@ -29,7 +41,6 @@ export const PlayerRegistrationForm: FC<IRegistrationFormProps> = (props) => {
   return (
     <FormElement
       css={css`
-        background: #e8d5f0;
         width: 70%;
         max-width: 600px;
         display: inline-block;
@@ -57,6 +68,7 @@ export const PlayerRegistrationForm: FC<IRegistrationFormProps> = (props) => {
             onChange={onPlayerNameChange}
             name="playerName"
             autoFocus={true}
+            onKeyDown={onKeyDown}
           />
         </div>
         <FormButton

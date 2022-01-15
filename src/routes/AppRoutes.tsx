@@ -16,7 +16,7 @@ export type AppRouterProps = GameFieldContainerDefaultProps &
 
 const AuthGameFieldContainer = withAuthProtection(GameFieldContainer);
 
-export const AppRouter: FC<AppRouterProps> = (props) => {
+export const AppRouter: FC<Omit<AppRouterProps, "navigate">> = (props) => {
   const onPlayerRegistration = usePlayerRegistration(
     props.player,
     props.dispatch
