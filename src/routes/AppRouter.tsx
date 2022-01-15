@@ -26,7 +26,7 @@ export const AppRouter: FC<Omit<AppRouterProps, "navigate">> = (props) => {
   return (
     <Routes>
       <Route
-        path={`${basename}/${routeNames.game}`}
+        path={`${basename}${routeNames.game}`}
         element={
           <AuthGameFieldContainer
             cellSize={props.cellSize}
@@ -41,7 +41,7 @@ export const AppRouter: FC<Omit<AppRouterProps, "navigate">> = (props) => {
         }
       />
       <Route
-        path={`${basename}/${routeNames.registration}`}
+        path={`${basename}${routeNames.registration}`}
         element={
           <RegistrationScreen
             player={props.player}
