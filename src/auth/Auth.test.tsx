@@ -67,7 +67,7 @@ describe("Auth tests", () => {
 
   it("should save player to localstorage", async () => {
     const dispatch = jest.fn();
-    const storageSetItemSpy = jest.spyOn(Storage.prototype, "setItem");
+
     render(
       <ReactRouter.MemoryRouter initialEntries={["/"]}>
         <DummyComponent
@@ -85,16 +85,13 @@ describe("Auth tests", () => {
     userEvent.click(button);
 
     await waitFor(() => {
-      expect(storageSetItemSpy).toHaveBeenCalledWith(
-        storageKeyPlayerName,
+      expect(localStorage.getItem(storageKeyPlayerName)).toEqual(
         JSON.stringify({
           registered: true,
           name: "Oleg",
         })
       );
     });
-
-    jest.spyOn(Storage.prototype, "setItem").mockRestore();
   });
 
   it("should call navigate with args", async () => {
