@@ -40,7 +40,6 @@ export const usePlayerRegistration = (
   dispatch: React.Dispatch<AppAction>
 ): ((playerName: string | null) => void) => {
   const navigate = useNavigate();
-  console.log(navigate);
 
   useEffect(() => {
     setPlayer(player);
