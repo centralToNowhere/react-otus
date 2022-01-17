@@ -38,6 +38,7 @@ const DummyComponent: FC<{
 describe("Auth tests", () => {
   it("should call onPlayerRegister", async () => {
     const dispatch = jest.fn();
+
     render(
       <ReactRouter.MemoryRouter initialEntries={["/"]}>
         <DummyComponent
@@ -92,6 +93,8 @@ describe("Auth tests", () => {
         })
       );
     });
+
+    jest.spyOn(Storage.prototype, "setItem").mockRestore();
   });
 
   it("should call navigate with args", async () => {
@@ -121,5 +124,7 @@ describe("Auth tests", () => {
         replace: true,
       });
     });
+
+    jest.spyOn(ReactRouter, "useNavigate").mockRestore();
   });
 });
