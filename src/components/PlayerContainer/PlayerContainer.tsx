@@ -5,7 +5,7 @@ import { IPlayer } from "@/state/actions";
 import { FormField } from "@/components/Form";
 import { FormButton } from "@/components/Buttons";
 import { l10n } from "@/l10n/ru";
-import { COLORS } from "@/styles/ui-styled";
+import {BREAKPOINTS, COLORS} from "@/styles/ui-styled";
 
 export interface IPlayerContainerProps {
   player: IPlayer;
@@ -16,10 +16,13 @@ export const PlayerContainer: FC<IPlayerContainerProps> = (props) => {
   return (
     <FormElement
       css={css`
-        position: absolute;
-        left: 0;
         align-self: flex-start;
-        margin-right: auto;
+
+        @media screen and (min-width: ${BREAKPOINTS.xl}) {
+          position: absolute;
+          margin-right: auto;
+          left: 0;
+        }
       `}
     >
       <FormField
