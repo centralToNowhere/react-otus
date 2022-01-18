@@ -5,7 +5,7 @@ import { IPlayer } from "@/state/actions";
 import { FormField } from "@/components/Form";
 import { FormButton } from "@/components/Buttons";
 import { l10n } from "@/l10n/ru";
-import {BREAKPOINTS, COLORS} from "@/styles/ui-styled";
+import { BREAKPOINTS, COLORS } from "@/styles/ui-styled";
 
 export interface IPlayerContainerProps {
   player: IPlayer;

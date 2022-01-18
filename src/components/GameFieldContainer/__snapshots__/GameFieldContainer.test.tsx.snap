@@ -2380,7 +2380,7 @@ exports[`GameFieldContainer tests should correctly render field and form 1`] = `
       class="css-zb0505-ControlContainer e11g8d9p0"
     >
       <form
-        class="css-13o0mbz-FormElement-PlayerContainer e13yua9l0"
+        class="css-ixoyv7-FormElement-PlayerContainer e13yua9l0"
       >
         <div
           class="css-1hn82fw-FormField-PlayerContainer e1jhpckf0"

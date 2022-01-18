@@ -15,7 +15,7 @@ export default {
     maxFieldHeight: 400,
     capacity: 50,
     speed: 1,
-    activeCells: []
+    activeCells: [],
   },
 } as Meta;
 

@@ -3,7 +3,7 @@
 exports[`PlayerContainer tests should render PlayerContainer 1`] = `
 <DocumentFragment>
   <form
-    class="css-13o0mbz-FormElement-PlayerContainer e13yua9l0"
+    class="css-ixoyv7-FormElement-PlayerContainer e13yua9l0"
   >
     <div
       class="css-1hn82fw-FormField-PlayerContainer e1jhpckf0"

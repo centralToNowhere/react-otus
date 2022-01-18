@@ -17,7 +17,6 @@ import {
 } from "@/state/actions";
 import { defaultPlayer } from "@/state/AppReducer";
 import { PlayerContainer } from "@/components/PlayerContainer";
-import {BREAKPOINTS} from "@/styles/ui-styled";
 
 export type GameFieldContainerProps = {
   cellSize?: number;
