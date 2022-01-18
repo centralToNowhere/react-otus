@@ -28,7 +28,7 @@
     "type": "git",
     "url": "git+https://github.com/centralToNowhere/react-otus.git"
   },
-  "author": "RojkovD",
+  "author": "Dmitry Rozhkov",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/centralToNowhere/react-otus/issues"
