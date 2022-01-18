@@ -33,22 +33,22 @@ jobs:
             ${{ runner.OS }}-npm-cache-
 
       - name: Install dependencies
-      - run: npm ci
+        run: npm ci
 
       - name: Check typing
-      - run: npm run types
+        run: npm run types
 
       - name: Run tests
-      - run: npm run test
+        run: npm run test
 
       - name: Check codestyle
-      - run: npm run lint
+        run: npm run lint
 
       - name: Run visual regression tests
-      - run: npm run loki:test
+        run: npm run loki:test
 
       - name: Build
-      - run: npm run build
+        run: npm run build
 
       - name: Deploy 🚀
         id: Deploy
