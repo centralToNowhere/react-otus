@@ -44,17 +44,17 @@ jobs:
         with:
           node-version: '16'
 
-        - name: Check typing
-          run: npm run types
+      - name: Check typing
+        run: npm run types
 
-        - name: Run tests
-          run: npm run test
+      - name: Run tests
+        run: npm run test
 
-        - name: Check codestyle
-          run: npm run lint
+      - name: Check codestyle
+        run: npm run lint
 
-        - name: Run visual regression tests
-          run: npm run loki:test
+      - name: Run visual regression tests
+        run: npm run loki:test
 
   build-deploy:
     needs: test
