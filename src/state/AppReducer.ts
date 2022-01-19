@@ -2,6 +2,7 @@ import { ICell } from "@/components/Cell";
 import * as Actions from "./actions";
 import { IPlayer } from "@/state/actions/Player/Player";
 import { getPlayer } from "@/auth/Auth";
+import { getInitialCells } from "@/utils/CellGenerator";
 
 export interface IAppState {
   cellSize: number;
@@ -22,13 +23,17 @@ export const defaultPlayer: IPlayer = {
   name: null,
 };
 
+const initialWidth = window.innerWidth;
+const initialHeight = window.innerHeight / 2;
+const initialCellSize = 40;
+
 export const initialState: IAppState = {
-  cellSize: 40,
-  maxFieldWidth: window.innerWidth,
-  maxFieldHeight: window.innerHeight / 2,
+  cellSize: initialCellSize,
+  maxFieldWidth: initialWidth,
+  maxFieldHeight: initialHeight,
   capacity: 50,
   speed: 2,
-  activeCells: [],
+  activeCells: getInitialCells(initialWidth, initialHeight, initialCellSize),
   player: getPlayer() || defaultPlayer,
 };
 

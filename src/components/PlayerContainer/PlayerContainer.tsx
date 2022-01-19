@@ -49,12 +49,8 @@ export const PlayerContainer: FC<IPlayerContainerProps> = (props) => {
         <div className="player-stats">
           <h2>{l10n.statistics}</h2>
           <ul>
-            <li>
-              {l10n.score} {Math.round(Math.random() * 100)}
-            </li>
-            <li>
-              {l10n.clicksCount} {Math.round(Math.random() * 100)}
-            </li>
+            <li>{l10n.score} 0</li>
+            <li>{l10n.clicksCount} 0</li>
           </ul>
         </div>
         <FormButton
