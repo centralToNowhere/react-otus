@@ -20,7 +20,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-          cache: npm
 
       - name: Cache NPM dependencies
         uses: actions/cache@v2.1.7
@@ -32,7 +31,6 @@ jobs:
             ${{ runner.OS }}-npm-cache-
 
       - name: Install dependencies
-        if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm ci
 
       - name: Check typing
