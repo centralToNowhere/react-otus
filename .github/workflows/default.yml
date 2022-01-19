@@ -31,6 +31,7 @@ jobs:
             ${{ runner.OS }}-npm-cache-
 
       - name: Install dependencies
+        if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm ci
 
       - name: Check typing
