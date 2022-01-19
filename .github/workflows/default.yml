@@ -93,6 +93,10 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
 
+      - name: Pre-build
+        run: |
+          echo 'export const basename = "/react-otus";' > src/routes/basename.ts
+
       - name: Build
         run: npm run build
 
