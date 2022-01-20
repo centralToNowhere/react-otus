@@ -4,19 +4,22 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event/dist";
 import {
   GameFieldContainer,
-  getRandomCells,
   createFormKey,
   getGameCycleTimeout,
-  // @ts-ignore
-  __RewireAPI__ as GameFieldContainerRewire,
   GameFieldContainerProps,
 } from "@/components/GameFieldContainer/GameFieldContainer";
-import { ICell } from "@/components/Cell";
 import { COLORS } from "@/styles/ui-styled";
 import { l10n } from "@/l10n/ru";
 import { AppReducer, IAppState, initialState } from "@/state";
-// @ts-ignore
-import { __RewireAPI__ as AppReducerRewire } from "@/state/AppReducer";
+import {
+  // @ts-ignore
+  __RewireAPI__ as AppReducerRewire,
+  defaultPlayer,
+} from "@/state/AppReducer";
+import {
+  // @ts-ignore
+  __RewireAPI__ as CellGeneratorRewire,
+} from "@/utils/CellGenerator";
 
 /**
  * Зачем я использую babel-plugin-rewire-ts?
@@ -96,6 +99,7 @@ beforeEach(() => {
 
 afterEach(() => {
   AppReducerRewire.__ResetDependency__("initialState");
+  jest.restoreAllMocks();
 });
 
 const GameFieldContainerWithDispatch: FC<
@@ -108,6 +112,7 @@ const GameFieldContainerWithDispatch: FC<
     capacity: props.capacity,
     speed: props.speed,
     activeCells: props.activeCells,
+    player: defaultPlayer,
   };
 
   AppReducerRewire.__Rewire__("initialState", mockInitialState);
@@ -121,6 +126,7 @@ const GameFieldContainerWithDispatch: FC<
       capacity={state.capacity}
       speed={state.speed}
       activeCells={state.activeCells}
+      player={state.player}
       dispatch={dispatch}
     />
   );
@@ -146,47 +152,6 @@ describe("GameFieldContainer tests", () => {
     expect(createFormKey()).toBeLessThan(10000);
   });
 
-  it("getRandomCells should return 150 cells", () => {
-    const cells = getRandomCells(15, 10, 100);
-
-    expect(cells).toHaveLength(150);
-    expect(
-      cells.every((cell: ICell) => {
-        return (
-          cell !== null &&
-          typeof cell === "object" &&
-          typeof cell.x === "number" &&
-          typeof cell.y === "number"
-        );
-      })
-    ).toBe(true);
-  });
-
-  it("getRandomCells should return 150/150 cells", () => {
-    jest.spyOn(global.Math, "random").mockReturnValue(49);
-    expect(getRandomCells(15, 10, 50)).toHaveLength(150);
-    jest.spyOn(global.Math, "random").mockRestore();
-  });
-
-  it("getRandomCells should return 0/150 cells", () => {
-    jest.spyOn(global.Math, "random").mockReturnValue(51);
-    expect(getRandomCells(15, 10, 50)).toHaveLength(0);
-    jest.spyOn(global.Math, "random").mockRestore();
-  });
-
-  it("getRandomCells should return 0 cells", () => {
-    expect(getRandomCells(15, 10, 0)).toHaveLength(0);
-  });
-
-  it("getRandomCells should return 1 cell", () => {
-    expect(getRandomCells(1, 1, 100)).toHaveLength(1);
-  });
-
-  it("getRandomCells should return 0 cells", () => {
-    expect(getRandomCells(0, 1, 100)).toHaveLength(0);
-    expect(getRandomCells(1, 0, 100)).toHaveLength(0);
-  });
-
   it("should render 100 cells with numbers", () => {
     render(
       <GameFieldContainerWithDispatch
@@ -209,7 +174,7 @@ describe("GameFieldContainer tests", () => {
   });
 
   it("should start game cycle", async () => {
-    GameFieldContainerRewire.__Rewire__("getRandomCells", getRandomCellsMocked);
+    CellGeneratorRewire.__Rewire__("getRandomCells", getRandomCellsMocked);
 
     render(
       <GameFieldContainerWithDispatch
@@ -242,7 +207,7 @@ describe("GameFieldContainer tests", () => {
       })
     );
 
-    GameFieldContainerRewire.__ResetDependency__("getRandomCells");
+    CellGeneratorRewire.__ResetDependency__("getRandomCells");
   });
 
   it("should change cells 10 times every 100ms and then stop game cycle", async () => {
@@ -258,10 +223,8 @@ describe("GameFieldContainer tests", () => {
           };
         })
       );
-      GameFieldContainerRewire.__Rewire__(
-        "getRandomCells",
-        getRandomCellsMocked
-      );
+
+      CellGeneratorRewire.__Rewire__("getRandomCells", getRandomCellsMocked);
 
       return new RegExp(
         `^(${[...Array(checks).keys()].reduce((acc, current, i) => {
@@ -325,7 +288,10 @@ describe("GameFieldContainer tests", () => {
       }, 2 * gameCycleTimeout);
     });
 
-    GameFieldContainerRewire.__ResetDependency__("getRandomCells");
+    CellGeneratorRewire.__ResetDependency__(
+      "getRandomCells",
+      getRandomCellsMocked
+    );
   });
 
   it("should reset all properties to initial", async () => {

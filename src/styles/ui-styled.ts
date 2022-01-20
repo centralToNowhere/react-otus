@@ -5,3 +5,12 @@ export const COLORS = {
   activeCellBg: "#000",
   activeCellColor: "#fff",
 };
+
+export const BREAKPOINTS = {
+  mobileStart: "320px",
+  mobileEnd: "480px",
+  sm: "576px",
+  md: "768px",
+  lg: "992px",
+  xl: "1200px",
+};

@@ -3,17 +3,17 @@
 exports[`FieldSpeed tests should render speed input 1`] = `
 <DocumentFragment>
   <div
-    class="css-mkf0o6"
+    class="css-w6s8l8-FormField e1jhpckf0"
   >
     <label
-      class="css-1wnvjz2"
+      class="css-m0dhjx-LabelField e16iqet90"
       for="speed-change"
     >
       Обновлений в секунду:
     </label>
     <input
       autocomplete="off"
-      class="css-16tc96n"
+      class="css-iol0j7-InputField el9r7ir0"
       id="speed-change"
       name="speedChange"
       pattern="([0-9]*[.])?[0-9]+"

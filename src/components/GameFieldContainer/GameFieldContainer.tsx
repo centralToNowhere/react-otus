@@ -5,14 +5,24 @@ import { GameField } from "@/components/GameField";
 import { ICell } from "@/components/Cell";
 import { AppAction } from "@/state";
 import {
-  ResetStateAction,
+  IPlayer,
+  ResetGameStateAction,
   SetActiveCellsAction,
   SetCapacityAction,
   SetCellSizeAction,
   SetFieldHeightAction,
   SetFieldWidthAction,
+  SetPlayerAction,
   SetSpeedAction,
 } from "@/state/actions";
+import { defaultPlayer } from "@/state/AppReducer";
+import { PlayerContainer } from "@/components/PlayerContainer";
+import {
+  getCellsInCol,
+  getCellsInRow,
+  getRandomCells,
+} from "@/utils/CellGenerator";
+import { BREAKPOINTS } from "@/styles/ui-styled";
 
 export type GameFieldContainerProps = {
   cellSize?: number;
@@ -21,6 +31,7 @@ export type GameFieldContainerProps = {
   capacity?: number;
   speed?: number;
   activeCells?: ICell[];
+  player?: IPlayer;
   dispatch: React.Dispatch<AppAction>;
 };
 
@@ -32,36 +43,12 @@ export type GameFieldContainerDefaultProps =
     capacity?: number;
     speed?: number;
     activeCells?: ICell[];
+    player: IPlayer;
     dispatch: React.Dispatch<AppAction>;
   };
 
 export const createFormKey = (): number => {
   return Math.round(Math.random() * 10000);
-};
-
-export const getRandomCells = (
-  cellsInRow: number,
-  cellsInCol: number,
-  percentage: number
-): ICell[] => {
-  return Array.from(Array(cellsInCol)).reduce(
-    (allCells, colCells, i): ICell[] => {
-      allCells = allCells.concat(
-        Array.from(Array(cellsInRow)).reduce((rowCells, cell, j): ICell[] => {
-          if (Math.random() < percentage) {
-            rowCells.push({
-              x: j,
-              y: i,
-            });
-          }
-          return rowCells;
-        }, [])
-      );
-
-      return allCells;
-    },
-    []
-  );
 };
 
 export const getGameCycleTimeout = (speed: number): number => {
@@ -75,6 +62,7 @@ export class GameFieldContainer extends React.Component<GameFieldContainerDefaul
     maxFieldHeight: 400,
     capacity: 50,
     speed: 1,
+    player: defaultPlayer,
     activeCells: [] as ICell[],
   };
 
@@ -87,14 +75,6 @@ export class GameFieldContainer extends React.Component<GameFieldContainerDefaul
     this.gameCycleInterval = null;
     this.formKey = createFormKey();
   }
-
-  getCellsInRow = (): number => {
-    return Math.floor(this.props.maxFieldWidth / this.props.cellSize);
-  };
-
-  getCellsInCol = (): number => {
-    return Math.floor(this.props.maxFieldHeight / this.props.cellSize);
-  };
 
   onCellSizeChange = (value: string): void => {
     this.props.dispatch(SetCellSizeAction(Number(value)));
@@ -112,6 +92,10 @@ export class GameFieldContainer extends React.Component<GameFieldContainerDefaul
     this.props.dispatch(SetFieldHeightAction(Number(value)));
   };
 
+  onPlayerUnregister = (): void => {
+    this.props.dispatch(SetPlayerAction(defaultPlayer));
+  };
+
   onSpeedChange = (value: string): void => {
     if (this.gameCycleInterval !== null) {
       this.onStop();
@@ -123,22 +107,21 @@ export class GameFieldContainer extends React.Component<GameFieldContainerDefaul
     this.props.dispatch(SetSpeedAction(Number(value)));
   };
 
-  setRandomCells = (): void => {
-    const cells = getRandomCells(
-      this.getCellsInRow(),
-      this.getCellsInCol(),
-      this.props.capacity / 100
-    );
-
+  setActiveCells = (cells: ICell[]): void => {
     this.props.dispatch(SetActiveCellsAction(cells));
   };
 
   onStart = (): void => {
     if (this.gameCycleInterval === null) {
-      this.gameCycleInterval = setInterval(
-        this.setRandomCells,
-        getGameCycleTimeout(this.props.speed)
-      );
+      this.gameCycleInterval = setInterval(() => {
+        const cells = getRandomCells(
+          getCellsInRow(this.props.maxFieldWidth, this.props.cellSize),
+          getCellsInCol(this.props.maxFieldHeight, this.props.cellSize),
+          this.props.capacity / 100
+        );
+
+        this.setActiveCells(cells);
+      }, getGameCycleTimeout(this.props.speed));
     }
   };
 
@@ -148,9 +131,9 @@ export class GameFieldContainer extends React.Component<GameFieldContainerDefaul
 
   onReset = (): void => {
     this.onStop();
-    this.props.dispatch(ResetStateAction());
+    this.props.dispatch(ResetGameStateAction());
 
-    // leads to Form unmounting btw; reset fields to initial values
+    // leads to PlayerRegistrationForm unmounting btw; reset fields to initial values
     this.formKey = createFormKey();
   };
 
@@ -161,17 +144,19 @@ export class GameFieldContainer extends React.Component<GameFieldContainerDefaul
     }
   };
 
-  componentDidMount() {
-    this.setRandomCells();
-  }
-
   componentWillUnmount() {
     this.clearInterval();
   }
 
   render() {
-    const cellsInRow = this.getCellsInRow();
-    const cellsInCol = this.getCellsInCol();
+    const cellsInRow = getCellsInRow(
+      this.props.maxFieldWidth,
+      this.props.cellSize
+    );
+    const cellsInCol = getCellsInCol(
+      this.props.maxFieldHeight,
+      this.props.cellSize
+    );
 
     return (
       <Container>
@@ -181,22 +166,28 @@ export class GameFieldContainer extends React.Component<GameFieldContainerDefaul
           cellsInCol={cellsInCol}
           cellsInRow={cellsInRow}
         />
-        <Form
-          key={this.formKey}
-          onCellSizeChange={this.onCellSizeChange}
-          onCapacityChange={this.onCapacityChange}
-          onMaxFieldWidthChange={this.onMaxFieldWidthChange}
-          onMaxFieldHeightChange={this.onMaxFieldHeightChange}
-          onSpeedChange={this.onSpeedChange}
-          onStart={this.onStart}
-          onStop={this.onStop}
-          onReset={this.onReset}
-          cellSize={this.props.cellSize}
-          capacity={this.props.capacity}
-          maxFieldWidth={this.props.maxFieldWidth}
-          maxFieldHeight={this.props.maxFieldHeight}
-          speed={this.props.speed}
-        />
+        <ControlContainer>
+          <PlayerContainer
+            player={this.props.player}
+            onPlayerUnregister={this.onPlayerUnregister}
+          />
+          <Form
+            key={this.formKey}
+            onCellSizeChange={this.onCellSizeChange}
+            onCapacityChange={this.onCapacityChange}
+            onMaxFieldWidthChange={this.onMaxFieldWidthChange}
+            onMaxFieldHeightChange={this.onMaxFieldHeightChange}
+            onSpeedChange={this.onSpeedChange}
+            onStart={this.onStart}
+            onStop={this.onStop}
+            onReset={this.onReset}
+            cellSize={this.props.cellSize}
+            capacity={this.props.capacity}
+            maxFieldWidth={this.props.maxFieldWidth}
+            maxFieldHeight={this.props.maxFieldHeight}
+            speed={this.props.speed}
+          />
+        </ControlContainer>
       </Container>
     );
   }
@@ -206,4 +197,14 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const ControlContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  @media screen and (max-width: ${BREAKPOINTS.mobileEnd}) {
+    flex-wrap: wrap-reverse;
+  }
 `;

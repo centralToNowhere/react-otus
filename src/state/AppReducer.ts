@@ -1,5 +1,8 @@
 import { ICell } from "@/components/Cell";
 import * as Actions from "./actions";
+import { IPlayer } from "@/state/actions/Player/Player";
+import { getPlayer } from "@/auth/Auth";
+import { getInitialCells } from "@/utils/CellGenerator";
 
 export interface IAppState {
   cellSize: number;
@@ -8,19 +11,30 @@ export interface IAppState {
   capacity: number;
   speed: number;
   activeCells: ICell[];
+  player: IPlayer;
 }
 
 export interface AppAction {
   type: string;
 }
 
+export const defaultPlayer: IPlayer = {
+  registered: false,
+  name: null,
+};
+
+const initialWidth = window.innerWidth;
+const initialHeight = window.innerHeight / 2;
+const initialCellSize = 40;
+
 export const initialState: IAppState = {
-  cellSize: 40,
-  maxFieldWidth: window.innerWidth,
-  maxFieldHeight: window.innerHeight / 2,
+  cellSize: initialCellSize,
+  maxFieldWidth: initialWidth,
+  maxFieldHeight: initialHeight,
   capacity: 50,
   speed: 2,
-  activeCells: [],
+  activeCells: getInitialCells(initialWidth, initialHeight, initialCellSize),
+  player: getPlayer() || defaultPlayer,
 };
 
 export const AppReducer = (state: IAppState, action: AppAction): IAppState => {
@@ -63,6 +77,25 @@ export const AppReducer = (state: IAppState, action: AppAction): IAppState => {
     return {
       ...state,
       speed: action.payload,
+    };
+  }
+
+  if (Actions.isSetPlayerAction(action)) {
+    return {
+      ...state,
+      player: action.payload,
+    };
+  }
+
+  if (Actions.isResetGameStateAction(action)) {
+    return {
+      ...state,
+      activeCells: initialState.activeCells,
+      capacity: initialState.capacity,
+      maxFieldHeight: initialState.maxFieldHeight,
+      maxFieldWidth: initialState.maxFieldWidth,
+      speed: initialState.speed,
+      cellSize: initialState.cellSize,
     };
   }
 

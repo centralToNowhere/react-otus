@@ -4,13 +4,13 @@ import {
   InputField,
   LabelField,
   onBlurHandler,
-  onChangeHandler,
+  useOnChangeHandler,
 } from "@/components/Fields";
 import { FormField } from "@/components/Form/FormField";
 import { InputPatterns } from "@/components/Fields";
 import { FieldError } from "@/components/Fields/FieldError/FieldError";
 import { Form, IFieldProps } from "@/components/Form";
-import { debounce, isValidNonNegativeNumericString } from "@/utils";
+import { useDebounce, isValidNonNegativeNumericString } from "@/utils";
 import {
   onDirtyBlurHandler,
   onDirtyChangeHandler,
@@ -25,21 +25,18 @@ export const FieldMaxHeight: React.FC<IFieldProps> = (props) => {
     msg: "Expected non-negative number",
   });
 
-  const validateFieldHeight = (value: unknown): boolean => {
+  const validateFieldHeight = useCallback((value: unknown): boolean => {
     return isValidNonNegativeNumericString(value);
-  };
+  }, []);
 
-  const onChangeDebounced = useCallback(
-    debounce<string>(
-      onChangeHandler(
-        props.onChange,
-        validateFieldHeight,
-        setMaxFieldHeightString,
-        setError
-      ),
-      Form.inputDelay
+  const onChangeDebounced = useDebounce<string>(
+    useOnChangeHandler(
+      props.onChange,
+      validateFieldHeight,
+      setMaxFieldHeightString,
+      setError
     ),
-    []
+    Form.inputDelay
   );
 
   const onChange = onDirtyChangeHandler((value: string) => {
