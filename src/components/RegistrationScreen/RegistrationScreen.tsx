@@ -3,7 +3,8 @@ import { l10n } from "@/l10n/ru";
 import { PlayerRegistrationForm } from "@/components/RegistrationScreen/PlayerRegistrationForm";
 import { IPlayer } from "@/state/actions";
 import styled from "@emotion/styled";
-import { COLORS } from "@/styles/ui-styled";
+import { BREAKPOINTS, COLORS } from "@/styles/ui-styled";
+import { css } from "@emotion/react";
 
 export interface IRegistrationScreenProps {
   player: IPlayer;
@@ -22,23 +23,49 @@ export const RegistrationScreen: FC<IRegistrationScreenProps> = (props) => {
   };
 
   return (
-    <RowContainer>
-      <ColumnContainer />
+    <Container>
+      <ColumnContainer>
+        <h1>{l10n.rulesHeading}</h1>
+      </ColumnContainer>
       <RegistrationContainer>
-        <h1>{l10n.gameHeading}</h1>
+        <h1 className="game-name">
+          {l10n.gameHeadingPart1}{" "}
+          <span
+            css={css`
+              white-space: nowrap;
+            `}
+          >
+            {l10n.gameHeadingPart2}
+          </span>
+        </h1>
         <PlayerRegistrationForm
           onPlayerRegistration={onPlayerRegName}
           player={props.player}
         />
       </RegistrationContainer>
-    </RowContainer>
+    </Container>
   );
 };
 
-const RowContainer = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  h1 {
+    font-size: 2em;
+    margin: 20px;
+    display: block;
+    line-height: 1.2em;
+  }
+
+  @media screen and (max-width: ${BREAKPOINTS.mobileEnd}) {
+    flex-direction: column-reverse;
+
+    h1 {
+      text-align: center;
+    }
+  }
 `;
 
 const ColumnContainer = styled.div`
@@ -46,7 +73,13 @@ const ColumnContainer = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  box-sizing: border-box;
   width: 50%;
+
+  @media screen and (max-width: ${BREAKPOINTS.mobileEnd}) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const RegistrationContainer = styled(ColumnContainer)`
@@ -55,13 +88,11 @@ const RegistrationContainer = styled(ColumnContainer)`
   align-items: start;
   justify-content: center;
 
-  h1 {
-    font-size: 2em;
-    margin: 20px;
-    display: block;
-  }
-
   form {
     background: ${COLORS.secondary};
+  }
+
+  @media screen and (max-width: ${BREAKPOINTS.mobileEnd}) {
+    justify-content: space-between;
   }
 `;

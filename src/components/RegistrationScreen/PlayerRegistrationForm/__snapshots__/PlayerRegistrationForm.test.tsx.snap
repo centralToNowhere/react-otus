@@ -3,7 +3,7 @@
 exports[`PlayerRegistrationForm tests should render player registration form 1`] = `
 <DocumentFragment>
   <form
-    class="css-zd27lc-FormElement-PlayerRegistrationForm e13yua9l0"
+    class="css-t1nzhx-FormElement-PlayerRegistrationForm e13yua9l0"
   >
     <div
       class="css-1kwn5te-FormField-PlayerRegistrationForm e1jhpckf0"

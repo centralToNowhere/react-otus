@@ -31,7 +31,9 @@ describe("Routes tests", () => {
     const form = screen.queryByTestId("field-form");
     expect(form).not.toBeInTheDocument();
 
-    const gameHeading: HTMLHeadingElement = screen.getByText(l10n.gameHeading);
+    const gameHeading: HTMLHeadingElement = screen.getByText(
+      `${l10n.gameHeadingPart1}`
+    );
     expect(gameHeading).toBeInTheDocument();
   });
 
@@ -52,7 +54,7 @@ describe("Routes tests", () => {
     await screen.findByTestId("field-form");
 
     await waitFor(() => {
-      expect(screen.queryByText(l10n.gameHeading)).toBe(null);
+      expect(screen.queryByText(`${l10n.gameHeadingPart1}`)).toBe(null);
     });
   });
 

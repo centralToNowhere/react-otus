@@ -26,7 +26,9 @@ describe("Registration screen tests", () => {
       <RegistrationScreenTest player={defaultPlayer} />
     );
 
-    const header: HTMLHeadingElement = screen.getByText(l10n.gameHeading);
+    const header: HTMLHeadingElement = screen.getByText(
+      `${l10n.gameHeadingPart1}`
+    );
     const playerNameInput: HTMLInputElement = screen.getByLabelText(
       l10n.registerPlayerLabel
     );

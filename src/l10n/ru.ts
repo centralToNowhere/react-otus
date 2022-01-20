@@ -9,8 +9,10 @@ export const l10n = {
   buttonReset: "Сброс",
 
   // Экран решистрации
-  gameHeading: "Conway's Game of Life",
+  gameHeadingPart1: "Conway's",
+  gameHeadingPart2: "Game of Life",
   buttonStartGameAsPlayer: "Начать игру",
+  rulesHeading: "Правила",
 
   // Контейнер игрока
   registerPlayerLabel: "Введите имя игрока",

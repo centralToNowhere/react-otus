@@ -22,6 +22,7 @@ import {
   getCellsInRow,
   getRandomCells,
 } from "@/utils/CellGenerator";
+import { BREAKPOINTS } from "@/styles/ui-styled";
 
 export type GameFieldContainerProps = {
   cellSize?: number;
@@ -202,4 +203,8 @@ const ControlContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  @media screen and (max-width: ${BREAKPOINTS.mobileEnd}) {
+    flex-wrap: wrap-reverse;
+  }
 `;

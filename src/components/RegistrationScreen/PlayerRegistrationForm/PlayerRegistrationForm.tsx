@@ -12,6 +12,7 @@ import { FormElement } from "@/components/Form";
 import { css } from "@emotion/react";
 import { InputField, LabelField } from "@/components/Fields";
 import { FormButton } from "@/components/Buttons";
+import { BREAKPOINTS } from "@/styles/ui-styled";
 
 export interface IRegistrationFormProps {
   player: IPlayer;
@@ -44,6 +45,11 @@ export const PlayerRegistrationForm: FC<IRegistrationFormProps> = (props) => {
         width: 70%;
         max-width: 600px;
         display: inline-block;
+        margin: 20px 0;
+
+        @media screen and (max-width: ${BREAKPOINTS.mobileEnd}) {
+          width: 100%;
+        }
       `}
     >
       <FormField
