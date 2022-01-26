@@ -3,7 +3,7 @@ import { l10n } from "@/l10n/ru";
 import userEvent from "@testing-library/user-event/dist";
 import React, { FC, useReducer } from "react";
 import { AppRouter, AppRouterProps } from "@/routes/AppRouter";
-import { AppReducer, initialState } from "@/state";
+import { AppReducer, initialState } from "@/store";
 import { MemoryRouter } from "react-router-dom";
 
 const AppRouterForTesting: FC<Partial<Omit<AppRouterProps, "dispatch">>> = (

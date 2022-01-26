@@ -4,6 +4,5 @@ export {
   getGameCycleTimeout,
 } from "./GameFieldContainer";
 export type {
-  GameFieldContainerProps,
-  GameFieldContainerDefaultProps,
+  GameFieldContainerProps
 } from "./GameFieldContainer";

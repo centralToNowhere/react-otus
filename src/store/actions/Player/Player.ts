@@ -1,7 +1,4 @@
-export interface IPlayer {
-  registered: boolean;
-  name: string | null;
-}
+import {IPlayer} from "@/player/Player";
 
 export const isPlayer = (player: IPlayer): player is IPlayer => {
   return (

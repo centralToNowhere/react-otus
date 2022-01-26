@@ -2,21 +2,18 @@ import React from "react";
 import styled from "@emotion/styled";
 import { COLORS } from "@/styles/ui-styled";
 import { Cell, ICell, isCell } from "@/components/Cell";
+import { connect } from "react-redux";
+import {RootState} from "@/store/redux/store";
+import { getCellsInCol, getCellsInRow } from "@/utils/CellGenerator";
 
 export interface IGameFieldProps {
   cellSize: number;
-  activeCells?: ICell[];
+  activeCells: ICell[];
   cellsInRow: number;
   cellsInCol: number;
 }
 
-type GameFieldProps = typeof GameField.defaultProps & IGameFieldProps;
-
-export class GameField extends React.Component<GameFieldProps> {
-  static defaultProps = {
-    activeCells: [] as ICell[],
-  };
-
+export class Main extends React.Component<IGameFieldProps> {
   isActiveCell = (cell: ICell): boolean => {
     return !!this.props.activeCells.find(
       (activeCell: ICell) =>
@@ -57,6 +54,21 @@ export class GameField extends React.Component<GameFieldProps> {
     );
   }
 }
+
+const mapStateToProps = (state: RootState): IGameFieldProps => ({
+  cellSize: state.fieldControl.cellSize,
+  activeCells: state.gameField.activeCells,
+  cellsInRow: getCellsInRow(
+    state.fieldControl.maxFieldWidth,
+    state.fieldControl.cellSize
+  ),
+  cellsInCol: getCellsInCol(
+    state.fieldControl.maxFieldHeight,
+    state.fieldControl.cellSize
+  )
+});
+
+export const GameField = connect(mapStateToProps)(Main);
 
 interface IFieldStyledContainerProps {
   cellSize: number;

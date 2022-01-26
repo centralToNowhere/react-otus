@@ -5,9 +5,9 @@ import {
   RegistrationScreen,
 } from "./RegistrationScreen";
 import { l10n } from "@/l10n/ru";
-import { defaultPlayer } from "@/state/AppReducer";
 
 import userEvent from "@testing-library/user-event/dist";
+import {defaultPlayer} from "@/player/Player";
 
 const RegistrationScreenTest: FC<IRegistrationScreenProps> = (props) => {
   const onPlayerRegistration = props.onPlayerRegistration;

@@ -3,7 +3,7 @@
 exports[`Cell tests should render cell 1`] = `
 <DocumentFragment>
   <div
-    class="css-1lgay16-StyledCell e7gfaot0"
+    class="css-1lgay16-StyledCell e17ysyql0"
     data-testid="cell"
     size="30"
   >

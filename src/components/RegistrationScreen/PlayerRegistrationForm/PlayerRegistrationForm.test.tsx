@@ -1,9 +1,9 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import { PlayerRegistrationForm } from "@/components/RegistrationScreen/PlayerRegistrationForm/PlayerRegistrationForm";
-import { defaultPlayer } from "@/state/AppReducer";
 import { l10n } from "@/l10n/ru";
 import userEvent from "@testing-library/user-event/dist";
+import {defaultPlayer} from "@/player/Player";
 
 describe("PlayerRegistrationForm tests", () => {
   it("should render player registration form", () => {

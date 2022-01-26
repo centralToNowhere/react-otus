@@ -1,5 +1,5 @@
-import { AppAction } from "@/state";
-import { IPlayer } from "@/state/actions";
+import { AppAction } from "@/store";
+import { IPlayer } from "@/store/actions";
 
 interface ISetPlayerAction extends AppAction {
   type: "setPlayer";

@@ -1,19 +1,22 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen } from "@/utils/test-utils";
 import { GameField } from "./GameField";
-
-const cellSize = 40;
-const cellsInRow = 15;
-const cellsInCol = 10;
 
 describe("GameField tests", () => {
   it("should render game field", () => {
     const { asFragment } = render(
-      <GameField
-        cellSize={cellSize}
-        cellsInRow={cellsInRow}
-        cellsInCol={cellsInCol}
-      />
+      <GameField/>,
+      {
+        preloadedState: {
+          fieldControl: {
+            cellSize: 40,
+            maxFieldWidth: 600,
+            maxFieldHeight: 400,
+            capacity: 50,
+            speed: 2,
+          }
+        }
+      }
     );
 
     const field = screen.getByTestId("field");
@@ -24,12 +27,20 @@ describe("GameField tests", () => {
 
   it("should render 150 inactive cells", () => {
     render(
-      <GameField
-        cellSize={cellSize}
-        cellsInRow={cellsInRow}
-        cellsInCol={cellsInCol}
-      />
+      <GameField/>,
+      {
+        preloadedState: {
+          fieldControl: {
+            cellSize: 40,
+            maxFieldWidth: 600,
+            maxFieldHeight: 400,
+            capacity: 50,
+            speed: 2,
+          }
+        }
+      }
     );
+
 
     const cells: HTMLElement[] = screen.getAllByTestId("cell");
     expect(cells.length).toBe(150);

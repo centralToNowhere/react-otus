@@ -1,23 +1,13 @@
 import React, { FC } from "react";
 import { l10n } from "@/l10n/ru";
 import { PlayerRegistrationForm } from "@/components/RegistrationScreen/PlayerRegistrationForm";
-import { IPlayer } from "@/state/actions";
 import styled from "@emotion/styled";
 import { BREAKPOINTS, COLORS } from "@/styles/ui-styled";
 import { css } from "@emotion/react";
+import { usePlayerRegistration } from "@/auth/Auth";
 
-export interface IRegistrationScreenProps {
-  player: IPlayer;
-  onPlayerRegistration?: (playerName: string | null) => void;
-}
-
-export const RegistrationScreen: FC<IRegistrationScreenProps> = (props) => {
-  const onPlayerRegistration = props.onPlayerRegistration
-    ? props.onPlayerRegistration
-    : () => {
-        //empty
-      };
-
+export const RegistrationScreen: FC = (props) => {
+  const [player, onPlayerRegistration] = usePlayerRegistration();
   const onPlayerRegName = (playerName: string | null) => {
     onPlayerRegistration(playerName);
   };
@@ -40,7 +30,7 @@ export const RegistrationScreen: FC<IRegistrationScreenProps> = (props) => {
         </h1>
         <PlayerRegistrationForm
           onPlayerRegistration={onPlayerRegName}
-          player={props.player}
+          player={player}
         />
       </RegistrationContainer>
     </Container>
@@ -59,7 +49,7 @@ const Container = styled.div`
     line-height: 1.2em;
   }
 
-  @media screen and (max-width: ${BREAKPOINTS.mobileEnd}) {
+  @media screen and (max-width: ${BREAKPOINTS.lg}) {
     flex-direction: column-reverse;
 
     h1 {
@@ -76,7 +66,7 @@ const ColumnContainer = styled.div`
   box-sizing: border-box;
   width: 50%;
 
-  @media screen and (max-width: ${BREAKPOINTS.mobileEnd}) {
+  @media screen and (max-width: ${BREAKPOINTS.lg}) {
     width: 100%;
     height: auto;
   }
@@ -92,7 +82,7 @@ const RegistrationContainer = styled(ColumnContainer)`
     background: ${COLORS.secondary};
   }
 
-  @media screen and (max-width: ${BREAKPOINTS.mobileEnd}) {
+  @media screen and (max-width: ${BREAKPOINTS.lg}) {
     justify-content: space-between;
   }
 `;

@@ -1,4 +1,4 @@
-import { AppAction } from "@/state";
+import { AppAction } from "@/store";
 
 interface ISetSpeedAction extends AppAction {
   type: "setSpeed";

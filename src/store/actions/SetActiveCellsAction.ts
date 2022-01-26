@@ -1,4 +1,4 @@
-import { AppAction } from "@/state";
+import { AppAction } from "@/store";
 import { ICell } from "@/components/Cell";
 
 interface ISetActiveCellsAction extends AppAction {

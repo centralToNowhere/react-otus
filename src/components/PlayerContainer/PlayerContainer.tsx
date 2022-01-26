@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { FormElement } from "@/components/Form";
 import { css } from "@emotion/react";
-import { IPlayer } from "@/state/actions";
+import { IPlayer } from "@/store/actions";
 import { FormField } from "@/components/Form";
 import { FormButton } from "@/components/Buttons";
 import { l10n } from "@/l10n/ru";
@@ -30,14 +30,22 @@ export const PlayerContainer: FC<IPlayerContainerProps> = (props) => {
           display: inline-block;
 
           h1.player-name {
-            font-size: 1.2em;
+            font-size: 1.2rem;
             font-weight: bold;
             margin: 0;
             border-bottom: 2px solid ${COLORS.accent};
           }
 
-          div.player-stats {
+          div.player-stats-container {
             margin: 20px 0;
+
+            & > h2 {
+              font-size: 1.2rem;
+            }
+
+            & > ul {
+              padding-left: 0;
+            }
           }
 
           li {
@@ -46,7 +54,7 @@ export const PlayerContainer: FC<IPlayerContainerProps> = (props) => {
         `}
       >
         <h1 className="player-name">{props.player.name}</h1>
-        <div className="player-stats">
+        <div className="player-stats-container">
           <h2>{l10n.statistics}</h2>
           <ul>
             <li>{l10n.score} 0</li>

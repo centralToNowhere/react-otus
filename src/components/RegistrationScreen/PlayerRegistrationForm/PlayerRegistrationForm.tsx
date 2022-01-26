@@ -6,13 +6,17 @@ import React, {
   KeyboardEvent,
 } from "react";
 import { l10n } from "@/l10n/ru";
-import { IPlayer } from "@/state/actions";
+import { IPlayer } from "@/store/actions";
 import { FormField } from "@/components/Form/FormField";
 import { FormElement } from "@/components/Form";
 import { css } from "@emotion/react";
 import { InputField, LabelField } from "@/components/Fields";
 import { FormButton } from "@/components/Buttons";
-import { BREAKPOINTS } from "@/styles/ui-styled";
+import {BREAKPOINTS, COLORS} from "@/styles/ui-styled";
+import styled from "@emotion/styled";
+import { Spinner } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { selectLoginPending } from "@/auth";
 
 export interface IRegistrationFormProps {
   player: IPlayer;
@@ -21,6 +25,7 @@ export interface IRegistrationFormProps {
 
 export const PlayerRegistrationForm: FC<IRegistrationFormProps> = (props) => {
   const [playerName, setPlayerName] = useState(props.player.name);
+  const loginPending = useSelector(selectLoginPending);
 
   const onPlayerNameChange = useCallback(
     (e: SyntheticEvent<HTMLInputElement>) => {
@@ -31,6 +36,7 @@ export const PlayerRegistrationForm: FC<IRegistrationFormProps> = (props) => {
 
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
+      e.preventDefault();
       registerPlayer();
     }
   };
@@ -44,17 +50,19 @@ export const PlayerRegistrationForm: FC<IRegistrationFormProps> = (props) => {
       css={css`
         width: 70%;
         max-width: 600px;
-        display: inline-block;
+        flex-direction: row;
         margin: 20px 0;
 
         @media screen and (max-width: ${BREAKPOINTS.mobileEnd}) {
           width: 100%;
+          flex-direction: column-reverse;
         }
       `}
     >
       <FormField
         css={css`
           display: flex;
+          flex-grow: 10;
         `}
       >
         <div
@@ -88,6 +96,26 @@ export const PlayerRegistrationForm: FC<IRegistrationFormProps> = (props) => {
           {l10n.buttonStartGameAsPlayer}
         </FormButton>
       </FormField>
+      <SpinnerContainer>
+        <Spinner
+          animation="border"
+          role="status"
+          css={css`
+            color: ${COLORS.accent};
+            visibility: ${loginPending ? "visible" : "hidden"};
+          `}
+        />
+      </SpinnerContainer>
     </FormElement>
   );
 };
+
+const SpinnerContainer = styled.div`
+  flex-grow: 1;
+  text-align: right;
+  margin: 20px;
+
+  @media screen and (max-width: ${BREAKPOINTS.mobileEnd}) {
+    text-align: left;
+  }
+`

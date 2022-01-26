@@ -4,7 +4,7 @@ import {
   GameFieldContainer,
   GameFieldContainerProps,
 } from "@/components/GameFieldContainer/GameFieldContainer";
-import { AppReducer, initialState } from "@/state";
+import { AppReducer, initialState } from "@/store";
 
 export default {
   title: "Components/GameFieldContainer",

@@ -1,7 +1,7 @@
 {
-  "name": "lesson9-react-router",
+  "name": "lesson10-redux-middlewares-and-side-effects",
   "version": "1.0.0",
-  "description": "React router",
+  "description": "Redux middlewares and side effects",
   "main": "src/index.tsx",
   "scripts": {
     "build": "npm run build:prod",
@@ -33,7 +33,7 @@
   "bugs": {
     "url": "https://github.com/centralToNowhere/react-otus/issues"
   },
-  "homepage": "https://github.com/centralToNowhere/react-otus/tree/lesson9",
+  "homepage": "https://github.com/centralToNowhere/react-otus/tree/lesson10",
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/plugin-transform-runtime": "^7.16.4",
@@ -91,8 +91,12 @@
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
+    "@reduxjs/toolkit": "^1.7.1",
+    "bootstrap": "^5.1.3",
     "react": "^17.0.2",
+    "react-bootstrap": "^2.1.1",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1"
   },
   "browserslist": [

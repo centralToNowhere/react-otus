@@ -1,4 +1,4 @@
-import { AppAction } from "@/state";
+import { AppAction } from "@/store";
 
 interface ISetCellSizeAction extends AppAction {
   type: "setCellSize";

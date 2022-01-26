@@ -1,4 +1,4 @@
-import { AppAction } from "@/state";
+import { AppAction } from "@/store";
 
 interface ISetCapacityAction extends AppAction {
   type: "setCapacity";

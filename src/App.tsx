@@ -1,32 +1,25 @@
-import React, { FC, useReducer } from "react";
+import { store } from "@/store/redux/store";
+import React, { FC } from "react";
 import ErrorBoundary from "@/components/error/Error";
-import { AppReducer, initialState } from "@/state";
 import styled from "@emotion/styled";
 import { COLORS } from "@/styles/ui-styled";
 import "./styles/reset.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { AppRouter } from "@/routes/AppRouter";
 import { BrowserRouter } from "react-router-dom";
 import { basename } from "@/routes";
+import { Provider } from "react-redux";
 
 export const App: FC = () => {
-  const [state, dispatch] = useReducer(AppReducer, initialState);
-
   return (
     <ErrorBoundary>
-      <AppBox data-testid={"react-lifecycle"}>
-        <BrowserRouter basename={basename}>
-          <AppRouter
-            cellSize={state.cellSize}
-            maxFieldWidth={state.maxFieldWidth}
-            maxFieldHeight={state.maxFieldHeight}
-            capacity={state.capacity}
-            speed={state.speed}
-            activeCells={state.activeCells}
-            player={state.player}
-            dispatch={dispatch}
-          />
-        </BrowserRouter>
-      </AppBox>
+      <Provider store={store}>
+        <AppBox data-testid={"react-lifecycle"}>
+          <BrowserRouter basename={basename}>
+            <AppRouter/>
+          </BrowserRouter>
+        </AppBox>
+      </Provider>
     </ErrorBoundary>
   );
 };
@@ -34,4 +27,9 @@ export const App: FC = () => {
 const AppBox = styled.div`
   min-height: 100vh;
   background: ${COLORS.secondary};
+
+  div > button:focus {
+    outline: 2px solid ${COLORS.accent};
+    border: 2px solid transparent;
+  }
 `;

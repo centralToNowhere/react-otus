@@ -1,51 +1,29 @@
 import React, { FC } from "react";
 import { Routes, Route } from "react-router-dom";
 import {
-  GameFieldContainer,
-  GameFieldContainerDefaultProps,
+  GameFieldContainer
 } from "@/components/GameFieldContainer";
 import {
-  IRegistrationScreenProps,
   RegistrationScreen,
 } from "@/components/RegistrationScreen/RegistrationScreen";
-import { usePlayerRegistration, withAuthProtection } from "@/auth/Auth";
+import { withAuthProtection } from "@/auth/Auth";
 import { routeNames } from "@/routes/routeNames";
-
-export type AppRouterProps = GameFieldContainerDefaultProps &
-  IRegistrationScreenProps;
 
 const AuthGameFieldContainer = withAuthProtection(GameFieldContainer);
 
-export const AppRouter: FC<Omit<AppRouterProps, "navigate">> = (props) => {
-  const onPlayerRegistration = usePlayerRegistration(
-    props.player,
-    props.dispatch
-  );
-
+export const AppRouter: FC = (props) => {
   return (
     <Routes>
       <Route
         path={routeNames.game}
         element={
-          <AuthGameFieldContainer
-            cellSize={props.cellSize}
-            maxFieldWidth={props.maxFieldWidth}
-            maxFieldHeight={props.maxFieldHeight}
-            capacity={props.capacity}
-            speed={props.speed}
-            activeCells={props.activeCells}
-            player={props.player}
-            dispatch={props.dispatch}
-          />
+          <AuthGameFieldContainer/>
         }
       />
       <Route
         path={routeNames.registration}
         element={
-          <RegistrationScreen
-            player={props.player}
-            onPlayerRegistration={onPlayerRegistration}
-          />
+          <RegistrationScreen/>
         }
       />
     </Routes>

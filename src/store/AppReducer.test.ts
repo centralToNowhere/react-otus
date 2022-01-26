@@ -1,4 +1,4 @@
-import { AppReducer, IAppState, initialState } from "@/state/AppReducer";
+import { AppReducer, IAppState, initialState } from "@/store/AppReducer";
 import {
   ResetGameStateAction,
   SetActiveCellsAction,
@@ -9,7 +9,7 @@ import {
   SetSpeedAction,
   SetPlayerAction,
   ResetStateAction,
-} from "@/state/actions";
+} from "@/store/actions";
 import { ICell } from "@/components/Cell";
 
 describe("AppReducer tests", () => {

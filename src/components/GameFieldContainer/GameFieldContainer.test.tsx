@@ -10,16 +10,17 @@ import {
 } from "@/components/GameFieldContainer/GameFieldContainer";
 import { COLORS } from "@/styles/ui-styled";
 import { l10n } from "@/l10n/ru";
-import { AppReducer, IAppState, initialState } from "@/state";
+import { AppReducer, IAppState, initialState } from "@/store";
 import {
   // @ts-ignore
   __RewireAPI__ as AppReducerRewire,
-  defaultPlayer,
-} from "@/state/AppReducer";
+
+} from "@/store/AppReducer";
 import {
   // @ts-ignore
   __RewireAPI__ as CellGeneratorRewire,
 } from "@/utils/CellGenerator";
+import {defaultPlayer} from "@/player/Player";
 
 /**
  * Зачем я использую babel-plugin-rewire-ts?
