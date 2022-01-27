@@ -1,8 +1,7 @@
 import "@/styles/reset.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { css } from "@emotion/react";
-import { COLORS } from "../src/styles/ui-styled";
-import { AppBox} from "../src/App";
+import { AppBox } from "../src/App";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -14,3 +13,15 @@ export const parameters = {
   },
   layout: "fullscreen"
 }
+
+export const decorators = [
+  (Story) => (
+    <AppBox css={css`
+      background: inherit;
+      min-height: auto;
+      height: 0
+    `}>
+      <Story />
+    </AppBox>
+  ),
+];
