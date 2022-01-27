@@ -65,7 +65,7 @@ export const PlayerRegistrationForm: FC<IRegistrationFormProps> = (props) => {
       >
         <div
           css={css`
-            margin-bottom: 50px;
+            margin-bottom: 20px;
           `}
         >
           <LabelField htmlFor="register-player-input">
@@ -101,6 +101,11 @@ export const PlayerRegistrationForm: FC<IRegistrationFormProps> = (props) => {
           css={css`
             color: ${COLORS.accent};
             visibility: ${props.loginPending ? "visible" : "hidden"};
+            margin: 20px 20px 0 20px;
+
+            @media screen and (max-width: ${BREAKPOINTS.mobileEnd}) {
+              display: ${props.loginPending ? "inline-block" : "none"};
+            }
           `}
         />
       </SpinnerContainer>
@@ -111,7 +116,6 @@ export const PlayerRegistrationForm: FC<IRegistrationFormProps> = (props) => {
 const SpinnerContainer = styled.div`
   flex-grow: 1;
   text-align: right;
-  margin: 20px;
 
   @media screen and (max-width: ${BREAKPOINTS.mobileEnd}) {
     text-align: left;

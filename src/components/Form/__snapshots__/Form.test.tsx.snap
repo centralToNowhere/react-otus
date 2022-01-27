@@ -3,7 +3,7 @@
 exports[`form tests should render form 1`] = `
 <DocumentFragment>
   <form
-    class="css-abmnln-FormElement e1dt6zfi0"
+    class="css-1ei50t3-FormElement e1dt6zfi0"
     data-testid="field-form"
   >
     <input

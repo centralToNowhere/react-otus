@@ -37,9 +37,8 @@ export class Cell extends React.PureComponent<ICellProps> {
         size={this.props.size}
         isActive={this.props.isActive}
         data-testid="cell"
-      >
-        {this.props.number}
-      </StyledCell>
+        aria-label={String(this.props.number)}
+      />
     );
   }
 }
@@ -48,8 +47,6 @@ const StyledCell = styled.div<StyledCellProps>`
   width: ${(props) => props.size}px;
   height: ${(props) => props.size}px;
   background: ${(props) => (props.isActive ? COLORS.activeCellBg : "")};
-  color: ${(props) =>
-    props.isActive ? COLORS.activeCellColor : COLORS.activeCellBg};
   outline: 1px solid white;
   transition: 0.5s ease background;
   text-align: center;

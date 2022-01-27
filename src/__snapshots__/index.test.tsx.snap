@@ -3,7 +3,7 @@
 exports[`index tests should render App 1`] = `
 <DocumentFragment>
   <div
-    class="css-13pllhn-AppBox e1ksfjh10"
+    class="css-1haitlc-AppBox e1ksfjh10"
     data-testid="react-lifecycle"
   >
     <div
@@ -30,13 +30,13 @@ exports[`index tests should render App 1`] = `
           </span>
         </h1>
         <form
-          class="css-hq2x8b-FormElement-PlayerRegistrationForm e1dt6zfi0"
+          class="css-ldog09-FormElement-PlayerRegistrationForm e1dt6zfi0"
         >
           <div
             class="css-kmw9t5-FormField-PlayerRegistrationForm eybdsu10"
           >
             <div
-              class="css-1hui9kv-PlayerRegistrationForm"
+              class="css-gj9mjj-PlayerRegistrationForm"
             >
               <label
                 class="css-m0dhjx-LabelField e1gymppe0"
@@ -60,10 +60,10 @@ exports[`index tests should render App 1`] = `
             </button>
           </div>
           <div
-            class="css-1ftth7w-SpinnerContainer eok4aqp0"
+            class="css-1a4u2lo-SpinnerContainer eok4aqp0"
           >
             <div
-              class="css-tka0ll-PlayerRegistrationForm spinner-border"
+              class="css-rsmjug-PlayerRegistrationForm spinner-border"
               role="status"
             />
           </div>

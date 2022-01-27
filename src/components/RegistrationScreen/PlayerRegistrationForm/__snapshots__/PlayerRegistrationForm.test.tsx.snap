@@ -3,13 +3,13 @@
 exports[`PlayerRegistrationForm tests should render player registration form 1`] = `
 <DocumentFragment>
   <form
-    class="css-hq2x8b-FormElement-PlayerRegistrationForm e1dt6zfi0"
+    class="css-ldog09-FormElement-PlayerRegistrationForm e1dt6zfi0"
   >
     <div
       class="css-kmw9t5-FormField-PlayerRegistrationForm eybdsu10"
     >
       <div
-        class="css-1hui9kv-PlayerRegistrationForm"
+        class="css-gj9mjj-PlayerRegistrationForm"
       >
         <label
           class="css-m0dhjx-LabelField e1gymppe0"
@@ -33,10 +33,10 @@ exports[`PlayerRegistrationForm tests should render player registration form 1`]
       </button>
     </div>
     <div
-      class="css-1ftth7w-SpinnerContainer eok4aqp0"
+      class="css-1a4u2lo-SpinnerContainer eok4aqp0"
     >
       <div
-        class="css-tka0ll-PlayerRegistrationForm spinner-border"
+        class="css-rsmjug-PlayerRegistrationForm spinner-border"
         role="status"
       />
     </div>

@@ -130,7 +130,7 @@ describe("GameFieldContainer tests", () => {
       },
     });
 
-    const cells = screen.getAllByText(/[0-9]*/, {
+    const cells = screen.getAllByLabelText(/[0-9]*/, {
       selector: "[data-testid=cell]",
     });
     expect(cells).toHaveLength(100);
@@ -155,7 +155,7 @@ describe("GameFieldContainer tests", () => {
       },
     });
 
-    const activeCells = screen.getAllByText(
+    const activeCells = screen.getAllByLabelText(
       /^(1|12|23|34|45|56|67|78|89|100)$/,
       {
         selector: "[data-testid=cell]",
@@ -228,7 +228,7 @@ describe("GameFieldContainer tests", () => {
           return waitFor(() => {
             expect(getRandomCellsMocked).toHaveBeenCalled();
           }).then(async (): Promise<void> => {
-            const activeCells = screen.getAllByText(cellsToFindRegExp, {
+            const activeCells = screen.getAllByLabelText(cellsToFindRegExp, {
               selector: "[data-testid=cell]",
             });
 

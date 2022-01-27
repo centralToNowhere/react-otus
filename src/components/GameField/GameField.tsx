@@ -78,8 +78,6 @@ interface IFieldStyledContainerProps {
 
 const FieldContainer = styled.div<IFieldStyledContainerProps>`
   width: ${(props) => props.cellsInRow * props.cellSize}px;
-  border-bottom: 1px solid black;
-  outline: 1px solid black;
   cursor: pointer;
   height: ${(props) => props.cellsInCol * props.cellSize}px;
   display: flex;
