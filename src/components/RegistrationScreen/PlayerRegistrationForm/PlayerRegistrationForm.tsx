@@ -6,26 +6,24 @@ import React, {
   KeyboardEvent,
 } from "react";
 import { l10n } from "@/l10n/ru";
-import { IPlayer } from "@/store/actions";
 import { FormField } from "@/components/Form/FormField";
 import { FormElement } from "@/components/Form";
 import { css } from "@emotion/react";
 import { InputField, LabelField } from "@/components/Fields";
 import { FormButton } from "@/components/Buttons";
-import {BREAKPOINTS, COLORS} from "@/styles/ui-styled";
+import { BREAKPOINTS, COLORS } from "@/styles/ui-styled";
 import styled from "@emotion/styled";
 import { Spinner } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import { selectLoginPending } from "@/auth";
+import { IPlayer } from "@/player/Player";
 
 export interface IRegistrationFormProps {
   player: IPlayer;
+  loginPending: boolean;
   onPlayerRegistration: (playerName: string | null) => void;
 }
 
 export const PlayerRegistrationForm: FC<IRegistrationFormProps> = (props) => {
   const [playerName, setPlayerName] = useState(props.player.name);
-  const loginPending = useSelector(selectLoginPending);
 
   const onPlayerNameChange = useCallback(
     (e: SyntheticEvent<HTMLInputElement>) => {
@@ -102,7 +100,7 @@ export const PlayerRegistrationForm: FC<IRegistrationFormProps> = (props) => {
           role="status"
           css={css`
             color: ${COLORS.accent};
-            visibility: ${loginPending ? "visible" : "hidden"};
+            visibility: ${props.loginPending ? "visible" : "hidden"};
           `}
         />
       </SpinnerContainer>
@@ -118,4 +116,4 @@ const SpinnerContainer = styled.div`
   @media screen and (max-width: ${BREAKPOINTS.mobileEnd}) {
     text-align: left;
   }
-`
+`;

@@ -1,7 +1,7 @@
-import React, { ReactElement } from 'react'
-import { render as rtlRender } from '@testing-library/react'
-import { configureStore } from '@reduxjs/toolkit'
-import { Provider } from 'react-redux'
+import React, { ReactElement } from "react";
+import { render as rtlRender } from "@testing-library/react";
+import { configureStore } from "@reduxjs/toolkit";
+import { Provider } from "react-redux";
 // Import your own reducer
 import { authSlice } from "@/auth/AuthRdx";
 import { fieldControlSlice } from "@/components/Fields/FieldControlRdx";
@@ -14,29 +14,29 @@ function render(
     preloadedState = initialStateAll,
     ...renderOptions
   }: {
-    preloadedState: Partial<typeof initialStateAll>
+    preloadedState: Partial<typeof initialStateAll>;
   }
 ) {
   const store = configureStore({
     reducer: {
       auth: authSlice.reducer,
       gameField: gameFieldSlice.reducer,
-      fieldControl: fieldControlSlice.reducer
+      fieldControl: fieldControlSlice.reducer,
     },
     preloadedState: {
       ...initialStateAll,
-      ...preloadedState
-    }
+      ...preloadedState,
+    },
   });
 
   function Wrapper({ children }: { children: React.ReactNode }) {
-    return <Provider store={store}>{children}</Provider>
+    return <Provider store={store}>{children}</Provider>;
   }
 
-  return rtlRender(ui, { wrapper: Wrapper, ...renderOptions })
+  return rtlRender(ui, { wrapper: Wrapper, ...renderOptions });
 }
 
 // re-export everything
-export * from '@testing-library/react'
+export * from "@testing-library/react";
 // override render method
-export { render }
+export { render };

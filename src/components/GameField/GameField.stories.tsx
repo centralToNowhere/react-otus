@@ -9,7 +9,7 @@ export default {
     cellSize: 40,
     cellsInRow: 35,
     cellsInCol: 7,
-    activeCells: []
+    activeCells: [],
   },
 } as Meta;
 
@@ -21,7 +21,7 @@ FieldSmall.args = {
   cellSize: 20,
   cellsInRow: 20,
   cellsInCol: 5,
-  activeCells: []
+  activeCells: [],
 };
 
 export const FieldMedium = Template.bind({});
@@ -30,7 +30,7 @@ FieldMedium.args = {
   cellSize: 35,
   cellsInRow: 30,
   cellsInCol: 10,
-  activeCells: []
+  activeCells: [],
 };
 
 export const FieldBig = Template.bind({});
@@ -39,5 +39,5 @@ FieldBig.args = {
   cellSize: 40,
   cellsInRow: 42,
   cellsInCol: 10,
-  activeCells: []
+  activeCells: [],
 };

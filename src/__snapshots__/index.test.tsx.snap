@@ -52,7 +52,7 @@ exports[`index tests should render App 1`] = `
               />
             </div>
             <button
-              class="css-1vcab0e-FormButton-PlayerRegistrationForm e2n0d7s0"
+              class="css-ssn7vi-FormButton-PlayerRegistrationForm e2n0d7s0"
               name="startGameAsPlayer"
               type="button"
             >

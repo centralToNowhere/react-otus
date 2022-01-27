@@ -8,7 +8,8 @@ export {
   setMaxFieldHeight,
   setCapacity,
   setSpeed,
-  resetFieldControls
+  resetFieldControls,
+  defaultFieldControlState,
 } from "./FieldControlRdx";
 export type { IFieldControlState } from "./FieldControlRdx";
 export { useOnChangeHandler, onBlurHandler } from "./FieldHandlers";

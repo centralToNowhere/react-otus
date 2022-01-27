@@ -7,4 +7,3 @@ export {
 export { useDebounce } from "./Debounce";
 export { fieldWidth, fieldHeight } from "./FieldSize";
 export type { Debounced } from "./Debounce";
-export type { DeepPartial } from "./ts-types";

@@ -128,7 +128,7 @@ exports[`form tests should render form 1`] = `
           class="css-sabgvl-FormButtonContainer equvaju0"
         >
           <button
-            class="css-elonfh-FormButton e2n0d7s0"
+            class="css-bb7ehr-FormButton e2n0d7s0"
             name="startButton"
             type="button"
           >
@@ -143,7 +143,7 @@ exports[`form tests should render form 1`] = `
           class="css-sabgvl-FormButtonContainer equvaju0"
         >
           <button
-            class="css-elonfh-FormButton e2n0d7s0"
+            class="css-bb7ehr-FormButton e2n0d7s0"
             name="stopButton"
             type="button"
           >
@@ -158,7 +158,7 @@ exports[`form tests should render form 1`] = `
           class="css-sabgvl-FormButtonContainer equvaju0"
         >
           <button
-            class="css-elonfh-FormButton e2n0d7s0"
+            class="css-bb7ehr-FormButton e2n0d7s0"
             name="resetButton"
             type="reset"
           >

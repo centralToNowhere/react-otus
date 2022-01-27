@@ -1,29 +1,33 @@
-import { createAsyncThunk, createSelector, createSlice } from "@reduxjs/toolkit";
+import {
+  createAsyncThunk,
+  createSelector,
+  createSlice,
+} from "@reduxjs/toolkit";
 import { defaultPlayer, IPlayer } from "@/player/Player";
 import { RootState } from "@/store/redux/store";
 import { getPlayerDataFromStorage } from "@/storage/Storage";
 
 export interface IAuthState {
-  player: IPlayer,
-  loginPending: boolean
+  player: IPlayer;
+  loginPending: boolean;
 }
 
 const playerDataFromStorage = getPlayerDataFromStorage();
 
 const initialState: IAuthState = {
   player: playerDataFromStorage?.player || defaultPlayer,
-  loginPending: false
+  loginPending: false,
 };
 
 export const login = createAsyncThunk<IPlayer, string>(
   "auth/login",
-  (playerName, thunkAPI) => {
-    return new Promise<IPlayer>((resolve, reject) => {
+  (playerName) => {
+    return new Promise<IPlayer>((resolve) => {
       setTimeout(() => {
         if (playerName) {
           resolve({
             registered: true,
-            name: playerName
+            name: playerName,
           });
         }
       }, 500);
@@ -34,16 +38,16 @@ export const login = createAsyncThunk<IPlayer, string>(
 export const authSlice = createSlice({
   name: "auth",
   initialState: {
-    ...initialState
+    ...initialState,
   },
   reducers: {
     logout: (state) => {
       state.player.registered = false;
       state.player.name = "";
-    }
+    },
   },
   extraReducers: (builder) => {
-    builder.addCase(login.pending, (state, action) => {
+    builder.addCase(login.pending, (state) => {
       state.player.registered = false;
       state.loginPending = true;
       state.player.name = "";
@@ -53,17 +57,17 @@ export const authSlice = createSlice({
       state.loginPending = false;
       state.player.name = action.payload.name;
     });
-    builder.addCase(login.rejected, (state, action) => {
+    builder.addCase(login.rejected, (state) => {
       state.player.registered = false;
       state.loginPending = false;
       state.player.name = "";
     });
-  }
+  },
 });
 
 const selectAuth = (state: RootState) => {
   return state.auth;
-}
+};
 
 export const selectPlayer = createSelector(
   selectAuth,

@@ -5,9 +5,12 @@ import styled from "@emotion/styled";
 import { BREAKPOINTS, COLORS } from "@/styles/ui-styled";
 import { css } from "@emotion/react";
 import { usePlayerRegistration } from "@/auth/Auth";
+import { useSelector } from "react-redux";
+import { selectLoginPending } from "@/auth";
 
-export const RegistrationScreen: FC = (props) => {
+export const RegistrationScreen: FC = () => {
   const [player, onPlayerRegistration] = usePlayerRegistration();
+  const loginPending = useSelector(selectLoginPending);
   const onPlayerRegName = (playerName: string | null) => {
     onPlayerRegistration(playerName);
   };
@@ -31,6 +34,7 @@ export const RegistrationScreen: FC = (props) => {
         <PlayerRegistrationForm
           onPlayerRegistration={onPlayerRegName}
           player={player}
+          loginPending={loginPending}
         />
       </RegistrationContainer>
     </Container>

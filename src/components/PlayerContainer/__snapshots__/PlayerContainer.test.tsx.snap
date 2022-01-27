@@ -29,7 +29,7 @@ exports[`PlayerContainer tests should render PlayerContainer 1`] = `
         </ul>
       </div>
       <button
-        class="css-12xaduv-FormButton-PlayerContainer e2n0d7s0"
+        class="css-rsh0un-FormButton-PlayerContainer e2n0d7s0"
         type="button"
       >
         Выйти

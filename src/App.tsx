@@ -16,7 +16,7 @@ export const App: FC = () => {
       <Provider store={store}>
         <AppBox data-testid={"react-lifecycle"}>
           <BrowserRouter basename={basename}>
-            <AppRouter/>
+            <AppRouter />
           </BrowserRouter>
         </AppBox>
       </Provider>
@@ -24,7 +24,7 @@ export const App: FC = () => {
   );
 };
 
-const AppBox = styled.div`
+export const AppBox = styled.div`
   min-height: 100vh;
   background: ${COLORS.secondary};
 

@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { COLORS } from "@/styles/ui-styled";
 import { Cell, ICell, isCell } from "@/components/Cell";
 import { connect } from "react-redux";
-import {RootState} from "@/store/redux/store";
+import { RootState } from "@/store/redux/store";
 import { getCellsInCol, getCellsInRow } from "@/utils/CellGenerator";
 
 export interface IGameFieldProps {
@@ -65,7 +65,7 @@ const mapStateToProps = (state: RootState): IGameFieldProps => ({
   cellsInCol: getCellsInCol(
     state.fieldControl.maxFieldHeight,
     state.fieldControl.cellSize
-  )
+  ),
 });
 
 export const GameField = connect(mapStateToProps)(Main);

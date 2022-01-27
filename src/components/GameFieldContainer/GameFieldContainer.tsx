@@ -13,19 +13,20 @@ import { BREAKPOINTS } from "@/styles/ui-styled";
 import { connect, ConnectedProps } from "react-redux";
 import { AnyAction } from "redux";
 import { RootState } from "@/store/redux/store";
-import { setActiveCells, resetCells } from "@/components/GameField/GameFieldRdx";
+import {
+  setActiveCells,
+  resetCells,
+} from "@/components/GameField/GameFieldRdx";
 import {
   setCellSize,
   setMaxFieldWidth,
   setMaxFieldHeight,
   setCapacity,
   setSpeed,
-  resetFieldControls
+  resetFieldControls,
 } from "@/components/Fields/FieldControlRdx";
-import {
-  logout
-} from "@/auth/AuthRdx";
-import { ThunkDispatch } from 'redux-thunk';
+import { logout } from "@/auth/AuthRdx";
+import { ThunkDispatch } from "redux-thunk";
 
 export const createFormKey = (): number => {
   return Math.round(Math.random() * 10000);
@@ -43,11 +44,13 @@ const mapStateToProps = (state: RootState) => {
     capacity: state.fieldControl.capacity,
     speed: state.fieldControl.speed,
     activeCells: state.gameField.activeCells,
-    player: state.auth.player
-  }
-}
+    player: state.auth.player,
+  };
+};
 
-const mapDispatchToProps = (dispatch: ThunkDispatch<RootState, void, AnyAction>) => {
+const mapDispatchToProps = (
+  dispatch: ThunkDispatch<RootState, void, AnyAction>
+) => {
   return {
     setActiveCells: (cells: ICell[]) => {
       dispatch(setActiveCells(cells));
@@ -56,7 +59,7 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<RootState, void, AnyAction>)
       dispatch(resetCells());
     },
     setCellSize: (cellSize: string) => {
-      dispatch(setCellSize(Number(cellSize)))
+      dispatch(setCellSize(Number(cellSize)));
     },
     setMaxFieldHeight: (fieldHeight: string) => {
       dispatch(setMaxFieldHeight(Number(fieldHeight)));
@@ -75,9 +78,9 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<RootState, void, AnyAction>)
     },
     logout: () => {
       dispatch(logout());
-    }
-  }
-}
+    },
+  };
+};
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 export type GameFieldContainerProps = ConnectedProps<typeof connector>;
@@ -149,7 +152,7 @@ export class Main extends React.Component<GameFieldContainerProps> {
   render() {
     return (
       <Container>
-        <GameField/>
+        <GameField />
         <ControlContainer>
           <PlayerContainer
             player={this.props.player}

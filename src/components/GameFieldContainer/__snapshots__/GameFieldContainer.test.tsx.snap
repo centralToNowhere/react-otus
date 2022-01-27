@@ -3,2393 +3,1602 @@
 exports[`GameFieldContainer tests should correctly render field and form 1`] = `
 <DocumentFragment>
   <div
-    class="css-ytrjsr-Container e11g8d9p1"
+    class="css-ytrjsr-Container epyl7541"
   >
     <div
-      class="css-5vm0kp-FieldContainer e150joea0"
+      class="css-sp8hyv-FieldContainer e1q7q8vb0"
       data-testid="field"
     >
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         1
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         2
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         3
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         4
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         5
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         6
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         7
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         8
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         9
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         10
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         11
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         12
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         13
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         14
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         15
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         16
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         17
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         18
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         19
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         20
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         21
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         22
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         23
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         24
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         25
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         26
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         27
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         28
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         29
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         30
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         31
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         32
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         33
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         34
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         35
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         36
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         37
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         38
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         39
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         40
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         41
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         42
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         43
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         44
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         45
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         46
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         47
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         48
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         49
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         50
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         51
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         52
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         53
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         54
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         55
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         56
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         57
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         58
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         59
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         60
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         61
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         62
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         63
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         64
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         65
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         66
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         67
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         68
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         69
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         70
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         71
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         72
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         73
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         74
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         75
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         76
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         77
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         78
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         79
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         80
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         81
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         82
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         83
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         84
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         85
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         86
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         87
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         88
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         89
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         90
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         91
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         92
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         93
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         94
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         95
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         96
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         97
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         98
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         99
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         100
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         101
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         102
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         103
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         104
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         105
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         106
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         107
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         108
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         109
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         110
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         111
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         112
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         113
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         114
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         115
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         116
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         117
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         118
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         119
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         120
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         121
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         122
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         123
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         124
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         125
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         126
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         127
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         128
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         129
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         130
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         131
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         132
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         133
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         134
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         135
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         136
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         137
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         138
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         139
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         140
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         141
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         142
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         143
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         144
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         145
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         146
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         147
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         148
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         149
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         150
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         151
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         152
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         153
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         154
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         155
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         156
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         157
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         158
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         159
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         160
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         161
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         162
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         163
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         164
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         165
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         166
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         167
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         168
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         169
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         170
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         171
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         172
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         173
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         174
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         175
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         176
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         177
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         178
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         179
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         180
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         181
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         182
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         183
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         184
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         185
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         186
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         187
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         188
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         189
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         190
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         191
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         192
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         193
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         194
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         195
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         196
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         197
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         198
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         199
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         200
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         201
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         202
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         203
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         204
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         205
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         206
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         207
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         208
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         209
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         210
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         211
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         212
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         213
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         214
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         215
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         216
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         217
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         218
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         219
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         220
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         221
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         222
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         223
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-ep0khm-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         224
       </div>
       <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
+        class="css-1m5fepf-StyledCell e17ysyql0"
         data-testid="cell"
-        size="30"
+        size="40"
       >
         225
       </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        226
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        227
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        228
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        229
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        230
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        231
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        232
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        233
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        234
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        235
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        236
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        237
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        238
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        239
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        240
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        241
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        242
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        243
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        244
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        245
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        246
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        247
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        248
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        249
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        250
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        251
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        252
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        253
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        254
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        255
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        256
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        257
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        258
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        259
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        260
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        261
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        262
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        263
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        264
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        265
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        266
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        267
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        268
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        269
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        270
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        271
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        272
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        273
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        274
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        275
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        276
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        277
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        278
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        279
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        280
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        281
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        282
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        283
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        284
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        285
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        286
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        287
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        288
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        289
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        290
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        291
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        292
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        293
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        294
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        295
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        296
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        297
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        298
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        299
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        300
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        301
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        302
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        303
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        304
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        305
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        306
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        307
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        308
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        309
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        310
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        311
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        312
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        313
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        314
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        315
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        316
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        317
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        318
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        319
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        320
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        321
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        322
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        323
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        324
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        325
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        326
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        327
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        328
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        329
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        330
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        331
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        332
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        333
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        334
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        335
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        336
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        337
-      </div>
-      <div
-        class="css-nu8m6z-StyledCell e7gfaot0"
-        data-testid="cell"
-        size="30"
-      >
-        338
-      </div>
     </div>
     <div
-      class="css-lw3txz-ControlContainer e11g8d9p0"
+      class="css-lw3txz-ControlContainer epyl7540"
     >
       <form
-        class="css-ixoyv7-FormElement-PlayerContainer e13yua9l0"
+        class="css-ixoyv7-FormElement-PlayerContainer e1dt6zfi0"
       >
         <div
-          class="css-1hn82fw-FormField-PlayerContainer e1jhpckf0"
+          class="css-1mkqqr3-FormField-PlayerContainer eybdsu10"
         >
           <h1
             class="player-name"
           />
           <div
-            class="player-stats"
+            class="player-stats-container"
           >
             <h2>
               Статистика
@@ -2404,7 +1613,7 @@ exports[`GameFieldContainer tests should correctly render field and form 1`] = `
             </ul>
           </div>
           <button
-            class="css-12xaduv-FormButton-PlayerContainer eqsv5tc0"
+            class="css-rsh0un-FormButton-PlayerContainer e2n0d7s0"
             type="button"
           >
             Выйти
@@ -2412,7 +1621,7 @@ exports[`GameFieldContainer tests should correctly render field and form 1`] = `
         </div>
       </form>
       <form
-        class="css-abmnln-FormElement e13yua9l0"
+        class="css-abmnln-FormElement e1dt6zfi0"
         data-testid="field-form"
       >
         <input
@@ -2420,73 +1629,73 @@ exports[`GameFieldContainer tests should correctly render field and form 1`] = `
           hidden=""
         />
         <div
-          class="css-1vttlkg-FormGroup eitwqru0"
+          class="css-1vttlkg-FormGroup e1ftf0n80"
         >
           <div
-            class="css-w6s8l8-FormField e1jhpckf0"
+            class="css-w6s8l8-FormField eybdsu10"
           >
             <label
-              class="css-m0dhjx-LabelField e16iqet90"
+              class="css-m0dhjx-LabelField e1gymppe0"
               for="field-width"
             >
               Макс. ширина:
             </label>
             <input
               autocomplete="off"
-              class="css-iol0j7-InputField el9r7ir0"
+              class="css-iol0j7-InputField e15roiqv0"
               id="field-width"
               name="fieldWidth"
               pattern="([0-9]*[.])?[0-9]+"
               step="1"
               type="number"
-              value="800"
+              value="1024"
             />
           </div>
           <div
-            class="css-w6s8l8-FormField e1jhpckf0"
+            class="css-w6s8l8-FormField eybdsu10"
           >
             <label
-              class="css-m0dhjx-LabelField e16iqet90"
+              class="css-m0dhjx-LabelField e1gymppe0"
               for="field-height"
             >
               Макс. высота:
             </label>
             <input
               autocomplete="off"
-              class="css-iol0j7-InputField el9r7ir0"
+              class="css-iol0j7-InputField e15roiqv0"
               id="field-height"
               name="fieldHeight"
               pattern="([0-9]*[.])?[0-9]+"
               step="1"
               type="number"
-              value="400"
+              value="384"
             />
           </div>
           <div
-            class="css-w6s8l8-FormField e1jhpckf0"
+            class="css-w6s8l8-FormField eybdsu10"
           >
             <label
-              class="css-m0dhjx-LabelField e16iqet90"
+              class="css-m0dhjx-LabelField e1gymppe0"
               for="cell-size"
             >
               Размер ячейки:
             </label>
             <input
               autocomplete="off"
-              class="css-iol0j7-InputField el9r7ir0"
+              class="css-iol0j7-InputField e15roiqv0"
               id="cell-size"
               name="cellSize"
               pattern="[0-9]*"
               step="1"
               type="number"
-              value="30"
+              value="40"
             />
           </div>
           <div
-            class="css-w6s8l8-FormField e1jhpckf0"
+            class="css-w6s8l8-FormField eybdsu10"
           >
             <label
-              class="css-m0dhjx-LabelField e16iqet90"
+              class="css-m0dhjx-LabelField e1gymppe0"
               for="capacity-percentage"
             >
               Процент заполненности:
@@ -2496,7 +1705,7 @@ exports[`GameFieldContainer tests should correctly render field and form 1`] = `
             </p>
             <input
               autocomplete="off"
-              class="css-1qphvf3-InputField-InputFieldCapacity e1ec6q4r0"
+              class="css-1qphvf3-InputField-InputFieldCapacity e1sflu9m0"
               id="capacity-percentage"
               max="100"
               min="0"
@@ -2507,37 +1716,37 @@ exports[`GameFieldContainer tests should correctly render field and form 1`] = `
             />
           </div>
           <div
-            class="css-w6s8l8-FormField e1jhpckf0"
+            class="css-w6s8l8-FormField eybdsu10"
           >
             <label
-              class="css-m0dhjx-LabelField e16iqet90"
+              class="css-m0dhjx-LabelField e1gymppe0"
               for="speed-change"
             >
               Обновлений в секунду:
             </label>
             <input
               autocomplete="off"
-              class="css-iol0j7-InputField el9r7ir0"
+              class="css-iol0j7-InputField e15roiqv0"
               id="speed-change"
               name="speedChange"
               pattern="([0-9]*[.])?[0-9]+"
               step="0.1"
               type="number"
-              value="1"
+              value="2"
             />
           </div>
         </div>
         <div
-          class="css-1vttlkg-FormGroup eitwqru0"
+          class="css-1vttlkg-FormGroup e1ftf0n80"
         >
           <div
-            class="css-w6s8l8-FormField e1jhpckf0"
+            class="css-w6s8l8-FormField eybdsu10"
           >
             <div
-              class="css-sabgvl-FormButtonContainer en0zom90"
+              class="css-sabgvl-FormButtonContainer equvaju0"
             >
               <button
-                class="css-elonfh-FormButton eqsv5tc0"
+                class="css-bb7ehr-FormButton e2n0d7s0"
                 name="startButton"
                 type="button"
               >
@@ -2546,13 +1755,13 @@ exports[`GameFieldContainer tests should correctly render field and form 1`] = `
             </div>
           </div>
           <div
-            class="css-w6s8l8-FormField e1jhpckf0"
+            class="css-w6s8l8-FormField eybdsu10"
           >
             <div
-              class="css-sabgvl-FormButtonContainer en0zom90"
+              class="css-sabgvl-FormButtonContainer equvaju0"
             >
               <button
-                class="css-elonfh-FormButton eqsv5tc0"
+                class="css-bb7ehr-FormButton e2n0d7s0"
                 name="stopButton"
                 type="button"
               >
@@ -2561,13 +1770,13 @@ exports[`GameFieldContainer tests should correctly render field and form 1`] = `
             </div>
           </div>
           <div
-            class="css-w6s8l8-FormField e1jhpckf0"
+            class="css-w6s8l8-FormField eybdsu10"
           >
             <div
-              class="css-sabgvl-FormButtonContainer en0zom90"
+              class="css-sabgvl-FormButtonContainer equvaju0"
             >
               <button
-                class="css-elonfh-FormButton eqsv5tc0"
+                class="css-bb7ehr-FormButton e2n0d7s0"
                 name="resetButton"
                 type="reset"
               >

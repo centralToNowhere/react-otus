@@ -1,5 +1,5 @@
-import {IFieldControlState} from "@/components/Fields";
-import {IAuthState} from "@/auth";
+import { IFieldControlState } from "@/components/Fields";
+import { IAuthState } from "@/auth";
 
 export interface IPlayer {
   registered: boolean;
@@ -11,4 +11,5 @@ export const defaultPlayer: IPlayer = {
   name: null,
 };
 
-export type PlayerStorageData = IFieldControlState & IAuthState;
+export type PlayerStorageData = IFieldControlState &
+  Omit<IAuthState, "loginPending">;

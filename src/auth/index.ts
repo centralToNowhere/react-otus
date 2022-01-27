@@ -3,11 +3,8 @@ export {
   login,
   logout,
   selectPlayer,
-  selectLoginPending
+  selectLoginPending,
 } from "./AuthRdx";
 export type { IAuthState } from "./AuthRdx";
-export {
-  withAuthProtection,
-  usePlayerRegistration
-} from "./Auth";
-export {storageKey} from "@/storage/Storage";
+export { withAuthProtection, usePlayerRegistration } from "./Auth";
+export { storageKey } from "@/storage/Storage";

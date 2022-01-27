@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fieldWidth, fieldHeight } from "@/utils";
-import {getPlayerDataFromStorage} from "@/storage/Storage";
+import { getPlayerDataFromStorage } from "@/storage/Storage";
 
 export interface IFieldControlState {
   cellSize: number;
@@ -10,23 +10,29 @@ export interface IFieldControlState {
   speed: number;
 }
 
-const defaultFieldControlState: IFieldControlState = {
+export const defaultFieldControlState: IFieldControlState = {
   cellSize: 40,
   maxFieldWidth: fieldWidth,
   maxFieldHeight: fieldHeight,
   capacity: 50,
-  speed: 2
-}
+  speed: 2,
+};
 
 const playerDataFromStorage = getPlayerDataFromStorage();
 
 export const initialState: IFieldControlState = {
-  cellSize: playerDataFromStorage?.cellSize || defaultFieldControlState.cellSize,
-  maxFieldWidth: playerDataFromStorage?.maxFieldWidth || defaultFieldControlState.maxFieldWidth,
-  maxFieldHeight: playerDataFromStorage?.maxFieldHeight || defaultFieldControlState.maxFieldHeight,
-  capacity: playerDataFromStorage?.capacity || defaultFieldControlState.capacity,
-  speed: playerDataFromStorage?.speed || defaultFieldControlState.speed
-}
+  cellSize:
+    playerDataFromStorage?.cellSize || defaultFieldControlState.cellSize,
+  maxFieldWidth:
+    playerDataFromStorage?.maxFieldWidth ||
+    defaultFieldControlState.maxFieldWidth,
+  maxFieldHeight:
+    playerDataFromStorage?.maxFieldHeight ||
+    defaultFieldControlState.maxFieldHeight,
+  capacity:
+    playerDataFromStorage?.capacity || defaultFieldControlState.capacity,
+  speed: playerDataFromStorage?.speed || defaultFieldControlState.speed,
+};
 
 export const fieldControlSlice = createSlice({
   name: "fieldControl",
@@ -50,7 +56,7 @@ export const fieldControlSlice = createSlice({
     resetFieldControls: (state) => {
       state = defaultFieldControlState;
       return state;
-    }
+    },
   },
 });
 
@@ -60,5 +66,5 @@ export const {
   setMaxFieldHeight,
   setCapacity,
   setSpeed,
-  resetFieldControls
+  resetFieldControls,
 } = fieldControlSlice.actions;

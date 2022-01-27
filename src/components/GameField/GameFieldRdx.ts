@@ -5,12 +5,20 @@ import { fieldWidth, fieldHeight } from "@/utils";
 import { initialState as FieldControlInitialState } from "@/components/Fields/FieldControlRdx";
 
 export interface IGameFieldState {
-  activeCells: ICell[]
+  activeCells: ICell[];
 }
 
+const defaultState: IGameFieldState = {
+  activeCells: [],
+};
+
 const initialState: IGameFieldState = {
-  activeCells: getInitialCells(fieldWidth, fieldHeight, FieldControlInitialState.cellSize)
-}
+  activeCells: getInitialCells(
+    fieldWidth,
+    fieldHeight,
+    FieldControlInitialState.cellSize
+  ),
+};
 
 export const gameFieldSlice = createSlice({
   name: "gameField",
@@ -20,10 +28,10 @@ export const gameFieldSlice = createSlice({
       state.activeCells = action.payload;
     },
     resetCells: (state) => {
-      state = initialState;
+      state = defaultState;
       return state;
-    }
-  }
+    },
+  },
 });
 
 export const { setActiveCells, resetCells } = gameFieldSlice.actions;

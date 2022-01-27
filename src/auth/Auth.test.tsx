@@ -4,14 +4,17 @@ import userEvent from "@testing-library/user-event/dist";
 import * as ReactRouter from "react-router-dom";
 import { usePlayerRegistration } from "@/auth/Auth";
 import { routeNames } from "@/routes/routeNames";
-import {getPlayerDataFromStorage, persistPlayerDataMiddleware, storageKey} from "@/storage/Storage";
+import {
+  getPlayerDataFromStorage,
+  persistPlayerDataMiddleware,
+} from "@/storage/Storage";
 import { Provider } from "react-redux";
 import { AnyAction } from "redux";
 import { authSlice, IAuthState, login, logout } from "@/auth";
 import { configureStore, EnhancedStore, ThunkDispatch } from "@reduxjs/toolkit";
 
 let store: EnhancedStore;
-let dispatch: ThunkDispatch<IAuthState, {}, AnyAction>;
+let dispatch: ThunkDispatch<IAuthState, unknown, AnyAction>;
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
@@ -21,11 +24,11 @@ jest.mock("react-router-dom", () => ({
 beforeAll(() => {
   store = configureStore({
     reducer: {
-      auth: authSlice.reducer
+      auth: authSlice.reducer,
     },
     middleware: (getDefaultMiddleware) => {
-      return getDefaultMiddleware().concat(persistPlayerDataMiddleware)
-    }
+      return getDefaultMiddleware().concat(persistPlayerDataMiddleware);
+    },
   });
   dispatch = store.dispatch;
 });
@@ -34,7 +37,7 @@ afterAll(() => {
   jest.restoreAllMocks();
 });
 
-const DummyComponent: FC = (props) => {
+const DummyComponent: FC = () => {
   const [player, onPlayerRegister] = usePlayerRegistration();
 
   return (
@@ -57,7 +60,7 @@ describe("Auth tests", () => {
     render(
       <Provider store={store}>
         <ReactRouter.MemoryRouter initialEntries={["/"]}>
-          <DummyComponent/>
+          <DummyComponent />
         </ReactRouter.MemoryRouter>
       </Provider>
     );
@@ -75,7 +78,7 @@ describe("Auth tests", () => {
     render(
       <Provider store={store}>
         <ReactRouter.MemoryRouter initialEntries={["/"]}>
-          <DummyComponent/>
+          <DummyComponent />
         </ReactRouter.MemoryRouter>
       </Provider>
     );
@@ -85,13 +88,13 @@ describe("Auth tests", () => {
     userEvent.click(button);
 
     await waitFor(() => {
-      const playerData = getPlayerDataFromStorage()
-      expect(playerData).toHaveProperty(
-        "player.name", "Oleg"
-      );
-      expect(playerData).toHaveProperty(
-        "player.registered", true
-      );
+      const playerData = getPlayerDataFromStorage();
+      expect(playerData).toHaveProperty("player.name", "Oleg");
+    });
+
+    await waitFor(() => {
+      const playerData = getPlayerDataFromStorage();
+      expect(playerData).toHaveProperty("player.registered", true);
     });
   });
 
@@ -103,10 +106,10 @@ describe("Auth tests", () => {
     render(
       <Provider store={store}>
         <ReactRouter.MemoryRouter initialEntries={["/"]}>
-          <DummyComponent/>
+          <DummyComponent />
         </ReactRouter.MemoryRouter>
       </Provider>
-  );
+    );
 
     const button = screen.getByRole("button");
 
@@ -128,8 +131,8 @@ describe("Auth tests", () => {
       await waitFor(() => {
         expect(store.getState().auth.player).toEqual({
           name: "James",
-          registered: true
-        })
+          registered: true,
+        });
       });
     });
 
@@ -138,8 +141,8 @@ describe("Auth tests", () => {
 
       expect(store.getState().auth.player).toEqual({
         name: "",
-        registered: false
-      })
-    })
-  })
+        registered: false,
+      });
+    });
+  });
 });

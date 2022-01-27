@@ -13,6 +13,7 @@ export default {
       registered: true,
       name: "Player1",
     },
+    loginPending: false,
     onPlayerRegistration: () => {
       //empty
     },
@@ -23,4 +24,9 @@ const Template: Story<IRegistrationFormProps> = (args) => {
   return <PlayerRegistrationForm {...args} />;
 };
 
-export const PlayerRegistrationFormDefault = Template.bind({});
+export const PlayerRegistrationFormDefault = Template;
+
+export const PlayerRegistrationFormPending = Template.bind({});
+PlayerRegistrationFormPending.args = {
+  loginPending: true,
+};

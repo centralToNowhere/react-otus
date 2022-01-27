@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import { FormElement } from "@/components/Form";
 import { css } from "@emotion/react";
-import { IPlayer } from "@/store/actions";
 import { FormField } from "@/components/Form";
 import { FormButton } from "@/components/Buttons";
 import { l10n } from "@/l10n/ru";
 import { BREAKPOINTS, COLORS } from "@/styles/ui-styled";
+import { IPlayer } from "@/player/Player";
 
 export interface IPlayerContainerProps {
   player: IPlayer;

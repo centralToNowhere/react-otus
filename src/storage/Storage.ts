@@ -13,7 +13,9 @@ export const getPlayerDataFromStorage = (): PlayerStorageData | null => {
 export const setPlayerDataToStorage = (state: RootState) => {
   const playerStorageData: PlayerStorageData = {
     ...state.fieldControl,
-    ...state.auth
+    player: {
+      ...state.auth?.player,
+    },
   };
 
   localStorage.setItem(storageKey, JSON.stringify(playerStorageData));
@@ -22,4 +24,4 @@ export const persistPlayerDataMiddleware: Middleware =
   (store) => (next) => (action) => {
     next(action);
     setPlayerDataToStorage(store.getState());
-  }
+  };

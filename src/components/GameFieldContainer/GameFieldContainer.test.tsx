@@ -1,26 +1,19 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, { FC, useReducer } from "react";
-import { render, screen, waitFor } from "@testing-library/react";
+import React from "react";
+import { render, screen, waitFor } from "@/utils/test-utils";
 import userEvent from "@testing-library/user-event/dist";
 import {
   GameFieldContainer,
   createFormKey,
   getGameCycleTimeout,
-  GameFieldContainerProps,
 } from "@/components/GameFieldContainer/GameFieldContainer";
 import { COLORS } from "@/styles/ui-styled";
 import { l10n } from "@/l10n/ru";
-import { AppReducer, IAppState, initialState } from "@/store";
-import {
-  // @ts-ignore
-  __RewireAPI__ as AppReducerRewire,
-
-} from "@/store/AppReducer";
 import {
   // @ts-ignore
   __RewireAPI__ as CellGeneratorRewire,
 } from "@/utils/CellGenerator";
-import {defaultPlayer} from "@/player/Player";
+import { defaultFieldControlState } from "@/components/Fields";
 
 /**
  * Зачем я использую babel-plugin-rewire-ts?
@@ -99,44 +92,15 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-  AppReducerRewire.__ResetDependency__("initialState");
   jest.restoreAllMocks();
 });
-
-const GameFieldContainerWithDispatch: FC<
-  Omit<GameFieldContainerProps, "dispatch">
-> = (props) => {
-  const mockInitialState = {
-    cellSize: props.cellSize,
-    maxFieldWidth: props.maxFieldWidth,
-    maxFieldHeight: props.maxFieldHeight,
-    capacity: props.capacity,
-    speed: props.speed,
-    activeCells: props.activeCells,
-    player: defaultPlayer,
-  };
-
-  AppReducerRewire.__Rewire__("initialState", mockInitialState);
-  const [state, dispatch] = useReducer(AppReducer, initialState as IAppState);
-
-  return (
-    <GameFieldContainer
-      cellSize={state.cellSize}
-      maxFieldWidth={state.maxFieldWidth}
-      maxFieldHeight={state.maxFieldHeight}
-      capacity={state.capacity}
-      speed={state.speed}
-      activeCells={state.activeCells}
-      player={state.player}
-      dispatch={dispatch}
-    />
-  );
-};
 
 describe("GameFieldContainer tests", () => {
   it("should correctly render field and form", async () => {
     jest.spyOn(global.Math, "random").mockReturnValue(0);
-    const { asFragment } = render(<GameFieldContainerWithDispatch />);
+    const { asFragment } = render(<GameFieldContainer />, {
+      preloadedState: {},
+    });
     jest.spyOn(global.Math, "random").mockRestore();
 
     const field = screen.getByTestId("field");
@@ -154,15 +118,17 @@ describe("GameFieldContainer tests", () => {
   });
 
   it("should render 100 cells with numbers", () => {
-    render(
-      <GameFieldContainerWithDispatch
-        cellSize={10}
-        maxFieldWidth={100}
-        maxFieldHeight={100}
-        capacity={50}
-        speed={2}
-      />
-    );
+    render(<GameFieldContainer />, {
+      preloadedState: {
+        fieldControl: {
+          cellSize: 10,
+          maxFieldWidth: 100,
+          maxFieldHeight: 100,
+          capacity: 50,
+          speed: 2,
+        },
+      },
+    });
 
     const cells = screen.getAllByText(/[0-9]*/, {
       selector: "[data-testid=cell]",
@@ -177,15 +143,17 @@ describe("GameFieldContainer tests", () => {
   it("should start game cycle", async () => {
     CellGeneratorRewire.__Rewire__("getRandomCells", getRandomCellsMocked);
 
-    render(
-      <GameFieldContainerWithDispatch
-        cellSize={10}
-        maxFieldWidth={100}
-        maxFieldHeight={100}
-        capacity={50}
-        speed={2}
-      />
-    );
+    render(<GameFieldContainer />, {
+      preloadedState: {
+        fieldControl: {
+          cellSize: 10,
+          maxFieldWidth: 100,
+          maxFieldHeight: 100,
+          capacity: 50,
+          speed: 2,
+        },
+      },
+    });
 
     const activeCells = screen.getAllByText(
       /^(1|12|23|34|45|56|67|78|89|100)$/,
@@ -236,16 +204,17 @@ describe("GameFieldContainer tests", () => {
       );
     };
 
-    render(
-      <GameFieldContainerWithDispatch
-        cellSize={10}
-        maxFieldWidth={100}
-        maxFieldHeight={100}
-        capacity={50}
-        speed={speed}
-      />
-    );
-
+    render(<GameFieldContainer />, {
+      preloadedState: {
+        fieldControl: {
+          cellSize: 10,
+          maxFieldWidth: 100,
+          maxFieldHeight: 100,
+          capacity: 50,
+          speed,
+        },
+      },
+    });
     const buttonStart = screen.getByText(l10n.buttonStart);
     const buttonStop = screen.getByText(l10n.buttonStop);
 
@@ -303,15 +272,17 @@ describe("GameFieldContainer tests", () => {
     const speed = 10;
     const gameCycleTimeout = getGameCycleTimeout(speed);
 
-    render(
-      <GameFieldContainerWithDispatch
-        cellSize={cellSize}
-        maxFieldWidth={maxFieldWidth}
-        maxFieldHeight={maxFieldHeight}
-        capacity={capacity}
-        speed={speed}
-      />
-    );
+    render(<GameFieldContainer />, {
+      preloadedState: {
+        fieldControl: {
+          cellSize,
+          maxFieldWidth,
+          maxFieldHeight,
+          capacity,
+          speed,
+        },
+      },
+    });
 
     const buttonStart = screen.getByText(l10n.buttonStart);
     const buttonReset = screen.getByText(l10n.buttonReset);
@@ -338,17 +309,23 @@ describe("GameFieldContainer tests", () => {
     );
 
     const cellsLengthExpected =
-      Math.floor(maxFieldWidth / cellSize) *
-      Math.floor(maxFieldHeight / cellSize);
+      Math.floor(
+        defaultFieldControlState.maxFieldWidth /
+          defaultFieldControlState.cellSize
+      ) *
+      Math.floor(
+        defaultFieldControlState.maxFieldHeight /
+          defaultFieldControlState.cellSize
+      );
     expect(cells.length).toBe(cellsLengthExpected);
 
     const form: HTMLFormElement = screen.getByTestId("field-form");
     expect(form).toHaveFormValues({
-      fieldWidth: maxFieldWidth,
-      fieldHeight: maxFieldHeight,
-      cellSize: cellSize,
-      capacityPercentage: String(capacity),
-      speedChange: speed,
+      fieldWidth: defaultFieldControlState.maxFieldWidth,
+      fieldHeight: defaultFieldControlState.maxFieldHeight,
+      cellSize: defaultFieldControlState.cellSize,
+      capacityPercentage: String(defaultFieldControlState.capacity),
+      speedChange: defaultFieldControlState.speed,
     });
   });
 });
