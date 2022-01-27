@@ -1,19 +1,34 @@
 import React, { FC } from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event/dist";
-import {IPlayer, PlayerStorageData} from "@/player/Player";
-import { SetPlayerAction } from "@/store/actions";
 import * as ReactRouter from "react-router-dom";
 import { usePlayerRegistration } from "@/auth/Auth";
 import { routeNames } from "@/routes/routeNames";
-import {getPlayerDataFromStorage, storageKey} from "@/storage/Storage";
+import {getPlayerDataFromStorage, persistPlayerDataMiddleware, storageKey} from "@/storage/Storage";
 import { Provider } from "react-redux";
-import { store } from "@/store/redux/store";
+import { AnyAction } from "redux";
+import { authSlice, IAuthState, login, logout } from "@/auth";
+import { configureStore, EnhancedStore, ThunkDispatch } from "@reduxjs/toolkit";
+
+let store: EnhancedStore;
+let dispatch: ThunkDispatch<IAuthState, {}, AnyAction>;
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useNavigate: jest.fn(jest.fn),
 }));
+
+beforeAll(() => {
+  store = configureStore({
+    reducer: {
+      auth: authSlice.reducer
+    },
+    middleware: (getDefaultMiddleware) => {
+      return getDefaultMiddleware().concat(persistPlayerDataMiddleware)
+    }
+  });
+  dispatch = store.dispatch;
+});
 
 afterAll(() => {
   jest.restoreAllMocks();
@@ -23,7 +38,7 @@ const DummyComponent: FC = (props) => {
   const [player, onPlayerRegister] = usePlayerRegistration();
 
   return (
-    <Provider store={store}>
+    <>
       <button
         type="button"
         onClick={() => {
@@ -33,7 +48,7 @@ const DummyComponent: FC = (props) => {
         Dispatch
       </button>
       <span>{player.name}</span>
-    </Provider>
+    </>
   );
 };
 
@@ -105,4 +120,26 @@ describe("Auth tests", () => {
 
     jest.spyOn(ReactRouter, "useNavigate").mockRestore();
   });
+
+  describe("AuthSlice actions test", () => {
+    it("login: should change state correctly", async () => {
+      dispatch(login("James"));
+
+      await waitFor(() => {
+        expect(store.getState().auth.player).toEqual({
+          name: "James",
+          registered: true
+        })
+      });
+    });
+
+    it("logout: should change state correctly", () => {
+      dispatch(logout());
+
+      expect(store.getState().auth.player).toEqual({
+        name: "",
+        registered: false
+      })
+    })
+  })
 });

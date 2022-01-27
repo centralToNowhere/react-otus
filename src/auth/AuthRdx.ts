@@ -1,7 +1,7 @@
-import {createAsyncThunk, createSelector, createSlice} from "@reduxjs/toolkit";
-import {defaultPlayer, IPlayer} from "@/player/Player";
-import {RootState} from "@/store/redux/store";
-import {getPlayerDataFromStorage} from "@/storage/Storage";
+import { createAsyncThunk, createSelector, createSlice } from "@reduxjs/toolkit";
+import { defaultPlayer, IPlayer } from "@/player/Player";
+import { RootState } from "@/store/redux/store";
+import { getPlayerDataFromStorage } from "@/storage/Storage";
 
 export interface IAuthState {
   player: IPlayer,
