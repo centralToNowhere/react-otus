@@ -56,10 +56,12 @@ describe("PlayerRegistrationForm tests", () => {
 
     const button = screen.getByRole("button");
 
-    userEvent.type(button, "{enter}");
+    userEvent.type(button, "{enter}", {
+      skipClick: true,
+    });
 
     await waitFor(() => {
-      expect(onPlayerRegistration).toHaveBeenCalledTimes(2);
+      expect(onPlayerRegistration).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -81,5 +83,33 @@ describe("PlayerRegistrationForm tests", () => {
     await waitFor(() => {
       expect(onPlayerRegistration).toHaveBeenCalledTimes(1);
     });
+  });
+
+  it("should render spinner on loginPending", () => {
+    render(
+      <PlayerRegistrationForm
+        player={defaultPlayer}
+        onPlayerRegistration={jest.fn()}
+        loginPending={true}
+      />
+    );
+
+    const spinner = screen.queryByRole("status");
+
+    expect(spinner).toBeVisible();
+  });
+
+  it("should not render spinner when loginPending = false", () => {
+    render(
+      <PlayerRegistrationForm
+        player={defaultPlayer}
+        onPlayerRegistration={jest.fn()}
+        loginPending={false}
+      />
+    );
+
+    const spinner = screen.queryByRole("status");
+
+    expect(spinner).toBeNull();
   });
 });

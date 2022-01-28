@@ -13,7 +13,10 @@ import {
   // @ts-ignore
   __RewireAPI__ as CellGeneratorRewire,
 } from "@/utils/CellGenerator";
-import { defaultFieldControlState } from "@/components/Fields";
+import {
+  defaultFieldControlState,
+  IFieldControlState,
+} from "@/components/Fields";
 
 /**
  * Зачем я использую babel-plugin-rewire-ts?
@@ -262,6 +265,89 @@ describe("GameFieldContainer tests", () => {
       "getRandomCells",
       getRandomCellsMocked
     );
+  });
+
+  it("should load form values data from state", () => {
+    const cellSize = 20;
+    const maxFieldWidth = 200;
+    const maxFieldHeight = 200;
+    const capacity = 23;
+    const speed = 10;
+
+    render(<GameFieldContainer />, {
+      preloadedState: {
+        fieldControl: {
+          cellSize,
+          maxFieldWidth,
+          maxFieldHeight,
+          capacity,
+          speed,
+        },
+      },
+    });
+
+    const form: HTMLFormElement = screen.getByTestId("field-form");
+
+    expect(form).toHaveFormValues({
+      fieldWidth: maxFieldWidth,
+      fieldHeight: maxFieldHeight,
+      cellSize: cellSize,
+      capacityPercentage: String(capacity),
+      speedChange: speed,
+    });
+  });
+
+  describe("form actions tests", () => {
+    const initialState: IFieldControlState = {
+      cellSize: 20,
+      maxFieldWidth: 200,
+      maxFieldHeight: 200,
+      capacity: 50,
+      speed: 2,
+    };
+
+    const targetState: IFieldControlState = {
+      cellSize: 30,
+      maxFieldWidth: 350,
+      maxFieldHeight: 150,
+      capacity: 25,
+      speed: 0.5,
+    };
+
+    const labels: Record<keyof IFieldControlState, string> = {
+      cellSize: l10n.cellSizeLabel,
+      maxFieldWidth: l10n.maxWidthLabel,
+      maxFieldHeight: l10n.maxHeightLabel,
+      capacity: l10n.capacityLabel,
+      speed: l10n.speedLabel,
+    };
+
+    Object.keys(initialState).forEach((prop) => {
+      it(`should change ${prop} inside store`, async () => {
+        const { store } = render(<GameFieldContainer />, {
+          preloadedState: {
+            fieldControl: initialState,
+          },
+        });
+
+        const field: HTMLInputElement = screen.getByLabelText(
+          labels[prop as keyof IFieldControlState]
+        );
+
+        userEvent.clear(field);
+        userEvent.type(
+          field,
+          String(targetState[prop as keyof IFieldControlState])
+        );
+        field.blur();
+
+        await waitFor(() => {
+          expect(
+            store.getState().fieldControl[prop as keyof IFieldControlState]
+          ).toEqual(targetState[prop as keyof IFieldControlState]);
+        });
+      });
+    });
   });
 
   it("should reset all properties to initial", async () => {

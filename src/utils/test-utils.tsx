@@ -33,7 +33,10 @@ function render(
     return <Provider store={store}>{children}</Provider>;
   }
 
-  return rtlRender(ui, { wrapper: Wrapper, ...renderOptions });
+  return {
+    ...rtlRender(ui, { wrapper: Wrapper, ...renderOptions }),
+    store,
+  };
 }
 
 // re-export everything

@@ -29,6 +29,15 @@ beforeAll(() => {
     middleware: (getDefaultMiddleware) => {
       return getDefaultMiddleware().concat(persistPlayerDataMiddleware);
     },
+    preloadedState: {
+      auth: {
+        player: {
+          registered: true,
+          name: "Player1",
+        },
+        loginPending: false,
+      },
+    },
   });
   dispatch = store.dispatch;
 });
@@ -50,12 +59,26 @@ const DummyComponent: FC = () => {
       >
         Dispatch
       </button>
-      <span>{player.name}</span>
+      <span aria-label={"playerName"}>{player.name}</span>
+      <span aria-label={"playerRegistered"}>{String(player.registered)}</span>
     </>
   );
 };
 
 describe("Auth tests", () => {
+  it("should load player data from store", () => {
+    render(
+      <Provider store={store}>
+        <ReactRouter.MemoryRouter initialEntries={["/"]}>
+          <DummyComponent />
+        </ReactRouter.MemoryRouter>
+      </Provider>
+    );
+
+    expect(screen.getByLabelText("playerName")).toHaveTextContent("Player1");
+    expect(screen.getByLabelText("playerRegistered")).toHaveTextContent("true");
+  });
+
   it("should change player name on register", async () => {
     render(
       <Provider store={store}>
