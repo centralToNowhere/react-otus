@@ -152,9 +152,12 @@ describe("Auth tests", () => {
       dispatch(login("James"));
 
       await waitFor(() => {
-        expect(store.getState().auth.player).toEqual({
-          name: "James",
-          registered: true,
+        expect(store.getState().auth).toEqual({
+          player: {
+            name: "James",
+            registered: true,
+          },
+          loginPending: false,
         });
       });
     });
@@ -162,9 +165,12 @@ describe("Auth tests", () => {
     it("logout: should change state correctly", () => {
       dispatch(logout());
 
-      expect(store.getState().auth.player).toEqual({
-        name: "",
-        registered: false,
+      expect(store.getState().auth).toEqual({
+        player: {
+          name: "",
+          registered: false,
+        },
+        loginPending: false,
       });
     });
   });
