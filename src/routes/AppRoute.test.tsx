@@ -1,29 +1,20 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@/utils/test-utils";
 import { l10n } from "@/l10n/ru";
 import userEvent from "@testing-library/user-event/dist";
-import React, { FC, useReducer } from "react";
-import { AppRouter, AppRouterProps } from "@/routes/AppRouter";
-import { AppReducer, initialState } from "@/state";
+import React from "react";
+import { AppRouter } from "@/routes/AppRouter";
 import { MemoryRouter } from "react-router-dom";
-
-const AppRouterForTesting: FC<Partial<Omit<AppRouterProps, "dispatch">>> = (
-  props
-) => {
-  const [state, dispatch] = useReducer(AppReducer, {
-    ...initialState,
-    ...props,
-  });
-
-  return (
-    <MemoryRouter initialEntries={["/"]}>
-      <AppRouter {...state} dispatch={dispatch} />
-    </MemoryRouter>
-  );
-};
 
 describe("Routes tests", () => {
   it("should render registration screen", () => {
-    render(<AppRouterForTesting />);
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <AppRouter />
+      </MemoryRouter>,
+      {
+        preloadedState: {},
+      }
+    );
 
     const field = screen.queryByTestId("field");
     expect(field).not.toBeInTheDocument();
@@ -38,7 +29,14 @@ describe("Routes tests", () => {
   });
 
   it("should render main screen after player register", async () => {
-    render(<AppRouterForTesting />);
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <AppRouter />
+      </MemoryRouter>,
+      {
+        preloadedState: {},
+      }
+    );
 
     const playerNameInput: HTMLInputElement = screen.getByLabelText(
       l10n.registerPlayerLabel
@@ -60,12 +58,20 @@ describe("Routes tests", () => {
 
   it("should render registration screen after player unregister", async () => {
     render(
-      <AppRouterForTesting
-        player={{
-          registered: true,
-          name: "Vladimir",
-        }}
-      />
+      <MemoryRouter initialEntries={["/"]}>
+        <AppRouter />
+      </MemoryRouter>,
+      {
+        preloadedState: {
+          auth: {
+            player: {
+              name: "Player1",
+              registered: true,
+            },
+            loginPending: false,
+          },
+        },
+      }
     );
 
     const unregisterButton = screen.getByText(l10n.logoutButton);

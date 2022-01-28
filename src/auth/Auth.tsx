@@ -1,15 +1,16 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { AppAction } from "@/state";
-import { IPlayer, SetPlayerAction } from "@/state/actions";
+import { IPlayer } from "@/player/Player";
 import { routeNames } from "@/routes/routeNames";
+import { login, selectPlayer } from "@/auth/AuthRdx";
+import { useAppDispatch } from "@/store/redux/store";
+import { useSelector } from "react-redux";
 
-export const storageKeyPlayerName = "playerName";
-export const withAuthProtection = <P extends { player: IPlayer }>(
-  Component: React.ComponentType<P>
-): FC<P> => {
-  const AuthProtected: FC<P> = (props) => {
-    const { player } = props;
+export const withAuthProtection = <T extends Record<string, unknown>>(
+  Component: React.ComponentType<T>
+): FC<T> => {
+  const AuthProtected: FC<T> = (props) => {
+    const player = useSelector(selectPlayer);
 
     return player.registered ? (
       <Component {...props} />
@@ -21,39 +22,26 @@ export const withAuthProtection = <P extends { player: IPlayer }>(
   return AuthProtected;
 };
 
-export const getPlayer = (): IPlayer | null => {
-  const playerData = localStorage.getItem(storageKeyPlayerName);
-
-  return playerData ? JSON.parse(playerData) : null;
-};
-
-export const setPlayer = (player: IPlayer) => {
-  localStorage.setItem(storageKeyPlayerName, JSON.stringify(player));
-};
-
-export const unsetPlayer = () => {
-  localStorage.removeItem(storageKeyPlayerName);
-};
-
-export const usePlayerRegistration = (
-  player: IPlayer,
-  dispatch: React.Dispatch<AppAction>
-): ((playerName: string | null) => void) => {
+export const usePlayerRegistration = (): [
+  IPlayer,
+  (playerName: string | null) => void
+] => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const player = useSelector(selectPlayer);
 
-  useEffect(() => {
-    setPlayer(player);
-  }, [player]);
-
-  return (playerName: string | null) => {
-    if (playerName) {
-      dispatch(
-        SetPlayerAction({
-          registered: true,
-          name: playerName,
-        })
-      );
-      navigate(routeNames.game, { replace: true });
-    }
-  };
+  return [
+    player,
+    (playerName: string | null) => {
+      if (playerName) {
+        dispatch(login(playerName))
+          .then(() => {
+            navigate(routeNames.game, { replace: true });
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
+    },
+  ];
 };

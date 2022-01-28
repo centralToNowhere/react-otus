@@ -6,16 +6,19 @@ import React, {
   KeyboardEvent,
 } from "react";
 import { l10n } from "@/l10n/ru";
-import { IPlayer } from "@/state/actions";
 import { FormField } from "@/components/Form/FormField";
 import { FormElement } from "@/components/Form";
 import { css } from "@emotion/react";
 import { InputField, LabelField } from "@/components/Fields";
 import { FormButton } from "@/components/Buttons";
-import { BREAKPOINTS } from "@/styles/ui-styled";
+import { BREAKPOINTS, COLORS } from "@/styles/ui-styled";
+import styled from "@emotion/styled";
+import { Spinner } from "react-bootstrap";
+import { IPlayer } from "@/player/Player";
 
 export interface IRegistrationFormProps {
   player: IPlayer;
+  loginPending: boolean;
   onPlayerRegistration: (playerName: string | null) => void;
 }
 
@@ -31,6 +34,7 @@ export const PlayerRegistrationForm: FC<IRegistrationFormProps> = (props) => {
 
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
+      e.preventDefault();
       registerPlayer();
     }
   };
@@ -44,22 +48,24 @@ export const PlayerRegistrationForm: FC<IRegistrationFormProps> = (props) => {
       css={css`
         width: 70%;
         max-width: 600px;
-        display: inline-block;
+        flex-direction: row;
         margin: 20px 0;
 
         @media screen and (max-width: ${BREAKPOINTS.mobileEnd}) {
           width: 100%;
+          flex-direction: column-reverse;
         }
       `}
     >
       <FormField
         css={css`
           display: flex;
+          flex-grow: 10;
         `}
       >
         <div
           css={css`
-            margin-bottom: 50px;
+            margin-bottom: 20px;
           `}
         >
           <LabelField htmlFor="register-player-input">
@@ -88,6 +94,30 @@ export const PlayerRegistrationForm: FC<IRegistrationFormProps> = (props) => {
           {l10n.buttonStartGameAsPlayer}
         </FormButton>
       </FormField>
+      <SpinnerContainer>
+        <Spinner
+          animation="border"
+          role="status"
+          css={css`
+            color: ${COLORS.accent};
+            visibility: ${props.loginPending ? "visible" : "hidden"};
+            margin: 20px 20px 0 20px;
+
+            @media screen and (max-width: ${BREAKPOINTS.mobileEnd}) {
+              display: ${props.loginPending ? "inline-block" : "none"};
+            }
+          `}
+        />
+      </SpinnerContainer>
     </FormElement>
   );
 };
+
+const SpinnerContainer = styled.div`
+  flex-grow: 1;
+  text-align: right;
+
+  @media screen and (max-width: ${BREAKPOINTS.mobileEnd}) {
+    text-align: left;
+  }
+`;

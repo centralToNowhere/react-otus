@@ -3,7 +3,4 @@ export {
   createFormKey,
   getGameCycleTimeout,
 } from "./GameFieldContainer";
-export type {
-  GameFieldContainerProps,
-  GameFieldContainerDefaultProps,
-} from "./GameFieldContainer";
+export type { GameFieldContainerProps } from "./GameFieldContainer";

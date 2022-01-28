@@ -12,6 +12,5 @@ export const FormElement = styled.form`
   button,
   p {
     line-height: 1.2;
-    font-size: 1.2em;
   }
 `;

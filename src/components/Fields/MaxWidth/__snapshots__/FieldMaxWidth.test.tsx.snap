@@ -3,17 +3,17 @@
 exports[`FieldMaxWidth tests should render max width input 1`] = `
 <DocumentFragment>
   <div
-    class="css-w6s8l8-FormField e1jhpckf0"
+    class="css-w6s8l8-FormField eybdsu10"
   >
     <label
-      class="css-m0dhjx-LabelField e16iqet90"
+      class="css-m0dhjx-LabelField e1gymppe0"
       for="field-width"
     >
       Макс. ширина:
     </label>
     <input
       autocomplete="off"
-      class="css-iol0j7-InputField el9r7ir0"
+      class="css-iol0j7-InputField e15roiqv0"
       id="field-width"
       name="fieldWidth"
       pattern="([0-9]*[.])?[0-9]+"

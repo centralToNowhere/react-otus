@@ -3,17 +3,17 @@
 exports[`Registration screen tests should render registration screen 1`] = `
 <DocumentFragment>
   <div
-    class="css-7k7ujw-Container e10hc7kb2"
+    class="css-1r9ogsr-Container e18678xg2"
   >
     <div
-      class="css-ot3r3v-ColumnContainer e10hc7kb1"
+      class="css-kijlcz-ColumnContainer e18678xg1"
     >
       <h1>
         Правила
       </h1>
     </div>
     <div
-      class="css-mo365u-ColumnContainer-RegistrationContainer e10hc7kb0"
+      class="css-tvbkvj-ColumnContainer-RegistrationContainer e18678xg0"
     >
       <h1
         class="game-name"
@@ -26,34 +26,42 @@ exports[`Registration screen tests should render registration screen 1`] = `
         </span>
       </h1>
       <form
-        class="css-t1nzhx-FormElement-PlayerRegistrationForm e13yua9l0"
+        class="css-ldog09-FormElement-PlayerRegistrationForm e1dt6zfi0"
       >
         <div
-          class="css-1kwn5te-FormField-PlayerRegistrationForm e1jhpckf0"
+          class="css-kmw9t5-FormField-PlayerRegistrationForm eybdsu10"
         >
           <div
-            class="css-1hui9kv-PlayerRegistrationForm"
+            class="css-gj9mjj-PlayerRegistrationForm"
           >
             <label
-              class="css-m0dhjx-LabelField e16iqet90"
+              class="css-m0dhjx-LabelField e1gymppe0"
               for="register-player-input"
             >
               Введите имя игрока
             </label>
             <input
-              class="css-gtg0cp-InputField-PlayerRegistrationForm el9r7ir0"
+              class="css-gtg0cp-InputField-PlayerRegistrationForm e15roiqv0"
               id="register-player-input"
               name="playerName"
-              value=""
+              value="Player23"
             />
           </div>
           <button
-            class="css-1vcab0e-FormButton-PlayerRegistrationForm eqsv5tc0"
+            class="css-ssn7vi-FormButton-PlayerRegistrationForm e2n0d7s0"
             name="startGameAsPlayer"
             type="button"
           >
             Начать игру
           </button>
+        </div>
+        <div
+          class="css-1a4u2lo-SpinnerContainer eok4aqp0"
+        >
+          <div
+            class="css-rsmjug-PlayerRegistrationForm spinner-border"
+            role="status"
+          />
         </div>
       </form>
     </div>

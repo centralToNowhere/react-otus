@@ -6,7 +6,7 @@ export const FormButton = styled.button`
   margin: 20px auto;
 
   &:focus {
-    outline: 2px solid ${COLORS.accent};
+    outline: 2px solid ${COLORS.accent} !important;
     border: 2px solid transparent;
   }
 `;

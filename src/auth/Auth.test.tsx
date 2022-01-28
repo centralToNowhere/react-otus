@@ -1,25 +1,53 @@
 import React, { FC } from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event/dist";
-import { IPlayer, SetPlayerAction } from "@/state/actions";
 import * as ReactRouter from "react-router-dom";
-import { storageKeyPlayerName, usePlayerRegistration } from "@/auth/Auth";
+import { usePlayerRegistration } from "@/auth/Auth";
 import { routeNames } from "@/routes/routeNames";
+import {
+  getPlayerDataFromStorage,
+  persistPlayerDataMiddleware,
+} from "@/storage/Storage";
+import { Provider } from "react-redux";
+import { AnyAction } from "redux";
+import { authSlice, IAuthState, login, logout } from "@/auth";
+import { configureStore, EnhancedStore, ThunkDispatch } from "@reduxjs/toolkit";
+
+let store: EnhancedStore;
+let dispatch: ThunkDispatch<IAuthState, unknown, AnyAction>;
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useNavigate: jest.fn(jest.fn),
 }));
 
+beforeAll(() => {
+  store = configureStore({
+    reducer: {
+      auth: authSlice.reducer,
+    },
+    middleware: (getDefaultMiddleware) => {
+      return getDefaultMiddleware().concat(persistPlayerDataMiddleware);
+    },
+    preloadedState: {
+      auth: {
+        player: {
+          registered: true,
+          name: "Player1",
+        },
+        loginPending: false,
+      },
+    },
+  });
+  dispatch = store.dispatch;
+});
+
 afterAll(() => {
   jest.restoreAllMocks();
 });
 
-const DummyComponent: FC<{
-  player: IPlayer;
-  dispatch: () => void;
-}> = (props) => {
-  const onPlayerRegister = usePlayerRegistration(props.player, props.dispatch);
+const DummyComponent: FC = () => {
+  const [player, onPlayerRegister] = usePlayerRegistration();
 
   return (
     <>
@@ -31,24 +59,33 @@ const DummyComponent: FC<{
       >
         Dispatch
       </button>
+      <span aria-label={"playerName"}>{player.name}</span>
+      <span aria-label={"playerRegistered"}>{String(player.registered)}</span>
     </>
   );
 };
 
 describe("Auth tests", () => {
-  it("should call onPlayerRegister", async () => {
-    const dispatch = jest.fn();
-
+  it("should load player data from store", () => {
     render(
-      <ReactRouter.MemoryRouter initialEntries={["/"]}>
-        <DummyComponent
-          player={{
-            registered: true,
-            name: "Oleg",
-          }}
-          dispatch={dispatch}
-        />
-      </ReactRouter.MemoryRouter>
+      <Provider store={store}>
+        <ReactRouter.MemoryRouter initialEntries={["/"]}>
+          <DummyComponent />
+        </ReactRouter.MemoryRouter>
+      </Provider>
+    );
+
+    expect(screen.getByLabelText("playerName")).toHaveTextContent("Player1");
+    expect(screen.getByLabelText("playerRegistered")).toHaveTextContent("true");
+  });
+
+  it("should change player name on register", async () => {
+    render(
+      <Provider store={store}>
+        <ReactRouter.MemoryRouter initialEntries={["/"]}>
+          <DummyComponent />
+        </ReactRouter.MemoryRouter>
+      </Provider>
     );
 
     const button = screen.getByRole("button");
@@ -56,28 +93,17 @@ describe("Auth tests", () => {
     userEvent.click(button);
 
     await waitFor(() => {
-      expect(dispatch).toHaveBeenCalledWith(
-        SetPlayerAction({
-          registered: true,
-          name: "Oleg",
-        })
-      );
+      expect(screen.getByText("Oleg")).toBeInTheDocument();
     });
   });
 
   it("should save player to localstorage", async () => {
-    const dispatch = jest.fn();
-
     render(
-      <ReactRouter.MemoryRouter initialEntries={["/"]}>
-        <DummyComponent
-          player={{
-            registered: true,
-            name: "Oleg",
-          }}
-          dispatch={dispatch}
-        />
-      </ReactRouter.MemoryRouter>
+      <Provider store={store}>
+        <ReactRouter.MemoryRouter initialEntries={["/"]}>
+          <DummyComponent />
+        </ReactRouter.MemoryRouter>
+      </Provider>
     );
 
     const button = screen.getByRole("button");
@@ -85,31 +111,27 @@ describe("Auth tests", () => {
     userEvent.click(button);
 
     await waitFor(() => {
-      expect(localStorage.getItem(storageKeyPlayerName)).toEqual(
-        JSON.stringify({
-          registered: true,
-          name: "Oleg",
-        })
-      );
+      const playerData = getPlayerDataFromStorage();
+      expect(playerData).toHaveProperty("player.name", "Oleg");
+    });
+
+    await waitFor(() => {
+      const playerData = getPlayerDataFromStorage();
+      expect(playerData).toHaveProperty("player.registered", true);
     });
   });
 
   it("should call navigate with args", async () => {
-    const dispatch = jest.fn();
     const navigate = jest.fn();
 
     jest.spyOn(ReactRouter, "useNavigate").mockReturnValue(navigate);
 
     render(
-      <ReactRouter.MemoryRouter initialEntries={["/"]}>
-        <DummyComponent
-          player={{
-            registered: true,
-            name: "Oleg",
-          }}
-          dispatch={dispatch}
-        />
-      </ReactRouter.MemoryRouter>
+      <Provider store={store}>
+        <ReactRouter.MemoryRouter initialEntries={["/"]}>
+          <DummyComponent />
+        </ReactRouter.MemoryRouter>
+      </Provider>
     );
 
     const button = screen.getByRole("button");
@@ -123,5 +145,33 @@ describe("Auth tests", () => {
     });
 
     jest.spyOn(ReactRouter, "useNavigate").mockRestore();
+  });
+
+  describe("AuthSlice actions test", () => {
+    it("login: should change state correctly", async () => {
+      dispatch(login("James"));
+
+      await waitFor(() => {
+        expect(store.getState().auth).toEqual({
+          player: {
+            name: "James",
+            registered: true,
+          },
+          loginPending: false,
+        });
+      });
+    });
+
+    it("logout: should change state correctly", () => {
+      dispatch(logout());
+
+      expect(store.getState().auth).toEqual({
+        player: {
+          name: "",
+          registered: false,
+        },
+        loginPending: false,
+      });
+    });
   });
 });

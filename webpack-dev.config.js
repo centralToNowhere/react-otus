@@ -9,7 +9,7 @@ const config = {
     filename: "[name].[contenthash:4].js",
   },
   mode: "development",
-  devtool: "eval-source-map",
+  devtool: "source-map",
   devServer: {
     open: true,
     hot: true,

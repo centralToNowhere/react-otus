@@ -1,6 +1,5 @@
 # Otus homework branch
-React Router <br>
-Player authorization
+Redux middlewares and side effects
 
 `npm ci`<br>
 `npm run serve`

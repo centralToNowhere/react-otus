@@ -3,10 +3,10 @@
 exports[`PlayerContainer tests should render PlayerContainer 1`] = `
 <DocumentFragment>
   <form
-    class="css-ixoyv7-FormElement-PlayerContainer e13yua9l0"
+    class="css-1hyr90f-FormElement-PlayerContainer e1dt6zfi0"
   >
     <div
-      class="css-1hn82fw-FormField-PlayerContainer e1jhpckf0"
+      class="css-1mkqqr3-FormField-PlayerContainer eybdsu10"
     >
       <h1
         class="player-name"
@@ -14,7 +14,7 @@ exports[`PlayerContainer tests should render PlayerContainer 1`] = `
         Ivan
       </h1>
       <div
-        class="player-stats"
+        class="player-stats-container"
       >
         <h2>
           Статистика
@@ -29,7 +29,7 @@ exports[`PlayerContainer tests should render PlayerContainer 1`] = `
         </ul>
       </div>
       <button
-        class="css-12xaduv-FormButton-PlayerContainer eqsv5tc0"
+        class="css-rsh0un-FormButton-PlayerContainer e2n0d7s0"
         type="button"
       >
         Выйти
