@@ -11,5 +11,4 @@ export const defaultPlayer: IPlayer = {
   name: null,
 };
 
-export type PlayerStorageData = IFieldControlState &
-  Omit<IAuthState, "loginPending">;
+export type PlayerStorageData = IAuthState["player"];

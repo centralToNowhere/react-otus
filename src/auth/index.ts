@@ -2,6 +2,8 @@ export {
   authSlice,
   login,
   logout,
+  loginSucceed,
+  loginFailed,
   selectPlayer,
   selectLoginPending,
 } from "./AuthRdx";

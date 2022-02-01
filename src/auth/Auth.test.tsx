@@ -5,7 +5,7 @@ import * as ReactRouter from "react-router-dom";
 import { usePlayerRegistration } from "@/auth/Auth";
 import { routeNames } from "@/routes/routeNames";
 import {
-  getPlayerDataFromStorage,
+  getDataFromStorage,
   persistPlayerDataMiddleware,
 } from "@/storage/Storage";
 import { Provider } from "react-redux";
@@ -111,12 +111,12 @@ describe("Auth tests", () => {
     userEvent.click(button);
 
     await waitFor(() => {
-      const playerData = getPlayerDataFromStorage();
+      const playerData = getDataFromStorage();
       expect(playerData).toHaveProperty("player.name", "Oleg");
     });
 
     await waitFor(() => {
-      const playerData = getPlayerDataFromStorage();
+      const playerData = getDataFromStorage();
       expect(playerData).toHaveProperty("player.registered", true);
     });
   });

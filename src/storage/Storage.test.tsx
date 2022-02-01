@@ -1,6 +1,6 @@
 import {
-  setPlayerDataToStorage,
-  getPlayerDataFromStorage,
+  setDataToStorage,
+  getDataFromStorage,
   storageKey,
   persistPlayerDataMiddleware,
 } from "@/storage/Storage";
@@ -59,7 +59,7 @@ describe("saving/loading state to localstorage", () => {
   };
 
   it("should save player data to storage", () => {
-    setPlayerDataToStorage(store.getState());
+    setDataToStorage(store.getState());
 
     expect(localStorage.getItem(storageKey)).toBe(
       JSON.stringify(playerDataExpected)
@@ -67,7 +67,7 @@ describe("saving/loading state to localstorage", () => {
   });
 
   it("should get player data from storage", () => {
-    const playerData = getPlayerDataFromStorage();
+    const playerData = getDataFromStorage();
 
     expect(playerData).toEqual(playerDataExpected);
   });
