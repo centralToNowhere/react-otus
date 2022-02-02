@@ -12,7 +12,7 @@ const sagaMiddleware = createSagaMiddleware();
 const rootSaga = function* () {
   yield fork(fieldControlsSaga);
   yield fork(authSaga);
-}
+};
 
 export const store = configureStore({
   reducer: {

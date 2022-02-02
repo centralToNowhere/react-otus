@@ -1,9 +1,12 @@
 export {
   getDataFromStorage,
+  setDataToStorage,
   storageKey,
   clearSettingsData,
   clearPlayerData,
   persistFieldSettings,
-  persistPlayer
+  persistPlayer,
+  selectPlayerData,
+  selectFieldSettings,
 } from "./Storage";
-export type { StorageData } from "./Storage"
+export type { StorageData } from "./Storage";

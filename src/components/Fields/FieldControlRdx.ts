@@ -3,7 +3,7 @@ import { fieldWidth, fieldHeight } from "@/utils";
 import {
   clearSettingsData,
   getDataFromStorage,
-  persistFieldSettings
+  persistFieldSettings,
 } from "@/storage";
 import { takeEvery, takeLatest } from "redux-saga/effects";
 
@@ -23,19 +23,15 @@ export const defaultFieldControlState: IFieldControlState = {
   speed: 2,
 };
 
-const storageData = getDataFromStorage()?.fieldControls;
+const storageData = getDataFromStorage()?.fieldControl;
 
 export const initialState: IFieldControlState = {
-  cellSize:
-    storageData?.cellSize || defaultFieldControlState.cellSize,
+  cellSize: storageData?.cellSize || defaultFieldControlState.cellSize,
   maxFieldWidth:
-    storageData?.maxFieldWidth ||
-    defaultFieldControlState.maxFieldWidth,
+    storageData?.maxFieldWidth || defaultFieldControlState.maxFieldWidth,
   maxFieldHeight:
-    storageData?.maxFieldHeight ||
-    defaultFieldControlState.maxFieldHeight,
-  capacity:
-    storageData?.capacity || defaultFieldControlState.capacity,
+    storageData?.maxFieldHeight || defaultFieldControlState.maxFieldHeight,
+  capacity: storageData?.capacity || defaultFieldControlState.capacity,
   speed: storageData?.speed || defaultFieldControlState.speed,
 };
 
@@ -75,12 +71,15 @@ export const {
 } = fieldControlSlice.actions;
 
 export const fieldControlsSaga = function* () {
-  yield takeLatest([
-    setCellSize.type,
-    setMaxFieldWidth.type,
-    setMaxFieldHeight.type,
-    setCapacity.type,
-    setSpeed.type
-  ], persistFieldSettings);
+  yield takeLatest(
+    [
+      setCellSize.type,
+      setMaxFieldWidth.type,
+      setMaxFieldHeight.type,
+      setCapacity.type,
+      setSpeed.type,
+    ],
+    persistFieldSettings
+  );
   yield takeEvery(resetFieldControls.type, clearSettingsData);
-}
+};

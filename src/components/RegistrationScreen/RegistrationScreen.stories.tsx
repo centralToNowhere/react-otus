@@ -20,7 +20,7 @@ const store = configureStore({
     auth: {
       player: {
         name: "Player1",
-        registered: true,
+        registered: false,
       },
       loginPending: false,
     },

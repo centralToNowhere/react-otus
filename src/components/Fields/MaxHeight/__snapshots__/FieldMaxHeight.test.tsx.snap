@@ -2,18 +2,71 @@
 
 exports[`FieldMaxHeight tests should render max height input 1`] = `
 <DocumentFragment>
-  <div
-    class="css-w6s8l8-FormField eybdsu10"
+  .emotion-0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex: 0 0 calc(100% / 3 - 40px);
+  -ms-flex: 0 0 calc(100% / 3 - 40px);
+  flex: 0 0 calc(100% / 3 - 40px);
+  margin: 20px;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: end;
+  justify-content: end;
+}
+
+.emotion-0 input,
+.emotion-0 button {
+  margin: 5px 0 0 0;
+  min-width: 100px;
+}
+
+.emotion-0 div.error-container {
+  position: relative;
+}
+
+.emotion-0 p.error-msg {
+  position: absolute;
+  line-height: 1em;
+  font-size: 1em;
+  color: red;
+}
+
+.emotion-2 {
+  display: inline;
+}
+
+.emotion-4 {
+  background: inherit;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  display: block;
+  outline: 0;
+  width: 100px;
+}
+
+.emotion-4:focus {
+  border-bottom: 2px solid #ff215c;
+}
+
+<div
+    class="emotion-0 emotion-1"
   >
     <label
-      class="css-m0dhjx-LabelField e1gymppe0"
+      class="emotion-2 emotion-3"
       for="field-height"
     >
       Макс. высота:
     </label>
     <input
       autocomplete="off"
-      class="css-iol0j7-InputField e15roiqv0"
+      class="emotion-4 emotion-5"
       id="field-height"
       name="fieldHeight"
       pattern="([0-9]*[.])?[0-9]+"

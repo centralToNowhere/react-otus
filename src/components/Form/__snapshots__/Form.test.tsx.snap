@@ -2,8 +2,128 @@
 
 exports[`form tests should render form 1`] = `
 <DocumentFragment>
-  <form
-    class="css-1ei50t3-FormElement e1dt6zfi0"
+  .emotion-0 {
+  margin: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.emotion-0 input,
+.emotion-0 label,
+.emotion-0 button,
+.emotion-0 p {
+  line-height: 1.2;
+}
+
+.emotion-2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  max-width: 600px;
+}
+
+.emotion-4 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex: 0 0 calc(100% / 3 - 40px);
+  -ms-flex: 0 0 calc(100% / 3 - 40px);
+  flex: 0 0 calc(100% / 3 - 40px);
+  margin: 20px;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: end;
+  justify-content: end;
+}
+
+.emotion-4 input,
+.emotion-4 button {
+  margin: 5px 0 0 0;
+  min-width: 100px;
+}
+
+.emotion-4 div.error-container {
+  position: relative;
+}
+
+.emotion-4 p.error-msg {
+  position: absolute;
+  line-height: 1em;
+  font-size: 1em;
+  color: red;
+}
+
+.emotion-6 {
+  display: inline;
+}
+
+.emotion-8 {
+  background: inherit;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  display: block;
+  outline: 0;
+  width: 100px;
+}
+
+.emotion-8:focus {
+  border-bottom: 2px solid #ff215c;
+}
+
+.emotion-26 {
+  background: inherit;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  display: block;
+  outline: 0;
+  width: 100px;
+}
+
+.emotion-26:focus {
+  border-bottom: 2px solid #ff215c;
+}
+
+.emotion-26:focus {
+  border-bottom: 0;
+}
+
+.emotion-38 {
+  display: inline-block;
+}
+
+.emotion-40 {
+  background: inherit;
+  margin: 20px auto;
+}
+
+.emotion-40:focus {
+  outline: 2px solid #ff215c!important;
+  border: 2px solid transparent;
+}
+
+<form
+    class="emotion-0 emotion-1"
     data-testid="field-form"
   >
     <input
@@ -11,20 +131,20 @@ exports[`form tests should render form 1`] = `
       hidden=""
     />
     <div
-      class="css-1vttlkg-FormGroup e1ftf0n80"
+      class="emotion-2 emotion-3"
     >
       <div
-        class="css-w6s8l8-FormField eybdsu10"
+        class="emotion-4 emotion-5"
       >
         <label
-          class="css-m0dhjx-LabelField e1gymppe0"
+          class="emotion-6 emotion-7"
           for="field-width"
         >
           Макс. ширина:
         </label>
         <input
           autocomplete="off"
-          class="css-iol0j7-InputField e15roiqv0"
+          class="emotion-8 emotion-9"
           id="field-width"
           name="fieldWidth"
           pattern="([0-9]*[.])?[0-9]+"
@@ -34,17 +154,17 @@ exports[`form tests should render form 1`] = `
         />
       </div>
       <div
-        class="css-w6s8l8-FormField eybdsu10"
+        class="emotion-4 emotion-5"
       >
         <label
-          class="css-m0dhjx-LabelField e1gymppe0"
+          class="emotion-6 emotion-7"
           for="field-height"
         >
           Макс. высота:
         </label>
         <input
           autocomplete="off"
-          class="css-iol0j7-InputField e15roiqv0"
+          class="emotion-8 emotion-9"
           id="field-height"
           name="fieldHeight"
           pattern="([0-9]*[.])?[0-9]+"
@@ -54,17 +174,17 @@ exports[`form tests should render form 1`] = `
         />
       </div>
       <div
-        class="css-w6s8l8-FormField eybdsu10"
+        class="emotion-4 emotion-5"
       >
         <label
-          class="css-m0dhjx-LabelField e1gymppe0"
+          class="emotion-6 emotion-7"
           for="cell-size"
         >
           Размер ячейки:
         </label>
         <input
           autocomplete="off"
-          class="css-iol0j7-InputField e15roiqv0"
+          class="emotion-8 emotion-9"
           id="cell-size"
           name="cellSize"
           pattern="[0-9]*"
@@ -74,10 +194,10 @@ exports[`form tests should render form 1`] = `
         />
       </div>
       <div
-        class="css-w6s8l8-FormField eybdsu10"
+        class="emotion-4 emotion-5"
       >
         <label
-          class="css-m0dhjx-LabelField e1gymppe0"
+          class="emotion-6 emotion-7"
           for="capacity-percentage"
         >
           Процент заполненности:
@@ -87,7 +207,7 @@ exports[`form tests should render form 1`] = `
         </p>
         <input
           autocomplete="off"
-          class="css-1qphvf3-InputField-InputFieldCapacity e1sflu9m0"
+          class="emotion-26 emotion-27"
           id="capacity-percentage"
           max="100"
           min="0"
@@ -98,17 +218,17 @@ exports[`form tests should render form 1`] = `
         />
       </div>
       <div
-        class="css-w6s8l8-FormField eybdsu10"
+        class="emotion-4 emotion-5"
       >
         <label
-          class="css-m0dhjx-LabelField e1gymppe0"
+          class="emotion-6 emotion-7"
           for="speed-change"
         >
           Обновлений в секунду:
         </label>
         <input
           autocomplete="off"
-          class="css-iol0j7-InputField e15roiqv0"
+          class="emotion-8 emotion-9"
           id="speed-change"
           name="speedChange"
           pattern="([0-9]*[.])?[0-9]+"
@@ -119,16 +239,16 @@ exports[`form tests should render form 1`] = `
       </div>
     </div>
     <div
-      class="css-1vttlkg-FormGroup e1ftf0n80"
+      class="emotion-2 emotion-3"
     >
       <div
-        class="css-w6s8l8-FormField eybdsu10"
+        class="emotion-4 emotion-5"
       >
         <div
-          class="css-sabgvl-FormButtonContainer equvaju0"
+          class="emotion-38 emotion-39"
         >
           <button
-            class="css-bb7ehr-FormButton e2n0d7s0"
+            class="emotion-40 emotion-41"
             name="startButton"
             type="button"
           >
@@ -137,13 +257,13 @@ exports[`form tests should render form 1`] = `
         </div>
       </div>
       <div
-        class="css-w6s8l8-FormField eybdsu10"
+        class="emotion-4 emotion-5"
       >
         <div
-          class="css-sabgvl-FormButtonContainer equvaju0"
+          class="emotion-38 emotion-39"
         >
           <button
-            class="css-bb7ehr-FormButton e2n0d7s0"
+            class="emotion-40 emotion-41"
             name="stopButton"
             type="button"
           >
@@ -152,13 +272,13 @@ exports[`form tests should render form 1`] = `
         </div>
       </div>
       <div
-        class="css-w6s8l8-FormField eybdsu10"
+        class="emotion-4 emotion-5"
       >
         <div
-          class="css-sabgvl-FormButtonContainer equvaju0"
+          class="emotion-38 emotion-39"
         >
           <button
-            class="css-bb7ehr-FormButton e2n0d7s0"
+            class="emotion-40 emotion-41"
             name="resetButton"
             type="reset"
           >

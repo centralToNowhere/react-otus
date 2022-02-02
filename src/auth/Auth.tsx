@@ -1,4 +1,4 @@
-import React, {FC, useEffect} from "react";
+import React, { FC, useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { IPlayer } from "@/player/Player";
 import { routeNames } from "@/routes/routeNames";
@@ -34,7 +34,7 @@ export const usePlayerRegistration = (): [
     if (player.registered) {
       navigate(routeNames.game, { replace: true });
     }
-  }, [player.registered]);
+  }, [navigate, player.registered]);
 
   return [
     player,

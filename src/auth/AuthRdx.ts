@@ -1,14 +1,7 @@
-import {
-  createSelector,
-  createSlice, PayloadAction,
-} from "@reduxjs/toolkit";
+import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { defaultPlayer, IPlayer } from "@/player/Player";
 import { RootState } from "@/store/redux/store";
-import {
-  persistPlayer,
-  clearPlayerData,
-  getDataFromStorage
-} from "@/storage";
+import { persistPlayer, clearPlayerData, getDataFromStorage } from "@/storage";
 import { call, takeEvery, select, put } from "redux-saga/effects";
 
 export interface IAuthState {
@@ -34,7 +27,7 @@ export const registerPlayer = (playerName: string) => {
       }
     }, 500);
   });
-}
+};
 
 export const authSlice = createSlice({
   name: "auth",
@@ -60,8 +53,8 @@ export const authSlice = createSlice({
       state.player.registered = false;
       state.loginPending = false;
       state.player.name = "";
-    }
-  }
+    },
+  },
 });
 
 export const { logout, login, loginFailed, loginSucceed } = authSlice.actions;
@@ -85,7 +78,8 @@ export const selectLoginPending = createSelector(
   (auth: IAuthState) => auth.loginPending
 );
 
-export const onLogin = function* () {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const onLogin = function* (): Generator<any, void, any> {
   const playerName: string = yield select(selectPlayerName);
   const player: IPlayer = yield call(registerPlayer, playerName);
 
@@ -94,13 +88,10 @@ export const onLogin = function* () {
   } else {
     yield put(loginFailed());
   }
-}
+};
 
 export const authSaga = function* () {
   yield takeEvery(loginSucceed.type, persistPlayer);
-  yield takeEvery([
-    logout.type,
-    loginFailed.type
-  ], clearPlayerData);
+  yield takeEvery([logout.type, loginFailed.type], clearPlayerData);
   yield takeEvery(login.type, onLogin);
-}
+};

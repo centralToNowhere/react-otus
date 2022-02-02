@@ -10,7 +10,7 @@ export {
   setSpeed,
   resetFieldControls,
   defaultFieldControlState,
-  fieldControlsSaga
+  fieldControlsSaga,
 } from "./FieldControlRdx";
 export type { IFieldControlState } from "./FieldControlRdx";
 export { useOnChangeHandler, onBlurHandler } from "./FieldHandlers";

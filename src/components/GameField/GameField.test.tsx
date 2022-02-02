@@ -9,7 +9,6 @@ import {
 } from "./GameFieldRdx";
 import { configureStore, EnhancedStore, ThunkDispatch } from "@reduxjs/toolkit";
 import { AnyAction } from "redux";
-import { persistPlayerDataMiddleware } from "@/storage/Storage";
 import { ICell } from "@/components/Cell";
 
 describe("GameField tests", () => {
@@ -59,9 +58,6 @@ describe("GameField tests", () => {
     const store: EnhancedStore = configureStore({
       reducer: {
         gameField: gameFieldSlice.reducer,
-      },
-      middleware: (getDefaultMiddleware) => {
-        return getDefaultMiddleware().concat(persistPlayerDataMiddleware);
       },
     });
     const dispatch: ThunkDispatch<IGameFieldState, unknown, AnyAction> =

@@ -5,41 +5,65 @@ import * as ReactRouter from "react-router-dom";
 import { usePlayerRegistration } from "@/auth/Auth";
 import { routeNames } from "@/routes/routeNames";
 import {
+  clearPlayerData,
   getDataFromStorage,
-  persistPlayerDataMiddleware,
-} from "@/storage/Storage";
+  persistPlayer,
+  selectPlayerData,
+  storageKey,
+} from "@/storage";
 import { Provider } from "react-redux";
 import { AnyAction } from "redux";
-import { authSlice, IAuthState, login, logout } from "@/auth";
 import { configureStore, EnhancedStore, ThunkDispatch } from "@reduxjs/toolkit";
-
-let store: EnhancedStore;
-let dispatch: ThunkDispatch<IAuthState, unknown, AnyAction>;
+import createSagaMiddleware from "redux-saga";
+import { call, fork, put, select, takeEvery } from "redux-saga/effects";
+import { cloneableGenerator } from "@redux-saga/testing-utils";
+import {
+  authSlice,
+  IAuthState,
+  login,
+  loginFailed,
+  loginSucceed,
+  logout,
+} from "@/auth";
+import {
+  authSaga,
+  onLogin,
+  registerPlayer,
+  selectPlayerName,
+} from "@/auth/AuthRdx";
+import { IPlayer } from "@/player/Player";
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useNavigate: jest.fn(jest.fn),
 }));
 
-beforeAll(() => {
-  store = configureStore({
-    reducer: {
-      auth: authSlice.reducer,
-    },
-    middleware: (getDefaultMiddleware) => {
-      return getDefaultMiddleware().concat(persistPlayerDataMiddleware);
-    },
-    preloadedState: {
-      auth: {
-        player: {
-          registered: true,
-          name: "Player1",
-        },
-        loginPending: false,
+const sageMiddleware = createSagaMiddleware();
+const store: EnhancedStore = configureStore({
+  reducer: {
+    auth: authSlice.reducer,
+  },
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware().concat(sageMiddleware);
+  },
+  preloadedState: {
+    auth: {
+      player: {
+        registered: true,
+        name: "Player1",
       },
+      loginPending: false,
     },
-  });
-  dispatch = store.dispatch;
+  },
+});
+const dispatch: ThunkDispatch<IAuthState, unknown, AnyAction> = store.dispatch;
+
+sageMiddleware.run(function* () {
+  yield fork(authSaga);
+});
+
+beforeEach(() => {
+  localStorage.removeItem(storageKey);
 });
 
 afterAll(() => {
@@ -121,6 +145,36 @@ describe("Auth tests", () => {
     });
   });
 
+  it("should clear player from localstorage on logout", async () => {
+    localStorage.setItem(
+      storageKey,
+      JSON.stringify({
+        player: {
+          registered: true,
+          name: "Player3",
+        },
+        prop: "name",
+        someData: {
+          test: "test",
+        },
+      })
+    );
+
+    render(
+      <Provider store={store}>
+        <ReactRouter.MemoryRouter initialEntries={["/"]}>
+          <DummyComponent />
+        </ReactRouter.MemoryRouter>
+      </Provider>
+    );
+
+    dispatch(logout());
+
+    await waitFor(() => {
+      expect(getDataFromStorage()).not.toHaveProperty("player");
+    });
+  });
+
   it("should call navigate with args", async () => {
     const navigate = jest.fn();
 
@@ -172,6 +226,58 @@ describe("Auth tests", () => {
         },
         loginPending: false,
       });
+    });
+  });
+
+  describe("saga tests", () => {
+    it("should run authSaga", () => {
+      const gen = authSaga();
+
+      expect(gen.next().value).toEqual(
+        takeEvery(loginSucceed.type, persistPlayer)
+      );
+      expect(gen.next().value).toEqual(
+        takeEvery([logout.type, loginFailed.type], clearPlayerData)
+      );
+      expect(gen.next().value).toEqual(takeEvery(login.type, onLogin));
+    });
+
+    it("should run persistPlayer", () => {
+      const expectedPlayer: IPlayer = {
+        registered: true,
+        name: "Vladimir",
+      };
+
+      const gen = persistPlayer();
+
+      expect(gen.next().value).toEqual(select(selectPlayerData));
+      gen.next(expectedPlayer);
+      expect(getDataFromStorage()?.player).toEqual(expectedPlayer);
+    });
+
+    it("should run onLogin", () => {
+      const playerName = "Player888";
+      const registeredPlayer = {
+        registered: true,
+        name: "Registered",
+      };
+      const unregisteredPlayer = {
+        registered: false,
+        name: "",
+      };
+
+      const gen = cloneableGenerator(onLogin)();
+
+      expect(gen.next().value).toEqual(select(selectPlayerName));
+      expect(gen.next(playerName).value).toEqual(
+        call(registerPlayer, playerName)
+      );
+      expect(gen.clone().next(registeredPlayer).value).toEqual(
+        put(loginSucceed(registeredPlayer))
+      );
+      expect(gen.clone().next(unregisteredPlayer).value).toEqual(
+        put(loginFailed())
+      );
     });
   });
 });
