@@ -4,34 +4,14 @@ import userEvent from "@testing-library/user-event/dist";
 import * as ReactRouter from "react-router-dom";
 import { usePlayerRegistration } from "@/auth/Auth";
 import { routeNames } from "@/routes/routeNames";
-import {
-  clearPlayerData,
-  getDataFromStorage,
-  persistPlayer,
-  selectPlayerData,
-  storageKey,
-} from "@/storage";
+import { getDataFromStorage, storageKey } from "@/storage";
 import { Provider } from "react-redux";
 import { AnyAction } from "redux";
 import { configureStore, EnhancedStore, ThunkDispatch } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
-import { call, fork, put, select, takeEvery } from "redux-saga/effects";
-import { cloneableGenerator } from "@redux-saga/testing-utils";
-import {
-  authSlice,
-  IAuthState,
-  login,
-  loginFailed,
-  loginSucceed,
-  logout,
-} from "@/auth";
-import {
-  authSaga,
-  onLogin,
-  registerPlayer,
-  selectPlayerName,
-} from "@/auth/AuthRdx";
-import { IPlayer } from "@/player/Player";
+import { fork } from "redux-saga/effects";
+import { authSlice, IAuthState, login, logout } from "@/auth";
+import { authSaga } from "@/auth/AuthRdx";
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
@@ -53,6 +33,7 @@ const store: EnhancedStore = configureStore({
         name: "Player1",
       },
       loginPending: false,
+      loginError: "",
     },
   },
 });
@@ -206,77 +187,27 @@ describe("Auth tests", () => {
       dispatch(login("James"));
 
       await waitFor(() => {
-        expect(store.getState().auth).toEqual({
-          player: {
-            name: "James",
-            registered: true,
-          },
-          loginPending: false,
-        });
+        expect(store.getState().auth).toEqual(
+          expect.objectContaining({
+            player: {
+              name: "James",
+              registered: true,
+            },
+          })
+        );
       });
     });
 
     it("logout: should change state correctly", () => {
       dispatch(logout());
 
-      expect(store.getState().auth).toEqual({
-        player: {
-          name: "",
-          registered: false,
-        },
-        loginPending: false,
-      });
-    });
-  });
-
-  describe("saga tests", () => {
-    it("should run authSaga", () => {
-      const gen = authSaga();
-
-      expect(gen.next().value).toEqual(
-        takeEvery(loginSucceed.type, persistPlayer)
-      );
-      expect(gen.next().value).toEqual(
-        takeEvery([logout.type, loginFailed.type], clearPlayerData)
-      );
-      expect(gen.next().value).toEqual(takeEvery(login.type, onLogin));
-    });
-
-    it("should run persistPlayer", () => {
-      const expectedPlayer: IPlayer = {
-        registered: true,
-        name: "Vladimir",
-      };
-
-      const gen = persistPlayer();
-
-      expect(gen.next().value).toEqual(select(selectPlayerData));
-      gen.next(expectedPlayer);
-      expect(getDataFromStorage()?.player).toEqual(expectedPlayer);
-    });
-
-    it("should run onLogin", () => {
-      const playerName = "Player888";
-      const registeredPlayer = {
-        registered: true,
-        name: "Registered",
-      };
-      const unregisteredPlayer = {
-        registered: false,
-        name: "",
-      };
-
-      const gen = cloneableGenerator(onLogin)();
-
-      expect(gen.next().value).toEqual(select(selectPlayerName));
-      expect(gen.next(playerName).value).toEqual(
-        call(registerPlayer, playerName)
-      );
-      expect(gen.clone().next(registeredPlayer).value).toEqual(
-        put(loginSucceed(registeredPlayer))
-      );
-      expect(gen.clone().next(unregisteredPlayer).value).toEqual(
-        put(loginFailed())
+      expect(store.getState().auth).toEqual(
+        expect.objectContaining({
+          player: {
+            name: "",
+            registered: false,
+          },
+        })
       );
     });
   });
