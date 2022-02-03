@@ -3,7 +3,7 @@ import { Story, Meta } from "@storybook/react";
 import { Form, FormProps } from "./Form";
 
 export default {
-  title: "Components/PlayerRegistrationForm",
+  title: "Components/SettingsForm",
   component: Form,
   args: {
     cellSize: 40,
