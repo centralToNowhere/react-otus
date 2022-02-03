@@ -6,11 +6,12 @@ import { BREAKPOINTS, COLORS } from "@/styles/ui-styled";
 import { css } from "@emotion/react";
 import { usePlayerRegistration } from "@/auth/Auth";
 import { useSelector } from "react-redux";
-import { selectLoginPending } from "@/auth";
+import { selectLoginPending, selectLoginError } from "@/auth";
 
 export const RegistrationScreen: FC = () => {
   const [player, onPlayerRegistration] = usePlayerRegistration();
   const loginPending = useSelector(selectLoginPending);
+  const loginError = useSelector(selectLoginError);
   const onPlayerRegName = (playerName: string | null) => {
     onPlayerRegistration(playerName);
   };
@@ -35,6 +36,7 @@ export const RegistrationScreen: FC = () => {
           onPlayerRegistration={onPlayerRegName}
           player={player}
           loginPending={loginPending}
+          loginError={loginError}
         />
       </RegistrationContainer>
     </Container>

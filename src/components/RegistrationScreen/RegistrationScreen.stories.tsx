@@ -23,6 +23,7 @@ const store = configureStore({
         registered: false,
       },
       loginPending: false,
+      loginError: "",
     },
   },
 });

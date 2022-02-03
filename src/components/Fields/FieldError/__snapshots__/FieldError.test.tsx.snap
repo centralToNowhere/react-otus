@@ -18,6 +18,7 @@ exports[`error field tests should show error 1`] = `
   >
     <p
       class="error-msg"
+      role="alert"
     >
       something went wrong
     </p>

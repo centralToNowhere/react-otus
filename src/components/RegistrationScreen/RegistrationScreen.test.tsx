@@ -18,6 +18,7 @@ describe("Registration screen tests", () => {
               registered: true,
             },
             loginPending: false,
+            loginError: "",
           },
         },
       }
@@ -52,6 +53,7 @@ describe("Registration screen tests", () => {
               registered: true,
             },
             loginPending: false,
+            loginError: "",
           },
         },
       }
@@ -63,6 +65,34 @@ describe("Registration screen tests", () => {
 
     await waitFor(() => {
       expect(playerNameInput.value).toBe("Player23");
+    });
+  });
+
+  it("should show error on login error", async () => {
+    const errorMsg = "Login error!";
+
+    render(
+      <ReactRouter.MemoryRouter initialEntries={["/"]}>
+        <RegistrationScreen />
+      </ReactRouter.MemoryRouter>,
+      {
+        preloadedState: {
+          auth: {
+            player: {
+              name: "Player23",
+              registered: true,
+            },
+            loginPending: false,
+            loginError: errorMsg,
+          },
+        },
+      }
+    );
+
+    const pError = screen.getByRole("alert");
+
+    await waitFor(() => {
+      expect(pError).toHaveTextContent(errorMsg);
     });
   });
 });

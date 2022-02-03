@@ -22,6 +22,7 @@ const initialState = {
       registered: false,
     },
     loginPending: false,
+    loginError: "",
   },
   fieldControl: {
     cellSize: 40,

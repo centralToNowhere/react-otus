@@ -41,6 +41,7 @@ describe("Routes tests", () => {
               registered: false,
             },
             loginPending: false,
+            loginError: "",
           },
         },
       }
@@ -77,6 +78,7 @@ describe("Routes tests", () => {
               registered: true,
             },
             loginPending: false,
+            loginError: "",
           },
         },
       }

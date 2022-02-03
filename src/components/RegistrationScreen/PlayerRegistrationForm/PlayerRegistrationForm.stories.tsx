@@ -14,6 +14,7 @@ export default {
       name: "Player1",
     },
     loginPending: false,
+    loginError: "",
     onPlayerRegistration: () => {
       //empty
     },
@@ -29,4 +30,9 @@ export const PlayerRegistrationFormDefault = Template;
 export const PlayerRegistrationFormPending = Template.bind({});
 PlayerRegistrationFormPending.args = {
   loginPending: true,
+};
+
+export const PlayerRegistrationFormError = Template.bind({});
+PlayerRegistrationFormError.args = {
+  loginError: "Player is not registered!",
 };

@@ -6,6 +6,7 @@ export {
   loginFailed,
   selectPlayer,
   selectLoginPending,
+  selectLoginError,
 } from "./AuthRdx";
 export type { IAuthState } from "./AuthRdx";
 export { withAuthProtection, usePlayerRegistration } from "./Auth";

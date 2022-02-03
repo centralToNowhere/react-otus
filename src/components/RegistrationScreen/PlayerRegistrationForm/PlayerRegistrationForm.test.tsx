@@ -12,6 +12,7 @@ describe("PlayerRegistrationForm tests", () => {
         player={defaultPlayer}
         onPlayerRegistration={jest.fn()}
         loginPending={false}
+        loginError=""
       />
     );
 
@@ -31,6 +32,7 @@ describe("PlayerRegistrationForm tests", () => {
         player={defaultPlayer}
         onPlayerRegistration={onPlayerRegistration}
         loginPending={false}
+        loginError=""
       />
     );
 
@@ -51,6 +53,7 @@ describe("PlayerRegistrationForm tests", () => {
         player={defaultPlayer}
         onPlayerRegistration={onPlayerRegistration}
         loginPending={false}
+        loginError=""
       />
     );
 
@@ -73,6 +76,7 @@ describe("PlayerRegistrationForm tests", () => {
         player={defaultPlayer}
         onPlayerRegistration={onPlayerRegistration}
         loginPending={false}
+        loginError=""
       />
     );
 
@@ -91,6 +95,7 @@ describe("PlayerRegistrationForm tests", () => {
         player={defaultPlayer}
         onPlayerRegistration={jest.fn()}
         loginPending={true}
+        loginError=""
       />
     );
 
@@ -105,11 +110,27 @@ describe("PlayerRegistrationForm tests", () => {
         player={defaultPlayer}
         onPlayerRegistration={jest.fn()}
         loginPending={false}
+        loginError=""
       />
     );
 
     const spinner = screen.queryByRole("status");
 
     expect(spinner).toBeNull();
+  });
+
+  it("should render error message", () => {
+    render(
+      <PlayerRegistrationForm
+        player={defaultPlayer}
+        onPlayerRegistration={jest.fn()}
+        loginPending={false}
+        loginError="something went wrong"
+      />
+    );
+
+    const error = screen.queryByRole("alert");
+
+    expect(error).toHaveTextContent("something went wrong");
   });
 });

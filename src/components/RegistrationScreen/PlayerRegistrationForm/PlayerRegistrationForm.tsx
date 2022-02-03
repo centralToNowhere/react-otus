@@ -15,10 +15,12 @@ import { BREAKPOINTS, COLORS } from "@/styles/ui-styled";
 import styled from "@emotion/styled";
 import { Spinner } from "react-bootstrap";
 import { IPlayer } from "@/player/Player";
+import { FieldError } from "@/components/Fields/FieldError";
 
 export interface IRegistrationFormProps {
   player: IPlayer;
   loginPending: boolean;
+  loginError: string;
   onPlayerRegistration: (playerName: string | null) => void;
 }
 
@@ -82,6 +84,7 @@ export const PlayerRegistrationForm: FC<IRegistrationFormProps> = (props) => {
             autoFocus={true}
             onKeyDown={onKeyDown}
           />
+          <FieldError show={Boolean(props.loginError)} msg={props.loginError} />
         </div>
         <FormButton
           type="button"
