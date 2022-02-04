@@ -1,13 +1,17 @@
+export { authSlice, login, logout, loginSucceed, loginFailed } from "./slice";
 export {
-  authSlice,
-  login,
-  logout,
-  loginSucceed,
-  loginFailed,
-  selectPlayer,
-  selectLoginPending,
-  selectLoginError,
-} from "./AuthRdx";
-export type { IAuthState } from "./AuthRdx";
-export { withAuthProtection, usePlayerRegistration } from "./Auth";
+  registerPlayer,
+  PlayerNotRegisteredError,
+  PlayerNameNotSetError,
+} from "./Auth";
+export type { IAuthState, LoginError } from "./Auth";
+export { authSaga, onLogin } from "./saga";
 export { storageKey } from "@/storage/Storage";
+export {
+  selectLoginError,
+  selectLoginPending,
+  selectPlayer,
+  selectPlayerName,
+} from "./selectors";
+export { withAuthProtection } from "./withAuthProtection";
+export { useRegistration } from "@/auth/useRegistration";

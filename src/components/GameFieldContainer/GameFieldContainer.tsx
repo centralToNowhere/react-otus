@@ -25,7 +25,7 @@ import {
   setSpeed,
   resetFieldControls,
 } from "@/components/Fields/FieldControlRdx";
-import { logout } from "@/auth/AuthRdx";
+import { logout } from "@/auth/slice";
 import { ThunkDispatch } from "redux-thunk";
 
 export const createFormKey = (): number => {

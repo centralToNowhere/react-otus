@@ -2,7 +2,6 @@ import { combineReducers } from "redux";
 import { expectSaga } from "redux-saga-test-plan";
 import * as matchers from "redux-saga-test-plan/matchers";
 import {
-  authSaga,
   authSlice,
   logout,
   login,
@@ -11,7 +10,8 @@ import {
   PlayerNameNotSetError,
   PlayerNotRegisteredError,
   registerPlayer,
-} from "@/auth/AuthRdx";
+  authSaga,
+} from "@/auth";
 import { IPlayer } from "@/player/Player";
 import { getDataFromStorage, setDataToStorage } from "@/storage";
 import { clearStorage } from "@/storage/Storage";

@@ -2,8 +2,8 @@ import React, { FC } from "react";
 import { Routes, Route } from "react-router-dom";
 import { GameFieldContainer } from "@/components/GameFieldContainer";
 import { RegistrationScreen } from "@/components/RegistrationScreen/RegistrationScreen";
-import { withAuthProtection } from "@/auth/Auth";
-import { routeNames } from "@/routes/routeNames";
+import { withAuthProtection } from "@/auth";
+import { routeNames } from "@/routes";
 
 const AuthGameFieldContainer = withAuthProtection(GameFieldContainer);
 

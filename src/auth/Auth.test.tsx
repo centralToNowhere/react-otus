@@ -2,7 +2,6 @@ import React, { FC } from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event/dist";
 import * as ReactRouter from "react-router-dom";
-import { usePlayerRegistration } from "@/auth/Auth";
 import { routeNames } from "@/routes/routeNames";
 import { getDataFromStorage, storageKey } from "@/storage";
 import { Provider } from "react-redux";
@@ -10,8 +9,13 @@ import { AnyAction } from "redux";
 import { configureStore, EnhancedStore, ThunkDispatch } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import { fork } from "redux-saga/effects";
-import { authSlice, IAuthState, login, logout } from "@/auth";
-import { authSaga } from "@/auth/AuthRdx";
+import {
+  useRegistration,
+  authSlice,
+  IAuthState,
+  logout,
+  authSaga,
+} from "@/auth";
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
@@ -52,7 +56,7 @@ afterAll(() => {
 });
 
 const DummyComponent: FC = () => {
-  const [player, onPlayerRegister] = usePlayerRegistration();
+  const [player, onPlayerRegister] = useRegistration();
 
   return (
     <>
@@ -70,7 +74,7 @@ const DummyComponent: FC = () => {
   );
 };
 
-describe("Auth tests", () => {
+describe("Auth integration tests", () => {
   it("should load player data from store", () => {
     render(
       <Provider store={store}>
@@ -180,35 +184,5 @@ describe("Auth tests", () => {
     });
 
     jest.spyOn(ReactRouter, "useNavigate").mockRestore();
-  });
-
-  describe("AuthSlice actions test", () => {
-    it("login: should change state correctly", async () => {
-      dispatch(login("James"));
-
-      await waitFor(() => {
-        expect(store.getState().auth).toEqual(
-          expect.objectContaining({
-            player: {
-              name: "James",
-              registered: true,
-            },
-          })
-        );
-      });
-    });
-
-    it("logout: should change state correctly", () => {
-      dispatch(logout());
-
-      expect(store.getState().auth).toEqual(
-        expect.objectContaining({
-          player: {
-            name: "",
-            registered: false,
-          },
-        })
-      );
-    });
   });
 });
