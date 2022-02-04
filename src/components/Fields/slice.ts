@@ -1,11 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fieldWidth, fieldHeight } from "@/utils";
-import {
-  clearSettingsData,
-  getDataFromStorage,
-  persistFieldSettings,
-} from "@/storage";
-import { takeEvery, takeLatest } from "redux-saga/effects";
+import { fieldHeight, fieldWidth } from "@/utils";
+import { getDataFromStorage } from "@/storage";
 
 export interface IFieldControlState {
   cellSize: number;
@@ -69,17 +64,3 @@ export const {
   setSpeed,
   resetFieldControls,
 } = fieldControlSlice.actions;
-
-export const fieldControlsSaga = function* () {
-  yield takeLatest(
-    [
-      setCellSize.type,
-      setMaxFieldWidth.type,
-      setMaxFieldHeight.type,
-      setCapacity.type,
-      setSpeed.type,
-    ],
-    persistFieldSettings
-  );
-  yield takeEvery(resetFieldControls.type, clearSettingsData);
-};

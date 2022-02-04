@@ -34,9 +34,9 @@ export function* clearPlayerData() {
   yield call(clearStorage, "player");
 }
 
-export const clearSettingsData = () => {
-  clearStorage("fieldControl");
-};
+export function* clearSettingsData() {
+  yield call(clearStorage, "fieldControl");
+}
 
 export const selectPlayerData = (state: RootState): PlayerStorageData => {
   return {
@@ -60,7 +60,7 @@ export const persistPlayer = function* () {
 
 export const persistFieldSettings = function* () {
   const fieldSettings: IFieldControlState = yield select(selectFieldSettings);
-  setDataToStorage({
+  yield call(setDataToStorage, {
     ...getDataFromStorage(),
     fieldControl: fieldSettings,
   });

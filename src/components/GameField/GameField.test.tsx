@@ -1,15 +1,6 @@
 import React from "react";
 import { render, screen } from "@/utils/test-utils";
-import { GameField } from "./GameField";
-import {
-  setActiveCells,
-  resetCells,
-  IGameFieldState,
-  gameFieldSlice,
-} from "./GameFieldRdx";
-import { configureStore, EnhancedStore, ThunkDispatch } from "@reduxjs/toolkit";
-import { AnyAction } from "redux";
-import { ICell } from "@/components/Cell";
+import { GameField } from "@/components/GameField";
 
 describe("GameField tests", () => {
   it("should render game field", () => {
@@ -51,43 +42,6 @@ describe("GameField tests", () => {
       expect(cell).not.toHaveStyle({
         background: "black",
       });
-    });
-  });
-
-  describe("GameFieldSlice actions tests", () => {
-    const store: EnhancedStore = configureStore({
-      reducer: {
-        gameField: gameFieldSlice.reducer,
-      },
-    });
-    const dispatch: ThunkDispatch<IGameFieldState, unknown, AnyAction> =
-      store.dispatch;
-
-    it("setActiveCells: should change state correctly", () => {
-      const activeCells: ICell[] = [
-        {
-          x: 5,
-          y: 6,
-        },
-        {
-          x: 24,
-          y: 13,
-        },
-        {
-          x: 123,
-          y: 45,
-        },
-      ];
-
-      dispatch(setActiveCells(activeCells));
-
-      expect(store.getState().gameField.activeCells).toEqual(activeCells);
-    });
-
-    it("resetCells: should reset active cells to default", () => {
-      dispatch(resetCells());
-
-      expect(store.getState().gameField.activeCells).toEqual([]);
     });
   });
 });

@@ -1,7 +1,11 @@
 import React from "react";
+import { connect, ConnectedProps } from "react-redux";
+import { AnyAction } from "redux";
+import { RootState } from "@/store/redux/store";
 import styled from "@emotion/styled";
+import { BREAKPOINTS } from "@/styles/ui-styled";
 import { Form } from "@/components/Form";
-import { GameField } from "@/components/GameField";
+import { GameField, setActiveCells, resetCells } from "@/components/GameField";
 import { ICell } from "@/components/Cell";
 import { PlayerContainer } from "@/components/PlayerContainer";
 import {
@@ -9,14 +13,6 @@ import {
   getCellsInRow,
   getRandomCells,
 } from "@/utils/CellGenerator";
-import { BREAKPOINTS } from "@/styles/ui-styled";
-import { connect, ConnectedProps } from "react-redux";
-import { AnyAction } from "redux";
-import { RootState } from "@/store/redux/store";
-import {
-  setActiveCells,
-  resetCells,
-} from "@/components/GameField/GameFieldRdx";
 import {
   setCellSize,
   setMaxFieldWidth,
@@ -24,8 +20,8 @@ import {
   setCapacity,
   setSpeed,
   resetFieldControls,
-} from "@/components/Fields/FieldControlRdx";
-import { logout } from "@/auth/slice";
+} from "@/components/Fields";
+import { logout } from "@/auth";
 import { ThunkDispatch } from "redux-thunk";
 
 export const createFormKey = (): number => {

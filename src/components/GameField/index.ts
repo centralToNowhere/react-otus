@@ -1,4 +1,4 @@
 export { GameField } from "./GameField";
-export { gameFieldSlice, setActiveCells, resetCells } from "./GameFieldRdx";
-export type { IGameFieldState } from "./GameFieldRdx";
 export type { IGameFieldProps } from "./GameField";
+export { gameFieldSlice, setActiveCells, resetCells } from "./slice";
+export type { IGameFieldState } from "./slice";

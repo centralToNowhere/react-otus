@@ -1,8 +1,8 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ICell } from "@/components/Cell";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getInitialCells } from "@/utils/CellGenerator";
-import { fieldWidth, fieldHeight } from "@/utils";
-import { initialState as FieldControlInitialState } from "@/components/Fields/FieldControlRdx";
+import { fieldHeight, fieldWidth } from "@/utils";
+import { initialState as FieldControlInitialState } from "@/components/Fields/slice";
 
 export interface IGameFieldState {
   activeCells: ICell[];
