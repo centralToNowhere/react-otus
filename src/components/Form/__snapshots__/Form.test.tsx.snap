@@ -34,7 +34,6 @@ exports[`form tests should render form 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  max-width: 600px;
 }
 
 .emotion-4 {
@@ -123,7 +122,7 @@ exports[`form tests should render form 1`] = `
 }
 
 <form
-    class="emotion-0 emotion-1"
+    class="game-settings-form emotion-0 emotion-1"
     data-testid="field-form"
   >
     <input

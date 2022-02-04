@@ -96,7 +96,11 @@ export class Form extends React.Component<FormProps> {
 
   render() {
     return (
-      <FormElement ref={this.formRef} data-testid={"field-form"}>
+      <FormElement
+        className="game-settings-form"
+        ref={this.formRef}
+        data-testid={"field-form"}
+      >
         <input autoComplete="off" hidden />
         <FormGroup>
           <FieldMaxWidth
@@ -156,5 +160,4 @@ const FormGroup = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  max-width: 600px;
 `;

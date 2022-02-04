@@ -10,7 +10,6 @@ export const withAuthProtection = <T extends Record<string, unknown>>(
   Component: React.ComponentType<T>
 ): FC<T> => {
   const AuthProtected: FC<T> = (props) => {
-    debugger;
     const player = useSelector(selectPlayer);
 
     return player.registered ? (

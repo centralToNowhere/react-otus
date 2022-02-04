@@ -154,10 +154,6 @@ export class Main extends React.Component<GameFieldContainerProps> {
       <Container>
         <GameField />
         <ControlContainer>
-          <PlayerContainer
-            player={this.props.player}
-            onPlayerUnregister={this.onPlayerUnregister}
-          />
           <Form
             key={this.formKey}
             onCellSizeChange={this.props.setCellSize}
@@ -174,6 +170,10 @@ export class Main extends React.Component<GameFieldContainerProps> {
             maxFieldHeight={this.props.maxFieldHeight}
             speed={this.props.speed}
           />
+          <PlayerContainer
+            player={this.props.player}
+            onPlayerUnregister={this.onPlayerUnregister}
+          />
         </ControlContainer>
       </Container>
     );
@@ -189,11 +189,31 @@ const Container = styled.div`
 `;
 
 const ControlContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  position: relative;
 
-  @media screen and (max-width: ${BREAKPOINTS.mobileEnd}) {
-    flex-wrap: wrap-reverse;
+  .game-settings-form {
+    clear: right;
+    float: none;
+    max-width: 480px;
+  }
+
+  @media screen and (min-width: ${BREAKPOINTS.xl}) {
+    width: 100%;
+    .game-settings-form {
+      margin: 20px auto;
+    }
+
+    .player-container {
+      position: absolute;
+      margin: 20px;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  @media screen and (max-width: ${BREAKPOINTS.xl}) and (min-width: ${BREAKPOINTS.md}) {
+    .game-settings-form {
+      float: right;
+    }
   }
 `;

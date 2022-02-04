@@ -13,9 +13,6 @@ exports[`PlayerContainer tests should render PlayerContainer 1`] = `
   flex-direction: column;
   border: 2px solid black;
   border-radius: 10px;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: flex-start;
-  align-self: flex-start;
 }
 
 .emotion-0 input,
@@ -23,14 +20,6 @@ exports[`PlayerContainer tests should render PlayerContainer 1`] = `
 .emotion-0 button,
 .emotion-0 p {
   line-height: 1.2;
-}
-
-@media screen and (min-width: 1200px) {
-  .emotion-0 {
-    position: absolute;
-    margin-right: auto;
-    left: 0;
-  }
 }
 
 .emotion-2 {
@@ -104,7 +93,7 @@ exports[`PlayerContainer tests should render PlayerContainer 1`] = `
 }
 
 <form
-    class="emotion-0 emotion-1"
+    class="player-container emotion-0 emotion-1"
   >
     <div
       class="emotion-2 emotion-3"

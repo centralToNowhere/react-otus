@@ -54,25 +54,35 @@ exports[`GameFieldContainer tests should correctly render field and form 1`] = `
 }
 
 .emotion-454 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  position: relative;
 }
 
-@media screen and (max-width: 480px) {
+.emotion-454 .game-settings-form {
+  clear: right;
+  float: none;
+  max-width: 480px;
+}
+
+@media screen and (min-width: 1200px) {
   .emotion-454 {
-    -webkit-box-flex-wrap: wrap-reverse;
-    -webkit-flex-wrap: wrap-reverse;
-    -ms-flex-wrap: wrap-reverse;
-    flex-wrap: wrap-reverse;
+    width: 100%;
+  }
+
+  .emotion-454 .game-settings-form {
+    margin: 20px auto;
+  }
+
+  .emotion-454 .player-container {
+    position: absolute;
+    margin: 20px;
+    top: 0;
+    left: 0;
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 768px) {
+  .emotion-454 .game-settings-form {
+    float: right;
   }
 }
 
@@ -87,9 +97,6 @@ exports[`GameFieldContainer tests should correctly render field and form 1`] = `
   flex-direction: column;
   border: 2px solid black;
   border-radius: 10px;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: flex-start;
-  align-self: flex-start;
 }
 
 .emotion-456 input,
@@ -99,105 +106,7 @@ exports[`GameFieldContainer tests should correctly render field and form 1`] = `
   line-height: 1.2;
 }
 
-@media screen and (min-width: 1200px) {
-  .emotion-456 {
-    position: absolute;
-    margin-right: auto;
-    left: 0;
-  }
-}
-
 .emotion-458 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-flex: 0 0 calc(100% / 3 - 40px);
-  -ms-flex: 0 0 calc(100% / 3 - 40px);
-  flex: 0 0 calc(100% / 3 - 40px);
-  margin: 20px;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  -webkit-justify-content: end;
-  justify-content: end;
-  display: inline-block;
-}
-
-.emotion-458 input,
-.emotion-458 button {
-  margin: 5px 0 0 0;
-  min-width: 100px;
-}
-
-.emotion-458 div.error-container {
-  position: relative;
-}
-
-.emotion-458 p.error-msg {
-  position: absolute;
-  line-height: 1em;
-  font-size: 1em;
-  color: red;
-}
-
-.emotion-458 h1.player-name {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin: 0;
-  border-bottom: 2px solid #ff215c;
-}
-
-.emotion-458 div.player-stats-container {
-  margin: 20px 0;
-}
-
-.emotion-458 div.player-stats-container>h2 {
-  font-size: 1.2rem;
-}
-
-.emotion-458 div.player-stats-container>ul {
-  padding-left: 0;
-}
-
-.emotion-458 li {
-  margin: 10px 0 10px 20px;
-}
-
-.emotion-460 {
-  background: inherit;
-  margin: 20px auto;
-  text-align: center;
-}
-
-.emotion-460:focus {
-  outline: 2px solid #ff215c!important;
-  border: 2px solid transparent;
-}
-
-.emotion-462 {
-  margin: 20px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  border: 2px solid black;
-  border-radius: 10px;
-}
-
-.emotion-462 input,
-.emotion-462 label,
-.emotion-462 button,
-.emotion-462 p {
-  line-height: 1.2;
-}
-
-.emotion-464 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -209,10 +118,9 @@ exports[`GameFieldContainer tests should correctly render field and form 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  max-width: 600px;
 }
 
-.emotion-466 {
+.emotion-460 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -230,28 +138,28 @@ exports[`GameFieldContainer tests should correctly render field and form 1`] = `
   justify-content: end;
 }
 
-.emotion-466 input,
-.emotion-466 button {
+.emotion-460 input,
+.emotion-460 button {
   margin: 5px 0 0 0;
   min-width: 100px;
 }
 
-.emotion-466 div.error-container {
+.emotion-460 div.error-container {
   position: relative;
 }
 
-.emotion-466 p.error-msg {
+.emotion-460 p.error-msg {
   position: absolute;
   line-height: 1em;
   font-size: 1em;
   color: red;
 }
 
-.emotion-468 {
+.emotion-462 {
   display: inline;
 }
 
-.emotion-470 {
+.emotion-464 {
   background: inherit;
   border-top: 0;
   border-left: 0;
@@ -261,11 +169,11 @@ exports[`GameFieldContainer tests should correctly render field and form 1`] = `
   width: 100px;
 }
 
-.emotion-470:focus {
+.emotion-464:focus {
   border-bottom: 2px solid #ff215c;
 }
 
-.emotion-488 {
+.emotion-482 {
   background: inherit;
   border-top: 0;
   border-left: 0;
@@ -275,24 +183,94 @@ exports[`GameFieldContainer tests should correctly render field and form 1`] = `
   width: 100px;
 }
 
-.emotion-488:focus {
+.emotion-482:focus {
   border-bottom: 2px solid #ff215c;
 }
 
-.emotion-488:focus {
+.emotion-482:focus {
   border-bottom: 0;
 }
 
-.emotion-500 {
+.emotion-494 {
   display: inline-block;
 }
 
-.emotion-502 {
+.emotion-496 {
   background: inherit;
   margin: 20px auto;
 }
 
-.emotion-502:focus {
+.emotion-496:focus {
+  outline: 2px solid #ff215c!important;
+  border: 2px solid transparent;
+}
+
+.emotion-512 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex: 0 0 calc(100% / 3 - 40px);
+  -ms-flex: 0 0 calc(100% / 3 - 40px);
+  flex: 0 0 calc(100% / 3 - 40px);
+  margin: 20px;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: end;
+  justify-content: end;
+  display: inline-block;
+}
+
+.emotion-512 input,
+.emotion-512 button {
+  margin: 5px 0 0 0;
+  min-width: 100px;
+}
+
+.emotion-512 div.error-container {
+  position: relative;
+}
+
+.emotion-512 p.error-msg {
+  position: absolute;
+  line-height: 1em;
+  font-size: 1em;
+  color: red;
+}
+
+.emotion-512 h1.player-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  border-bottom: 2px solid #ff215c;
+}
+
+.emotion-512 div.player-stats-container {
+  margin: 20px 0;
+}
+
+.emotion-512 div.player-stats-container>h2 {
+  font-size: 1.2rem;
+}
+
+.emotion-512 div.player-stats-container>ul {
+  padding-left: 0;
+}
+
+.emotion-512 li {
+  margin: 10px 0 10px 20px;
+}
+
+.emotion-514 {
+  background: inherit;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.emotion-514:focus {
   outline: 2px solid #ff215c!important;
   border: 2px solid transparent;
 }
@@ -1659,10 +1637,176 @@ exports[`GameFieldContainer tests should correctly render field and form 1`] = `
       class="emotion-454 emotion-455"
     >
       <form
-        class="emotion-456 emotion-457"
+        class="game-settings-form emotion-456 emotion-457"
+        data-testid="field-form"
       >
+        <input
+          autocomplete="off"
+          hidden=""
+        />
         <div
           class="emotion-458 emotion-459"
+        >
+          <div
+            class="emotion-460 emotion-461"
+          >
+            <label
+              class="emotion-462 emotion-463"
+              for="field-width"
+            >
+              Макс. ширина:
+            </label>
+            <input
+              autocomplete="off"
+              class="emotion-464 emotion-465"
+              id="field-width"
+              name="fieldWidth"
+              pattern="([0-9]*[.])?[0-9]+"
+              step="1"
+              type="number"
+              value="1024"
+            />
+          </div>
+          <div
+            class="emotion-460 emotion-461"
+          >
+            <label
+              class="emotion-462 emotion-463"
+              for="field-height"
+            >
+              Макс. высота:
+            </label>
+            <input
+              autocomplete="off"
+              class="emotion-464 emotion-465"
+              id="field-height"
+              name="fieldHeight"
+              pattern="([0-9]*[.])?[0-9]+"
+              step="1"
+              type="number"
+              value="384"
+            />
+          </div>
+          <div
+            class="emotion-460 emotion-461"
+          >
+            <label
+              class="emotion-462 emotion-463"
+              for="cell-size"
+            >
+              Размер ячейки:
+            </label>
+            <input
+              autocomplete="off"
+              class="emotion-464 emotion-465"
+              id="cell-size"
+              name="cellSize"
+              pattern="[0-9]*"
+              step="1"
+              type="number"
+              value="40"
+            />
+          </div>
+          <div
+            class="emotion-460 emotion-461"
+          >
+            <label
+              class="emotion-462 emotion-463"
+              for="capacity-percentage"
+            >
+              Процент заполненности:
+            </label>
+            <p>
+              50 %
+            </p>
+            <input
+              autocomplete="off"
+              class="emotion-482 emotion-483"
+              id="capacity-percentage"
+              max="100"
+              min="0"
+              name="capacityPercentage"
+              step="1"
+              type="range"
+              value="50"
+            />
+          </div>
+          <div
+            class="emotion-460 emotion-461"
+          >
+            <label
+              class="emotion-462 emotion-463"
+              for="speed-change"
+            >
+              Обновлений в секунду:
+            </label>
+            <input
+              autocomplete="off"
+              class="emotion-464 emotion-465"
+              id="speed-change"
+              name="speedChange"
+              pattern="([0-9]*[.])?[0-9]+"
+              step="0.1"
+              type="number"
+              value="2"
+            />
+          </div>
+        </div>
+        <div
+          class="emotion-458 emotion-459"
+        >
+          <div
+            class="emotion-460 emotion-461"
+          >
+            <div
+              class="emotion-494 emotion-495"
+            >
+              <button
+                class="emotion-496 emotion-497"
+                name="startButton"
+                type="button"
+              >
+                Старт
+              </button>
+            </div>
+          </div>
+          <div
+            class="emotion-460 emotion-461"
+          >
+            <div
+              class="emotion-494 emotion-495"
+            >
+              <button
+                class="emotion-496 emotion-497"
+                name="stopButton"
+                type="button"
+              >
+                Стоп
+              </button>
+            </div>
+          </div>
+          <div
+            class="emotion-460 emotion-461"
+          >
+            <div
+              class="emotion-494 emotion-495"
+            >
+              <button
+                class="emotion-496 emotion-497"
+                name="resetButton"
+                type="reset"
+              >
+                Сброс
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form
+        class="player-container emotion-456 emotion-457"
+      >
+        <div
+          class="emotion-512 emotion-461"
         >
           <h1
             class="player-name"
@@ -1683,177 +1827,11 @@ exports[`GameFieldContainer tests should correctly render field and form 1`] = `
             </ul>
           </div>
           <button
-            class="emotion-460 emotion-461"
+            class="emotion-514 emotion-497"
             type="button"
           >
             Выйти
           </button>
-        </div>
-      </form>
-      <form
-        class="emotion-462 emotion-457"
-        data-testid="field-form"
-      >
-        <input
-          autocomplete="off"
-          hidden=""
-        />
-        <div
-          class="emotion-464 emotion-465"
-        >
-          <div
-            class="emotion-466 emotion-459"
-          >
-            <label
-              class="emotion-468 emotion-469"
-              for="field-width"
-            >
-              Макс. ширина:
-            </label>
-            <input
-              autocomplete="off"
-              class="emotion-470 emotion-471"
-              id="field-width"
-              name="fieldWidth"
-              pattern="([0-9]*[.])?[0-9]+"
-              step="1"
-              type="number"
-              value="1024"
-            />
-          </div>
-          <div
-            class="emotion-466 emotion-459"
-          >
-            <label
-              class="emotion-468 emotion-469"
-              for="field-height"
-            >
-              Макс. высота:
-            </label>
-            <input
-              autocomplete="off"
-              class="emotion-470 emotion-471"
-              id="field-height"
-              name="fieldHeight"
-              pattern="([0-9]*[.])?[0-9]+"
-              step="1"
-              type="number"
-              value="384"
-            />
-          </div>
-          <div
-            class="emotion-466 emotion-459"
-          >
-            <label
-              class="emotion-468 emotion-469"
-              for="cell-size"
-            >
-              Размер ячейки:
-            </label>
-            <input
-              autocomplete="off"
-              class="emotion-470 emotion-471"
-              id="cell-size"
-              name="cellSize"
-              pattern="[0-9]*"
-              step="1"
-              type="number"
-              value="40"
-            />
-          </div>
-          <div
-            class="emotion-466 emotion-459"
-          >
-            <label
-              class="emotion-468 emotion-469"
-              for="capacity-percentage"
-            >
-              Процент заполненности:
-            </label>
-            <p>
-              50 %
-            </p>
-            <input
-              autocomplete="off"
-              class="emotion-488 emotion-489"
-              id="capacity-percentage"
-              max="100"
-              min="0"
-              name="capacityPercentage"
-              step="1"
-              type="range"
-              value="50"
-            />
-          </div>
-          <div
-            class="emotion-466 emotion-459"
-          >
-            <label
-              class="emotion-468 emotion-469"
-              for="speed-change"
-            >
-              Обновлений в секунду:
-            </label>
-            <input
-              autocomplete="off"
-              class="emotion-470 emotion-471"
-              id="speed-change"
-              name="speedChange"
-              pattern="([0-9]*[.])?[0-9]+"
-              step="0.1"
-              type="number"
-              value="2"
-            />
-          </div>
-        </div>
-        <div
-          class="emotion-464 emotion-465"
-        >
-          <div
-            class="emotion-466 emotion-459"
-          >
-            <div
-              class="emotion-500 emotion-501"
-            >
-              <button
-                class="emotion-502 emotion-461"
-                name="startButton"
-                type="button"
-              >
-                Старт
-              </button>
-            </div>
-          </div>
-          <div
-            class="emotion-466 emotion-459"
-          >
-            <div
-              class="emotion-500 emotion-501"
-            >
-              <button
-                class="emotion-502 emotion-461"
-                name="stopButton"
-                type="button"
-              >
-                Стоп
-              </button>
-            </div>
-          </div>
-          <div
-            class="emotion-466 emotion-459"
-          >
-            <div
-              class="emotion-500 emotion-501"
-            >
-              <button
-                class="emotion-502 emotion-461"
-                name="resetButton"
-                type="reset"
-              >
-                Сброс
-              </button>
-            </div>
-          </div>
         </div>
       </form>
     </div>
