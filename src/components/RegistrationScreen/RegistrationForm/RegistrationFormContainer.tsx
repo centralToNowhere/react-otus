@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { PlayerRegistrationForm } from "@/components/RegistrationScreen/PlayerRegistrationForm/index";
+import { RegistrationForm } from "@/components/RegistrationScreen/RegistrationForm/index";
 import { useSelector } from "react-redux";
 import { useRegistration, selectLoginPending, selectLoginError } from "@/auth";
 
@@ -12,7 +12,7 @@ export const RegistrationFormContainer: FC = () => {
   };
 
   return (
-    <PlayerRegistrationForm
+    <RegistrationForm
       onPlayerRegistration={onPlayerRegName}
       player={player}
       loginPending={loginPending}

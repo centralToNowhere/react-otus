@@ -24,7 +24,7 @@ export interface IRegistrationFormProps {
   onPlayerRegistration: (playerName: string | null) => void;
 }
 
-export const PlayerRegistrationForm: FC<IRegistrationFormProps> = (props) => {
+export const RegistrationForm: FC<IRegistrationFormProps> = (props) => {
   const [playerName, setPlayerName] = useState(props.player.name);
 
   const onPlayerNameChange = useCallback(

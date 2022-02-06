@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
-import { PlayerRegistrationForm } from "@/components/RegistrationScreen/PlayerRegistrationForm/PlayerRegistrationForm";
+import { RegistrationForm } from "@/components/RegistrationScreen/RegistrationForm/RegistrationForm";
 import { l10n } from "@/l10n/ru";
 import userEvent from "@testing-library/user-event/dist";
 import { defaultPlayer } from "@/player/Player";
@@ -8,7 +8,7 @@ import { defaultPlayer } from "@/player/Player";
 describe("PlayerRegistrationForm tests", () => {
   it("should render player registration form", () => {
     const { asFragment } = render(
-      <PlayerRegistrationForm
+      <RegistrationForm
         player={defaultPlayer}
         onPlayerRegistration={jest.fn()}
         loginPending={false}
@@ -28,7 +28,7 @@ describe("PlayerRegistrationForm tests", () => {
     const onPlayerRegistration = jest.fn();
 
     render(
-      <PlayerRegistrationForm
+      <RegistrationForm
         player={defaultPlayer}
         onPlayerRegistration={onPlayerRegistration}
         loginPending={false}
@@ -49,7 +49,7 @@ describe("PlayerRegistrationForm tests", () => {
     const onPlayerRegistration = jest.fn();
 
     render(
-      <PlayerRegistrationForm
+      <RegistrationForm
         player={defaultPlayer}
         onPlayerRegistration={onPlayerRegistration}
         loginPending={false}
@@ -72,7 +72,7 @@ describe("PlayerRegistrationForm tests", () => {
     const onPlayerRegistration = jest.fn();
 
     render(
-      <PlayerRegistrationForm
+      <RegistrationForm
         player={defaultPlayer}
         onPlayerRegistration={onPlayerRegistration}
         loginPending={false}
@@ -91,7 +91,7 @@ describe("PlayerRegistrationForm tests", () => {
 
   it("should render spinner on loginPending", () => {
     render(
-      <PlayerRegistrationForm
+      <RegistrationForm
         player={defaultPlayer}
         onPlayerRegistration={jest.fn()}
         loginPending={true}
@@ -106,7 +106,7 @@ describe("PlayerRegistrationForm tests", () => {
 
   it("should not render spinner when loginPending = false", () => {
     render(
-      <PlayerRegistrationForm
+      <RegistrationForm
         player={defaultPlayer}
         onPlayerRegistration={jest.fn()}
         loginPending={false}
@@ -121,7 +121,7 @@ describe("PlayerRegistrationForm tests", () => {
 
   it("should render error message", () => {
     render(
-      <PlayerRegistrationForm
+      <RegistrationForm
         player={defaultPlayer}
         onPlayerRegistration={jest.fn()}
         loginPending={false}

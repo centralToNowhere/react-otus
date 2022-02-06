@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { l10n } from "@/l10n/ru";
-import { RegistrationFormContainer } from "@/components/RegistrationScreen/PlayerRegistrationForm";
+import { RegistrationFormContainer } from "@/components/RegistrationScreen/RegistrationForm";
 import styled from "@emotion/styled";
 import { BREAKPOINTS, COLORS } from "@/styles/ui-styled";
 import { css } from "@emotion/react";

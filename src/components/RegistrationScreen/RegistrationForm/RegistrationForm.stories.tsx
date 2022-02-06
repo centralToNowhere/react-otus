@@ -1,13 +1,13 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import {
-  PlayerRegistrationForm,
+  RegistrationForm,
   IRegistrationFormProps,
-} from "@/components/RegistrationScreen/PlayerRegistrationForm";
+} from "@/components/RegistrationScreen/RegistrationForm";
 
 export default {
-  title: "Components/RegistrationScreen/PlayerRegistrationForm",
-  component: PlayerRegistrationForm,
+  title: "Components/RegistrationScreen/RegistrationForm",
+  component: RegistrationForm,
   args: {
     player: {
       registered: true,
@@ -22,7 +22,7 @@ export default {
 } as Meta;
 
 const Template: Story<IRegistrationFormProps> = (args) => {
-  return <PlayerRegistrationForm {...args} />;
+  return <RegistrationForm {...args} />;
 };
 
 export const PlayerRegistrationFormDefault = Template;
