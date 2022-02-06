@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GameFieldContainer tests should correctly render field and form 1`] = `
+exports[`Game tests should correctly render field and form 1`] = `
 <DocumentFragment>
   .emotion-0 {
   display: -webkit-box;

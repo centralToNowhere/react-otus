@@ -1,9 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import {
-  GameFieldContainer,
-  GameFieldContainerProps,
-} from "@/components/GameFieldContainer/GameFieldContainer";
+import { Game, IGameProps } from "@/components/Game/Game";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { authSlice } from "@/auth";
@@ -11,8 +8,8 @@ import { gameFieldSlice } from "@/components/GameField";
 import { fieldControlSlice } from "@/components/Fields";
 
 export default {
-  title: "Components/GameFieldContainer",
-  component: GameFieldContainer,
+  title: "Components/Game",
+  component: Game,
 } as Meta;
 
 const initialState = {
@@ -36,7 +33,7 @@ const initialState = {
   },
 };
 
-const TemplateInitial: Story<GameFieldContainerProps> = () => {
+const TemplateInitial: Story<IGameProps> = () => {
   const store = configureStore({
     reducer: {
       auth: authSlice.reducer,
@@ -48,12 +45,12 @@ const TemplateInitial: Story<GameFieldContainerProps> = () => {
 
   return (
     <Provider store={store}>
-      <GameFieldContainer />
+      <Game />
     </Provider>
   );
 };
 
-const TemplatePlayerRegistered: Story<GameFieldContainerProps> = () => {
+const TemplatePlayerRegistered: Story<IGameProps> = () => {
   const store = configureStore({
     reducer: {
       auth: authSlice.reducer,
@@ -74,10 +71,10 @@ const TemplatePlayerRegistered: Story<GameFieldContainerProps> = () => {
 
   return (
     <Provider store={store}>
-      <GameFieldContainer />
+      <Game />
     </Provider>
   );
 };
 
-export const FieldContainerDefault = TemplateInitial;
-export const FieldContainerPlayerRegistered = TemplatePlayerRegistered;
+export const GameDefault = TemplateInitial;
+export const GameWithPlayerRegistered = TemplatePlayerRegistered;

@@ -9,7 +9,7 @@ import {
 import { FormField } from "@/components/Form/FormField";
 import { InputPatterns } from "@/components/Fields";
 import { FieldError } from "@/components/Fields/FieldError/FieldError";
-import { Form, IFieldProps } from "@/components/Form";
+import { FormContainer, IFieldProps } from "@/components/Form";
 import { useDebounce, isValidCellSizeString } from "@/utils";
 import {
   onDirtyBlurHandler,
@@ -34,7 +34,7 @@ export const FieldCellSize: React.FC<IFieldProps> = (props) => {
       setCellSizeString,
       setError
     ),
-    Form.inputDelay
+    FormContainer.inputDelay
   );
 
   const onChange = onDirtyChangeHandler((value) => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
-import { PlayerContainer } from "@/components/PlayerContainer";
+import { PlayerBlock } from "@/components/PlayerBlock";
 import { l10n } from "@/l10n/ru";
 import userEvent from "@testing-library/user-event/dist";
 
@@ -9,12 +9,9 @@ describe("PlayerContainer tests", () => {
     jest.spyOn(global.Math, "random").mockReturnValue(0);
     const onPlayerUnregister = jest.fn();
     const { asFragment } = render(
-      <PlayerContainer
+      <PlayerBlock
         onPlayerUnregister={onPlayerUnregister}
-        player={{
-          registered: true,
-          name: "Ivan",
-        }}
+        playerName={"Ivan"}
       />
     );
     jest.spyOn(global.Math, "random").mockRestore();
@@ -35,12 +32,9 @@ describe("PlayerContainer tests", () => {
     const onPlayerUnregister = jest.fn();
 
     render(
-      <PlayerContainer
+      <PlayerBlock
         onPlayerUnregister={onPlayerUnregister}
-        player={{
-          registered: true,
-          name: "Ivan",
-        }}
+        playerName={"Ivan"}
       />
     );
 

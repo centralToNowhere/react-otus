@@ -1,13 +1,10 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import {
-  PlayerContainer,
-  IPlayerContainerProps,
-} from "@/components/PlayerContainer";
+import { PlayerBlock, IPlayerContainerProps } from "@/components/PlayerBlock";
 
 export default {
-  title: "Components/PlayerContainer",
-  component: PlayerContainer,
+  title: "Components/PlayerBlock",
+  component: PlayerBlock,
   args: {
     player: {
       registered: true,
@@ -20,7 +17,7 @@ export default {
 } as Meta;
 
 const Template: Story<IPlayerContainerProps> = (args) => {
-  return <PlayerContainer {...args} />;
+  return <PlayerBlock {...args} />;
 };
 
 export const PlayerContainerDefault = Template.bind({});

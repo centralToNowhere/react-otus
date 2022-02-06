@@ -1,20 +1,11 @@
 import React, { FC } from "react";
 import { l10n } from "@/l10n/ru";
-import { PlayerRegistrationForm } from "@/components/RegistrationScreen/PlayerRegistrationForm";
+import { RegistrationFormContainer } from "@/components/RegistrationScreen/PlayerRegistrationForm";
 import styled from "@emotion/styled";
 import { BREAKPOINTS, COLORS } from "@/styles/ui-styled";
 import { css } from "@emotion/react";
-import { useSelector } from "react-redux";
-import { useRegistration, selectLoginPending, selectLoginError } from "@/auth";
 
 export const RegistrationScreen: FC = () => {
-  const [player, onPlayerRegistration] = useRegistration();
-  const loginPending = useSelector(selectLoginPending);
-  const loginError = useSelector(selectLoginError);
-  const onPlayerRegName = (playerName: string | null) => {
-    onPlayerRegistration(playerName);
-  };
-
   return (
     <Container>
       <ColumnContainer>
@@ -31,12 +22,7 @@ export const RegistrationScreen: FC = () => {
             {l10n.gameHeadingPart2}
           </span>
         </h1>
-        <PlayerRegistrationForm
-          onPlayerRegistration={onPlayerRegName}
-          player={player}
-          loginPending={loginPending}
-          loginError={loginError}
-        />
+        <RegistrationFormContainer />
       </RegistrationContainer>
     </Container>
   );

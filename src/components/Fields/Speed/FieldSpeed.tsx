@@ -8,7 +8,7 @@ import {
 import { InputField, LabelField } from "@/components/Fields";
 import { FormField } from "@/components/Form/FormField";
 import { FieldError } from "@/components/Fields/FieldError/FieldError";
-import { Form, IFieldProps } from "@/components/Form";
+import { FormContainer, IFieldProps } from "@/components/Form";
 import { useDebounce, isValidPositiveNumericString } from "@/utils";
 import {
   onDirtyBlurHandler,
@@ -28,7 +28,7 @@ export const FieldSpeed: React.FC<IFieldProps> = (props) => {
 
   const onChangeDebounced = useDebounce<string>(
     useOnChangeHandler(props.onChange, validateSpeed, setSpeedString, setError),
-    Form.inputDelay
+    FormContainer.inputDelay
   );
 
   const onChange = onDirtyChangeHandler((value: string) => {

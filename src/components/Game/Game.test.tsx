@@ -3,10 +3,11 @@ import React from "react";
 import { render, screen, waitFor } from "@/utils/test-utils";
 import userEvent from "@testing-library/user-event/dist";
 import {
-  GameFieldContainer,
-  createFormKey,
+  Game,
+  GameContainer,
   getGameCycleTimeout,
-} from "@/components/GameFieldContainer/GameFieldContainer";
+  createFormKey,
+} from "@/components/Game";
 import { COLORS } from "@/styles/ui-styled";
 import { l10n } from "@/l10n/ru";
 import {
@@ -98,10 +99,10 @@ afterEach(() => {
   jest.restoreAllMocks();
 });
 
-describe("GameFieldContainer tests", () => {
+describe("Game tests", () => {
   it("should correctly render field and form", async () => {
     jest.spyOn(global.Math, "random").mockReturnValue(0);
-    const { asFragment } = render(<GameFieldContainer />, {
+    const { asFragment } = render(<Game />, {
       preloadedState: {},
     });
     jest.spyOn(global.Math, "random").mockRestore();
@@ -121,7 +122,7 @@ describe("GameFieldContainer tests", () => {
   });
 
   it("should render 100 cells with numbers", () => {
-    render(<GameFieldContainer />, {
+    render(<Game />, {
       preloadedState: {
         fieldControl: {
           cellSize: 10,
@@ -146,7 +147,7 @@ describe("GameFieldContainer tests", () => {
   it("should start game cycle", async () => {
     CellGeneratorRewire.__Rewire__("getRandomCells", getRandomCellsMocked);
 
-    render(<GameFieldContainer />, {
+    render(<GameContainer />, {
       preloadedState: {
         fieldControl: {
           cellSize: 10,
@@ -207,7 +208,7 @@ describe("GameFieldContainer tests", () => {
       );
     };
 
-    render(<GameFieldContainer />, {
+    render(<GameContainer />, {
       preloadedState: {
         fieldControl: {
           cellSize: 10,
@@ -274,7 +275,7 @@ describe("GameFieldContainer tests", () => {
     const capacity = 23;
     const speed = 10;
 
-    render(<GameFieldContainer />, {
+    render(<Game />, {
       preloadedState: {
         fieldControl: {
           cellSize,
@@ -324,7 +325,7 @@ describe("GameFieldContainer tests", () => {
 
     Object.keys(initialState).forEach((prop) => {
       it(`should change ${prop} inside store`, async () => {
-        const { store } = render(<GameFieldContainer />, {
+        const { store } = render(<GameContainer />, {
           preloadedState: {
             fieldControl: initialState,
           },
@@ -358,7 +359,7 @@ describe("GameFieldContainer tests", () => {
     const speed = 10;
     const gameCycleTimeout = getGameCycleTimeout(speed);
 
-    render(<GameFieldContainer />, {
+    render(<GameContainer />, {
       preloadedState: {
         fieldControl: {
           cellSize,

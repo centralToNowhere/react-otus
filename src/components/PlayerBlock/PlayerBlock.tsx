@@ -5,14 +5,13 @@ import { FormField } from "@/components/Form";
 import { FormButton } from "@/components/Buttons";
 import { l10n } from "@/l10n/ru";
 import { COLORS } from "@/styles/ui-styled";
-import { IPlayer } from "@/player/Player";
 
 export interface IPlayerContainerProps {
-  player: IPlayer;
+  playerName: string;
   onPlayerUnregister: () => void;
 }
 
-export const PlayerContainer: FC<IPlayerContainerProps> = (props) => {
+export const PlayerBlock: FC<IPlayerContainerProps> = (props) => {
   return (
     <FormElement className={"player-container"}>
       <FormField
@@ -43,7 +42,7 @@ export const PlayerContainer: FC<IPlayerContainerProps> = (props) => {
           }
         `}
       >
-        <h1 className="player-name">{props.player.name}</h1>
+        <h1 className="player-name">{props.playerName}</h1>
         <div className="player-stats-container">
           <h2>{l10n.statistics}</h2>
           <ul>
