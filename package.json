@@ -1,7 +1,7 @@
 {
-  "name": "lesson10-architecture-of-react-app",
+  "name": "lesson13-redux-saga-advanced-concept",
   "version": "1.0.0",
-  "description": "Архитектура React-приложения",
+  "description": "Redux-saga advanced-concept",
   "main": "src/index.tsx",
   "scripts": {
     "build": "npm run build:prod",
@@ -33,7 +33,7 @@
   "bugs": {
     "url": "https://github.com/centralToNowhere/react-otus/issues"
   },
-  "homepage": "https://github.com/centralToNowhere/react-otus/tree/lesson12",
+  "homepage": "https://github.com/centralToNowhere/react-otus/tree/lesson13",
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/plugin-transform-runtime": "^7.16.4",
