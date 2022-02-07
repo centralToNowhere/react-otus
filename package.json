@@ -1,5 +1,5 @@
 {
-  "name": "lesson10-redux-saga-intro",
+  "name": "lesson11-redux-saga-intro",
   "version": "1.0.0",
   "description": "Redux saga intro",
   "main": "src/index.tsx",
