@@ -2,6 +2,7 @@ import { RootState } from "@/store/redux/store";
 import { PlayerStorageData } from "@/player/Player";
 import { select } from "redux-saga/effects";
 import { IFieldControlState } from "@/components/Fields";
+import { call } from "redux-saga-test-plan/matchers";
 
 export const storageKey = "playerData";
 
@@ -20,7 +21,7 @@ export const setDataToStorage = (data: StorageData) => {
   localStorage.setItem(storageKey, JSON.stringify(data));
 };
 
-const clearStorage = (prop: keyof StorageData) => {
+export const clearStorage = (prop: keyof StorageData) => {
   const data = getDataFromStorage();
 
   if (data && typeof data === "object" && data[prop]) {
@@ -29,13 +30,13 @@ const clearStorage = (prop: keyof StorageData) => {
   }
 };
 
-export const clearPlayerData = () => {
-  clearStorage("player");
-};
+export function* clearPlayerData() {
+  yield call(clearStorage, "player");
+}
 
-export const clearSettingsData = () => {
-  clearStorage("fieldControl");
-};
+export function* clearSettingsData() {
+  yield call(clearStorage, "fieldControl");
+}
 
 export const selectPlayerData = (state: RootState): PlayerStorageData => {
   return {
@@ -51,7 +52,7 @@ export const selectFieldSettings = (state: RootState): IFieldControlState => {
 
 export const persistPlayer = function* () {
   const playerData: PlayerStorageData = yield select(selectPlayerData);
-  setDataToStorage({
+  yield call(setDataToStorage, {
     ...getDataFromStorage(),
     player: playerData,
   });
@@ -59,7 +60,7 @@ export const persistPlayer = function* () {
 
 export const persistFieldSettings = function* () {
   const fieldSettings: IFieldControlState = yield select(selectFieldSettings);
-  setDataToStorage({
+  yield call(setDataToStorage, {
     ...getDataFromStorage(),
     fieldControl: fieldSettings,
   });

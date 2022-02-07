@@ -1,0 +1,1840 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Game tests should correctly render field and form 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.emotion-2 {
+  width: 1000px;
+  cursor: pointer;
+  height: 360px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  background: #9083e6;
+  margin: 0 auto;
+}
+
+.emotion-4 {
+  width: 40px;
+  height: 40px;
+  background: #ff215c;
+  outline: 1px solid white;
+  -webkit-transition: 0.5s ease background;
+  transition: 0.5s ease background;
+  text-align: center;
+  line-height: 40px;
+}
+
+.emotion-6 {
+  width: 40px;
+  height: 40px;
+  outline: 1px solid white;
+  -webkit-transition: 0.5s ease background;
+  transition: 0.5s ease background;
+  text-align: center;
+  line-height: 40px;
+}
+
+.emotion-454 {
+  position: relative;
+}
+
+.emotion-454 .game-settings-form {
+  clear: right;
+  float: none;
+  max-width: 480px;
+}
+
+@media screen and (min-width: 1200px) {
+  .emotion-454 {
+    width: 100%;
+  }
+
+  .emotion-454 .game-settings-form {
+    margin: 20px auto;
+  }
+
+  .emotion-454 .player-container {
+    position: absolute;
+    margin: 20px;
+    top: 0;
+    left: 0;
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 768px) {
+  .emotion-454 .game-settings-form {
+    float: right;
+  }
+}
+
+.emotion-456 {
+  margin: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.emotion-456 input,
+.emotion-456 label,
+.emotion-456 button,
+.emotion-456 p {
+  line-height: 1.2;
+}
+
+.emotion-458 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.emotion-460 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex: 0 0 calc(100% / 3 - 40px);
+  -ms-flex: 0 0 calc(100% / 3 - 40px);
+  flex: 0 0 calc(100% / 3 - 40px);
+  margin: 20px;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: end;
+  justify-content: end;
+}
+
+.emotion-460 input,
+.emotion-460 button {
+  margin: 5px 0 0 0;
+  min-width: 100px;
+}
+
+.emotion-460 div.error-container {
+  position: relative;
+}
+
+.emotion-460 p.error-msg {
+  position: absolute;
+  line-height: 1em;
+  font-size: 1em;
+  color: red;
+}
+
+.emotion-462 {
+  display: inline;
+}
+
+.emotion-464 {
+  background: inherit;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  display: block;
+  outline: 0;
+  width: 100px;
+}
+
+.emotion-464:focus {
+  border-bottom: 2px solid #ff215c;
+}
+
+.emotion-482 {
+  background: inherit;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  display: block;
+  outline: 0;
+  width: 100px;
+}
+
+.emotion-482:focus {
+  border-bottom: 2px solid #ff215c;
+}
+
+.emotion-482:focus {
+  border-bottom: 0;
+}
+
+.emotion-494 {
+  display: inline-block;
+}
+
+.emotion-496 {
+  background: inherit;
+  margin: 20px auto;
+}
+
+.emotion-496:focus {
+  outline: 2px solid #ff215c!important;
+  border: 2px solid transparent;
+}
+
+.emotion-512 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex: 0 0 calc(100% / 3 - 40px);
+  -ms-flex: 0 0 calc(100% / 3 - 40px);
+  flex: 0 0 calc(100% / 3 - 40px);
+  margin: 20px;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: end;
+  justify-content: end;
+  display: inline-block;
+}
+
+.emotion-512 input,
+.emotion-512 button {
+  margin: 5px 0 0 0;
+  min-width: 100px;
+}
+
+.emotion-512 div.error-container {
+  position: relative;
+}
+
+.emotion-512 p.error-msg {
+  position: absolute;
+  line-height: 1em;
+  font-size: 1em;
+  color: red;
+}
+
+.emotion-512 h1.player-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  border-bottom: 2px solid #ff215c;
+}
+
+.emotion-512 div.player-stats-container {
+  margin: 20px 0;
+}
+
+.emotion-512 div.player-stats-container>h2 {
+  font-size: 1.2rem;
+}
+
+.emotion-512 div.player-stats-container>ul {
+  padding-left: 0;
+}
+
+.emotion-512 li {
+  margin: 10px 0 10px 20px;
+}
+
+.emotion-514 {
+  background: inherit;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.emotion-514:focus {
+  outline: 2px solid #ff215c!important;
+  border: 2px solid transparent;
+}
+
+<div
+    class="emotion-0 emotion-1"
+  >
+    <div
+      class="emotion-2 emotion-3"
+      data-testid="field"
+    >
+      <div
+        aria-label="1"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="2"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="3"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="4"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="5"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="6"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="7"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="8"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="9"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="10"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="11"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="12"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="13"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="14"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="15"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="16"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="17"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="18"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="19"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="20"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="21"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="22"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="23"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="24"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="25"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="26"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="27"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="28"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="29"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="30"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="31"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="32"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="33"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="34"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="35"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="36"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="37"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="38"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="39"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="40"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="41"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="42"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="43"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="44"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="45"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="46"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="47"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="48"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="49"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="50"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="51"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="52"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="53"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="54"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="55"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="56"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="57"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="58"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="59"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="60"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="61"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="62"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="63"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="64"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="65"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="66"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="67"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="68"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="69"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="70"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="71"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="72"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="73"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="74"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="75"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="76"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="77"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="78"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="79"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="80"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="81"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="82"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="83"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="84"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="85"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="86"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="87"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="88"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="89"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="90"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="91"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="92"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="93"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="94"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="95"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="96"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="97"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="98"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="99"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="100"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="101"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="102"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="103"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="104"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="105"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="106"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="107"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="108"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="109"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="110"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="111"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="112"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="113"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="114"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="115"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="116"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="117"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="118"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="119"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="120"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="121"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="122"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="123"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="124"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="125"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="126"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="127"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="128"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="129"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="130"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="131"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="132"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="133"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="134"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="135"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="136"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="137"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="138"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="139"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="140"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="141"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="142"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="143"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="144"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="145"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="146"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="147"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="148"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="149"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="150"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="151"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="152"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="153"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="154"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="155"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="156"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="157"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="158"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="159"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="160"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="161"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="162"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="163"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="164"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="165"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="166"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="167"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="168"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="169"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="170"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="171"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="172"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="173"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="174"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="175"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="176"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="177"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="178"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="179"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="180"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="181"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="182"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="183"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="184"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="185"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="186"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="187"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="188"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="189"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="190"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="191"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="192"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="193"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="194"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="195"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="196"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="197"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="198"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="199"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="200"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="201"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="202"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="203"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="204"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="205"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="206"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="207"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="208"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="209"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="210"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="211"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="212"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="213"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="214"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="215"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="216"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="217"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="218"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="219"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="220"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="221"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="222"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="223"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="224"
+        class="emotion-6 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+      <div
+        aria-label="225"
+        class="emotion-4 emotion-5"
+        data-testid="cell"
+        size="40"
+      />
+    </div>
+    <div
+      class="emotion-454 emotion-455"
+    >
+      <form
+        class="game-settings-form emotion-456 emotion-457"
+        data-testid="field-form"
+      >
+        <input
+          autocomplete="off"
+          hidden=""
+        />
+        <div
+          class="emotion-458 emotion-459"
+        >
+          <div
+            class="emotion-460 emotion-461"
+          >
+            <label
+              class="emotion-462 emotion-463"
+              for="field-width"
+            >
+              Макс. ширина:
+            </label>
+            <input
+              autocomplete="off"
+              class="emotion-464 emotion-465"
+              id="field-width"
+              name="fieldWidth"
+              pattern="([0-9]*[.])?[0-9]+"
+              step="1"
+              type="number"
+              value="1024"
+            />
+          </div>
+          <div
+            class="emotion-460 emotion-461"
+          >
+            <label
+              class="emotion-462 emotion-463"
+              for="field-height"
+            >
+              Макс. высота:
+            </label>
+            <input
+              autocomplete="off"
+              class="emotion-464 emotion-465"
+              id="field-height"
+              name="fieldHeight"
+              pattern="([0-9]*[.])?[0-9]+"
+              step="1"
+              type="number"
+              value="384"
+            />
+          </div>
+          <div
+            class="emotion-460 emotion-461"
+          >
+            <label
+              class="emotion-462 emotion-463"
+              for="cell-size"
+            >
+              Размер ячейки:
+            </label>
+            <input
+              autocomplete="off"
+              class="emotion-464 emotion-465"
+              id="cell-size"
+              name="cellSize"
+              pattern="[0-9]*"
+              step="1"
+              type="number"
+              value="40"
+            />
+          </div>
+          <div
+            class="emotion-460 emotion-461"
+          >
+            <label
+              class="emotion-462 emotion-463"
+              for="capacity-percentage"
+            >
+              Процент заполненности:
+            </label>
+            <p>
+              50 %
+            </p>
+            <input
+              autocomplete="off"
+              class="emotion-482 emotion-483"
+              id="capacity-percentage"
+              max="100"
+              min="0"
+              name="capacityPercentage"
+              step="1"
+              type="range"
+              value="50"
+            />
+          </div>
+          <div
+            class="emotion-460 emotion-461"
+          >
+            <label
+              class="emotion-462 emotion-463"
+              for="speed-change"
+            >
+              Обновлений в секунду:
+            </label>
+            <input
+              autocomplete="off"
+              class="emotion-464 emotion-465"
+              id="speed-change"
+              name="speedChange"
+              pattern="([0-9]*[.])?[0-9]+"
+              step="0.1"
+              type="number"
+              value="2"
+            />
+          </div>
+        </div>
+        <div
+          class="emotion-458 emotion-459"
+        >
+          <div
+            class="emotion-460 emotion-461"
+          >
+            <div
+              class="emotion-494 emotion-495"
+            >
+              <button
+                class="emotion-496 emotion-497"
+                name="startButton"
+                type="button"
+              >
+                Старт
+              </button>
+            </div>
+          </div>
+          <div
+            class="emotion-460 emotion-461"
+          >
+            <div
+              class="emotion-494 emotion-495"
+            >
+              <button
+                class="emotion-496 emotion-497"
+                name="stopButton"
+                type="button"
+              >
+                Стоп
+              </button>
+            </div>
+          </div>
+          <div
+            class="emotion-460 emotion-461"
+          >
+            <div
+              class="emotion-494 emotion-495"
+            >
+              <button
+                class="emotion-496 emotion-497"
+                name="resetButton"
+                type="reset"
+              >
+                Сброс
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form
+        class="player-container emotion-456 emotion-457"
+      >
+        <div
+          class="emotion-512 emotion-461"
+        >
+          <h1
+            class="player-name"
+          />
+          <div
+            class="player-stats-container"
+          >
+            <h2>
+              Статистика
+            </h2>
+            <ul>
+              <li>
+                Очки: 0
+              </li>
+              <li>
+                Количество кликов: 0
+              </li>
+            </ul>
+          </div>
+          <button
+            class="emotion-514 emotion-497"
+            type="button"
+          >
+            Выйти
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;

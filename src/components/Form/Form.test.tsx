@@ -1,64 +1,23 @@
 import React from "react";
 import userEvent from "@testing-library/user-event/dist";
-import { render, screen, waitFor } from "@testing-library/react";
-import { Form } from "./Form";
+import { render, screen } from "@/utils/test-utils";
+import { FormContainer } from "./FormContainer";
 import { l10n } from "@/l10n/ru";
 
-const inputsData = [
-  {
-    callbackName: "onCellSizeChange",
-    labelText: l10n.cellSizeLabel,
-    testValues: {
-      shouldCallOnChange: ["10", "100", "1000"],
-      shouldNotCallOnChange: ["1", "9", "-1", "", "0"],
-    },
+const initialState = {
+  fieldControl: {
+    cellSize: 40,
+    maxFieldWidth: 600,
+    maxFieldHeight: 400,
+    capacity: 50,
+    speed: 1,
   },
-  {
-    callbackName: "onMaxFieldWidthChange",
-    labelText: l10n.maxWidthLabel,
-    testValues: {
-      shouldCallOnChange: ["1", "10", "100", "1000", "0"],
-      shouldNotCallOnChange: ["-1", "", "qwerty"],
-    },
-  },
-  {
-    callbackName: "onMaxFieldHeightChange",
-    labelText: l10n.maxHeightLabel,
-    testValues: {
-      shouldCallOnChange: ["1", "10", "100", "1000", "0"],
-      shouldNotCallOnChange: ["-1", "", "qwerty"],
-    },
-  },
-  {
-    callbackName: "onCapacityChange",
-    labelText: l10n.capacityLabel,
-    testValues: {
-      shouldCallOnChange: [
-        "1",
-        "10",
-        "100",
-        "1000",
-        "0.1",
-        "0",
-        "-1",
-        "qwerty",
-      ],
-      shouldNotCallOnChange: [""],
-    },
-  },
-  {
-    callbackName: "onSpeedChange",
-    labelText: l10n.speedLabel,
-    testValues: {
-      shouldCallOnChange: ["1", "10", "100", "1000", "0.1"],
-      shouldNotCallOnChange: ["-1", "0", "", "qwerty"],
-    },
-  },
-];
-
+};
 describe("form tests", () => {
   it("should render form", () => {
-    const { asFragment } = render(<Form />);
+    const { asFragment } = render(<FormContainer />, {
+      preloadedState: initialState,
+    });
 
     const form: HTMLFormElement = screen.getByTestId("field-form");
 
@@ -67,7 +26,9 @@ describe("form tests", () => {
   });
 
   it("should render cellSize input", () => {
-    render(<Form />);
+    render(<FormContainer />, {
+      preloadedState: initialState,
+    });
 
     const input: HTMLInputElement = screen.getByLabelText(l10n.cellSizeLabel);
 
@@ -75,7 +36,9 @@ describe("form tests", () => {
   });
 
   it("should render capacity-percentage input", () => {
-    render(<Form />);
+    render(<FormContainer />, {
+      preloadedState: initialState,
+    });
 
     const input: HTMLInputElement = screen.getByLabelText(l10n.capacityLabel);
 
@@ -83,7 +46,9 @@ describe("form tests", () => {
   });
 
   it("should render width input", () => {
-    render(<Form />);
+    render(<FormContainer />, {
+      preloadedState: initialState,
+    });
 
     const input: HTMLInputElement = screen.getByLabelText(l10n.maxWidthLabel);
 
@@ -91,7 +56,9 @@ describe("form tests", () => {
   });
 
   it("should render height input", () => {
-    render(<Form />);
+    render(<FormContainer />, {
+      preloadedState: initialState,
+    });
 
     const input: HTMLInputElement = screen.getByLabelText(l10n.maxHeightLabel);
 
@@ -99,7 +66,9 @@ describe("form tests", () => {
   });
 
   it("should render speed-change", () => {
-    render(<Form />);
+    render(<FormContainer />, {
+      preloadedState: initialState,
+    });
 
     const input = screen.getByLabelText(l10n.speedLabel);
 
@@ -107,7 +76,9 @@ describe("form tests", () => {
   });
 
   it("should render start button", () => {
-    render(<Form />);
+    render(<FormContainer />, {
+      preloadedState: initialState,
+    });
 
     const button: HTMLButtonElement = screen.getByText(l10n.buttonStart);
 
@@ -115,7 +86,9 @@ describe("form tests", () => {
   });
 
   it("should render stop button", () => {
-    render(<Form />);
+    render(<FormContainer />, {
+      preloadedState: initialState,
+    });
 
     const button: HTMLButtonElement = screen.getByText(l10n.buttonStop);
 
@@ -123,7 +96,9 @@ describe("form tests", () => {
   });
 
   it("should render reset button", () => {
-    render(<Form />);
+    render(<FormContainer />, {
+      preloadedState: initialState,
+    });
 
     const button: HTMLButtonElement = screen.getByText(l10n.buttonReset);
 
@@ -131,68 +106,13 @@ describe("form tests", () => {
   });
 });
 
-describe("input onChange tests", () => {
-  const originalInputDelay = Form.inputDelay;
-
-  beforeAll(() => {
-    Form.inputDelay = 100;
-  });
-
-  afterAll(() => {
-    Form.inputDelay = originalInputDelay;
-  });
-
-  inputsData.forEach((field) => {
-    field.testValues.shouldCallOnChange.forEach((validTestValue) => {
-      it(`should call ${field.callbackName} in ${Form.inputDelay} ms for valid input ${validTestValue}`, async () => {
-        const callback = jest.fn();
-
-        render(<Form {...{ [field.callbackName]: callback }} />);
-
-        const input: HTMLInputElement = screen.getByLabelText(field.labelText);
-
-        userEvent.clear(input);
-        userEvent.type(input, validTestValue);
-        await waitFor(
-          () => {
-            expect(callback).toHaveBeenCalledTimes(1);
-          },
-          {
-            timeout: Form.inputDelay + 100,
-          }
-        );
-      });
-    });
-
-    field.testValues.shouldNotCallOnChange.forEach(async (invalidTestValue) => {
-      await it(`should not call ${field.callbackName} for invalid input ${invalidTestValue}`, () => {
-        const callback = jest.fn();
-
-        render(<Form {...{ [field.callbackName]: callback }} />);
-        const input: HTMLInputElement = screen.getByLabelText(field.labelText);
-
-        userEvent.clear(input);
-        userEvent.type(input, invalidTestValue);
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            try {
-              expect(callback).toHaveBeenCalledTimes(0);
-              resolve(true);
-            } catch (e) {
-              reject(e);
-            }
-          }, Form.inputDelay + 100);
-        });
-      });
-    });
-  });
-});
-
 describe("buttons tests", () => {
   it("should run onStart", () => {
     const onStart = jest.fn();
 
-    render(<Form onStart={onStart} />);
+    render(<FormContainer onStart={onStart} />, {
+      preloadedState: initialState,
+    });
 
     const buttonStart: HTMLButtonElement = screen.getByText(l10n.buttonStart);
 
@@ -204,7 +124,9 @@ describe("buttons tests", () => {
   it("should run onStop", () => {
     const onStop = jest.fn();
 
-    render(<Form onStop={onStop} />);
+    render(<FormContainer onStop={onStop} />, {
+      preloadedState: initialState,
+    });
 
     const buttonStop: HTMLButtonElement = screen.getByText(l10n.buttonStop);
 
@@ -216,7 +138,9 @@ describe("buttons tests", () => {
   it("should run onReset", () => {
     const onReset = jest.fn();
 
-    render(<Form onReset={onReset} />);
+    render(<FormContainer onReset={onReset} />, {
+      preloadedState: initialState,
+    });
 
     const buttonReset: HTMLButtonElement = screen.getByText(l10n.buttonReset);
 

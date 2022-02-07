@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlayerContainer tests should render PlayerContainer 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  margin: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.emotion-0 input,
+.emotion-0 label,
+.emotion-0 button,
+.emotion-0 p {
+  line-height: 1.2;
+}
+
+.emotion-2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex: 0 0 calc(100% / 3 - 40px);
+  -ms-flex: 0 0 calc(100% / 3 - 40px);
+  flex: 0 0 calc(100% / 3 - 40px);
+  margin: 20px;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: end;
+  justify-content: end;
+  display: inline-block;
+}
+
+.emotion-2 input,
+.emotion-2 button {
+  margin: 5px 0 0 0;
+  min-width: 100px;
+}
+
+.emotion-2 div.error-container {
+  position: relative;
+}
+
+.emotion-2 p.error-msg {
+  position: absolute;
+  line-height: 1em;
+  font-size: 1em;
+  color: red;
+}
+
+.emotion-2 h1.player-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  border-bottom: 2px solid #ff215c;
+}
+
+.emotion-2 div.player-stats-container {
+  margin: 20px 0;
+}
+
+.emotion-2 div.player-stats-container>h2 {
+  font-size: 1.2rem;
+}
+
+.emotion-2 div.player-stats-container>ul {
+  padding-left: 0;
+}
+
+.emotion-2 li {
+  margin: 10px 0 10px 20px;
+}
+
+.emotion-4 {
+  background: inherit;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.emotion-4:focus {
+  outline: 2px solid #ff215c!important;
+  border: 2px solid transparent;
+}
+
+<form
+    class="player-container emotion-0 emotion-1"
+  >
+    <div
+      class="emotion-2 emotion-3"
+    >
+      <h1
+        class="player-name"
+      >
+        Ivan
+      </h1>
+      <div
+        class="player-stats-container"
+      >
+        <h2>
+          Статистика
+        </h2>
+        <ul>
+          <li>
+            Очки: 0
+          </li>
+          <li>
+            Количество кликов: 0
+          </li>
+        </ul>
+      </div>
+      <button
+        class="emotion-4 emotion-5"
+        type="button"
+      >
+        Выйти
+      </button>
+    </div>
+  </form>
+</DocumentFragment>
+`;

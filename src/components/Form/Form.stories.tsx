@@ -1,9 +1,9 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import { Form, FormProps } from "./Form";
+import { Form, IFormProps } from "@/components/Form";
 
 export default {
-  title: "Components/PlayerRegistrationForm",
+  title: "Components/SettingsForm",
   component: Form,
   args: {
     cellSize: 40,
@@ -14,6 +14,6 @@ export default {
   },
 } as Meta;
 
-const Template: Story<FormProps> = (args) => <Form {...args} />;
+const Template: Story<IFormProps> = (args) => <Form {...args} />;
 
 export const FormDefault = Template.bind({});

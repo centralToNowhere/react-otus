@@ -9,7 +9,7 @@ import {
 import { FormField } from "@/components/Form/FormField";
 import { InputPatterns } from "@/components/Fields";
 import { FieldError } from "@/components/Fields/FieldError/FieldError";
-import { Form, IFieldProps } from "@/components/Form";
+import { FormContainer, IFieldProps } from "@/components/Form";
 import { useDebounce, isValidNonNegativeNumericString } from "@/utils";
 import {
   onDirtyBlurHandler,
@@ -36,7 +36,7 @@ export const FieldMaxHeight: React.FC<IFieldProps> = (props) => {
       setMaxFieldHeightString,
       setError
     ),
-    Form.inputDelay
+    FormContainer.inputDelay
   );
 
   const onChange = onDirtyChangeHandler((value: string) => {

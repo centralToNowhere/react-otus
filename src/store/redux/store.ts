@@ -3,14 +3,13 @@ import { useDispatch } from "react-redux";
 import createSagaMiddleware from "redux-saga";
 import { fork } from "redux-saga/effects";
 import { gameFieldSlice } from "@/components/GameField";
-import { fieldControlSlice, fieldControlsSaga } from "@/components/Fields";
-import { authSlice } from "@/auth";
-import { authSaga } from "@/auth/AuthRdx";
+import { fieldControlSlice, fieldControlSaga } from "@/components/Fields";
+import { authSlice, authSaga } from "@/auth";
 
 const sagaMiddleware = createSagaMiddleware();
 
 const rootSaga = function* () {
-  yield fork(fieldControlsSaga);
+  yield fork(fieldControlSaga);
   yield fork(authSaga);
 };
 

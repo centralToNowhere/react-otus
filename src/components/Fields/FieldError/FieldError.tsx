@@ -14,7 +14,9 @@ export const FieldError: React.FC<IFieldErrorProps> = ({
     <>
       {show && (
         <ErrorContainer>
-          <p className="error-msg">{msg}</p>
+          <p role="alert" className="error-msg">
+            {msg}
+          </p>
         </ErrorContainer>
       )}
     </>

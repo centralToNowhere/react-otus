@@ -8,7 +8,7 @@ import {
   onBlurHandler,
 } from "@/components/Fields";
 import { FieldError } from "@/components/Fields/FieldError/FieldError";
-import { Form, IFieldProps } from "@/components/Form";
+import { FormContainer, IFieldProps } from "@/components/Form";
 import { isValidNonNegativeNumericString } from "@/utils";
 import { useDebounce } from "@/utils/Debounce";
 import {
@@ -39,7 +39,7 @@ export const FieldMaxWidth: React.FC<IFieldProps> = (props) => {
       setMaxFieldWidthString,
       setError
     ),
-    Form.inputDelay
+    FormContainer.inputDelay
   );
 
   const onChange = onDirtyChangeHandler((value) => {

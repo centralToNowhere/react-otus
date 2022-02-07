@@ -1,11 +1,8 @@
 # Otus homework branch
-Redux saga intro
+Архитектура React-приложения
 
-Подключаем redux, переводим стейт приложения на redux.
-
-- добавляем тесты для connect
-- подключаем redux-saga в наше приложение
-- реализуем сохранение state в local storage на saga
+- рефакторим приложение с архитектурной точки зрения
+- покрываем логику работы нашего приложения интеграционными тестами https://github.com/jfairbank/redux-saga-test-plan
 
 `npm ci`<br>
 `npm run serve`
