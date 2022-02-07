@@ -8,7 +8,7 @@ export const l10n = {
   buttonStop: "Стоп",
   buttonReset: "Сброс",
 
-  // Экран решистрации
+  // Экран регистрации
   gameHeadingPart1: "Conway's",
   gameHeadingPart2: "Game of Life",
   buttonStartGameAsPlayer: "Начать игру",
