@@ -1,6 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fieldWidth, fieldHeight } from "@/utils";
-import { getPlayerDataFromStorage } from "@/storage/Storage";
+import {
+  clearSettingsData,
+  getDataFromStorage,
+  persistFieldSettings,
+} from "@/storage";
+import { takeEvery, takeLatest } from "redux-saga/effects";
 
 export interface IFieldControlState {
   cellSize: number;
@@ -18,20 +23,16 @@ export const defaultFieldControlState: IFieldControlState = {
   speed: 2,
 };
 
-const playerDataFromStorage = getPlayerDataFromStorage();
+const storageData = getDataFromStorage()?.fieldControl;
 
 export const initialState: IFieldControlState = {
-  cellSize:
-    playerDataFromStorage?.cellSize || defaultFieldControlState.cellSize,
+  cellSize: storageData?.cellSize || defaultFieldControlState.cellSize,
   maxFieldWidth:
-    playerDataFromStorage?.maxFieldWidth ||
-    defaultFieldControlState.maxFieldWidth,
+    storageData?.maxFieldWidth || defaultFieldControlState.maxFieldWidth,
   maxFieldHeight:
-    playerDataFromStorage?.maxFieldHeight ||
-    defaultFieldControlState.maxFieldHeight,
-  capacity:
-    playerDataFromStorage?.capacity || defaultFieldControlState.capacity,
-  speed: playerDataFromStorage?.speed || defaultFieldControlState.speed,
+    storageData?.maxFieldHeight || defaultFieldControlState.maxFieldHeight,
+  capacity: storageData?.capacity || defaultFieldControlState.capacity,
+  speed: storageData?.speed || defaultFieldControlState.speed,
 };
 
 export const fieldControlSlice = createSlice({
@@ -68,3 +69,17 @@ export const {
   setSpeed,
   resetFieldControls,
 } = fieldControlSlice.actions;
+
+export const fieldControlsSaga = function* () {
+  yield takeLatest(
+    [
+      setCellSize.type,
+      setMaxFieldWidth.type,
+      setMaxFieldHeight.type,
+      setCapacity.type,
+      setSpeed.type,
+    ],
+    persistFieldSettings
+  );
+  yield takeEvery(resetFieldControls.type, clearSettingsData);
+};

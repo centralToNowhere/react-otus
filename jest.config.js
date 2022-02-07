@@ -5,6 +5,9 @@ module.exports = {
     "<rootDir>/dist",
     "<rootDir>/build",
   ],
+  snapshotSerializers: [
+    "@emotion/jest/serializer" /* if needed other snapshotSerializers should go here */,
+  ],
   setupFilesAfterEnv: ["<rootDir>/src/jest-setup.ts"],
   clearMocks: true,
   coverageDirectory: "coverage",

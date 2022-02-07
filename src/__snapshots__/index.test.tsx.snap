@@ -2,57 +2,316 @@
 
 exports[`index tests should render App 1`] = `
 <DocumentFragment>
-  <div
-    class="css-1haitlc-AppBox e1ksfjh10"
+  .emotion-0 {
+  min-height: 100vh;
+  background: #e8d5f0;
+}
+
+.emotion-0 button:focus {
+  outline: 2px solid #ff215c;
+  border: 2px solid transparent;
+}
+
+.emotion-0 p {
+  margin-bottom: 0;
+}
+
+.emotion-2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.emotion-2 h1 {
+  font-size: 2em;
+  margin: 20px;
+  display: block;
+  line-height: 1.2em;
+}
+
+@media screen and (max-width: 992px) {
+  .emotion-2 {
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+  }
+
+  .emotion-2 h1 {
+    text-align: center;
+  }
+}
+
+.emotion-4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100vh;
+  box-sizing: border-box;
+  width: 50%;
+}
+
+@media screen and (max-width: 992px) {
+  .emotion-4 {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.emotion-6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100vh;
+  box-sizing: border-box;
+  width: 50%;
+  background: #9083e6;
+  padding: 0 20px;
+  -webkit-align-items: start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 992px) {
+  .emotion-6 {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.emotion-6 form {
+  background: #e8d5f0;
+}
+
+@media screen and (max-width: 992px) {
+  .emotion-6 {
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+  }
+}
+
+.emotion-8 {
+  white-space: nowrap;
+}
+
+.emotion-9 {
+  margin: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 70%;
+  max-width: 600px;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  margin: 20px 0;
+}
+
+.emotion-9 input,
+.emotion-9 label,
+.emotion-9 button,
+.emotion-9 p {
+  line-height: 1.2;
+}
+
+@media screen and (max-width: 480px) {
+  .emotion-9 {
+    width: 100%;
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+  }
+}
+
+.emotion-11 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex: 0 0 calc(100% / 3 - 40px);
+  -ms-flex: 0 0 calc(100% / 3 - 40px);
+  flex: 0 0 calc(100% / 3 - 40px);
+  margin: 20px;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: end;
+  justify-content: end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 10;
+  -webkit-flex-grow: 10;
+  -ms-flex-positive: 10;
+  flex-grow: 10;
+}
+
+.emotion-11 input,
+.emotion-11 button {
+  margin: 5px 0 0 0;
+  min-width: 100px;
+}
+
+.emotion-11 div.error-container {
+  position: relative;
+}
+
+.emotion-11 p.error-msg {
+  position: absolute;
+  line-height: 1em;
+  font-size: 1em;
+  color: red;
+}
+
+.emotion-13 {
+  margin-bottom: 20px;
+}
+
+.emotion-14 {
+  display: inline;
+}
+
+.emotion-16 {
+  background: inherit;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  display: block;
+  outline: 0;
+  width: 100px;
+  width: 100%;
+}
+
+.emotion-16:focus {
+  border-bottom: 2px solid #ff215c;
+}
+
+.emotion-18 {
+  background: inherit;
+  margin: 20px auto;
+  margin-right: auto!important;
+}
+
+.emotion-18:focus {
+  outline: 2px solid #ff215c!important;
+  border: 2px solid transparent;
+}
+
+.emotion-20 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  text-align: right;
+}
+
+@media screen and (max-width: 480px) {
+  .emotion-20 {
+    text-align: left;
+  }
+}
+
+.emotion-22 {
+  color: #ff215c;
+  visibility: hidden;
+  margin: 20px 20px 0 20px;
+}
+
+@media screen and (max-width: 480px) {
+  .emotion-22 {
+    display: none;
+  }
+}
+
+<div
+    class="emotion-0 emotion-1"
     data-testid="react-lifecycle"
   >
     <div
-      class="css-1r9ogsr-Container e18678xg2"
+      class="emotion-2 emotion-3"
     >
       <div
-        class="css-kijlcz-ColumnContainer e18678xg1"
+        class="emotion-4 emotion-5"
       >
         <h1>
           Правила
         </h1>
       </div>
       <div
-        class="css-tvbkvj-ColumnContainer-RegistrationContainer e18678xg0"
+        class="emotion-6 emotion-7"
       >
         <h1
           class="game-name"
         >
           Conway's 
           <span
-            class="css-1c1fj8c-RegistrationScreen"
+            class="emotion-8"
           >
             Game of Life
           </span>
         </h1>
         <form
-          class="css-ldog09-FormElement-PlayerRegistrationForm e1dt6zfi0"
+          class="emotion-9 emotion-10"
         >
           <div
-            class="css-kmw9t5-FormField-PlayerRegistrationForm eybdsu10"
+            class="emotion-11 emotion-12"
           >
             <div
-              class="css-gj9mjj-PlayerRegistrationForm"
+              class="emotion-13"
             >
               <label
-                class="css-m0dhjx-LabelField e1gymppe0"
+                class="emotion-14 emotion-15"
                 for="register-player-input"
               >
                 Введите имя игрока
               </label>
               <input
-                class="css-gtg0cp-InputField-PlayerRegistrationForm e15roiqv0"
+                class="emotion-16 emotion-17"
                 id="register-player-input"
                 name="playerName"
                 value=""
               />
             </div>
             <button
-              class="css-ssn7vi-FormButton-PlayerRegistrationForm e2n0d7s0"
+              class="emotion-18 emotion-19"
               name="startGameAsPlayer"
               type="button"
             >
@@ -60,10 +319,10 @@ exports[`index tests should render App 1`] = `
             </button>
           </div>
           <div
-            class="css-1a4u2lo-SpinnerContainer eok4aqp0"
+            class="emotion-20 emotion-21"
           >
             <div
-              class="css-rsmjug-PlayerRegistrationForm spinner-border"
+              class="emotion-22 spinner-border"
               role="status"
             />
           </div>

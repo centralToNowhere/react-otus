@@ -1,9 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
+import createSagaMiddleware from "redux-saga";
+import { fork } from "redux-saga/effects";
 import { gameFieldSlice } from "@/components/GameField";
-import { fieldControlSlice } from "@/components/Fields";
+import { fieldControlSlice, fieldControlsSaga } from "@/components/Fields";
 import { authSlice } from "@/auth";
-import { persistPlayerDataMiddleware } from "@/storage/Storage";
+import { authSaga } from "@/auth/AuthRdx";
+
+const sagaMiddleware = createSagaMiddleware();
+
+const rootSaga = function* () {
+  yield fork(fieldControlsSaga);
+  yield fork(authSaga);
+};
 
 export const store = configureStore({
   reducer: {
@@ -12,9 +21,11 @@ export const store = configureStore({
     fieldControl: fieldControlSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware().concat(persistPlayerDataMiddleware);
+    return getDefaultMiddleware().concat(sagaMiddleware);
   },
 });
+
+sagaMiddleware.run(rootSaga);
 
 export const initialStateAll = {
   auth: authSlice.getInitialState(),

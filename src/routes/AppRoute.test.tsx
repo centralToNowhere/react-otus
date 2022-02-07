@@ -34,7 +34,15 @@ describe("Routes tests", () => {
         <AppRouter />
       </MemoryRouter>,
       {
-        preloadedState: {},
+        preloadedState: {
+          auth: {
+            player: {
+              name: "",
+              registered: false,
+            },
+            loginPending: false,
+          },
+        },
       }
     );
 
