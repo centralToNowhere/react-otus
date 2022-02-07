@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Routes, Route } from "react-router-dom";
-import { GameContainer } from "@/components/Game";
-import { RegistrationScreen } from "@/components/RegistrationScreen/RegistrationScreen";
+import { GameContainer } from "@/screens/Game";
+import { RegistrationScreen } from "@/screens/RegistrationScreen";
 import { withAuthProtection } from "@/auth";
 import { routeNames } from "@/routes";
 

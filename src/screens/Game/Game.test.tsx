@@ -7,7 +7,7 @@ import {
   GameContainer,
   getGameCycleTimeout,
   createFormKey,
-} from "@/components/Game";
+} from "@/screens/Game/index";
 import { COLORS } from "@/styles/ui-styled";
 import { l10n } from "@/l10n/ru";
 import {

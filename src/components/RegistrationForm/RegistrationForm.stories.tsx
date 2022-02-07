@@ -3,7 +3,7 @@ import { Story, Meta } from "@storybook/react";
 import {
   RegistrationForm,
   IRegistrationFormProps,
-} from "@/components/RegistrationScreen/RegistrationForm";
+} from "@/components/RegistrationForm";
 
 export default {
   title: "Components/RegistrationScreen/RegistrationForm",

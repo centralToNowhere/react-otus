@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, waitFor } from "@/utils/test-utils";
-import { RegistrationScreen } from "./RegistrationScreen";
+import { RegistrationScreen } from "@/screens/RegistrationScreen";
 import { l10n } from "@/l10n/ru";
 import * as ReactRouter from "react-router-dom";
 

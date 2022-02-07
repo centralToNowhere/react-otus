@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
-import { RegistrationForm } from "@/components/RegistrationScreen/RegistrationForm/RegistrationForm";
+import { RegistrationForm } from "@/components/RegistrationForm/RegistrationForm";
 import { l10n } from "@/l10n/ru";
 import userEvent from "@testing-library/user-event/dist";
 import { defaultPlayer } from "@/player/Player";

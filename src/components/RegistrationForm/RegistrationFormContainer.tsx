@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { RegistrationForm } from "@/components/RegistrationScreen/RegistrationForm/index";
+import { RegistrationForm } from "@/components/RegistrationForm";
 import { useSelector } from "react-redux";
 import { useRegistration, selectLoginPending, selectLoginError } from "@/auth";
 

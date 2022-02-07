@@ -1,6 +1,6 @@
 import { store } from "@/store/redux/store";
 import React, { FC } from "react";
-import ErrorBoundary from "@/components/error/Error";
+import ErrorBoundary from "@/components/Error/Error";
 import styled from "@emotion/styled";
 import { COLORS } from "@/styles/ui-styled";
 import "./styles/reset.css";

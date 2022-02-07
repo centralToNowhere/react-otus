@@ -2,7 +2,7 @@ import React, { Dispatch } from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { AnyAction } from "redux";
 import { RootState } from "@/store/redux/store";
-import { Game } from "@/components/Game";
+import { Game } from "@/screens/Game";
 import { setActiveCells, resetCells } from "@/components/GameField";
 import { ICell } from "@/components/Cell";
 import {

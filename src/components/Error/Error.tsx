@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
-import "@/components/error/error.css";
+import "@/components/Error/error.css";
 
 interface ErrorProps {
   children: React.ReactNode;

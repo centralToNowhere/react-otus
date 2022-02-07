@@ -1,6 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import { RegistrationScreen } from "@/components/RegistrationScreen";
+import { RegistrationScreen } from "@/screens/RegistrationScreen";
 import { configureStore } from "@reduxjs/toolkit";
 import { authSlice } from "@/auth";
 import { Provider } from "react-redux";
