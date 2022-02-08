@@ -7,6 +7,7 @@ export const l10n = {
   buttonStart: "Старт",
   buttonStop: "Стоп",
   buttonReset: "Сброс",
+  buttonGenerateRandom: "Создать",
 
   // Экран регистрации
   gameHeadingPart1: "Conway's",

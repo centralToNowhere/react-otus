@@ -11,6 +11,15 @@ const initialState: IAuthState = {
   loginError: "",
 };
 
+export const defaultAuthState: IAuthState = {
+  player: {
+    name: "",
+    registered: false,
+  },
+  loginPending: false,
+  loginError: "",
+};
+
 export const authSlice = createSlice({
   name: "auth",
   initialState: {

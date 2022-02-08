@@ -104,13 +104,25 @@ describe("form tests", () => {
 
     expect(button).toBeInTheDocument();
   });
+
+  it("should render generateRandom button", () => {
+    render(<FormContainer />, {
+      preloadedState: initialState,
+    });
+
+    const button: HTMLButtonElement = screen.getByText(
+      l10n.buttonGenerateRandom
+    );
+
+    expect(button).toBeInTheDocument();
+  });
 });
 
 describe("buttons tests", () => {
   it("should run onStart", () => {
     const onStart = jest.fn();
 
-    render(<FormContainer onStart={onStart} />, {
+    render(<FormContainer onButtonClickFn={onStart} />, {
       preloadedState: initialState,
     });
 
@@ -124,7 +136,7 @@ describe("buttons tests", () => {
   it("should run onStop", () => {
     const onStop = jest.fn();
 
-    render(<FormContainer onStop={onStop} />, {
+    render(<FormContainer onButtonClickFn={onStop} />, {
       preloadedState: initialState,
     });
 
@@ -138,7 +150,7 @@ describe("buttons tests", () => {
   it("should run onReset", () => {
     const onReset = jest.fn();
 
-    render(<FormContainer onReset={onReset} />, {
+    render(<FormContainer onButtonClickFn={onReset} />, {
       preloadedState: initialState,
     });
 
@@ -147,5 +159,21 @@ describe("buttons tests", () => {
     userEvent.click(buttonReset);
 
     expect(onReset).toHaveBeenCalled();
+  });
+
+  it("should run onGenerateRandom", () => {
+    const onGenerateRandom = jest.fn();
+
+    render(<FormContainer onButtonClickFn={onGenerateRandom} />, {
+      preloadedState: initialState,
+    });
+
+    const button: HTMLButtonElement = screen.getByText(
+      l10n.buttonGenerateRandom
+    );
+
+    userEvent.click(button);
+
+    expect(onGenerateRandom).toHaveBeenCalled();
   });
 });

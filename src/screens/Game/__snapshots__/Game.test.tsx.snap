@@ -196,7 +196,7 @@ exports[`Game tests should correctly render field and form 1`] = `
   border: 2px solid transparent;
 }
 
-.emotion-62 {
+.emotion-68 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -215,53 +215,53 @@ exports[`Game tests should correctly render field and form 1`] = `
   display: inline-block;
 }
 
-.emotion-62 input,
-.emotion-62 button {
+.emotion-68 input,
+.emotion-68 button {
   margin: 5px 0 0 0;
   min-width: 100px;
 }
 
-.emotion-62 div.error-container {
+.emotion-68 div.error-container {
   position: relative;
 }
 
-.emotion-62 p.error-msg {
+.emotion-68 p.error-msg {
   position: absolute;
   line-height: 1em;
   font-size: 1em;
   color: red;
 }
 
-.emotion-62 h1.player-name {
+.emotion-68 h1.player-name {
   font-size: 1.2rem;
   font-weight: bold;
   margin: 0;
   border-bottom: 2px solid #ff215c;
 }
 
-.emotion-62 div.player-stats-container {
+.emotion-68 div.player-stats-container {
   margin: 20px 0;
 }
 
-.emotion-62 div.player-stats-container>h2 {
+.emotion-68 div.player-stats-container>h2 {
   font-size: 1.2rem;
 }
 
-.emotion-62 div.player-stats-container>ul {
+.emotion-68 div.player-stats-container>ul {
   padding-left: 0;
 }
 
-.emotion-62 li {
+.emotion-68 li {
   margin: 10px 0 10px 20px;
 }
 
-.emotion-64 {
+.emotion-70 {
   background: inherit;
   margin: 20px auto;
   text-align: center;
 }
 
-.emotion-64:focus {
+.emotion-70:focus {
   outline: 2px solid #ff215c!important;
   border: 2px solid transparent;
 }
@@ -1566,13 +1566,28 @@ exports[`Game tests should correctly render field and form 1`] = `
               </button>
             </div>
           </div>
+          <div
+            class="emotion-10 emotion-11"
+          >
+            <div
+              class="emotion-44 emotion-45"
+            >
+              <button
+                class="emotion-46 emotion-47"
+                name="generateRandomButton"
+                type="button"
+              >
+                Создать
+              </button>
+            </div>
+          </div>
         </div>
       </form>
       <form
         class="player-container emotion-6 emotion-7"
       >
         <div
-          class="emotion-62 emotion-11"
+          class="emotion-68 emotion-11"
         >
           <h1
             class="player-name"
@@ -1593,7 +1608,7 @@ exports[`Game tests should correctly render field and form 1`] = `
             </ul>
           </div>
           <button
-            class="emotion-64 emotion-47"
+            class="emotion-70 emotion-47"
             type="button"
           >
             Выйти

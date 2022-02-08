@@ -1,4 +1,11 @@
-export { authSlice, login, logout, loginSucceed, loginFailed } from "./slice";
+export {
+  authSlice,
+  login,
+  logout,
+  loginSucceed,
+  loginFailed,
+  defaultAuthState,
+} from "./slice";
 export {
   registerPlayer,
   PlayerNotRegisteredError,

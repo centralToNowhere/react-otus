@@ -22,7 +22,8 @@ export interface IFormProps {
   setMaxFieldHeight: (value: string) => void;
   setCapacity: (value: string) => void;
   onSpeedChange: (value: string) => void;
-  onButtonClickFn: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onButtonClickFn: (e: React.SyntheticEvent<HTMLButtonElement>) => void;
+  gameInProgress: boolean;
 }
 
 export class Form extends React.Component<IFormProps> {
@@ -67,6 +68,7 @@ export class Form extends React.Component<IFormProps> {
             onClick={this.props.onButtonClickFn}
             name={"startButton"}
             content={l10n.buttonStart}
+            disabled={this.props.gameInProgress}
           />
 
           <ButtonGameControl
@@ -81,6 +83,13 @@ export class Form extends React.Component<IFormProps> {
             onClick={this.props.onButtonClickFn}
             name={"resetButton"}
             content={l10n.buttonReset}
+          />
+
+          <ButtonGameControl
+            type={"button"}
+            onClick={this.props.onButtonClickFn}
+            name={"generateRandomButton"}
+            content={l10n.buttonGenerateRandom}
           />
         </FormGroup>
       </FormElement>

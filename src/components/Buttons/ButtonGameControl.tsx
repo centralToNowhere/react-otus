@@ -10,7 +10,12 @@ export const ButtonGameControl: React.FC<IButtonProps> = (
   return (
     <FormField>
       <FormButtonContainer>
-        <FormButton type={props.type} onClick={props.onClick} name={props.name}>
+        <FormButton
+          type={props.type}
+          onClick={props.onClick}
+          name={props.name}
+          disabled={props.disabled}
+        >
           {props.content}
         </FormButton>
       </FormButtonContainer>

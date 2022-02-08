@@ -285,6 +285,21 @@ exports[`form tests should render form 1`] = `
           </button>
         </div>
       </div>
+      <div
+        class="emotion-4 emotion-5"
+      >
+        <div
+          class="emotion-38 emotion-39"
+        >
+          <button
+            class="emotion-40 emotion-41"
+            name="generateRandomButton"
+            type="button"
+          >
+            Создать
+          </button>
+        </div>
+      </div>
     </div>
   </form>
 </DocumentFragment>

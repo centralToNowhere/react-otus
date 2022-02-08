@@ -7,9 +7,7 @@ import { PlayerBlockContainer } from "@/components/PlayerBlock";
 
 export interface IGameProps {
   onSpeedChange?: (value: string) => void;
-  onStart?: () => void;
-  onStop?: () => void;
-  onReset?: () => void;
+  onButtonClickFn?: (e: React.SyntheticEvent<HTMLButtonElement>) => void;
   formKey?: number;
 }
 
@@ -26,9 +24,7 @@ export class Game extends React.Component<IGameProps> {
           <FormContainer
             key={this.props.formKey}
             onSpeedChange={this.props.onSpeedChange}
-            onStart={this.props.onStart}
-            onStop={this.props.onStop}
-            onReset={this.props.onReset}
+            onButtonClickFn={this.props.onButtonClickFn}
           />
           <PlayerBlockContainer />
         </ControlContainer>

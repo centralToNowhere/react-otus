@@ -19,7 +19,7 @@ import {
   IFieldControlState,
 } from "@/components/Fields";
 
-const getRandomCellsMocked = jest.fn().mockReturnValue([
+const getMockedCells = jest.fn().mockReturnValue([
   {
     x: 0,
     y: 0,
@@ -62,6 +62,16 @@ const getRandomCellsMocked = jest.fn().mockReturnValue([
   },
 ]);
 
+const initialState = {
+  fieldControl: {
+    cellSize: 10,
+    maxFieldWidth: 100,
+    maxFieldHeight: 100,
+    capacity: 50,
+    speed: 2,
+  },
+};
+
 beforeEach(() => {
   jest.clearAllMocks();
 });
@@ -94,15 +104,7 @@ describe("Game tests", () => {
 
   it("should render 100 cells with numbers", () => {
     render(<Game />, {
-      preloadedState: {
-        fieldControl: {
-          cellSize: 10,
-          maxFieldWidth: 100,
-          maxFieldHeight: 100,
-          capacity: 50,
-          speed: 2,
-        },
-      },
+      preloadedState: initialState,
     });
 
     const cells = screen.getAllByLabelText(/[0-9]*/, {
@@ -116,18 +118,10 @@ describe("Game tests", () => {
   });
 
   it("should start game cycle", async () => {
-    CellGeneratorRewire.__Rewire__("getRandomCells", getRandomCellsMocked);
+    CellGeneratorRewire.__Rewire__("getNextGeneration", getMockedCells);
 
     render(<GameContainer />, {
-      preloadedState: {
-        fieldControl: {
-          cellSize: 10,
-          maxFieldWidth: 100,
-          maxFieldHeight: 100,
-          capacity: 50,
-          speed: 2,
-        },
-      },
+      preloadedState: initialState,
     });
 
     const activeCells = screen.getAllByLabelText(
@@ -151,6 +145,37 @@ describe("Game tests", () => {
       })
     );
 
+    CellGeneratorRewire.__ResetDependency__("getNextGeneration");
+  });
+
+  it("should set random cells on generateRandom", async () => {
+    CellGeneratorRewire.__Rewire__("getRandomCells", getMockedCells);
+
+    render(<GameContainer />, {
+      preloadedState: initialState,
+    });
+
+    const activeCells = screen.getAllByLabelText(
+      /^(1|12|23|34|45|56|67|78|89|100)$/,
+      {
+        selector: "[data-testid=cell]",
+      }
+    );
+
+    const generateRandomButton = screen.getByText(l10n.buttonGenerateRandom);
+
+    userEvent.click(generateRandomButton);
+
+    await Promise.all(
+      activeCells.map((cell: HTMLElement) => {
+        return waitFor(() => {
+          expect(cell).toHaveStyle({
+            background: COLORS.activeCellBg,
+          });
+        });
+      })
+    );
+
     CellGeneratorRewire.__ResetDependency__("getRandomCells");
   });
 
@@ -159,7 +184,7 @@ describe("Game tests", () => {
     const speed = 50;
     const gameCycleTimeout = getGameCycleTimeout(speed);
     const setActiveCells = (colNum: number): RegExp => {
-      getRandomCellsMocked.mockReturnValue(
+      getMockedCells.mockReturnValue(
         [...Array(checks).keys()].map((n: number, i) => {
           return {
             x: colNum,
@@ -168,7 +193,7 @@ describe("Game tests", () => {
         })
       );
 
-      CellGeneratorRewire.__Rewire__("getRandomCells", getRandomCellsMocked);
+      CellGeneratorRewire.__Rewire__("getNextGeneration", getMockedCells);
 
       return new RegExp(
         `^(${[...Array(checks).keys()].reduce((acc, current, i) => {
@@ -181,19 +206,22 @@ describe("Game tests", () => {
 
     render(<GameContainer />, {
       preloadedState: {
+        ...initialState,
         fieldControl: {
-          cellSize: 10,
-          maxFieldWidth: 100,
-          maxFieldHeight: 100,
-          capacity: 50,
+          ...initialState.fieldControl,
           speed,
         },
       },
     });
+
     const buttonStart = screen.getByText(l10n.buttonStart);
     const buttonStop = screen.getByText(l10n.buttonStop);
 
     userEvent.click(buttonStart);
+
+    await waitFor(() => {
+      expect(buttonStart).toBeDisabled();
+    });
 
     await [...Array(checks).keys()].reduce(
       (promise: Promise<void>, colNum): Promise<void> => {
@@ -201,7 +229,7 @@ describe("Game tests", () => {
           const cellsToFindRegExp = setActiveCells(colNum);
 
           return waitFor(() => {
-            expect(getRandomCellsMocked).toHaveBeenCalled();
+            expect(getMockedCells).toHaveBeenCalled();
           }).then(async (): Promise<void> => {
             const activeCells = screen.getAllByLabelText(cellsToFindRegExp, {
               selector: "[data-testid=cell]",
@@ -224,18 +252,22 @@ describe("Game tests", () => {
 
     userEvent.click(buttonStop);
 
-    const currentTicks: number = getRandomCellsMocked.mock.calls.length;
+    await waitFor(() => {
+      expect(buttonStart).toBeEnabled();
+    });
+
+    const currentTicks: number = getMockedCells.mock.calls.length;
 
     await new Promise<void>((resolve) => {
       setTimeout(() => {
-        expect(getRandomCellsMocked).toHaveBeenCalledTimes(currentTicks);
+        expect(getMockedCells).toHaveBeenCalledTimes(currentTicks);
         resolve();
       }, 2 * gameCycleTimeout);
     });
 
     CellGeneratorRewire.__ResetDependency__(
-      "getRandomCells",
-      getRandomCellsMocked
+      "getNextGeneration",
+      getMockedCells
     );
   });
 

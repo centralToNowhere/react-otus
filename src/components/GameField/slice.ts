@@ -7,10 +7,12 @@ import { getDataFromStorage } from "@/storage";
 
 export interface IGameFieldState {
   activeCells: ICell[];
+  gameInProgress: boolean;
 }
 
-const defaultState: IGameFieldState = {
+export const defaultGameFieldState: IGameFieldState = {
   activeCells: [],
+  gameInProgress: false,
 };
 
 const storageData = getDataFromStorage();
@@ -21,6 +23,7 @@ const initialState: IGameFieldState = {
     storageData?.fieldControl?.maxFieldHeight || fieldHeight,
     FieldControlInitialState.cellSize
   ),
+  gameInProgress: false,
 };
 
 export const gameFieldSlice = createSlice({
@@ -31,10 +34,17 @@ export const gameFieldSlice = createSlice({
       state.activeCells = action.payload;
     },
     resetCells: (state) => {
-      state = defaultState;
+      state = defaultGameFieldState;
       return state;
+    },
+    startGame: (state) => {
+      state.gameInProgress = true;
+    },
+    stopGame: (state) => {
+      state.gameInProgress = false;
     },
   },
 });
 
-export const { setActiveCells, resetCells } = gameFieldSlice.actions;
+export const { setActiveCells, resetCells, startGame, stopGame } =
+  gameFieldSlice.actions;

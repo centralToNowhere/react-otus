@@ -14,9 +14,7 @@ export type ControlCallback<T = void> = (value: T) => void;
 export type Callback<E, T> = (e: E) => T;
 export type FormOwnProps = {
   onSpeedChange?: ControlCallback<string>;
-  onStart?: ControlCallback;
-  onStop?: ControlCallback;
-  onReset?: ControlCallback;
+  onButtonClickFn?: (e: React.SyntheticEvent<HTMLButtonElement>) => void;
 };
 
 export interface IFieldProps {
@@ -26,12 +24,13 @@ export interface IFieldProps {
 
 export interface IButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  onClick: Callback<React.MouseEvent<HTMLButtonElement>, void>;
+  onClick: Callback<React.SyntheticEvent<HTMLButtonElement>, void>;
   content: string;
+  disabled?: boolean;
 }
 
 const mapStateToProps = (state: RootState) => {
-  const { fieldControl } = state;
+  const { fieldControl, gameField } = state;
 
   return {
     maxFieldWidth: fieldControl.maxFieldWidth,
@@ -39,6 +38,7 @@ const mapStateToProps = (state: RootState) => {
     capacity: fieldControl.capacity,
     speed: fieldControl.speed,
     cellSize: fieldControl.cellSize,
+    gameInProgress: gameField.gameInProgress,
   };
 };
 
@@ -68,36 +68,12 @@ class Main extends React.Component<FormContainerProps> {
     super(props);
   }
 
-  onButtonClickFn = (e: React.MouseEvent<HTMLButtonElement>): void => {
-    const target = e.target as HTMLButtonElement;
-    const {
-      onReset = () => {
-        //empty
-      },
-      onStart = () => {
-        //empty
-      },
-      onStop = () => {
-        //empty
-      },
-    } = this.props;
-
-    switch (target.getAttribute("name")) {
-      case "startButton":
-        onStart();
-        break;
-      case "stopButton":
-        onStop();
-        break;
-      case "resetButton":
-        onReset();
-        break;
-    }
-  };
-
   render() {
     const {
       onSpeedChange = () => {
+        /** empty **/
+      },
+      onButtonClickFn = () => {
         /** empty **/
       },
     } = this.props;
@@ -114,7 +90,8 @@ class Main extends React.Component<FormContainerProps> {
         setMaxFieldHeight={this.props.setMaxFieldHeight}
         setCapacity={this.props.setCapacity}
         onSpeedChange={onSpeedChange}
-        onButtonClickFn={this.onButtonClickFn}
+        onButtonClickFn={onButtonClickFn}
+        gameInProgress={this.props.gameInProgress}
       />
     );
   }

@@ -3,9 +3,12 @@ import { Story, Meta } from "@storybook/react";
 import { Game, IGameProps } from "@/screens/Game";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import { authSlice } from "@/auth";
-import { gameFieldSlice } from "@/components/GameField";
-import { fieldControlSlice } from "@/components/Fields";
+import { authSlice, defaultAuthState } from "@/auth";
+import { defaultGameFieldState, gameFieldSlice } from "@/components/GameField";
+import {
+  defaultFieldControlState,
+  fieldControlSlice,
+} from "@/components/Fields";
 
 export default {
   title: "Components/Game",
@@ -13,24 +16,9 @@ export default {
 } as Meta;
 
 const initialState = {
-  auth: {
-    player: {
-      name: "",
-      registered: false,
-    },
-    loginPending: false,
-    loginError: "",
-  },
-  fieldControl: {
-    cellSize: 40,
-    maxFieldWidth: 600,
-    maxFieldHeight: 400,
-    capacity: 50,
-    speed: 1,
-  },
-  gameField: {
-    activeCells: [],
-  },
+  auth: defaultAuthState,
+  fieldControl: defaultFieldControlState,
+  gameField: defaultGameFieldState,
 };
 
 const TemplateInitial: Story<IGameProps> = () => {

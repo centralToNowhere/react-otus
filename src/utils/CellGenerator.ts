@@ -5,8 +5,7 @@ const willBeAlive = (
   y: number,
   activeCellsIndexed: boolean[][]
 ): boolean => {
-  let neighboursAlive = 0;
-  let neighboursChecked = 0;
+  let neighbours = 0;
   const isCellStateAlive = activeCellsIndexed?.[y]?.[x];
 
   const entries = [
@@ -20,35 +19,18 @@ const willBeAlive = (
     [x + 1, y + 1],
   ];
 
-  if (isCellStateAlive) {
-    while (entries.length > neighboursChecked) {
-      if (
-        activeCellsIndexed?.[entries[neighboursChecked][1]]?.[
-          entries[neighboursChecked][0]
-        ]
-      ) {
-        neighboursAlive++;
-      }
+  entries.forEach((entry) => {
+    if (activeCellsIndexed?.[entry[1]]?.[entry[0]]) {
+      neighbours++;
+    }
+  });
 
-      neighboursChecked++;
-      if (neighboursAlive === 2 || neighboursAlive === 3) {
-        return true;
-      }
+  if (isCellStateAlive) {
+    if (neighbours === 2 || neighbours === 3) {
+      return true;
     }
   } else {
-    while (entries.length > neighboursChecked) {
-      if (
-        activeCellsIndexed?.[entries[neighboursChecked][1]]?.[
-          entries[neighboursChecked][0]
-        ]
-      ) {
-        neighboursAlive++;
-      }
-
-      neighboursChecked++;
-    }
-
-    if (neighboursAlive === 3) {
+    if (neighbours === 3) {
       return true;
     }
   }
