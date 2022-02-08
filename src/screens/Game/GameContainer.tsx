@@ -53,12 +53,14 @@ export type GameContainerProps = ConnectedProps<typeof connector>;
 class Main extends React.Component<GameContainerProps> {
   private gameCycleInterval: ReturnType<typeof setInterval> | null;
   private formKey: number;
+  private rafTimeout: number | null;
 
   constructor(props: GameContainerProps) {
     super(props);
 
     this.gameCycleInterval = null;
     this.formKey = createFormKey();
+    this.rafTimeout = null;
   }
 
   onSpeedChange = (value: string): void => {
@@ -75,7 +77,7 @@ class Main extends React.Component<GameContainerProps> {
   onStart = (): void => {
     if (this.gameCycleInterval === null) {
       this.gameCycleInterval = setInterval(() => {
-        requestAnimationFrame(() => {
+        this.rafTimeout = requestAnimationFrame(() => {
           const cells = getRandomCells(
             this.props.cellsInRow,
             this.props.cellsInCol,
@@ -103,6 +105,9 @@ class Main extends React.Component<GameContainerProps> {
     if (this.gameCycleInterval !== null) {
       clearInterval(this.gameCycleInterval);
       this.gameCycleInterval = null;
+    }
+    if (this.rafTimeout) {
+      cancelAnimationFrame(this.rafTimeout)
     }
   };
 

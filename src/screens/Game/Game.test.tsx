@@ -19,35 +19,6 @@ import {
   IFieldControlState,
 } from "@/components/Fields";
 
-/**
- * Зачем я использую babel-plugin-rewire-ts?
- * funnyExports.ts
- *
-  export const foo = () => {
-    return "foo";
-  }
-
-  export const bar = () => {
-    return foo();
-  }
- *
- * funnyExports.test.ts
- *
-  describe("impossible to mock foo", () => {
-    it("no mocks for you cause of babel static binding foo inside bar - no way", () => {
-      jest.doMock("./funnyExports", () => {
-        return {
-          ...jest.requireActual("./funnyExports"),
-          foo: jest.fn().mockReturnValue("bar")
-        }
-      });
-
-      const { bar } = require("./funnyExports")
-      expect(bar()).toBe("bar") // foo не переопределилась, не благодари
-    })
-  })
- **/
-
 const getRandomCellsMocked = jest.fn().mockReturnValue([
   {
     x: 0,
