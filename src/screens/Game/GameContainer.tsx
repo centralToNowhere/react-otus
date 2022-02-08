@@ -5,12 +5,13 @@ import { RootState } from "@/store/redux/store";
 import { Game } from "@/screens/Game";
 import { setActiveCells, resetCells } from "@/components/GameField";
 import { ICell } from "@/components/Cell";
+import { getRandomCells } from "@/utils/CellGenerator";
 import {
-  getCellsInCol,
-  getCellsInRow,
-  getRandomCells,
-} from "@/utils/CellGenerator";
-import { setSpeed, resetFieldControls } from "@/components/Fields";
+  setSpeed,
+  resetFieldControls,
+  selectCellsInRow,
+  selectCellsInCol,
+} from "@/components/Fields";
 
 export const getGameCycleTimeout = (speed: number): number => {
   return 1000 / speed;
@@ -22,9 +23,8 @@ export const createFormKey = (): number => {
 
 const mapStateToProps = (state: RootState) => {
   return {
-    cellSize: state.fieldControl.cellSize,
-    maxFieldWidth: state.fieldControl.maxFieldWidth,
-    maxFieldHeight: state.fieldControl.maxFieldHeight,
+    cellsInRow: selectCellsInRow(state),
+    cellsInCol: selectCellsInCol(state),
     capacity: state.fieldControl.capacity,
     speed: state.fieldControl.speed,
   };
@@ -75,13 +75,15 @@ class Main extends React.Component<GameContainerProps> {
   onStart = (): void => {
     if (this.gameCycleInterval === null) {
       this.gameCycleInterval = setInterval(() => {
-        const cells = getRandomCells(
-          getCellsInRow(this.props.maxFieldWidth, this.props.cellSize),
-          getCellsInCol(this.props.maxFieldHeight, this.props.cellSize),
-          this.props.capacity / 100
-        );
+        requestAnimationFrame(() => {
+          const cells = getRandomCells(
+            this.props.cellsInRow,
+            this.props.cellsInCol,
+            this.props.capacity / 100
+          );
 
-        this.props.setActiveCells(cells);
+          this.props.setActiveCells(cells);
+        });
       }, getGameCycleTimeout(this.props.speed));
     }
   };

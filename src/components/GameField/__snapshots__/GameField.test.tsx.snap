@@ -18,25 +18,16 @@ exports[`GameField tests should render game field 1`] = `
   margin: 0 auto;
 }
 
-.emotion-2 {
-  width: 40px;
-  height: 40px;
-  background: #ff215c;
-  outline: 1px solid white;
+.emotion-0 .cell {
   -webkit-transition: 0.5s ease background;
   transition: 0.5s ease background;
-  text-align: center;
+  width: 40px;
+  height: 40px;
   line-height: 40px;
 }
 
-.emotion-4 {
-  width: 40px;
-  height: 40px;
-  outline: 1px solid white;
-  -webkit-transition: 0.5s ease background;
-  transition: 0.5s ease background;
-  text-align: center;
-  line-height: 40px;
+.emotion-0 .cell-active {
+  background: #ff215c;
 }
 
 <div
@@ -45,903 +36,753 @@ exports[`GameField tests should render game field 1`] = `
   >
     <div
       aria-label="1"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="2"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="3"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="4"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="5"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="6"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="7"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="8"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="9"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="10"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="11"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="12"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="13"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="14"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="15"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="16"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="17"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="18"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="19"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="20"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="21"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="22"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="23"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="24"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="25"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="26"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="27"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="28"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="29"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="30"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="31"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="32"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="33"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="34"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="35"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="36"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="37"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="38"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="39"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="40"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="41"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="42"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="43"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="44"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="45"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="46"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="47"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="48"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="49"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="50"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="51"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="52"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="53"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="54"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="55"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="56"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="57"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="58"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="59"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="60"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="61"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="62"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="63"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="64"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="65"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="66"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="67"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="68"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="69"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="70"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="71"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="72"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="73"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="74"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="75"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="76"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="77"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="78"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="79"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="80"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="81"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="82"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="83"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="84"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="85"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="86"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="87"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="88"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="89"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="90"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="91"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="92"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="93"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="94"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="95"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="96"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="97"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="98"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="99"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="100"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="101"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="102"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="103"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="104"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="105"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="106"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="107"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="108"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="109"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="110"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="111"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="112"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="113"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="114"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="115"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="116"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="117"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="118"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="119"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="120"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="121"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="122"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="123"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="124"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="125"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="126"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="127"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="128"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="129"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="130"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="131"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="132"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="133"
-      class="emotion-2 emotion-3"
+      class="cell cell-active"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="134"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="135"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="136"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="137"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="138"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="139"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="140"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="141"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="142"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="143"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="144"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="145"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="146"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="147"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="148"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="149"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
     <div
       aria-label="150"
-      class="emotion-4 emotion-3"
+      class="cell"
       data-testid="cell"
-      size="40"
     />
   </div>
 </DocumentFragment>

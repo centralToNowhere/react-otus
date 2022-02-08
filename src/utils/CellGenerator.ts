@@ -1,11 +1,76 @@
 import { ICell } from "@/components/Cell";
 
-export const getCellsInRow = (rowWidth: number, cellSize: number): number => {
-  return Math.floor(rowWidth / cellSize);
+const willBeAlive = (
+  x: number,
+  y: number,
+  activeCellsIndexed: boolean[][]
+): boolean => {
+  let neighboursAlive = 0;
+  let neighboursChecked = 0;
+  const isCellStateAlive = activeCellsIndexed?.[y]?.[x];
+
+  const entries = [
+    [x - 1, y - 1],
+    [x, y - 1],
+    [x + 1, y - 1],
+    [x - 1, y],
+    [x + 1, y],
+    [x - 1, y + 1],
+    [x, y + 1],
+    [x + 1, y + 1],
+  ];
+
+  if (isCellStateAlive) {
+    while (entries.length > neighboursChecked) {
+      if (
+        activeCellsIndexed?.[entries[neighboursChecked][1]]?.[
+          entries[neighboursChecked][0]
+        ]
+      ) {
+        neighboursAlive++;
+      }
+
+      neighboursChecked++;
+      if (neighboursAlive === 2 || neighboursAlive === 3) {
+        return true;
+      }
+    }
+  } else {
+    while (entries.length > neighboursChecked) {
+      if (
+        activeCellsIndexed?.[entries[neighboursChecked][1]]?.[
+          entries[neighboursChecked][0]
+        ]
+      ) {
+        neighboursAlive++;
+      }
+
+      neighboursChecked++;
+    }
+
+    if (neighboursAlive === 3) {
+      return true;
+    }
+  }
+
+  return false;
 };
 
-export const getCellsInCol = (colHeight: number, cellSize: number): number => {
-  return Math.floor(colHeight / cellSize);
+export const getNextGeneration = (
+  cellsInRow: number,
+  cellsInCol: number,
+  activeCellsIndexed: boolean[][]
+): ICell[] => {
+  return getAllCells(cellsInCol, cellsInRow, (x: number, y: number) => {
+    const alive = willBeAlive(x, y, activeCellsIndexed);
+
+    return alive
+      ? {
+          x,
+          y,
+        }
+      : null;
+  });
 };
 
 export const getRandomCells = (
@@ -31,8 +96,8 @@ export const getInitialCells = (
   cellSize: number
 ): ICell[] => {
   return getAllCells(
-    getCellsInCol(colHeight, cellSize),
-    getCellsInRow(rowWidth, cellSize),
+    Math.floor(colHeight / cellSize),
+    Math.floor(rowWidth / cellSize),
     (x: number, y: number) => {
       if ((x - y) % 4 === 0 || (x + y) % 4 === 0) {
         return {

@@ -1,0 +1,6 @@
+.cell {
+    outline: 1px solid white;
+    text-align: center;
+    width: 10px;
+    height: 10px;
+}

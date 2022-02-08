@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getInitialCells } from "@/utils/CellGenerator";
 import { fieldHeight, fieldWidth } from "@/utils";
 import { initialState as FieldControlInitialState } from "@/components/Fields/slice";
+import { getDataFromStorage } from "@/storage";
 
 export interface IGameFieldState {
   activeCells: ICell[];
@@ -12,10 +13,12 @@ const defaultState: IGameFieldState = {
   activeCells: [],
 };
 
+const storageData = getDataFromStorage();
+
 const initialState: IGameFieldState = {
   activeCells: getInitialCells(
-    fieldWidth,
-    fieldHeight,
+    storageData?.fieldControl?.maxFieldWidth || fieldWidth,
+    storageData?.fieldControl?.maxFieldHeight || fieldHeight,
     FieldControlInitialState.cellSize
   ),
 };
