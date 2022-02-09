@@ -103,6 +103,7 @@ const Column = styled.div`
   width: 50%;
 
   @media screen and (max-width: ${BREAKPOINTS.lg}) {
+    min-height: auto;
     width: 100%;
     height: auto;
   }
@@ -126,5 +127,6 @@ const RegistrationContainer = styled.div`
 
   @media screen and (max-width: ${BREAKPOINTS.lg}) {
     justify-content: space-between;
+    height: auto;
   }
 `;
