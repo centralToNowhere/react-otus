@@ -10,17 +10,23 @@ exports[`Registration screen tests should render registration screen 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .emotion-0 h1 {
   font-size: 2em;
-  margin: 20px;
+  margin: 2em;
   display: block;
   line-height: 1.2em;
+  -webkit-align-self: start;
+  -ms-flex-item-align: start;
+  align-self: start;
+}
+
+.emotion-0 h1.game-name {
+  margin: 20px 0;
+  -webkit-align-self: none;
+  -ms-flex-item-align: none;
+  align-self: none;
 }
 
 @media screen and (max-width: 992px) {
@@ -47,7 +53,7 @@ exports[`Registration screen tests should render registration screen 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   box-sizing: border-box;
   width: 50%;
 }
@@ -60,6 +66,16 @@ exports[`Registration screen tests should render registration screen 1`] = `
 }
 
 .emotion-4 {
+  padding: 2em;
+}
+
+.emotion-4 li {
+  font-size: 1.5rem;
+  margin-bottom: 1em;
+  list-style: disc;
+}
+
+.emotion-6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -71,45 +87,56 @@ exports[`Registration screen tests should render registration screen 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   box-sizing: border-box;
   width: 50%;
+  -webkit-align-items: initial;
+  -webkit-box-align: initial;
+  -ms-flex-align: initial;
+  align-items: initial;
+  padding: 20px;
   background: #9083e6;
-  padding: 0 20px;
-  -webkit-align-items: start;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: start;
+}
+
+@media screen and (max-width: 992px) {
+  .emotion-6 {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.emotion-8 {
+  height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
 }
 
-@media screen and (max-width: 992px) {
-  .emotion-4 {
-    width: 100%;
-    height: auto;
-  }
-}
-
-.emotion-4 form {
+.emotion-8 form {
   background: #e8d5f0;
 }
 
 @media screen and (max-width: 992px) {
-  .emotion-4 {
+  .emotion-8 {
     -webkit-box-pack: justify;
     -webkit-justify-content: space-between;
     justify-content: space-between;
   }
 }
 
-.emotion-6 {
+.emotion-10 {
   white-space: nowrap;
 }
 
-.emotion-7 {
+.emotion-11 {
   margin: 20px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -128,15 +155,15 @@ exports[`Registration screen tests should render registration screen 1`] = `
   margin: 20px 0;
 }
 
-.emotion-7 input,
-.emotion-7 label,
-.emotion-7 button,
-.emotion-7 p {
+.emotion-11 input,
+.emotion-11 label,
+.emotion-11 button,
+.emotion-11 p {
   line-height: 1.2;
 }
 
 @media screen and (max-width: 480px) {
-  .emotion-7 {
+  .emotion-11 {
     width: 100%;
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
@@ -144,7 +171,7 @@ exports[`Registration screen tests should render registration screen 1`] = `
   }
 }
 
-.emotion-9 {
+.emotion-13 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -170,32 +197,32 @@ exports[`Registration screen tests should render registration screen 1`] = `
   flex-grow: 10;
 }
 
-.emotion-9 input,
-.emotion-9 button {
+.emotion-13 input,
+.emotion-13 button {
   margin: 5px 0 0 0;
   min-width: 100px;
 }
 
-.emotion-9 div.error-container {
+.emotion-13 div.error-container {
   position: relative;
 }
 
-.emotion-9 p.error-msg {
+.emotion-13 p.error-msg {
   position: absolute;
   line-height: 1em;
   font-size: 1em;
   color: red;
 }
 
-.emotion-11 {
+.emotion-15 {
   margin-bottom: 20px;
 }
 
-.emotion-12 {
+.emotion-16 {
   display: inline;
 }
 
-.emotion-14 {
+.emotion-18 {
   background: inherit;
   border-top: 0;
   border-left: 0;
@@ -206,22 +233,22 @@ exports[`Registration screen tests should render registration screen 1`] = `
   width: 100%;
 }
 
-.emotion-14:focus {
+.emotion-18:focus {
   border-bottom: 2px solid #ff215c;
 }
 
-.emotion-16 {
+.emotion-20 {
   background: inherit;
   margin: 20px auto;
   margin-right: auto!important;
 }
 
-.emotion-16:focus {
+.emotion-20:focus {
   outline: 2px solid #ff215c!important;
   border: 2px solid transparent;
 }
 
-.emotion-18 {
+.emotion-22 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -230,19 +257,19 @@ exports[`Registration screen tests should render registration screen 1`] = `
 }
 
 @media screen and (max-width: 480px) {
-  .emotion-18 {
+  .emotion-22 {
     text-align: left;
   }
 }
 
-.emotion-20 {
+.emotion-24 {
   color: #ff215c;
   visibility: hidden;
   margin: 20px 20px 0 20px;
 }
 
 @media screen and (max-width: 480px) {
-  .emotion-20 {
+  .emotion-24 {
     display: none;
   }
 }
@@ -253,62 +280,105 @@ exports[`Registration screen tests should render registration screen 1`] = `
     <div
       class="emotion-2 emotion-3"
     >
-      <h1>
-        Правила
-      </h1>
+      <article>
+        <h1>
+          Правила
+        </h1>
+        <div
+          class="emotion-4 emotion-5"
+        >
+          <ul>
+            <li>
+              Место действия этой игры — «вселенная» — это размеченная на клетки поверхность или плоскость — безграничная, ограниченная, или замкнутая (в пределе — бесконечная плоскость).
+            </li>
+            <li>
+              Каждая клетка на этой поверхности может находиться в двух состояниях: быть «живой» (заполненной) или быть «мёртвой» (пустой). Клетка имеет восемь соседей, окружающих её.
+            </li>
+            <li>
+              Распределение живых клеток в начале игры называется первым поколением. Каждое следующее поколение рассчитывается на основе предыдущего по таким правилам:
+            </li>
+            <ul>
+              <li>
+                в пустой (мёртвой) клетке, рядом с которой ровно три живые клетки, зарождается жизнь
+              </li>
+              <li>
+                если у живой клетки есть две или три живые соседки, то эта клетка продолжает жить; в противном случае, если соседей меньше двух или больше трёх, клетка умирает («от одиночества» или «от перенаселённости»)
+              </li>
+            </ul>
+            <li>
+              Игра прекращается, если:
+            </li>
+            <ul>
+              <li>
+                на поле не останется ни одной «живой» клетки
+              </li>
+              <li>
+                конфигурация на очередном шаге в точности (без сдвигов и поворотов) повторит себя же на одном из более ранних шагов (складывается периодическая конфигурация)
+              </li>
+              <li>
+                при очередном шаге ни одна из клеток не меняет своего состояния (складывается стабильная конфигурация; предыдущее правило, вырожденное до одного шага назад)
+              </li>
+            </ul>
+          </ul>
+        </div>
+      </article>
     </div>
     <div
-      class="emotion-4 emotion-5"
+      class="emotion-6 emotion-7"
     >
-      <h1
-        class="game-name"
+      <div
+        class="emotion-8 emotion-9"
       >
-        Conway's 
-        <span
-          class="emotion-6"
+        <h1
+          class="game-name"
         >
-          Game of Life
-        </span>
-      </h1>
-      <form
-        class="emotion-7 emotion-8"
-      >
-        <div
-          class="emotion-9 emotion-10"
+          Conway's 
+          <span
+            class="emotion-10"
+          >
+            Game of Life
+          </span>
+        </h1>
+        <form
+          class="emotion-11 emotion-12"
         >
           <div
-            class="emotion-11"
+            class="emotion-13 emotion-14"
           >
-            <label
-              class="emotion-12 emotion-13"
-              for="register-player-input"
+            <div
+              class="emotion-15"
             >
-              Введите имя игрока
-            </label>
-            <input
-              class="emotion-14 emotion-15"
-              id="register-player-input"
-              name="playerName"
-              value="Player23"
+              <label
+                class="emotion-16 emotion-17"
+                for="register-player-input"
+              >
+                Введите имя игрока
+              </label>
+              <input
+                class="emotion-18 emotion-19"
+                id="register-player-input"
+                name="playerName"
+                value="Player23"
+              />
+            </div>
+            <button
+              class="emotion-20 emotion-21"
+              name="startGameAsPlayer"
+              type="button"
+            >
+              Начать игру
+            </button>
+          </div>
+          <div
+            class="emotion-22 emotion-23"
+          >
+            <div
+              class="emotion-24 spinner-border"
+              role="status"
             />
           </div>
-          <button
-            class="emotion-16 emotion-17"
-            name="startGameAsPlayer"
-            type="button"
-          >
-            Начать игру
-          </button>
-        </div>
-        <div
-          class="emotion-18 emotion-19"
-        >
-          <div
-            class="emotion-20 spinner-border"
-            role="status"
-          />
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
 </DocumentFragment>
