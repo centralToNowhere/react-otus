@@ -87,10 +87,6 @@ const Container = styled.div`
 
   @media screen and (max-width: ${BREAKPOINTS.lg}) {
     flex-direction: column-reverse;
-
-    h1 {
-      text-align: center;
-    }
   }
 `;
 
