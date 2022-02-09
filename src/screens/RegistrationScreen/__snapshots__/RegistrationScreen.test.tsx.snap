@@ -35,10 +35,6 @@ exports[`Registration screen tests should render registration screen 1`] = `
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
   }
-
-  .emotion-0 h1 {
-    text-align: center;
-  }
 }
 
 .emotion-2 {

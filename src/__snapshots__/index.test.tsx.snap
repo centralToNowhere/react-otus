@@ -49,10 +49,6 @@ exports[`index tests should render App 1`] = `
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
   }
-
-  .emotion-2 h1 {
-    text-align: center;
-  }
 }
 
 .emotion-4 {
