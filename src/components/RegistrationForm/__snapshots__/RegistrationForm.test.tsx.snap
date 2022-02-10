@@ -13,12 +13,13 @@ exports[`PlayerRegistrationForm tests should render player registration form 1`]
   flex-direction: column;
   border: 2px solid black;
   border-radius: 10px;
-  width: 70%;
+  width: 100%;
   max-width: 600px;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  margin: 20px 0;
+  font-size: 1rem;
+  margin: 0 0 20px 0;
 }
 
 .emotion-0 input,
@@ -30,7 +31,6 @@ exports[`PlayerRegistrationForm tests should render player registration form 1`]
 
 @media screen and (max-width: 480px) {
   .emotion-0 {
-    width: 100%;
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;

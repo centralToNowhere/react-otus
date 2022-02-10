@@ -42,7 +42,7 @@ export class List extends React.Component<IListProps> {
 
   render() {
     return (
-      <StyledList>
+      <StyledList className={"list"}>
         <ul>{this.props.items.map(this.getContent)}</ul>
       </StyledList>
     );
@@ -50,11 +50,8 @@ export class List extends React.Component<IListProps> {
 }
 
 const StyledList = styled.div`
-  padding: 2em;
-
   li {
-    font-size: 1.5rem;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
     list-style: disc;
   }
 `;

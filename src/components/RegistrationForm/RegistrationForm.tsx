@@ -48,13 +48,13 @@ export const RegistrationForm: FC<IRegistrationFormProps> = (props) => {
   return (
     <FormElement
       css={css`
-        width: 70%;
+        width: 100%;
         max-width: 600px;
         flex-direction: row;
-        margin: 20px 0;
+        font-size: 1rem;
+        margin: 0 0 20px 0;
 
         @media screen and (max-width: ${BREAKPOINTS.mobileEnd}) {
-          width: 100%;
           flex-direction: column-reverse;
         }
       `}

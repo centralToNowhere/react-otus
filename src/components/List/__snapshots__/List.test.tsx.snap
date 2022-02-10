@@ -2,18 +2,13 @@
 
 exports[`List tests should render list 1`] = `
 <DocumentFragment>
-  .emotion-0 {
-  padding: 2em;
-}
-
-.emotion-0 li {
-  font-size: 1.5rem;
-  margin-bottom: 1em;
+  .emotion-0 li {
+  margin-bottom: 0.5em;
   list-style: disc;
 }
 
 <div
-    class="emotion-0 emotion-1"
+    class="list emotion-0 emotion-1"
   >
     <ul>
       <li>

@@ -44,6 +44,32 @@ export const RegistrationScreen: FC = () => {
   return (
     <Container>
       <Column>
+        <p>
+          {l10n.description1}
+          <span
+            css={css`
+              font-style: italic;
+            `}
+          >
+            {l10n.gameNameFull}
+          </span>
+          {l10n.description2}
+        </p>
+        <p
+          css={css`
+            font-style: italic;
+            font-size: 1rem;
+            text-align: right;
+          `}
+        >
+          {l10n.source}{" "}
+          <a
+            href="https://ru.wikipedia.org/wiki/%D0%98%D0%B3%D1%80%D0%B0_%C2%AB%D0%96%D0%B8%D0%B7%D0%BD%D1%8C%C2%BB"
+            title={l10n.sourceName}
+          >
+            {l10n.sourceName}
+          </a>
+        </p>
         <article>
           <h1>{l10n.rulesHeading}</h1>
           <List items={rules} />
@@ -71,32 +97,40 @@ export const RegistrationScreen: FC = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: row;
+  font-size: 1.25rem;
+
+  p {
+    margin-bottom: 0.5em;
+  }
 
   h1 {
-    font-size: 2em;
-    margin: 2em;
+    font-size: 1.5em;
+    margin: 1em 0;
     display: block;
     line-height: 1.2em;
     align-self: start;
   }
 
   h1.game-name {
-    margin: 20px 0;
-    align-self: none;
+    font-size: 2em;
   }
 
   @media screen and (max-width: ${BREAKPOINTS.lg}) {
     flex-direction: column-reverse;
+  }
+
+  @media screen and (max-width: ${BREAKPOINTS.md}) {
+    font-size: 1rem;
   }
 `;
 
 const Column = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   min-height: 100vh;
   box-sizing: border-box;
   width: 50%;
+  padding: 2em 2em 0 2em;
 
   @media screen and (max-width: ${BREAKPOINTS.lg}) {
     min-height: auto;
@@ -107,7 +141,7 @@ const Column = styled.div`
 
 const RightColumn = styled(Column)`
   align-items: initial;
-  padding: 20px;
+  padding: 0 2rem;
   background: ${COLORS.primary};
 `;
 
@@ -123,6 +157,7 @@ const RegistrationContainer = styled.div`
 
   @media screen and (max-width: ${BREAKPOINTS.lg}) {
     justify-content: space-between;
+    width: 100%;
     height: auto;
   }
 `;

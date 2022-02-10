@@ -10,11 +10,16 @@ exports[`Registration screen tests should render registration screen 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  font-size: 1.25rem;
+}
+
+.emotion-0 p {
+  margin-bottom: 0.5em;
 }
 
 .emotion-0 h1 {
-  font-size: 2em;
-  margin: 2em;
+  font-size: 1.5em;
+  margin: 1em 0;
   display: block;
   line-height: 1.2em;
   -webkit-align-self: start;
@@ -23,10 +28,7 @@ exports[`Registration screen tests should render registration screen 1`] = `
 }
 
 .emotion-0 h1.game-name {
-  margin: 20px 0;
-  -webkit-align-self: none;
-  -ms-flex-item-align: none;
-  align-self: none;
+  font-size: 2em;
 }
 
 @media screen and (max-width: 992px) {
@@ -34,6 +36,12 @@ exports[`Registration screen tests should render registration screen 1`] = `
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .emotion-0 {
+    font-size: 1rem;
   }
 }
 
@@ -45,13 +53,10 @@ exports[`Registration screen tests should render registration screen 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   min-height: 100vh;
   box-sizing: border-box;
   width: 50%;
+  padding: 2em 2em 0 2em;
 }
 
 @media screen and (max-width: 992px) {
@@ -63,16 +68,21 @@ exports[`Registration screen tests should render registration screen 1`] = `
 }
 
 .emotion-4 {
-  padding: 2em;
+  font-style: italic;
 }
 
-.emotion-4 li {
-  font-size: 1.5rem;
-  margin-bottom: 1em;
+.emotion-5 {
+  font-style: italic;
+  font-size: 1rem;
+  text-align: right;
+}
+
+.emotion-6 li {
+  margin-bottom: 0.5em;
   list-style: disc;
 }
 
-.emotion-6 {
+.emotion-8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -80,30 +90,27 @@ exports[`Registration screen tests should render registration screen 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   min-height: 100vh;
   box-sizing: border-box;
   width: 50%;
+  padding: 2em 2em 0 2em;
   -webkit-align-items: initial;
   -webkit-box-align: initial;
   -ms-flex-align: initial;
   align-items: initial;
-  padding: 20px;
+  padding: 0 2rem;
   background: #9083e6;
 }
 
 @media screen and (max-width: 992px) {
-  .emotion-6 {
+  .emotion-8 {
     min-height: auto;
     width: 100%;
     height: auto;
   }
 }
 
-.emotion-8 {
+.emotion-10 {
   height: 100vh;
   display: -webkit-box;
   display: -webkit-flex;
@@ -118,24 +125,25 @@ exports[`Registration screen tests should render registration screen 1`] = `
   justify-content: center;
 }
 
-.emotion-8 form {
+.emotion-10 form {
   background: #e8d5f0;
 }
 
 @media screen and (max-width: 992px) {
-  .emotion-8 {
+  .emotion-10 {
     -webkit-box-pack: justify;
     -webkit-justify-content: space-between;
     justify-content: space-between;
+    width: 100%;
     height: auto;
   }
 }
 
-.emotion-10 {
+.emotion-12 {
   white-space: nowrap;
 }
 
-.emotion-11 {
+.emotion-13 {
   margin: 20px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -146,31 +154,31 @@ exports[`Registration screen tests should render registration screen 1`] = `
   flex-direction: column;
   border: 2px solid black;
   border-radius: 10px;
-  width: 70%;
+  width: 100%;
   max-width: 600px;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  margin: 20px 0;
+  font-size: 1rem;
+  margin: 0 0 20px 0;
 }
 
-.emotion-11 input,
-.emotion-11 label,
-.emotion-11 button,
-.emotion-11 p {
+.emotion-13 input,
+.emotion-13 label,
+.emotion-13 button,
+.emotion-13 p {
   line-height: 1.2;
 }
 
 @media screen and (max-width: 480px) {
-  .emotion-11 {
-    width: 100%;
+  .emotion-13 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
   }
 }
 
-.emotion-13 {
+.emotion-15 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -196,32 +204,32 @@ exports[`Registration screen tests should render registration screen 1`] = `
   flex-grow: 10;
 }
 
-.emotion-13 input,
-.emotion-13 button {
+.emotion-15 input,
+.emotion-15 button {
   margin: 5px 0 0 0;
   min-width: 100px;
 }
 
-.emotion-13 div.error-container {
+.emotion-15 div.error-container {
   position: relative;
 }
 
-.emotion-13 p.error-msg {
+.emotion-15 p.error-msg {
   position: absolute;
   line-height: 1em;
   font-size: 1em;
   color: red;
 }
 
-.emotion-15 {
+.emotion-17 {
   margin-bottom: 20px;
 }
 
-.emotion-16 {
+.emotion-18 {
   display: inline;
 }
 
-.emotion-18 {
+.emotion-20 {
   background: inherit;
   border-top: 0;
   border-left: 0;
@@ -232,22 +240,22 @@ exports[`Registration screen tests should render registration screen 1`] = `
   width: 100%;
 }
 
-.emotion-18:focus {
+.emotion-20:focus {
   border-bottom: 2px solid #ff215c;
 }
 
-.emotion-20 {
+.emotion-22 {
   background: inherit;
   margin: 20px auto;
   margin-right: auto!important;
 }
 
-.emotion-20:focus {
+.emotion-22:focus {
   outline: 2px solid #ff215c!important;
   border: 2px solid transparent;
 }
 
-.emotion-22 {
+.emotion-24 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -256,19 +264,19 @@ exports[`Registration screen tests should render registration screen 1`] = `
 }
 
 @media screen and (max-width: 480px) {
-  .emotion-22 {
+  .emotion-24 {
     text-align: left;
   }
 }
 
-.emotion-24 {
+.emotion-26 {
   color: #ff215c;
   visibility: hidden;
   margin: 20px 20px 0 20px;
 }
 
 @media screen and (max-width: 480px) {
-  .emotion-24 {
+  .emotion-26 {
     display: none;
   }
 }
@@ -279,12 +287,32 @@ exports[`Registration screen tests should render registration screen 1`] = `
     <div
       class="emotion-2 emotion-3"
     >
+      <p>
+        Игра «Жизнь» (англ. 
+        <span
+          class="emotion-4"
+        >
+          Conway's Game of Life
+        </span>
+        ) — клеточный автомат, придуманный английским математиком Джоном Конвеем в 1970 году.
+      </p>
+      <p
+        class="emotion-5"
+      >
+        Источник: 
+        <a
+          href="https://ru.wikipedia.org/wiki/%D0%98%D0%B3%D1%80%D0%B0_%C2%AB%D0%96%D0%B8%D0%B7%D0%BD%D1%8C%C2%BB"
+          title="Игра «Жизнь»"
+        >
+          Игра «Жизнь»
+        </a>
+      </p>
       <article>
         <h1>
           Правила
         </h1>
         <div
-          class="emotion-4 emotion-5"
+          class="list emotion-6 emotion-7"
         >
           <ul>
             <li>
@@ -323,45 +351,45 @@ exports[`Registration screen tests should render registration screen 1`] = `
       </article>
     </div>
     <div
-      class="emotion-6 emotion-7"
+      class="emotion-8 emotion-9"
     >
       <div
-        class="emotion-8 emotion-9"
+        class="emotion-10 emotion-11"
       >
         <h1
           class="game-name"
         >
           Conway's 
           <span
-            class="emotion-10"
+            class="emotion-12"
           >
             Game of Life
           </span>
         </h1>
         <form
-          class="emotion-11 emotion-12"
+          class="emotion-13 emotion-14"
         >
           <div
-            class="emotion-13 emotion-14"
+            class="emotion-15 emotion-16"
           >
             <div
-              class="emotion-15"
+              class="emotion-17"
             >
               <label
-                class="emotion-16 emotion-17"
+                class="emotion-18 emotion-19"
                 for="register-player-input"
               >
                 Введите имя игрока
               </label>
               <input
-                class="emotion-18 emotion-19"
+                class="emotion-20 emotion-21"
                 id="register-player-input"
                 name="playerName"
                 value="Player23"
               />
             </div>
             <button
-              class="emotion-20 emotion-21"
+              class="emotion-22 emotion-23"
               name="startGameAsPlayer"
               type="button"
             >
@@ -369,10 +397,10 @@ exports[`Registration screen tests should render registration screen 1`] = `
             </button>
           </div>
           <div
-            class="emotion-22 emotion-23"
+            class="emotion-24 emotion-25"
           >
             <div
-              class="emotion-24 spinner-border"
+              class="emotion-26 spinner-border"
               role="status"
             />
           </div>
