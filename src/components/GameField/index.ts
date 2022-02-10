@@ -2,6 +2,8 @@ export { GameField } from "./GameField";
 export {
   gameFieldSlice,
   setActiveCells,
+  setActiveCell,
+  setInactiveCell,
   resetCells,
   startGame,
   stopGame,

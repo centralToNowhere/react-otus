@@ -33,6 +33,14 @@ export const gameFieldSlice = createSlice({
     setActiveCells: (state, action: PayloadAction<ICell[]>) => {
       state.activeCells = action.payload;
     },
+    setActiveCell: (state, action: PayloadAction<ICell>) => {
+      state.activeCells = [...state.activeCells, action.payload];
+    },
+    setInactiveCell: (state, action: PayloadAction<ICell>) => {
+      state.activeCells = state.activeCells.filter((cell: ICell) => {
+        return cell.x !== action.payload.x || cell.y !== action.payload.y;
+      });
+    },
     resetCells: (state) => {
       state = defaultGameFieldState;
       return state;
@@ -46,5 +54,11 @@ export const gameFieldSlice = createSlice({
   },
 });
 
-export const { setActiveCells, resetCells, startGame, stopGame } =
-  gameFieldSlice.actions;
+export const {
+  setActiveCells,
+  setActiveCell,
+  setInactiveCell,
+  resetCells,
+  startGame,
+  stopGame,
+} = gameFieldSlice.actions;

@@ -5,6 +5,7 @@ exports[`Cell tests should render cell 1`] = `
   <div
     aria-label="1"
     class="cell cell-active"
+    data-state="true"
     data-testid="cell"
   />
 </DocumentFragment>

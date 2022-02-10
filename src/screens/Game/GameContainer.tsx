@@ -5,6 +5,8 @@ import { RootState } from "@/store/redux/store";
 import { Game } from "@/screens/Game";
 import {
   setActiveCells,
+  setActiveCell,
+  setInactiveCell,
   resetCells,
   selectActiveCellsIndexed,
 } from "@/components/GameField";
@@ -40,6 +42,12 @@ const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => {
   return {
     setActiveCells: (cells: ICell[]) => {
       dispatch(setActiveCells(cells));
+    },
+    setActiveCell: (cell: ICell) => {
+      dispatch(setActiveCell(cell));
+    },
+    setInactiveCell: (cell: ICell) => {
+      dispatch(setInactiveCell(cell));
     },
     resetCells: () => {
       dispatch(resetCells());
@@ -144,6 +152,31 @@ class Main extends React.Component<GameContainerProps> {
     }
   };
 
+  onCellToggle = (e: MouseEvent) => {
+    const el = e.target as HTMLDivElement;
+    const state = el.dataset?.state;
+    const number = Number(el.getAttribute("aria-label"));
+
+    if (isNaN(number) || !state) {
+      return;
+    }
+
+    const i = Math.ceil(number / this.props.cellsInRow) - 1;
+    const j = number - i * this.props.cellsInRow - 1;
+    const cell: ICell = {
+      x: j,
+      y: i,
+    };
+
+    if (state === "true") {
+      this.props.setInactiveCell(cell);
+    }
+
+    if (state === "false") {
+      this.props.setActiveCell(cell);
+    }
+  };
+
   clear = (): void => {
     if (this.gameCycleInterval !== null) {
       clearInterval(this.gameCycleInterval);
@@ -154,8 +187,21 @@ class Main extends React.Component<GameContainerProps> {
     }
   };
 
+  componentDidMount() {
+    const gameField = document.querySelector(".game-field") as HTMLDivElement;
+
+    if (gameField) {
+      gameField.addEventListener("click", this.onCellToggle);
+    }
+  }
+
   componentWillUnmount() {
     this.onStop();
+    const gameField = document.querySelector(".game-field") as HTMLDivElement;
+
+    if (gameField) {
+      gameField.removeEventListener("click", this.onCellToggle);
+    }
   }
 
   render() {

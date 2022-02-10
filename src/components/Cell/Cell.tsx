@@ -33,6 +33,7 @@ export class Cell extends React.PureComponent<ICellProps> {
       <div
         className={this.props.cssClassName}
         data-testid="cell"
+        data-state={this.props.isActive}
         aria-label={String(this.props.number)}
       />
     );

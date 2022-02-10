@@ -35,13 +35,10 @@ export class Main extends React.Component<IGameFieldProps> {
     );
   }
 
-  shouldComponentUpdate(nextProps: Readonly<IGameFieldProps>): boolean {
-    return nextProps.cellSize >= 10;
-  }
-
   render() {
     return (
       <FieldContainer
+        className={"game-field"}
         cellSize={this.props.cellSize}
         cellsInRow={this.props.cellsInRow}
         cellsInCol={this.props.cellsInCol}
