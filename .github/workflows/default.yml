@@ -1,7 +1,7 @@
 name: react-otus workflow
 on:
   push:
-    branches: [ lesson* ]
+    branches: [ lesson*, develop ]
   #  pull_request:
   #    branches: [ master ]
 
