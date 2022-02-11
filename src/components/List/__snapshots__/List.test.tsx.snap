@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List tests should render list 1`] = `
+<DocumentFragment>
+  .emotion-0 li {
+  margin-bottom: 0.5em;
+  list-style: disc;
+}
+
+<div
+    class="list emotion-0 emotion-1"
+  >
+    <ul>
+      <li>
+        test
+      </li>
+      <li>
+        test2
+      </li>
+      <ul>
+        <li>
+          test3
+        </li>
+        <ul>
+          <li>
+            test4
+          </li>
+        </ul>
+      </ul>
+    </ul>
+  </div>
+</DocumentFragment>
+`;

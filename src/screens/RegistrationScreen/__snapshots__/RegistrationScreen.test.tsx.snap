@@ -1,0 +1,412 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Registration screen tests should render registration screen 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  font-size: 1.25rem;
+}
+
+.emotion-0 p {
+  margin-bottom: 0.5em;
+}
+
+.emotion-0 h1 {
+  font-size: 1.5em;
+  margin: 1em 0;
+  display: block;
+  line-height: 1.2em;
+  -webkit-align-self: start;
+  -ms-flex-item-align: start;
+  align-self: start;
+}
+
+.emotion-0 h1.game-name {
+  font-size: 2em;
+}
+
+@media screen and (max-width: 992px) {
+  .emotion-0 {
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .emotion-0 {
+    font-size: 1rem;
+  }
+}
+
+.emotion-2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-height: 100vh;
+  box-sizing: border-box;
+  width: 50%;
+  padding: 2em 2em 0 2em;
+}
+
+@media screen and (max-width: 992px) {
+  .emotion-2 {
+    min-height: auto;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.emotion-4 {
+  font-style: italic;
+}
+
+.emotion-5 {
+  font-style: italic;
+  font-size: 1rem;
+  text-align: right;
+}
+
+.emotion-6 li {
+  margin-bottom: 0.5em;
+  list-style: disc;
+}
+
+.emotion-8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-height: 100vh;
+  box-sizing: border-box;
+  width: 50%;
+  padding: 2em 2em 0 2em;
+  -webkit-align-items: initial;
+  -webkit-box-align: initial;
+  -ms-flex-align: initial;
+  align-items: initial;
+  padding: 0 2rem;
+  background: #9083e6;
+}
+
+@media screen and (max-width: 992px) {
+  .emotion-8 {
+    min-height: auto;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.emotion-10 {
+  height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.emotion-10 form {
+  background: #e8d5f0;
+}
+
+@media screen and (max-width: 992px) {
+  .emotion-10 {
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.emotion-12 {
+  white-space: nowrap;
+}
+
+.emotion-13 {
+  margin: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  font-size: 1rem;
+  margin: 0 0 20px 0;
+}
+
+.emotion-13 input,
+.emotion-13 label,
+.emotion-13 button,
+.emotion-13 p {
+  line-height: 1.2;
+}
+
+@media screen and (max-width: 480px) {
+  .emotion-13 {
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+  }
+}
+
+.emotion-15 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex: 0 0 calc(100% / 3 - 40px);
+  -ms-flex: 0 0 calc(100% / 3 - 40px);
+  flex: 0 0 calc(100% / 3 - 40px);
+  margin: 20px;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: end;
+  justify-content: end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 10;
+  -webkit-flex-grow: 10;
+  -ms-flex-positive: 10;
+  flex-grow: 10;
+}
+
+.emotion-15 input,
+.emotion-15 button {
+  margin: 5px 0 0 0;
+  min-width: 100px;
+}
+
+.emotion-15 div.error-container {
+  position: relative;
+}
+
+.emotion-15 p.error-msg {
+  position: absolute;
+  line-height: 1em;
+  font-size: 1em;
+  color: red;
+}
+
+.emotion-17 {
+  margin-bottom: 20px;
+}
+
+.emotion-18 {
+  display: inline;
+}
+
+.emotion-20 {
+  background: inherit;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  display: block;
+  outline: 0;
+  width: 100px;
+  width: 100%;
+}
+
+.emotion-20:focus {
+  border-bottom: 2px solid #ff215c;
+}
+
+.emotion-22 {
+  background: inherit;
+  margin: 20px auto;
+  margin-right: auto!important;
+}
+
+.emotion-22:focus {
+  outline: 2px solid #ff215c!important;
+  border: 2px solid transparent;
+}
+
+.emotion-24 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  text-align: right;
+}
+
+@media screen and (max-width: 480px) {
+  .emotion-24 {
+    text-align: left;
+  }
+}
+
+.emotion-26 {
+  color: #ff215c;
+  visibility: hidden;
+  margin: 20px 20px 0 20px;
+}
+
+@media screen and (max-width: 480px) {
+  .emotion-26 {
+    display: none;
+  }
+}
+
+<div
+    class="emotion-0 emotion-1"
+  >
+    <div
+      class="emotion-2 emotion-3"
+    >
+      <p>
+        Игра «Жизнь» (англ. 
+        <span
+          class="emotion-4"
+        >
+          Conway's Game of Life
+        </span>
+        ) — клеточный автомат, придуманный английским математиком Джоном Конвеем в 1970 году.
+      </p>
+      <p
+        class="emotion-5"
+      >
+        Источник: 
+        <a
+          href="https://ru.wikipedia.org/wiki/%D0%98%D0%B3%D1%80%D0%B0_%C2%AB%D0%96%D0%B8%D0%B7%D0%BD%D1%8C%C2%BB"
+          title="Игра «Жизнь»"
+        >
+          Игра «Жизнь»
+        </a>
+      </p>
+      <article>
+        <h1>
+          Правила
+        </h1>
+        <div
+          class="list emotion-6 emotion-7"
+        >
+          <ul>
+            <li>
+              Место действия этой игры — «вселенная» — это размеченная на клетки поверхность или плоскость — безграничная, ограниченная, или замкнутая (в пределе — бесконечная плоскость).
+            </li>
+            <li>
+              Каждая клетка на этой поверхности может находиться в двух состояниях: быть «живой» (заполненной) или быть «мёртвой» (пустой). Клетка имеет восемь соседей, окружающих её.
+            </li>
+            <li>
+              Распределение живых клеток в начале игры называется первым поколением. Каждое следующее поколение рассчитывается на основе предыдущего по таким правилам:
+            </li>
+            <ul>
+              <li>
+                в пустой (мёртвой) клетке, рядом с которой ровно три живые клетки, зарождается жизнь
+              </li>
+              <li>
+                если у живой клетки есть две или три живые соседки, то эта клетка продолжает жить; в противном случае, если соседей меньше двух или больше трёх, клетка умирает («от одиночества» или «от перенаселённости»)
+              </li>
+            </ul>
+            <li>
+              Игра прекращается, если:
+            </li>
+            <ul>
+              <li>
+                на поле не останется ни одной «живой» клетки
+              </li>
+              <li>
+                конфигурация на очередном шаге в точности (без сдвигов и поворотов) повторит себя же на одном из более ранних шагов (складывается периодическая конфигурация)
+              </li>
+              <li>
+                при очередном шаге ни одна из клеток не меняет своего состояния (складывается стабильная конфигурация; предыдущее правило, вырожденное до одного шага назад)
+              </li>
+            </ul>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <div
+      class="emotion-8 emotion-9"
+    >
+      <div
+        class="emotion-10 emotion-11"
+      >
+        <h1
+          class="game-name"
+        >
+          Conway's 
+          <span
+            class="emotion-12"
+          >
+            Game of Life
+          </span>
+        </h1>
+        <form
+          class="emotion-13 emotion-14"
+        >
+          <div
+            class="emotion-15 emotion-16"
+          >
+            <div
+              class="emotion-17"
+            >
+              <label
+                class="emotion-18 emotion-19"
+                for="register-player-input"
+              >
+                Введите имя игрока
+              </label>
+              <input
+                class="emotion-20 emotion-21"
+                id="register-player-input"
+                name="playerName"
+                value="Player23"
+              />
+            </div>
+            <button
+              class="emotion-22 emotion-23"
+              name="startGameAsPlayer"
+              type="button"
+            >
+              Начать игру
+            </button>
+          </div>
+          <div
+            class="emotion-24 emotion-25"
+          >
+            <div
+              class="emotion-26 spinner-border"
+              role="status"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

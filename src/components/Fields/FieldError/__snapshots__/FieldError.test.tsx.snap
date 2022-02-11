@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`error field tests should show error 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  position: relative;
+}
+
+.emotion-0 p.error-msg {
+  position: absolute;
+  line-height: 1em;
+  font-size: 1em;
+  color: red;
+}
+
+<div
+    class="emotion-0 emotion-1"
+  >
+    <p
+      class="error-msg"
+      role="alert"
+    >
+      something went wrong
+    </p>
+  </div>
+</DocumentFragment>
+`;

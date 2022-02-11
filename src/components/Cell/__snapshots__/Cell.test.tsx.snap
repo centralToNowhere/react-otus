@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cell tests should render cell 1`] = `
+<DocumentFragment>
+  <div
+    aria-label="1"
+    class="cell cell-active"
+    data-state="true"
+    data-testid="cell"
+  />
+</DocumentFragment>
+`;

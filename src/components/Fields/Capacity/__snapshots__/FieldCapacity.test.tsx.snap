@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FieldCapacity tests should render capacity input 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex: 0 0 calc(100% / 3 - 40px);
+  -ms-flex: 0 0 calc(100% / 3 - 40px);
+  flex: 0 0 calc(100% / 3 - 40px);
+  margin: 20px;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: end;
+  justify-content: end;
+}
+
+.emotion-0 input,
+.emotion-0 button {
+  margin: 5px 0 0 0;
+  min-width: 100px;
+}
+
+.emotion-0 div.error-container {
+  position: relative;
+}
+
+.emotion-0 p.error-msg {
+  position: absolute;
+  line-height: 1em;
+  font-size: 1em;
+  color: red;
+}
+
+.emotion-2 {
+  display: inline;
+}
+
+.emotion-4 {
+  background: inherit;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  display: block;
+  outline: 0;
+  width: 100px;
+}
+
+.emotion-4:focus {
+  border-bottom: 2px solid #ff215c;
+}
+
+.emotion-4:focus {
+  border-bottom: 0;
+}
+
+<div
+    class="emotion-0 emotion-1"
+  >
+    <label
+      class="emotion-2 emotion-3"
+      for="capacity-percentage"
+    >
+      Процент заполненности:
+    </label>
+    <p>
+      50 %
+    </p>
+    <input
+      autocomplete="off"
+      class="emotion-4 emotion-5"
+      id="capacity-percentage"
+      max="100"
+      min="0"
+      name="capacityPercentage"
+      step="1"
+      type="range"
+      value="50"
+    />
+  </div>
+</DocumentFragment>
+`;

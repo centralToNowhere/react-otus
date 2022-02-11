@@ -1,7 +1,7 @@
 name: react-otus workflow
 on:
   push:
-    branches: [ my-homework* ]
+    branches: [ lesson* ]
   #  pull_request:
   #    branches: [ master ]
 
@@ -10,16 +10,13 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
+  test:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0 # 👈 Required to retrieve git history
+
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
@@ -31,7 +28,9 @@ jobs:
           key: ${{ runner.OS }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.OS }}-npm-cache-
+
       - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
 
       - name: Check typing
@@ -46,8 +45,40 @@ jobs:
       - name: Run visual regression tests
         run: npm run loki:test
 
+  build-deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # 👈 Required to retrieve git history
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Restore NPM dependencies
+        uses: actions/cache@v2.1.7
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-npm-cache-
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Pre-build
+        run: |
+          echo 'export const basename = "/react-otus";' > src/routes/basename.ts
+
       - name: Build
         run: npm run build
+
+      - name: Pre-deploy
+        run: |
+          cp dist/index.html dist/404.html
 
       - name: Deploy 🚀
         id: Deploy
