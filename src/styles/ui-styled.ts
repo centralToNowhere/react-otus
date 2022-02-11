@@ -1,9 +1,9 @@
 export const COLORS = {
-  primary: "#9083e6",
+  primary: "#9a949a",
   secondary: "#e8d5f0",
   accent: "#ff215c",
-  activeCellBg: "#ff215c",
-  activeCellColor: "#fff",
+  activeCellBg: "#9a949a",
+  border: "rgb(118, 118, 118)",
 };
 
 export const BREAKPOINTS = {

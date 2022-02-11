@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
+import { COLORS } from "@/styles/ui-styled";
 
 export const FormElement = styled.form`
   margin: 20px;
   display: flex;
   flex-direction: column;
-  border: 2px solid black;
+  border: 2px solid ${COLORS.border};
   border-radius: 10px;
 
   input,

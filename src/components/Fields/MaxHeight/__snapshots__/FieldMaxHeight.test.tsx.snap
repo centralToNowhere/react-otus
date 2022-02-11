@@ -46,6 +46,7 @@ exports[`FieldMaxHeight tests should render max height input 1`] = `
   border-top: 0;
   border-left: 0;
   border-right: 0;
+  border-color: rgb(118, 118, 118);
   display: block;
   outline: 0;
   width: 100px;

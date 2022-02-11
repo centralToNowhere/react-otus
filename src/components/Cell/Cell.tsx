@@ -1,5 +1,7 @@
 import React from "react";
 import "@/components/Cell/cell.css";
+import styled from "@emotion/styled";
+import { COLORS } from "@/styles/ui-styled";
 
 export interface ICell {
   x: number;
@@ -30,7 +32,7 @@ export class Cell extends React.PureComponent<ICellProps> {
 
   render() {
     return (
-      <div
+      <StyledCell
         className={this.props.cssClassName}
         data-testid="cell"
         data-state={this.props.isActive}
@@ -39,3 +41,10 @@ export class Cell extends React.PureComponent<ICellProps> {
     );
   }
 }
+
+const StyledCell = styled.div`
+  border: 1px solid ${COLORS.activeCellBg};
+  text-align: center;
+  width: 10px;
+  height: 10px;
+`;

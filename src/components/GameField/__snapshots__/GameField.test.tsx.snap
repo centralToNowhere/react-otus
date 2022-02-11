@@ -14,7 +14,7 @@ exports[`GameField tests should render game field 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  background: #9083e6;
+  background: #e8d5f0;
   margin: 0 auto;
 }
 
@@ -27,7 +27,14 @@ exports[`GameField tests should render game field 1`] = `
 }
 
 .emotion-0 .cell-active {
-  background: #ff215c;
+  background: #9a949a;
+}
+
+.emotion-2 {
+  border: 1px solid #9a949a;
+  text-align: center;
+  width: 10px;
+  height: 10px;
 }
 
 <div
@@ -36,901 +43,901 @@ exports[`GameField tests should render game field 1`] = `
   >
     <div
       aria-label="1"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="2"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="3"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="4"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="5"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="6"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="7"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="8"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="9"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="10"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="11"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="12"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="13"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="14"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="15"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="16"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="17"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="18"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="19"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="20"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="21"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="22"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="23"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="24"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="25"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="26"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="27"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="28"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="29"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="30"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="31"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="32"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="33"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="34"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="35"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="36"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="37"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="38"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="39"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="40"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="41"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="42"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="43"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="44"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="45"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="46"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="47"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="48"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="49"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="50"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="51"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="52"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="53"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="54"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="55"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="56"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="57"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="58"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="59"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="60"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="61"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="62"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="63"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="64"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="65"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="66"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="67"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="68"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="69"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="70"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="71"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="72"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="73"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="74"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="75"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="76"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="77"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="78"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="79"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="80"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="81"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="82"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="83"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="84"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="85"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="86"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="87"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="88"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="89"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="90"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="91"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="92"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="93"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="94"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="95"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="96"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="97"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="98"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="99"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="100"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="101"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="102"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="103"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="104"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="105"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="106"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="107"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="108"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="109"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="110"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="111"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="112"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="113"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="114"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="115"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="116"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="117"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="118"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="119"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="120"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="121"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="122"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="123"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="124"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="125"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="126"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="127"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="128"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="129"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="130"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="131"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="132"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="133"
-      class="cell cell-active"
+      class="cell cell-active emotion-2 emotion-3"
       data-state="true"
       data-testid="cell"
     />
     <div
       aria-label="134"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="135"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="136"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="137"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="138"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="139"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="140"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="141"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="142"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="143"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="144"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="145"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="146"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="147"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="148"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="149"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />
     <div
       aria-label="150"
-      class="cell"
+      class="cell emotion-2 emotion-3"
       data-state="false"
       data-testid="cell"
     />

@@ -12,6 +12,8 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ICellProps> = (args) => <Cell {...args} />;
+const Template: Story<ICellProps> = (args) => {
+  return <Cell {...args} />;
+};
 
 export const CellActive = Template;

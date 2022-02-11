@@ -99,7 +99,7 @@ exports[`Registration screen tests should render registration screen 1`] = `
   -ms-flex-align: initial;
   align-items: initial;
   padding: 0 2rem;
-  background: #9083e6;
+  background: #9a949a;
 }
 
 @media screen and (max-width: 992px) {
@@ -152,7 +152,7 @@ exports[`Registration screen tests should render registration screen 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  border: 2px solid black;
+  border: 2px solid rgb(118, 118, 118);
   border-radius: 10px;
   width: 100%;
   max-width: 600px;
@@ -234,6 +234,7 @@ exports[`Registration screen tests should render registration screen 1`] = `
   border-top: 0;
   border-left: 0;
   border-right: 0;
+  border-color: rgb(118, 118, 118);
   display: block;
   outline: 0;
   width: 100px;
@@ -247,6 +248,7 @@ exports[`Registration screen tests should render registration screen 1`] = `
 .emotion-22 {
   background: inherit;
   margin: 20px auto;
+  border-color: rgb(118, 118, 118);
   margin-right: auto!important;
 }
 

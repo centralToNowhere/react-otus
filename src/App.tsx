@@ -28,11 +28,6 @@ export const AppBox = styled.div`
   min-height: 100vh;
   background: ${COLORS.secondary};
 
-  & button:focus {
-    outline: 2px solid ${COLORS.accent};
-    border: 2px solid transparent;
-  }
-
   & p {
     margin-bottom: 0;
   }

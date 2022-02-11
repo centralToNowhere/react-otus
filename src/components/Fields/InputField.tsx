@@ -6,6 +6,7 @@ export const InputField = styled.input`
   border-top: 0;
   border-left: 0;
   border-right: 0;
+  border-color: ${COLORS.border};
   display: block;
   outline: 0;
   width: 100px;

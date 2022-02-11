@@ -2,9 +2,16 @@
 
 exports[`Cell tests should render cell 1`] = `
 <DocumentFragment>
-  <div
+  .emotion-0 {
+  border: 1px solid #9a949a;
+  text-align: center;
+  width: 10px;
+  height: 10px;
+}
+
+<div
     aria-label="1"
-    class="cell cell-active"
+    class="cell cell-active emotion-0 emotion-1"
     data-state="true"
     data-testid="cell"
   />

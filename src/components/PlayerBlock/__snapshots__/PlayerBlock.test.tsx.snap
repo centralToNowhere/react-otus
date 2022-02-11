@@ -11,7 +11,7 @@ exports[`PlayerContainer tests should render PlayerContainer 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  border: 2px solid black;
+  border: 2px solid rgb(118, 118, 118);
   border-radius: 10px;
 }
 
@@ -84,6 +84,7 @@ exports[`PlayerContainer tests should render PlayerContainer 1`] = `
 .emotion-4 {
   background: inherit;
   margin: 20px auto;
+  border-color: rgb(118, 118, 118);
   text-align: center;
 }
 

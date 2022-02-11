@@ -71,7 +71,7 @@ const FieldContainer = styled.div<IFieldStyledContainerProps>`
   height: ${(props) => props.cellsInCol * props.cellSize}px;
   display: flex;
   flex-wrap: wrap;
-  background: ${COLORS.primary};
+  background: ${COLORS.secondary};
   margin: 0 auto;
 
   .cell {
