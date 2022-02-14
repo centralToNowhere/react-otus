@@ -11,7 +11,7 @@ exports[`PlayerContainer tests should render PlayerContainer 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  border: 2px solid rgb(118, 118, 118);
+  border: 2px solid #6a6d75;
   border-radius: 10px;
 }
 
@@ -62,7 +62,7 @@ exports[`PlayerContainer tests should render PlayerContainer 1`] = `
   font-size: 1.2rem;
   font-weight: bold;
   margin: 0;
-  border-bottom: 2px solid #ff215c;
+  border-bottom: 2px solid #5b6da7;
 }
 
 .emotion-2 div.player-stats-container {
@@ -84,12 +84,12 @@ exports[`PlayerContainer tests should render PlayerContainer 1`] = `
 .emotion-4 {
   background: inherit;
   margin: 20px auto;
-  border-color: rgb(118, 118, 118);
+  border-color: #6a6d75;
   text-align: center;
 }
 
 .emotion-4:focus {
-  outline: 2px solid #ff215c!important;
+  outline: 2px solid #5b6da7!important;
   border: 2px solid transparent;
 }
 

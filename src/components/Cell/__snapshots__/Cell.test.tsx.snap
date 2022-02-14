@@ -3,7 +3,7 @@
 exports[`Cell tests should render cell 1`] = `
 <DocumentFragment>
   .emotion-0 {
-  border: 1px solid #9a949a;
+  border: 1px solid #b5b5cc;
   text-align: center;
   width: 10px;
   height: 10px;

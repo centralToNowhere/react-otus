@@ -11,7 +11,7 @@ exports[`PlayerRegistrationForm tests should render player registration form 1`]
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  border: 2px solid rgb(118, 118, 118);
+  border: 2px solid #6a6d75;
   border-radius: 10px;
   width: 100%;
   max-width: 600px;
@@ -93,7 +93,7 @@ exports[`PlayerRegistrationForm tests should render player registration form 1`]
   border-top: 0;
   border-left: 0;
   border-right: 0;
-  border-color: rgb(118, 118, 118);
+  border-color: #6a6d75;
   display: block;
   outline: 0;
   width: 100px;
@@ -101,18 +101,18 @@ exports[`PlayerRegistrationForm tests should render player registration form 1`]
 }
 
 .emotion-7:focus {
-  border-bottom: 2px solid #ff215c;
+  border-bottom: 2px solid #5b6da7;
 }
 
 .emotion-9 {
   background: inherit;
   margin: 20px auto;
-  border-color: rgb(118, 118, 118);
+  border-color: #6a6d75;
   margin-right: auto!important;
 }
 
 .emotion-9:focus {
-  outline: 2px solid #ff215c!important;
+  outline: 2px solid #5b6da7!important;
   border: 2px solid transparent;
 }
 
@@ -131,7 +131,7 @@ exports[`PlayerRegistrationForm tests should render player registration form 1`]
 }
 
 .emotion-13 {
-  color: #ff215c;
+  color: #5b6da7;
   visibility: hidden;
   margin: 20px 20px 0 20px;
 }

@@ -4,6 +4,8 @@ import { BREAKPOINTS } from "@/styles/ui-styled";
 import { FormContainer } from "@/components/Form";
 import { GameField } from "@/components/GameField";
 import { PlayerBlockContainer } from "@/components/PlayerBlock";
+import { FocusableSeparator } from "@/components/FocusableSeparator/FocusableSeparator";
+import { isTouchDevice } from "@/utils/TouchDeviceDetection";
 
 export interface IGameProps {
   onSpeedChange?: (value: string) => void;
@@ -19,7 +21,10 @@ export class Game extends React.Component<IGameProps> {
   render() {
     return (
       <Container>
-        <GameField />
+        <GameFieldContainer>
+          <GameField />
+        </GameFieldContainer>
+        {isTouchDevice() ? null : <FocusableSeparator />}
         <ControlContainer>
           <FormContainer
             key={this.props.formKey}
@@ -37,6 +42,19 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
+
+  @media screen and (min-width: ${BREAKPOINTS.xl}) {
+    height: 100vh;
+  }
+`;
+
+const GameFieldContainer = styled.div`
+  @media screen and (min-width: ${BREAKPOINTS.xl}) {
+    overflow: auto;
+    max-width: 100%;
+    height: 50vh;
+  }
 `;
 
 const ControlContainer = styled.div`
@@ -49,6 +67,7 @@ const ControlContainer = styled.div`
   }
 
   @media screen and (min-width: ${BREAKPOINTS.xl}) {
+    overflow: hidden;
     width: 100%;
     .game-settings-form {
       margin: 20px auto;

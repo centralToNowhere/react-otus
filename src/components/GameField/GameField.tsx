@@ -37,7 +37,7 @@ export class Main extends React.Component<IGameFieldProps> {
 
   render() {
     return (
-      <FieldContainer
+      <StyledGameField
         className={"game-field"}
         cellSize={this.props.cellSize}
         cellsInRow={this.props.cellsInRow}
@@ -45,7 +45,7 @@ export class Main extends React.Component<IGameFieldProps> {
         data-testid={"field"}
       >
         {this.renderCells()}
-      </FieldContainer>
+      </StyledGameField>
     );
   }
 }
@@ -65,7 +65,7 @@ interface IFieldStyledContainerProps {
   cellsInCol: number;
 }
 
-const FieldContainer = styled.div<IFieldStyledContainerProps>`
+const StyledGameField = styled.div<IFieldStyledContainerProps>`
   width: ${(props) => props.cellsInRow * props.cellSize}px;
   cursor: pointer;
   height: ${(props) => props.cellsInCol * props.cellSize}px;

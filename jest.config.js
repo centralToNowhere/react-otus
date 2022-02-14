@@ -16,6 +16,8 @@ module.exports = {
   testEnvironment: "jsdom",
   transform: {
     "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
+    ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2|svg)$":
+      "jest-transform-stub",
   },
   moduleNameMapper: {
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",

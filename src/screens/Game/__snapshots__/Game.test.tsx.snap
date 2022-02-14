@@ -14,9 +14,24 @@ exports[`Game tests should correctly render field and form 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  min-height: 100vh;
 }
 
-.emotion-2 {
+@media screen and (min-width: 1200px) {
+  .emotion-0 {
+    height: 100vh;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .emotion-2 {
+    overflow: auto;
+    max-width: 100%;
+    height: 50vh;
+  }
+}
+
+.emotion-4 {
   width: 1000px;
   cursor: pointer;
   height: 360px;
@@ -32,7 +47,7 @@ exports[`Game tests should correctly render field and form 1`] = `
   margin: 0 auto;
 }
 
-.emotion-2 .cell {
+.emotion-4 .cell {
   -webkit-transition: 0.5s ease background;
   transition: 0.5s ease background;
   width: 40px;
@@ -40,37 +55,77 @@ exports[`Game tests should correctly render field and form 1`] = `
   line-height: 40px;
 }
 
-.emotion-2 .cell-active {
-  background: #9a949a;
+.emotion-4 .cell-active {
+  background: #b5b5cc;
 }
 
-.emotion-4 {
-  border: 1px solid #9a949a;
+.emotion-6 {
+  border: 1px solid #b5b5cc;
   text-align: center;
   width: 10px;
   height: 10px;
 }
 
-.emotion-454 {
+.emotion-456 {
+  width: 100%;
+  height: 20px;
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: #b5b5cc;
+  overflow: hidden;
+}
+
+.emotion-456:hover {
+  opacity: 0.7;
+}
+
+.emotion-456 img {
+  display: block;
+  box-sizing: content-box;
+  width: 100%;
+  height: 8px;
+  background: #b5b5cc;
+}
+
+.emotion-456 img:first-of-type {
+  padding-top: 2px;
+}
+
+.emotion-456 img:last-child {
+  padding-bottom: 2px;
+}
+
+@media screen and (max-width: 1200px) {
+  .emotion-456 {
+    display: none;
+  }
+}
+
+.emotion-458 {
   position: relative;
 }
 
-.emotion-454 .game-settings-form {
+.emotion-458 .game-settings-form {
   clear: right;
   float: none;
   max-width: 480px;
 }
 
 @media screen and (min-width: 1200px) {
-  .emotion-454 {
+  .emotion-458 {
+    overflow: hidden;
     width: 100%;
   }
 
-  .emotion-454 .game-settings-form {
+  .emotion-458 .game-settings-form {
     margin: 20px auto;
   }
 
-  .emotion-454 .player-container {
+  .emotion-458 .player-container {
     position: absolute;
     margin: 20px;
     top: 0;
@@ -79,12 +134,12 @@ exports[`Game tests should correctly render field and form 1`] = `
 }
 
 @media screen and (max-width: 1200px) and (min-width: 768px) {
-  .emotion-454 .game-settings-form {
+  .emotion-458 .game-settings-form {
     float: right;
   }
 }
 
-.emotion-456 {
+.emotion-460 {
   margin: 20px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -93,18 +148,18 @@ exports[`Game tests should correctly render field and form 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  border: 2px solid rgb(118, 118, 118);
+  border: 2px solid #6a6d75;
   border-radius: 10px;
 }
 
-.emotion-456 input,
-.emotion-456 label,
-.emotion-456 button,
-.emotion-456 p {
+.emotion-460 input,
+.emotion-460 label,
+.emotion-460 button,
+.emotion-460 p {
   line-height: 1.2;
 }
 
-.emotion-458 {
+.emotion-462 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -118,7 +173,7 @@ exports[`Game tests should correctly render field and form 1`] = `
   flex-wrap: wrap;
 }
 
-.emotion-460 {
+.emotion-464 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -136,77 +191,77 @@ exports[`Game tests should correctly render field and form 1`] = `
   justify-content: end;
 }
 
-.emotion-460 input,
-.emotion-460 button {
+.emotion-464 input,
+.emotion-464 button {
   margin: 5px 0 0 0;
   min-width: 100px;
 }
 
-.emotion-460 div.error-container {
+.emotion-464 div.error-container {
   position: relative;
 }
 
-.emotion-460 p.error-msg {
+.emotion-464 p.error-msg {
   position: absolute;
   line-height: 1em;
   font-size: 1em;
   color: red;
 }
 
-.emotion-462 {
+.emotion-466 {
   display: inline;
 }
 
-.emotion-464 {
+.emotion-468 {
   background: inherit;
   border-top: 0;
   border-left: 0;
   border-right: 0;
-  border-color: rgb(118, 118, 118);
+  border-color: #6a6d75;
   display: block;
   outline: 0;
   width: 100px;
 }
 
-.emotion-464:focus {
-  border-bottom: 2px solid #ff215c;
+.emotion-468:focus {
+  border-bottom: 2px solid #5b6da7;
 }
 
-.emotion-482 {
+.emotion-486 {
   background: inherit;
   border-top: 0;
   border-left: 0;
   border-right: 0;
-  border-color: rgb(118, 118, 118);
+  border-color: #6a6d75;
   display: block;
   outline: 0;
   width: 100px;
 }
 
-.emotion-482:focus {
-  border-bottom: 2px solid #ff215c;
+.emotion-486:focus {
+  border-bottom: 2px solid #5b6da7;
 }
 
-.emotion-482:focus {
+.emotion-486:focus {
   border-bottom: 0;
 }
 
-.emotion-494 {
+.emotion-498 {
   display: inline-block;
 }
 
-.emotion-496 {
+.emotion-500 {
   background: inherit;
   margin: 20px auto;
-  border-color: rgb(118, 118, 118);
+  border-color: #6a6d75;
 }
 
-.emotion-496:focus {
-  outline: 2px solid #ff215c!important;
+.emotion-500:focus {
+  outline: 2px solid #5b6da7!important;
   border: 2px solid transparent;
 }
 
-.emotion-518 {
+.emotion-522 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -225,55 +280,55 @@ exports[`Game tests should correctly render field and form 1`] = `
   display: inline-block;
 }
 
-.emotion-518 input,
-.emotion-518 button {
+.emotion-522 input,
+.emotion-522 button {
   margin: 5px 0 0 0;
   min-width: 100px;
 }
 
-.emotion-518 div.error-container {
+.emotion-522 div.error-container {
   position: relative;
 }
 
-.emotion-518 p.error-msg {
+.emotion-522 p.error-msg {
   position: absolute;
   line-height: 1em;
   font-size: 1em;
   color: red;
 }
 
-.emotion-518 h1.player-name {
+.emotion-522 h1.player-name {
   font-size: 1.2rem;
   font-weight: bold;
   margin: 0;
-  border-bottom: 2px solid #ff215c;
+  border-bottom: 2px solid #5b6da7;
 }
 
-.emotion-518 div.player-stats-container {
+.emotion-522 div.player-stats-container {
   margin: 20px 0;
 }
 
-.emotion-518 div.player-stats-container>h2 {
+.emotion-522 div.player-stats-container>h2 {
   font-size: 1.2rem;
 }
 
-.emotion-518 div.player-stats-container>ul {
+.emotion-522 div.player-stats-container>ul {
   padding-left: 0;
 }
 
-.emotion-518 li {
+.emotion-522 li {
   margin: 10px 0 10px 20px;
 }
 
-.emotion-520 {
+.emotion-524 {
   background: inherit;
   margin: 20px auto;
-  border-color: rgb(118, 118, 118);
+  border-color: #6a6d75;
   text-align: center;
 }
 
-.emotion-520:focus {
-  outline: 2px solid #ff215c!important;
+.emotion-524:focus {
+  outline: 2px solid #5b6da7!important;
   border: 2px solid transparent;
 }
 
@@ -281,1365 +336,1383 @@ exports[`Game tests should correctly render field and form 1`] = `
     class="emotion-0 emotion-1"
   >
     <div
-      class="game-field emotion-2 emotion-3"
-      data-testid="field"
+      class="emotion-2 emotion-3"
     >
       <div
-        aria-label="1"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="2"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="3"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="4"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="5"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="6"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="7"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="8"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="9"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="10"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="11"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="12"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="13"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="14"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="15"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="16"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="17"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="18"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="19"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="20"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="21"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="22"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="23"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="24"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="25"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="26"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="27"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="28"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="29"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="30"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="31"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="32"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="33"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="34"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="35"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="36"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="37"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="38"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="39"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="40"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="41"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="42"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="43"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="44"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="45"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="46"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="47"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="48"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="49"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="50"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="51"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="52"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="53"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="54"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="55"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="56"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="57"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="58"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="59"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="60"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="61"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="62"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="63"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="64"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="65"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="66"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="67"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="68"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="69"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="70"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="71"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="72"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="73"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="74"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="75"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="76"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="77"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="78"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="79"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="80"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="81"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="82"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="83"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="84"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="85"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="86"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="87"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="88"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="89"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="90"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="91"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="92"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="93"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="94"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="95"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="96"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="97"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="98"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="99"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="100"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="101"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="102"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="103"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="104"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="105"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="106"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="107"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="108"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="109"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="110"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="111"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="112"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="113"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="114"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="115"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="116"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="117"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="118"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="119"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="120"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="121"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="122"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="123"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="124"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="125"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="126"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="127"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="128"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="129"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="130"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="131"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="132"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="133"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="134"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="135"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="136"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="137"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="138"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="139"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="140"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="141"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="142"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="143"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="144"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="145"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="146"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="147"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="148"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="149"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="150"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="151"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="152"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="153"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="154"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="155"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="156"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="157"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="158"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="159"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="160"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="161"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="162"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="163"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="164"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="165"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="166"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="167"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="168"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="169"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="170"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="171"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="172"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="173"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="174"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="175"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="176"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="177"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="178"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="179"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="180"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="181"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="182"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="183"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="184"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="185"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="186"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="187"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="188"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="189"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="190"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="191"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="192"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="193"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="194"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="195"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="196"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="197"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="198"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="199"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="200"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="201"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="202"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="203"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="204"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="205"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="206"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="207"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="208"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="209"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="210"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="211"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="212"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="213"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="214"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="215"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="216"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="217"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="218"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="219"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="220"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="221"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
-      />
-      <div
-        aria-label="222"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="223"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="224"
-        class="cell emotion-4 emotion-5"
-        data-state="false"
-        data-testid="cell"
-      />
-      <div
-        aria-label="225"
-        class="cell cell-active emotion-4 emotion-5"
-        data-state="true"
-        data-testid="cell"
+        class="game-field emotion-4 emotion-5"
+        data-testid="field"
+      >
+        <div
+          aria-label="1"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="2"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="3"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="4"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="5"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="6"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="7"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="8"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="9"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="10"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="11"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="12"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="13"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="14"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="15"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="16"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="17"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="18"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="19"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="20"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="21"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="22"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="23"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="24"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="25"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="26"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="27"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="28"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="29"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="30"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="31"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="32"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="33"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="34"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="35"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="36"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="37"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="38"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="39"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="40"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="41"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="42"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="43"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="44"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="45"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="46"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="47"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="48"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="49"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="50"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="51"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="52"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="53"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="54"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="55"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="56"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="57"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="58"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="59"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="60"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="61"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="62"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="63"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="64"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="65"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="66"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="67"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="68"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="69"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="70"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="71"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="72"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="73"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="74"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="75"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="76"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="77"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="78"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="79"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="80"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="81"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="82"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="83"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="84"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="85"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="86"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="87"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="88"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="89"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="90"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="91"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="92"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="93"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="94"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="95"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="96"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="97"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="98"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="99"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="100"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="101"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="102"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="103"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="104"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="105"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="106"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="107"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="108"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="109"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="110"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="111"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="112"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="113"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="114"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="115"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="116"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="117"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="118"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="119"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="120"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="121"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="122"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="123"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="124"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="125"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="126"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="127"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="128"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="129"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="130"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="131"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="132"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="133"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="134"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="135"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="136"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="137"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="138"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="139"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="140"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="141"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="142"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="143"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="144"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="145"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="146"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="147"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="148"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="149"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="150"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="151"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="152"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="153"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="154"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="155"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="156"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="157"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="158"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="159"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="160"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="161"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="162"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="163"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="164"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="165"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="166"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="167"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="168"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="169"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="170"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="171"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="172"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="173"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="174"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="175"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="176"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="177"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="178"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="179"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="180"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="181"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="182"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="183"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="184"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="185"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="186"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="187"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="188"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="189"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="190"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="191"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="192"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="193"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="194"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="195"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="196"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="197"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="198"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="199"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="200"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="201"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="202"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="203"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="204"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="205"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="206"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="207"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="208"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="209"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="210"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="211"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="212"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="213"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="214"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="215"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="216"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="217"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="218"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="219"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="220"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="221"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+        <div
+          aria-label="222"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="223"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="224"
+          class="cell emotion-6 emotion-7"
+          data-state="false"
+          data-testid="cell"
+        />
+        <div
+          aria-label="225"
+          class="cell cell-active emotion-6 emotion-7"
+          data-state="true"
+          data-testid="cell"
+        />
+      </div>
+    </div>
+    <div
+      aria-valuenow="50"
+      class="emotion-456 emotion-457"
+      role="separator"
+    >
+      <img
+        alt="resizer arrow"
+        src=""
+      />
+      <img
+        alt="resizer arrow"
+        src=""
       />
     </div>
     <div
-      class="emotion-454 emotion-455"
+      class="emotion-458 emotion-459"
     >
       <form
-        class="game-settings-form emotion-456 emotion-457"
+        class="game-settings-form emotion-460 emotion-461"
         data-testid="field-form"
       >
         <input
@@ -1647,20 +1720,20 @@ exports[`Game tests should correctly render field and form 1`] = `
           hidden=""
         />
         <div
-          class="emotion-458 emotion-459"
+          class="emotion-462 emotion-463"
         >
           <div
-            class="emotion-460 emotion-461"
+            class="emotion-464 emotion-465"
           >
             <label
-              class="emotion-462 emotion-463"
+              class="emotion-466 emotion-467"
               for="field-width"
             >
               Макс. ширина:
             </label>
             <input
               autocomplete="off"
-              class="emotion-464 emotion-465"
+              class="emotion-468 emotion-469"
               id="field-width"
               name="fieldWidth"
               pattern="([0-9]*[.])?[0-9]+"
@@ -1670,17 +1743,17 @@ exports[`Game tests should correctly render field and form 1`] = `
             />
           </div>
           <div
-            class="emotion-460 emotion-461"
+            class="emotion-464 emotion-465"
           >
             <label
-              class="emotion-462 emotion-463"
+              class="emotion-466 emotion-467"
               for="field-height"
             >
               Макс. высота:
             </label>
             <input
               autocomplete="off"
-              class="emotion-464 emotion-465"
+              class="emotion-468 emotion-469"
               id="field-height"
               name="fieldHeight"
               pattern="([0-9]*[.])?[0-9]+"
@@ -1690,17 +1763,17 @@ exports[`Game tests should correctly render field and form 1`] = `
             />
           </div>
           <div
-            class="emotion-460 emotion-461"
+            class="emotion-464 emotion-465"
           >
             <label
-              class="emotion-462 emotion-463"
+              class="emotion-466 emotion-467"
               for="cell-size"
             >
               Размер ячейки:
             </label>
             <input
               autocomplete="off"
-              class="emotion-464 emotion-465"
+              class="emotion-468 emotion-469"
               id="cell-size"
               name="cellSize"
               pattern="[0-9]*"
@@ -1710,10 +1783,10 @@ exports[`Game tests should correctly render field and form 1`] = `
             />
           </div>
           <div
-            class="emotion-460 emotion-461"
+            class="emotion-464 emotion-465"
           >
             <label
-              class="emotion-462 emotion-463"
+              class="emotion-466 emotion-467"
               for="capacity-percentage"
             >
               Процент заполненности:
@@ -1723,7 +1796,7 @@ exports[`Game tests should correctly render field and form 1`] = `
             </p>
             <input
               autocomplete="off"
-              class="emotion-482 emotion-483"
+              class="emotion-486 emotion-487"
               id="capacity-percentage"
               max="100"
               min="0"
@@ -1734,17 +1807,17 @@ exports[`Game tests should correctly render field and form 1`] = `
             />
           </div>
           <div
-            class="emotion-460 emotion-461"
+            class="emotion-464 emotion-465"
           >
             <label
-              class="emotion-462 emotion-463"
+              class="emotion-466 emotion-467"
               for="speed-change"
             >
               Обновлений в секунду:
             </label>
             <input
               autocomplete="off"
-              class="emotion-464 emotion-465"
+              class="emotion-468 emotion-469"
               id="speed-change"
               name="speedChange"
               pattern="([0-9]*[.])?[0-9]+"
@@ -1755,16 +1828,16 @@ exports[`Game tests should correctly render field and form 1`] = `
           </div>
         </div>
         <div
-          class="emotion-458 emotion-459"
+          class="emotion-462 emotion-463"
         >
           <div
-            class="emotion-460 emotion-461"
+            class="emotion-464 emotion-465"
           >
             <div
-              class="emotion-494 emotion-495"
+              class="emotion-498 emotion-499"
             >
               <button
-                class="emotion-496 emotion-497"
+                class="emotion-500 emotion-501"
                 name="startButton"
                 type="button"
               >
@@ -1773,13 +1846,13 @@ exports[`Game tests should correctly render field and form 1`] = `
             </div>
           </div>
           <div
-            class="emotion-460 emotion-461"
+            class="emotion-464 emotion-465"
           >
             <div
-              class="emotion-494 emotion-495"
+              class="emotion-498 emotion-499"
             >
               <button
-                class="emotion-496 emotion-497"
+                class="emotion-500 emotion-501"
                 name="stopButton"
                 type="button"
               >
@@ -1788,13 +1861,13 @@ exports[`Game tests should correctly render field and form 1`] = `
             </div>
           </div>
           <div
-            class="emotion-460 emotion-461"
+            class="emotion-464 emotion-465"
           >
             <div
-              class="emotion-494 emotion-495"
+              class="emotion-498 emotion-499"
             >
               <button
-                class="emotion-496 emotion-497"
+                class="emotion-500 emotion-501"
                 name="resetButton"
                 type="reset"
               >
@@ -1803,13 +1876,13 @@ exports[`Game tests should correctly render field and form 1`] = `
             </div>
           </div>
           <div
-            class="emotion-460 emotion-461"
+            class="emotion-464 emotion-465"
           >
             <div
-              class="emotion-494 emotion-495"
+              class="emotion-498 emotion-499"
             >
               <button
-                class="emotion-496 emotion-497"
+                class="emotion-500 emotion-501"
                 name="generateRandomButton"
                 type="button"
               >
@@ -1820,10 +1893,10 @@ exports[`Game tests should correctly render field and form 1`] = `
         </div>
       </form>
       <form
-        class="player-container emotion-456 emotion-457"
+        class="player-container emotion-460 emotion-461"
       >
         <div
-          class="emotion-518 emotion-461"
+          class="emotion-522 emotion-465"
         >
           <h1
             class="player-name"
@@ -1844,7 +1917,7 @@ exports[`Game tests should correctly render field and form 1`] = `
             </ul>
           </div>
           <button
-            class="emotion-520 emotion-497"
+            class="emotion-524 emotion-501"
             type="button"
           >
             Выйти
