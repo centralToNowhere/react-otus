@@ -17,6 +17,8 @@
 ![Branches](./coverage/badge-functions.svg)
 ![Branches](./coverage/badge-branches.svg)
 
+`npm run test`
+
 ## Run
 
 `npm i`<br>
