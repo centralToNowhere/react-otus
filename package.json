@@ -9,7 +9,7 @@
     "build:prod": "webpack --config ./webpack-prod.config.js",
     "types": "tsc --noEmit",
     "test": "jest --silent",
-    "check": "npm run types && npm run test && npm run lint && npm run loki:test",
+    "check": "npm run types && npm run test && npm run lint && npm run loki:test && npm run build",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --fix ./",
     "storybook": "start-storybook -s public -p 6006",
     "build-storybook": "build-storybook",
