@@ -12,7 +12,7 @@ module.exports = {
   clearMocks: true,
   coverageDirectory: "coverage",
   collectCoverage: true,
-  coverageReporters: ["json", "html"],
+  coverageReporters: ["json-summary", "json", "html"],
   testEnvironment: "jsdom",
   transform: {
     "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
