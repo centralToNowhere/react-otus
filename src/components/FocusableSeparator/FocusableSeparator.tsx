@@ -8,15 +8,15 @@ const resizerSize = 20;
 
 export const FocusableSeparator: FC = () => {
   const [valueNow, setValueNow] = useState(50);
-  const refContainerEl = useRef<HTMLDivElement | null>(null);
-  const pointerDx = useRef<number | null>(null);
+  const refContainerEl = React.useRef<HTMLDivElement | null>(null);
+  const pointerDx = React.useRef<number | null>(null);
   let parentY: number | null = null,
     parentH: number | null = null;
 
   const onPointerStart = (e: MouseEvent) => {
     const pointerY = e.clientY;
 
-    if (!refContainerEl.current || pointerY === null) {
+    if (!refContainerEl.current) {
       return;
     }
 
@@ -25,11 +25,7 @@ export const FocusableSeparator: FC = () => {
 
     pointerDx.current = pointerY - resizerRect.y;
 
-    const parent = resizerContainer.parentElement;
-
-    if (!parent) {
-      return;
-    }
+    const parent = resizerContainer.parentElement as HTMLDivElement;
 
     const { y, height } = parent.getBoundingClientRect();
     [parentY, parentH] = [y, height];
@@ -72,13 +68,14 @@ export const FocusableSeparator: FC = () => {
 
     const heightPrev = resizerTop - parentY;
     const heightNext = parentH - resizerTop - resizerSize;
+    const valueNow = Math.round((resizerTop / (parentH - resizerSize)) * 100);
 
-    setValueNow((resizerTop / parentH) * 100);
+    setValueNow(valueNow);
 
-    requestAnimationFrame(() => {
-      previousElement.style.height = heightPrev + "px";
-      nextElement.style.height = heightNext + "px";
-    });
+    previousElement.setAttribute("data-testh", String(valueNow));
+    previousElement.style.height = heightPrev + "px";
+    nextElement.setAttribute("data-testh", String(100 - valueNow));
+    nextElement.style.height = heightNext + "px";
   };
 
   const onPointerEnd = () => {
@@ -87,11 +84,7 @@ export const FocusableSeparator: FC = () => {
     }
 
     const resizerContainer = refContainerEl.current;
-    const parent = resizerContainer.parentElement;
-
-    if (!parent) {
-      return;
-    }
+    const parent = resizerContainer.parentElement as HTMLDivElement;
 
     parentY = null;
     parentH = null;
