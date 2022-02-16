@@ -14,15 +14,6 @@ export interface ICellProps {
 
 export const minCellSize = 10;
 
-export const isCell = (cell: ICell): cell is ICell => {
-  return (
-    cell !== null &&
-    typeof cell === "object" &&
-    typeof cell.x === "number" &&
-    typeof cell.y === "number"
-  );
-};
-
 export class Cell extends React.PureComponent<ICellProps> {
   constructor(props: ICellProps) {
     super(props);

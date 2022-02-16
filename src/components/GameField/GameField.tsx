@@ -1,20 +1,42 @@
-import React from "react";
+import React, { createRef, Dispatch, MutableRefObject } from "react";
 import styled from "@emotion/styled";
 import { COLORS } from "@/styles/ui-styled";
-import { Cell } from "@/components/Cell";
-import { connect } from "react-redux";
+import { Cell, ICell } from "@/components/Cell";
+import { AnyAction } from "redux";
+import { connect, ConnectedProps } from "react-redux";
 import { RootState } from "@/store/redux/store";
 import { selectCellsInCol, selectCellsInRow } from "@/components/Fields";
 import { selectActiveCellsIndexed } from "@/components/GameField/selectors";
+import { setActiveCell, setInactiveCell } from "@/components/GameField/slice";
 
-export interface IGameFieldProps {
-  cellSize: number;
-  activeCellsIndexed: boolean[][];
-  cellsInRow: number;
-  cellsInCol: number;
-}
+const mapStateToProps = (state: RootState) => ({
+  cellSize: state.fieldControl.cellSize,
+  activeCellsIndexed: selectActiveCellsIndexed(state),
+  cellsInRow: selectCellsInRow(state),
+  cellsInCol: selectCellsInCol(state),
+});
+
+const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({
+  setActiveCell: (cell: ICell) => {
+    dispatch(setActiveCell(cell));
+  },
+  setInactiveCell: (cell: ICell) => {
+    dispatch(setInactiveCell(cell));
+  },
+});
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+export type IGameFieldProps = ConnectedProps<typeof connector>;
 
 export class Main extends React.Component<IGameFieldProps> {
+  private readonly gameFieldRef: MutableRefObject<HTMLDivElement | null>;
+
+  constructor(props: IGameFieldProps) {
+    super(props);
+    this.gameFieldRef = createRef<HTMLDivElement | null>();
+    this.renderCells = this.renderCells.bind(this);
+  }
+
   renderCells() {
     const cellsInCol = this.props.cellsInCol;
     const cellsInRow = this.props.cellsInRow;
@@ -35,9 +57,47 @@ export class Main extends React.Component<IGameFieldProps> {
     );
   }
 
+  onCellToggle = (e: MouseEvent) => {
+    const el = e.target as HTMLDivElement;
+    const state = el.dataset?.state;
+    const number = Number(el.getAttribute("aria-label"));
+
+    if (isNaN(number) || !state) {
+      return;
+    }
+
+    const i = Math.ceil(number / this.props.cellsInRow) - 1;
+    const j = number - i * this.props.cellsInRow - 1;
+    const cell: ICell = {
+      x: j,
+      y: i,
+    };
+
+    if (state === "true") {
+      this.props.setInactiveCell(cell);
+    }
+
+    if (state === "false") {
+      this.props.setActiveCell(cell);
+    }
+  };
+
+  componentDidMount() {
+    if (this.gameFieldRef.current) {
+      this.gameFieldRef.current.addEventListener("click", this.onCellToggle);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.gameFieldRef.current) {
+      this.gameFieldRef.current.removeEventListener("click", this.onCellToggle);
+    }
+  }
+
   render() {
     return (
       <FieldContainer
+        ref={this.gameFieldRef}
         className={"game-field"}
         cellSize={this.props.cellSize}
         cellsInRow={this.props.cellsInRow}
@@ -50,14 +110,7 @@ export class Main extends React.Component<IGameFieldProps> {
   }
 }
 
-const mapStateToProps = (state: RootState): IGameFieldProps => ({
-  cellSize: state.fieldControl.cellSize,
-  activeCellsIndexed: selectActiveCellsIndexed(state),
-  cellsInRow: selectCellsInRow(state),
-  cellsInCol: selectCellsInCol(state),
-});
-
-export const GameField = connect(mapStateToProps)(Main);
+export const GameField = connector(Main);
 
 interface IFieldStyledContainerProps {
   cellSize: number;
