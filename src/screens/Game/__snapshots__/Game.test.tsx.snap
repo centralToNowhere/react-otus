@@ -75,8 +75,9 @@ exports[`Game tests should correctly render field and form 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  background: #b5b5cc;
   overflow: hidden;
+  border-top: 2px solid #6a6d75;
+  border-bottom: 2px solid #6a6d75;
 }
 
 .emotion-456:hover {
@@ -85,18 +86,9 @@ exports[`Game tests should correctly render field and form 1`] = `
 
 .emotion-456 img {
   display: block;
-  box-sizing: content-box;
   width: 100%;
-  height: 8px;
-  background: #b5b5cc;
-}
-
-.emotion-456 img:first-of-type {
-  padding-top: 2px;
-}
-
-.emotion-456 img:last-child {
-  padding-bottom: 2px;
+  padding: 2px 0;
+  height: 16px;
 }
 
 @media screen and (max-width: 1200px) {
@@ -1700,11 +1692,7 @@ exports[`Game tests should correctly render field and form 1`] = `
       role="separator"
     >
       <img
-        alt="resizer arrow"
-        src=""
-      />
-      <img
-        alt="resizer arrow"
+        alt="arrow down/up"
         src=""
       />
     </div>

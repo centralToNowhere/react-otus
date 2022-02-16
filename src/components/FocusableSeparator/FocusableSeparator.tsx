@@ -1,7 +1,6 @@
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import styled from "@emotion/styled";
-import caretDown from "@/components/FocusableSeparator/assets/caret-down-fill.svg";
-import caretUp from "@/components/FocusableSeparator/assets/caret-up-fill.svg";
+import arrowDownUp from "@/components/FocusableSeparator/assets/arrow-down-up.svg";
 import { BREAKPOINTS, COLORS } from "@/styles/ui-styled";
 
 const resizerSize = 20;
@@ -10,89 +9,90 @@ export const FocusableSeparator: FC = () => {
   const [valueNow, setValueNow] = useState(50);
   const refContainerEl = React.useRef<HTMLDivElement | null>(null);
   const pointerDx = React.useRef<number | null>(null);
-  let parentY: number | null = null,
-    parentH: number | null = null;
-
-  const onPointerStart = (e: MouseEvent) => {
-    const pointerY = e.clientY;
-
-    if (!refContainerEl.current) {
-      return;
-    }
-
-    const resizerContainer = refContainerEl.current;
-    const resizerRect = resizerContainer.getBoundingClientRect();
-
-    pointerDx.current = pointerY - resizerRect.y;
-
-    const parent = resizerContainer.parentElement as HTMLDivElement;
-
-    const { y, height } = parent.getBoundingClientRect();
-    [parentY, parentH] = [y, height];
-
-    parent.addEventListener("mousemove", onPointerMove);
-  };
-
-  const onPointerMove = (e: MouseEvent) => {
-    e.preventDefault();
-    const pointerY = e.clientY;
-
-    if (
-      parentY === null ||
-      parentH === null ||
-      pointerY === null ||
-      !refContainerEl.current
-    ) {
-      return;
-    }
-
-    const resizerContainer = refContainerEl.current;
-    const previousElement =
-      resizerContainer.previousElementSibling as HTMLElement;
-    const nextElement = resizerContainer.nextElementSibling as HTMLElement;
-
-    if (!previousElement || !nextElement) {
-      return;
-    }
-
-    const dx = pointerDx.current ? pointerDx.current : 0;
-    let resizerTop: number;
-
-    if (pointerY - dx <= parentY) {
-      resizerTop = 0;
-    } else if (pointerY + resizerSize - dx >= parentY + parentH) {
-      resizerTop = parentY + parentH - resizerSize;
-    } else {
-      resizerTop = pointerY - dx;
-    }
-
-    const heightPrev = resizerTop - parentY;
-    const heightNext = parentH - resizerTop - resizerSize;
-    const valueNow = Math.round((resizerTop / (parentH - resizerSize)) * 100);
-
-    setValueNow(valueNow);
-
-    previousElement.setAttribute("data-testh", String(valueNow));
-    previousElement.style.height = heightPrev + "px";
-    nextElement.setAttribute("data-testh", String(100 - valueNow));
-    nextElement.style.height = heightNext + "px";
-  };
-
-  const onPointerEnd = () => {
-    if (!refContainerEl.current) {
-      return;
-    }
-
-    const resizerContainer = refContainerEl.current;
-    const parent = resizerContainer.parentElement as HTMLDivElement;
-
-    parentY = null;
-    parentH = null;
-
-    parent.removeEventListener("mousemove", onPointerMove);
-  };
 
   useEffect(() => {
+    let parentY: number | null = null,
+      parentH: number | null = null;
+
+    const onPointerStart = (e: MouseEvent) => {
+      const pointerY = e.clientY;
+
+      if (!refContainerEl.current) {
+        return;
+      }
+
+      const resizerContainer = refContainerEl.current;
+      const resizerRect = resizerContainer.getBoundingClientRect();
+
+      pointerDx.current = pointerY - resizerRect.y;
+
+      const parent = resizerContainer.parentElement as HTMLDivElement;
+
+      const { y, height } = parent.getBoundingClientRect();
+      [parentY, parentH] = [y, height];
+
+      parent.addEventListener("mousemove", onPointerMove);
+    };
+
+    const onPointerMove = (e: MouseEvent) => {
+      e.preventDefault();
+      const pointerY = e.clientY;
+
+      if (
+        parentY === null ||
+        parentH === null ||
+        pointerY === null ||
+        !refContainerEl.current
+      ) {
+        return;
+      }
+
+      const resizerContainer = refContainerEl.current;
+      const previousElement =
+        resizerContainer.previousElementSibling as HTMLElement;
+      const nextElement = resizerContainer.nextElementSibling as HTMLElement;
+
+      if (!previousElement || !nextElement) {
+        return;
+      }
+
+      const dx = pointerDx.current ? pointerDx.current : 0;
+      let resizerTop: number;
+
+      if (pointerY - dx <= parentY) {
+        resizerTop = 0;
+      } else if (pointerY + resizerSize - dx >= parentY + parentH) {
+        resizerTop = parentY + parentH - resizerSize;
+      } else {
+        resizerTop = pointerY - dx;
+      }
+
+      const heightPrev = resizerTop - parentY;
+      const heightNext = parentH - resizerTop - resizerSize;
+      const valueNow = Math.round((resizerTop / (parentH - resizerSize)) * 100);
+
+      setValueNow(valueNow);
+
+      previousElement.setAttribute("data-testh", String(valueNow));
+      previousElement.style.height = heightPrev + "px";
+      nextElement.setAttribute("data-testh", String(100 - valueNow));
+      nextElement.style.height = heightNext + "px";
+    };
+
+    const onPointerEnd = () => {
+      if (!refContainerEl.current) {
+        return;
+      }
+
+      const resizerContainer = refContainerEl.current;
+      const parent = resizerContainer.parentElement as HTMLDivElement;
+
+      parentY = null;
+      parentH = null;
+
+      parent.removeEventListener("mousemove", onPointerMove);
+    };
+
     if (!refContainerEl.current) {
       return;
     }
@@ -115,8 +115,7 @@ export const FocusableSeparator: FC = () => {
       role="separator"
       aria-valuenow={valueNow}
     >
-      <img src={caretUp} alt="resizer arrow" />
-      <img src={caretDown} alt="resizer arrow" />
+      <img src={arrowDownUp} alt="arrow down/up" />
     </StyledResizerLine>
   );
 };
@@ -126,8 +125,9 @@ const StyledResizerLine = styled.div`
   height: ${resizerSize}px;
   cursor: grabbing;
   user-select: none;
-  background: ${COLORS.activeCellBg};
   overflow: hidden;
+  border-top: 2px solid ${COLORS.border};
+  border-bottom: 2px solid ${COLORS.border};
 
   &:hover {
     opacity: 0.7;
@@ -135,18 +135,9 @@ const StyledResizerLine = styled.div`
 
   img {
     display: block;
-    box-sizing: content-box;
     width: 100%;
-    height: 8px;
-    background: ${COLORS.activeCellBg};
-  }
-
-  img:first-of-type {
-    padding-top: 2px;
-  }
-
-  img:last-child {
-    padding-bottom: 2px;
+    padding: 2px 0;
+    height: 16px;
   }
 
   @media screen and (max-width: ${BREAKPOINTS.xl}) {

@@ -1,5 +1,5 @@
 import React, { FC, MutableRefObject } from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { FocusableSeparator } from "@/components/FocusableSeparator/FocusableSeparator";
 import { css } from "@emotion/react";
 
