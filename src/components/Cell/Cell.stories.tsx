@@ -7,7 +7,7 @@ export default {
   component: Cell,
   args: {
     cssClassName: "cell",
-    isActive: true,
+    isActive: 1,
     number: 1,
   },
 } as Meta;

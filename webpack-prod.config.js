@@ -9,6 +9,12 @@ const config = {
     filename: "[name].[contenthash:8].js",
   },
   mode: "production",
+  devServer: {
+    open: true,
+    hot: true,
+    port: 3000,
+    historyApiFallback: true,
+  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash:8].css",

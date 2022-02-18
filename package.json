@@ -14,6 +14,7 @@
     "storybook": "start-storybook -s public -p 6006",
     "build-storybook": "build-storybook",
     "serve": "webpack serve --config ./webpack-dev.config.js  --entry ./src/index.tsx",
+    "serve:prod": "webpack serve --config ./webpack-prod.config.js  --entry ./src/index.tsx",
     "loki:test": "npm run build-storybook && npx loki --requireReference --reactUri file:./storybook-static",
     "loki:update": "npm run build-storybook && npx loki update --requireReference --reactUri file:./storybook-static",
     "loki:approve": "npx loki approve"

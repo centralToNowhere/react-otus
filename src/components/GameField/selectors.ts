@@ -1,23 +1,37 @@
 import { createSelector } from "@reduxjs/toolkit";
+import { selectCellsInCol, selectCellsInRow } from "@/components/Fields";
 import { RootState } from "@/store/redux/store";
-import { IGameFieldState } from "@/components/GameField/slice";
 import { ICell } from "@/components/Cell";
 
 export const selectGameField = (state: RootState) => {
   return state.gameField;
 };
 
-export const getIndexedActiveCells = (activeCells: ICell[]) => {
-  return activeCells.reduce((indexed: boolean[][], cell) => {
-    indexed[cell.y] = indexed[cell.y] ? indexed[cell.y] : [];
-    indexed[cell.y][cell.x] = true;
+export const getIndexedCells = (
+  activeCells: ICell[],
+  cellsInRow: number,
+  cellsInCol: number
+) => {
+  const indexedCells: Array<1 | 0> = [];
+
+  indexedCells.length = cellsInCol * cellsInRow;
+  indexedCells.fill(0);
+
+  return activeCells.reduce((indexed: Array<1 | 0>, cell) => {
+    if (cell.y < cellsInCol && cell.x < cellsInRow) {
+      const i = cellsInRow * cell.y + cell.x;
+      indexed[i] = 1;
+    }
+
     return indexed;
-  }, []);
+  }, indexedCells);
 };
 
-export const selectActiveCellsIndexed = createSelector(
+export const selectIndexedCells = createSelector(
   selectGameField,
-  (gameField: IGameFieldState): boolean[][] => {
-    return getIndexedActiveCells(gameField.activeCells);
+  selectCellsInRow,
+  selectCellsInCol,
+  (gameField, cellsInRow, cellsInCol): Array<1 | 0> => {
+    return getIndexedCells(gameField.activeCells, cellsInRow, cellsInCol);
   }
 );

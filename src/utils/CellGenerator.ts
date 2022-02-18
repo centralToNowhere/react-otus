@@ -1,30 +1,6 @@
 import { ICell } from "@/components/Cell";
 
-const willBeAlive = (
-  x: number,
-  y: number,
-  activeCellsIndexed: boolean[][]
-): boolean => {
-  let neighbours = 0;
-  const isCellStateAlive = activeCellsIndexed?.[y]?.[x];
-
-  const entries = [
-    [x - 1, y - 1],
-    [x, y - 1],
-    [x + 1, y - 1],
-    [x - 1, y],
-    [x + 1, y],
-    [x - 1, y + 1],
-    [x, y + 1],
-    [x + 1, y + 1],
-  ];
-
-  entries.forEach((entry) => {
-    if (activeCellsIndexed?.[entry[1]]?.[entry[0]]) {
-      neighbours++;
-    }
-  });
-
+const willBeAlive = (isCellStateAlive: 1 | 0, neighbours: number): boolean => {
   if (isCellStateAlive) {
     if (neighbours === 2 || neighbours === 3) {
       return true;
@@ -41,18 +17,93 @@ const willBeAlive = (
 export const getNextGeneration = (
   cellsInRow: number,
   cellsInCol: number,
-  activeCellsIndexed: boolean[][]
+  indexedCells: Array<1 | 0>
 ): ICell[] => {
-  return getAllCells(cellsInCol, cellsInRow, (x: number, y: number) => {
-    const alive = willBeAlive(x, y, activeCellsIndexed);
+  return indexedCells.reduce((indexed: ICell[], cellState, i) => {
+    if (
+      willBeAlive(
+        cellState,
+        calculateNeighbours(cellState, indexedCells, i, cellsInRow)
+      )
+    ) {
+      indexed.push({
+        x: i % cellsInRow,
+        y: Math.floor(i / cellsInRow),
+      });
+    }
 
-    return alive
-      ? {
-          x,
-          y,
-        }
-      : null;
-  });
+    return indexed;
+  }, []);
+};
+
+const calculateNeighbours = (
+  cellState: 1 | 0,
+  indexedCells: Array<1 | 0>,
+  i: number,
+  cellsInRow: number
+) => {
+  let neighbours = 0;
+
+  // Некрасиво, но производительно
+
+  // если ячейка находится на границе поля
+  if (
+    (i + 1) % cellsInRow === 0 ||
+    i % cellsInRow === 0 ||
+    i - cellsInRow < 0 ||
+    i + cellsInRow >= indexedCells.length
+  ) {
+    // right
+    if ((i + 1) % cellsInRow !== 0) {
+      neighbours += indexedCells[i + 1];
+    }
+
+    // left
+    if (i % cellsInRow !== 0) {
+      neighbours += indexedCells[i - 1];
+    }
+
+    // top
+    if (i - cellsInRow >= 0) {
+      neighbours += indexedCells[i - cellsInRow];
+
+      // top right
+      if ((i + 1) % cellsInRow !== 0) {
+        neighbours += indexedCells[i + 1 - cellsInRow];
+      }
+
+      // top left
+      if (i % cellsInRow !== 0) {
+        neighbours += indexedCells[i - 1 - cellsInRow];
+      }
+    }
+
+    // bottom
+    if (i + cellsInRow < indexedCells.length) {
+      neighbours += indexedCells[i + cellsInRow];
+
+      // bottom right
+      if ((i + 1) % cellsInRow !== 0) {
+        neighbours += indexedCells[i + 1 + cellsInRow];
+      }
+
+      // bottom left
+      if (i % cellsInRow !== 0) {
+        neighbours += indexedCells[i - 1 + cellsInRow];
+      }
+    }
+  } else {
+    neighbours += indexedCells[i + 1];
+    neighbours += indexedCells[i - 1];
+    neighbours += indexedCells[i - cellsInRow];
+    neighbours += indexedCells[i + 1 - cellsInRow];
+    neighbours += indexedCells[i - 1 - cellsInRow];
+    neighbours += indexedCells[i + cellsInRow];
+    neighbours += indexedCells[i + 1 + cellsInRow];
+    neighbours += indexedCells[i - 1 + cellsInRow];
+  }
+
+  return neighbours;
 };
 
 export const getRandomCells = (

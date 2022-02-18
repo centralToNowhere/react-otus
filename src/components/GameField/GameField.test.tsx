@@ -110,7 +110,7 @@ describe("GameField tests", () => {
     jest
       .spyOn(Main.prototype, "renderCells")
       .mockReturnValue([
-        [<Cell cssClassName="cell" key={0} isActive={false} number={NaN} />],
+        <Cell cssClassName="cell" key={0} isActive={0} number={NaN} />,
       ]);
 
     render(<GameField />, {

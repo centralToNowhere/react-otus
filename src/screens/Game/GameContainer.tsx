@@ -6,7 +6,7 @@ import { Game } from "@/screens/Game";
 import {
   setActiveCells,
   resetCells,
-  selectActiveCellsIndexed,
+  selectIndexedCells,
 } from "@/components/GameField";
 import { ICell } from "@/components/Cell";
 import { getNextGeneration, getRandomCells } from "@/utils/CellGenerator";
@@ -32,7 +32,7 @@ const mapStateToProps = (state: RootState) => {
     cellsInCol: selectCellsInCol(state),
     capacity: state.fieldControl.capacity,
     speed: state.fieldControl.speed,
-    activeCellsIndexed: selectActiveCellsIndexed(state),
+    indexedCells: selectIndexedCells(state),
   };
 };
 
@@ -94,7 +94,7 @@ class Main extends React.Component<GameContainerProps> {
           const cells = getNextGeneration(
             this.props.cellsInRow,
             this.props.cellsInCol,
-            this.props.activeCellsIndexed
+            this.props.indexedCells
           );
 
           this.props.setActiveCells(cells);

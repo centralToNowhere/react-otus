@@ -17,12 +17,14 @@ export const defaultGameFieldState: IGameFieldState = {
 
 const storageData = getDataFromStorage();
 
+const w = FieldControlInitialState.maxFieldWidth;
+const h = FieldControlInitialState.maxFieldHeight;
+const cellSize = FieldControlInitialState.cellSize;
+
+const initialCells = getInitialCells(w, h, cellSize);
+
 const initialState: IGameFieldState = {
-  activeCells: getInitialCells(
-    storageData?.fieldControl?.maxFieldWidth || fieldWidth,
-    storageData?.fieldControl?.maxFieldHeight || fieldHeight,
-    FieldControlInitialState.cellSize
-  ),
+  activeCells: initialCells,
   gameInProgress: false,
 };
 

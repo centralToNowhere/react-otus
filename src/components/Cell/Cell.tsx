@@ -7,7 +7,7 @@ export interface ICell {
 }
 
 export interface ICellProps {
-  isActive: boolean;
+  isActive: 1 | 0;
   number: number;
   cssClassName: string;
 }
@@ -15,16 +15,12 @@ export interface ICellProps {
 export const minCellSize = 10;
 
 export class Cell extends React.PureComponent<ICellProps> {
-  constructor(props: ICellProps) {
-    super(props);
-  }
-
   render() {
     return (
       <div
         className={this.props.cssClassName}
         data-testid="cell"
-        data-state={this.props.isActive}
+        data-state={!!this.props.isActive}
         aria-label={String(this.props.number)}
       />
     );

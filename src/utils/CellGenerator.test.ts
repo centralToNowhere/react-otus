@@ -5,7 +5,7 @@ import {
   getInitialCells,
   getNextGeneration,
 } from "@/utils/CellGenerator";
-import { getIndexedActiveCells } from "@/components/GameField/selectors";
+import { getIndexedCells } from "@/components/GameField/selectors";
 
 describe("CellGenerator tests", () => {
   it("getRandomCells should return 150 cells", () => {
@@ -100,10 +100,10 @@ describe("CellGenerator tests", () => {
       ];
 
       expect(
-        sorter(getNextGeneration(7, 7, getIndexedActiveCells(input)))
+        sorter(getNextGeneration(7, 7, getIndexedCells(input, 7, 7)))
       ).toEqual(sorter(output));
       expect(
-        sorter(getNextGeneration(7, 7, getIndexedActiveCells(output)))
+        sorter(getNextGeneration(7, 7, getIndexedCells(output, 7, 7)))
       ).toEqual(sorter(input));
     });
 
@@ -135,7 +135,7 @@ describe("CellGenerator tests", () => {
       ];
 
       expect(
-        sorter(getNextGeneration(7, 7, getIndexedActiveCells(input)))
+        sorter(getNextGeneration(7, 7, getIndexedCells(input, 7, 7)))
       ).toEqual(sorter(output));
     });
 
@@ -167,7 +167,7 @@ describe("CellGenerator tests", () => {
       ];
 
       expect(
-        sorter(getNextGeneration(7, 7, getIndexedActiveCells(input)))
+        sorter(getNextGeneration(7, 7, getIndexedCells(input, 7, 7)))
       ).toEqual(sorter(output));
     });
 
@@ -195,7 +195,7 @@ describe("CellGenerator tests", () => {
       ];
 
       expect(
-        sorter(getNextGeneration(7, 7, getIndexedActiveCells(input)))
+        sorter(getNextGeneration(7, 7, getIndexedCells(input, 7, 7)))
       ).toEqual(sorter(output));
     });
 
@@ -223,7 +223,7 @@ describe("CellGenerator tests", () => {
       ];
 
       expect(
-        sorter(getNextGeneration(7, 7, getIndexedActiveCells(input)))
+        sorter(getNextGeneration(7, 7, getIndexedCells(input, 7, 7)))
       ).toEqual(sorter(output));
     });
 
@@ -251,7 +251,7 @@ describe("CellGenerator tests", () => {
       ];
 
       expect(
-        sorter(getNextGeneration(7, 7, getIndexedActiveCells(input)))
+        sorter(getNextGeneration(7, 7, getIndexedCells(input, 7, 7)))
       ).toEqual(sorter(output));
     });
 
@@ -279,7 +279,7 @@ describe("CellGenerator tests", () => {
       ];
 
       expect(
-        sorter(getNextGeneration(7, 7, getIndexedActiveCells(input)))
+        sorter(getNextGeneration(7, 7, getIndexedCells(input, 7, 7)))
       ).toEqual(sorter(output));
     });
 
@@ -319,7 +319,7 @@ describe("CellGenerator tests", () => {
       ];
 
       expect(
-        sorter(getNextGeneration(7, 7, getIndexedActiveCells(input)))
+        sorter(getNextGeneration(7, 7, getIndexedCells(input, 7, 7)))
       ).toEqual(sorter(output));
     });
 
@@ -351,7 +351,7 @@ describe("CellGenerator tests", () => {
       ];
 
       expect(
-        sorter(getNextGeneration(7, 7, getIndexedActiveCells(input)))
+        sorter(getNextGeneration(7, 7, getIndexedCells(input, 7, 7)))
       ).toEqual(sorter(output));
     });
   });
@@ -378,7 +378,7 @@ describe("CellGenerator tests", () => {
       ];
 
       expect(
-        sorter(getNextGeneration(7, 7, getIndexedActiveCells(input)))
+        sorter(getNextGeneration(7, 7, getIndexedCells(input, 7, 7)))
       ).toEqual(sorter(input));
     });
   });

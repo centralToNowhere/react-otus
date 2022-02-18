@@ -82,11 +82,9 @@ afterEach(() => {
 
 describe("Game tests", () => {
   it("should correctly render field and form", async () => {
-    jest.spyOn(global.Math, "random").mockReturnValue(0);
     const { asFragment } = render(<Game />, {
       preloadedState: {},
     });
-    jest.spyOn(global.Math, "random").mockRestore();
 
     const field = screen.getByTestId("field");
     expect(field).toBeInTheDocument();

@@ -5,7 +5,7 @@ import { Cell } from "./Cell";
 describe("Cell tests", () => {
   it("should render cell", () => {
     const { asFragment } = render(
-      <Cell cssClassName={"cell cell-active"} isActive={true} number={1} />
+      <Cell cssClassName={"cell cell-active"} isActive={1} number={1} />
     );
 
     const cell = screen.getByTestId("cell");

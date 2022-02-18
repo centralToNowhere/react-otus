@@ -6,15 +6,17 @@ import { AnyAction } from "redux";
 import { connect, ConnectedProps } from "react-redux";
 import { RootState } from "@/store/redux/store";
 import { selectCellsInCol, selectCellsInRow } from "@/components/Fields";
-import { selectActiveCellsIndexed } from "@/components/GameField/selectors";
+import { selectIndexedCells } from "@/components/GameField/selectors";
 import { setActiveCell, setInactiveCell } from "@/components/GameField/slice";
 
-const mapStateToProps = (state: RootState) => ({
-  cellSize: state.fieldControl.cellSize,
-  activeCellsIndexed: selectActiveCellsIndexed(state),
-  cellsInRow: selectCellsInRow(state),
-  cellsInCol: selectCellsInCol(state),
-});
+const mapStateToProps = (state: RootState) => {
+  return {
+    cellSize: state.fieldControl.cellSize,
+    indexedCells: selectIndexedCells(state),
+    cellsInRow: selectCellsInRow(state),
+    cellsInCol: selectCellsInCol(state),
+  };
+};
 
 const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({
   setActiveCell: (cell: ICell) => {
@@ -38,22 +40,21 @@ export class Main extends React.Component<IGameFieldProps> {
   }
 
   renderCells() {
-    const cellsInCol = this.props.cellsInCol;
-    const cellsInRow = this.props.cellsInRow;
+    const cellsArr: Array<1 | 0> = [];
+    cellsArr.length = this.props.cellsInCol * this.props.cellsInRow;
+    cellsArr.fill(0);
 
-    return Array.from(Array(cellsInCol)).map((col, i) =>
-      Array.from(Array(cellsInRow)).map((row, j) => {
-        const isActive = Boolean(this.props.activeCellsIndexed?.[i]?.[j]);
-
+    return Object.assign(cellsArr, this.props.indexedCells).map(
+      (cellState, i) => {
         return (
           <Cell
-            cssClassName={`cell${isActive ? " cell-active" : ""}`}
-            key={(i + 1) * (j + 1)}
-            isActive={isActive}
-            number={(i + 1) * cellsInRow - (cellsInRow - (j + 1))}
+            cssClassName={`cell${cellState ? " cell-active" : ""}`}
+            key={i}
+            isActive={cellState}
+            number={i + 1}
           />
         );
-      })
+      }
     );
   }
 
