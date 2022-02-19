@@ -7,6 +7,17 @@ export interface IFieldErrorProps {
   msg: string;
 }
 
+export const mergeErrorMessages = (
+  errors: Array<{
+    show: boolean;
+    msg: string;
+  }>
+): string => {
+  return errors.reduce((msg, error) => {
+    return error.show ? `${msg}${error.msg}\n` : msg;
+  }, "");
+};
+
 export const FieldError: React.FC<IFieldErrorProps> = ({
   show = false,
   msg = "",

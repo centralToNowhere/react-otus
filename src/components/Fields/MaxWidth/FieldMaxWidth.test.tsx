@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@/utils/test-utils";
 import { FieldMaxWidth } from "@/components/Fields/MaxWidth/FieldMaxWidth";
 import { l10n } from "@/l10n/ru";
 import { FormContainer } from "@/components/Form";
@@ -13,7 +13,10 @@ describe("FieldMaxWidth tests", () => {
         onChange={() => {
           // empty function
         }}
-      />
+      />,
+      {
+        preloadedState: {},
+      }
     );
 
     const input: HTMLInputElement = screen.getByLabelText(l10n.maxWidthLabel);
@@ -37,7 +40,9 @@ describe("FieldMaxWidth tests", () => {
       it(`maxWidth: ${value}`, async () => {
         const onChange = jest.fn();
 
-        render(<FieldMaxWidth value={"500"} onChange={onChange} />);
+        render(<FieldMaxWidth value={"500"} onChange={onChange} />, {
+          preloadedState: {},
+        });
 
         const input: HTMLInputElement = screen.getByLabelText(
           l10n.maxWidthLabel
@@ -63,7 +68,9 @@ describe("FieldMaxWidth tests", () => {
       it(`maxWidth: ${value}`, async () => {
         const onChange = jest.fn();
 
-        render(<FieldMaxWidth value={"500"} onChange={onChange} />);
+        render(<FieldMaxWidth value={"500"} onChange={onChange} />, {
+          preloadedState: {},
+        });
 
         const input: HTMLInputElement = screen.getByLabelText(
           l10n.maxWidthLabel

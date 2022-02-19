@@ -9,7 +9,10 @@ import {
 } from "@/components/Fields";
 import { FormField } from "@/components/Form/FormField";
 import { InputPatterns } from "@/components/Fields";
-import { FieldError } from "@/components/Fields/FieldError/FieldError";
+import {
+  FieldError,
+  mergeErrorMessages,
+} from "@/components/Fields/FieldError/FieldError";
 import { FormContainer, IFieldProps } from "@/components/Form";
 import { useDebounce, isValidCellSizeString } from "@/utils";
 import {
@@ -75,17 +78,6 @@ export const FieldCellSize: React.FC<IFieldProps> = (props) => {
     );
   });
 
-  const getErrorMessage = (
-    errors: Array<{
-      show: boolean;
-      msg: string;
-    }>
-  ) => {
-    return errors.reduce((msg, error) => {
-      return error.show ? `${msg}${error.msg}\n` : msg;
-    }, "");
-  };
-
   return (
     <FormField>
       <LabelField htmlFor="cell-size">{l10n.cellSizeLabel}</LabelField>
@@ -102,7 +94,7 @@ export const FieldCellSize: React.FC<IFieldProps> = (props) => {
       />
       <FieldError
         show={cellSizeError.show || cellsAmountError.show}
-        msg={getErrorMessage([cellSizeError, cellsAmountError])}
+        msg={mergeErrorMessages([cellSizeError, cellsAmountError])}
       />
     </FormField>
   );

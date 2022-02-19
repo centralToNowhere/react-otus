@@ -1,9 +1,10 @@
 import React from "react";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@/utils/test-utils";
 import { FieldMaxHeight } from "./FieldMaxHeight";
 import { l10n } from "@/l10n/ru";
 import { FormContainer } from "@/components/Form";
 import userEvent from "@testing-library/user-event/dist";
+import { FieldMaxWidth } from "@/components/Fields";
 
 describe("FieldMaxHeight tests", () => {
   it("should render max height input", () => {
@@ -13,7 +14,10 @@ describe("FieldMaxHeight tests", () => {
         onChange={() => {
           // empty function
         }}
-      />
+      />,
+      {
+        preloadedState: {},
+      }
     );
 
     const input: HTMLInputElement = screen.getByLabelText(l10n.maxHeightLabel);
@@ -37,7 +41,9 @@ describe("FieldMaxHeight tests", () => {
       it(`maxHeight: ${value}`, async () => {
         const onChange = jest.fn();
 
-        render(<FieldMaxHeight value={"500"} onChange={onChange} />);
+        render(<FieldMaxHeight value={"500"} onChange={onChange} />, {
+          preloadedState: {},
+        });
 
         const input: HTMLInputElement = screen.getByLabelText(
           l10n.maxHeightLabel
@@ -63,7 +69,9 @@ describe("FieldMaxHeight tests", () => {
       it(`maxHeight: ${value}`, async () => {
         const onChange = jest.fn();
 
-        render(<FieldMaxHeight value={"500"} onChange={onChange} />);
+        render(<FieldMaxHeight value={"500"} onChange={onChange} />, {
+          preloadedState: {},
+        });
 
         const input: HTMLInputElement = screen.getByLabelText(
           l10n.maxHeightLabel
