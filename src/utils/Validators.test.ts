@@ -4,7 +4,6 @@ import {
   isValidNonNegativeNumericString,
   isValidPositiveNumericString,
 } from "@/utils/Validators";
-import { minCellSize } from "@/components/Cell";
 
 describe("Validators tests", () => {
   it("isValidNumericString should return valid results", () => {
@@ -16,10 +15,6 @@ describe("Validators tests", () => {
   });
 
   it("isValidCellSizeString", () => {
-    expect(isValidCellSizeString("100")).toBe(100 >= minCellSize);
-    expect(isValidCellSizeString("11")).toBe(11 >= minCellSize);
-    expect(isValidCellSizeString("10")).toBe(10 >= minCellSize);
-    expect(isValidCellSizeString("5")).toBe(5 >= minCellSize);
     expect(isValidCellSizeString("fwe32")).toBe(false);
     expect(isValidCellSizeString("12.32")).toBe(false);
     expect(isValidCellSizeString("0")).toBe(false);

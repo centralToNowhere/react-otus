@@ -1,7 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { selectCellsInCol, selectCellsInRow } from "@/components/Fields";
 import { RootState } from "@/store/redux/store";
-import { ICell } from "@/components/Cell";
+import { ICell } from "@/Cell/Cell";
 
 export const selectGameField = (state: RootState) => {
   return state.gameField;

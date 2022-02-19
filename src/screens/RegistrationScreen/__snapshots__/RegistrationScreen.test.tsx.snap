@@ -171,6 +171,12 @@ exports[`Registration screen tests should render registration screen 1`] = `
 }
 
 @media screen and (max-width: 480px) {
+  .emotion-13 .field-error-msg {
+    position: static;
+  }
+}
+
+@media screen and (max-width: 480px) {
   .emotion-13 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;

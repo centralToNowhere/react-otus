@@ -13,6 +13,7 @@ import { l10n } from "@/l10n/ru";
 import {
   // @ts-ignore
   __RewireAPI__ as CellGeneratorRewire,
+  getInitialCells,
 } from "@/utils/CellGenerator";
 import {
   defaultFieldControlState,
@@ -69,6 +70,10 @@ const initialState = {
     maxFieldHeight: 100,
     capacity: 50,
     speed: 2,
+  },
+  gameField: {
+    activeCells: getInitialCells(100, 100, 10),
+    gameInProgress: false,
   },
 };
 

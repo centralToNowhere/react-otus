@@ -8,7 +8,7 @@ import {
   resetCells,
   selectIndexedCells,
 } from "@/components/GameField";
-import { ICell } from "@/components/Cell";
+import { ICell } from "@/Cell/Cell";
 import { getNextGeneration, getRandomCells } from "@/utils/CellGenerator";
 import {
   setSpeed,

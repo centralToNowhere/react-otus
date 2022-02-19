@@ -4,7 +4,7 @@ import { GameField } from "@/components/GameField";
 import { Main } from "@/components/GameField/GameField";
 import userEvent from "@testing-library/user-event/dist";
 import { COLORS } from "@/styles/ui-styled";
-import { Cell } from "@/components/Cell";
+import { getInitialCells } from "@/utils/CellGenerator";
 
 const initialState = {
   fieldControl: {
@@ -13,6 +13,10 @@ const initialState = {
     maxFieldHeight: 400,
     capacity: 50,
     speed: 2,
+  },
+  gameField: {
+    activeCells: getInitialCells(600, 400, 40),
+    gameInProgress: false,
   },
 };
 
@@ -110,7 +114,13 @@ describe("GameField tests", () => {
     jest
       .spyOn(Main.prototype, "renderCells")
       .mockReturnValue([
-        <Cell cssClassName="cell" key={0} isActive={0} number={NaN} />,
+        <div
+          className="cell"
+          key={0}
+          data-testid={"cell"}
+          data-state={false}
+          aria-label={String(NaN)}
+        />,
       ]);
 
     render(<GameField />, {

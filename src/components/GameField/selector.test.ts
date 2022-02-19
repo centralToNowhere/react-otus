@@ -1,5 +1,5 @@
 import { getIndexedCells } from "@/components/GameField";
-import { ICell } from "@/components/Cell";
+import { ICell } from "@/Cell/Cell";
 
 describe("getIndexedCells test", () => {
   const activeCells: ICell[] = [

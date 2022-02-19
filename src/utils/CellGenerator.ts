@@ -1,4 +1,4 @@
-import { ICell } from "@/components/Cell";
+import { ICell } from "@/Cell/Cell";
 
 const willBeAlive = (isCellStateAlive: 1 | 0, neighbours: number): boolean => {
   if (isCellStateAlive) {

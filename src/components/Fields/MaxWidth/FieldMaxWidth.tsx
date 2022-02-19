@@ -1,6 +1,6 @@
-import React, { useCallback, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { l10n } from "@/l10n/ru";
-import { InputField, LabelField } from "@/components/Fields";
+import { FieldValidator, InputField, LabelField } from "@/components/Fields";
 import { FormField } from "@/components/Form/FormField";
 import {
   InputPatterns,
@@ -25,19 +25,20 @@ export const FieldMaxWidth: React.FC<IFieldProps> = (props) => {
     msg: "Expected non-negative number",
   });
 
-  const validateFieldWidth = useCallback(
-    (fieldWidthString: unknown): boolean => {
-      return isValidNonNegativeNumericString(fieldWidthString);
-    },
+  const maxFieldWidthValidator: FieldValidator = useMemo(
+    () => ({
+      validator: (fieldWidthString: unknown): boolean =>
+        isValidNonNegativeNumericString(fieldWidthString),
+      setError,
+    }),
     []
   );
 
   const onChangeDebounced = useDebounce<string>(
     useOnChangeHandler(
       props.onChange,
-      validateFieldWidth,
-      setMaxFieldWidthString,
-      setError
+      maxFieldWidthValidator,
+      setMaxFieldWidthString
     ),
     FormContainer.inputDelay
   );
@@ -49,7 +50,7 @@ export const FieldMaxWidth: React.FC<IFieldProps> = (props) => {
 
   const onBlur = onDirtyBlurHandler((value) => {
     onChangeDebounced.clear();
-    onBlurHandler(props.onChange, validateFieldWidth, setError)(value);
+    onBlurHandler(props.onChange, maxFieldWidthValidator)(value);
   });
 
   return (

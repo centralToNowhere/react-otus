@@ -1,6 +1,8 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { Form, IFormProps } from "@/components/Form";
+import { Provider } from "react-redux";
+import { store } from "@/store/redux/store";
 
 export default {
   title: "Components/SettingsForm",
@@ -14,6 +16,10 @@ export default {
   },
 } as Meta;
 
-const Template: Story<IFormProps> = (args) => <Form {...args} />;
+const Template: Story<IFormProps> = (args) => (
+  <Provider store={store}>
+    <Form {...args} />
+  </Provider>
+);
 
 export const FormDefault = Template.bind({});

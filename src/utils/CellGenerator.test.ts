@@ -1,5 +1,5 @@
 import * as gen from "@/utils/CellGenerator";
-import { ICell } from "@/components/Cell";
+import { ICell } from "@/Cell/Cell";
 import {
   getRandomCells,
   getInitialCells,

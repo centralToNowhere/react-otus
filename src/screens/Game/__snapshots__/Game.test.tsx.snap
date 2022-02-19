@@ -38,6 +38,8 @@ exports[`Game tests should correctly render field and form 1`] = `
   width: 40px;
   height: 40px;
   line-height: 40px;
+  outline: 1px solid white;
+  text-align: center;
 }
 
 .emotion-2 .cell-active {
@@ -95,6 +97,12 @@ exports[`Game tests should correctly render field and form 1`] = `
 .emotion-6 button,
 .emotion-6 p {
   line-height: 1.2;
+}
+
+@media screen and (max-width: 480px) {
+  .emotion-6 .field-error-msg {
+    position: static;
+  }
 }
 
 .emotion-8 {

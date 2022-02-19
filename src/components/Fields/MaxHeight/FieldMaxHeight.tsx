@@ -1,6 +1,7 @@
-import React, { useCallback, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { l10n } from "@/l10n/ru";
 import {
+  FieldValidator,
   InputField,
   LabelField,
   onBlurHandler,
@@ -25,16 +26,20 @@ export const FieldMaxHeight: React.FC<IFieldProps> = (props) => {
     msg: "Expected non-negative number",
   });
 
-  const validateFieldHeight = useCallback((value: unknown): boolean => {
-    return isValidNonNegativeNumericString(value);
-  }, []);
+  const maxHeightValidator: FieldValidator = useMemo(
+    () => ({
+      validator: (value: unknown): boolean =>
+        isValidNonNegativeNumericString(value),
+      setError,
+    }),
+    []
+  );
 
   const onChangeDebounced = useDebounce<string>(
     useOnChangeHandler(
       props.onChange,
-      validateFieldHeight,
-      setMaxFieldHeightString,
-      setError
+      maxHeightValidator,
+      setMaxFieldHeightString
     ),
     FormContainer.inputDelay
   );
@@ -46,7 +51,7 @@ export const FieldMaxHeight: React.FC<IFieldProps> = (props) => {
 
   const onBlur = onDirtyBlurHandler((value) => {
     onChangeDebounced.clear();
-    onBlurHandler(props.onChange, validateFieldHeight, setError)(value);
+    onBlurHandler(props.onChange, maxHeightValidator)(value);
   });
 
   return (

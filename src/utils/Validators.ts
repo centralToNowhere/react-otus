@@ -1,4 +1,4 @@
-import { minCellSize } from "@/components/Cell";
+import { maxCellsAmount } from "@/Cell/Cell";
 
 export const isValidNumericString = (
   inputString: unknown
@@ -14,8 +14,20 @@ export const isValidCellSizeString = (cellSizeString: unknown): boolean => {
   return (
     isValidNumericString(cellSizeString) &&
     Number(cellSizeString) % 1 === 0 &&
-    Number(cellSizeString) >= minCellSize
+    Number(cellSizeString) > 0
   );
+};
+
+export const isValidCellsAmount = (
+  cellSize: number,
+  fieldMaxWidth: number,
+  fieldMaxHeight: number
+) => {
+  const cellsAmount =
+    Math.floor(fieldMaxWidth / cellSize) *
+    Math.floor(fieldMaxHeight / cellSize);
+
+  return cellsAmount <= maxCellsAmount;
 };
 
 export const isValidPositiveNumericString = (str: unknown): boolean => {

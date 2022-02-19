@@ -6,7 +6,7 @@ import {
   startGame,
   stopGame,
 } from "@/components/GameField";
-import { ICell } from "@/components/Cell";
+import { ICell } from "@/Cell/Cell";
 
 describe("GameFieldSlice actions tests", () => {
   it("setActiveCells", () => {

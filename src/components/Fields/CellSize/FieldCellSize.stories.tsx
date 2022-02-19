@@ -2,6 +2,8 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { FieldCellSize } from "@/components/Fields/CellSize/FieldCellSize";
 import { IFieldProps } from "@/components/Form";
+import { store } from "@/store/redux/store";
+import { Provider } from "react-redux";
 
 export default {
   title: "Components/FieldCellSize",
@@ -15,7 +17,11 @@ export default {
 } as Meta;
 
 const Template: Story<IFieldProps> = (args: IFieldProps) => {
-  return <FieldCellSize {...args} />;
+  return (
+    <Provider store={store}>
+      <FieldCellSize {...args} />
+    </Provider>
+  );
 };
 
-export const CellSizeInput = Template.bind({});
+export const CellSizeInput = Template;

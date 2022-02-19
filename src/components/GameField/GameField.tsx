@@ -1,7 +1,7 @@
 import React, { createRef, Dispatch, MutableRefObject } from "react";
 import styled from "@emotion/styled";
 import { COLORS } from "@/styles/ui-styled";
-import { Cell, ICell } from "@/components/Cell";
+import { ICell } from "@/Cell/Cell";
 import { AnyAction } from "redux";
 import { connect, ConnectedProps } from "react-redux";
 import { RootState } from "@/store/redux/store";
@@ -47,11 +47,12 @@ export class Main extends React.Component<IGameFieldProps> {
     return Object.assign(cellsArr, this.props.indexedCells).map(
       (cellState, i) => {
         return (
-          <Cell
-            cssClassName={`cell${cellState ? " cell-active" : ""}`}
+          <div
+            className={`cell${cellState ? " cell-active" : ""}`}
             key={i}
-            isActive={cellState}
-            number={i + 1}
+            data-testid="cell"
+            data-state={!!cellState}
+            aria-label={String(i + 1)}
           />
         );
       }
@@ -133,9 +134,11 @@ const FieldContainer = styled.div<IFieldStyledContainerProps>`
       props.cellsInRow * props.cellsInCol < 1000
         ? "0.5s ease background"
         : "none"};
-    width: ${(props) => props.cellSize}px;
-    height: ${(props) => props.cellSize}px;
+    width: ${(props) => (props.cellSize ? props.cellSize : 10)}px;
+    height: ${(props) => (props.cellSize ? props.cellSize : 10)}px;
     line-height: ${(props) => props.cellSize}px;
+    outline: 1px solid white;
+    text-align: center;
   }
 
   .cell-active {

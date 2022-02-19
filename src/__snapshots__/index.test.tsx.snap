@@ -5,6 +5,7 @@ exports[`index tests should render App 1`] = `
   .emotion-0 {
   min-height: 100vh;
   background: #e8d5f0;
+  line-height: 1;
 }
 
 .emotion-0 button:focus {
@@ -182,6 +183,12 @@ exports[`index tests should render App 1`] = `
 .emotion-15 button,
 .emotion-15 p {
   line-height: 1.2;
+}
+
+@media screen and (max-width: 480px) {
+  .emotion-15 .field-error-msg {
+    position: static;
+  }
 }
 
 @media screen and (max-width: 480px) {

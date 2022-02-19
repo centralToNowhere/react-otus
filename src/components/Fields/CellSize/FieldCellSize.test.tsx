@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@/utils/test-utils";
 import { FieldCellSize } from "./FieldCellSize";
 import { l10n } from "@/l10n/ru";
 import { FormContainer } from "@/components/Form";
@@ -13,7 +13,10 @@ describe("FieldCellSize tests", () => {
         onChange={() => {
           // empty function
         }}
-      />
+      />,
+      {
+        preloadedState: {},
+      }
     );
 
     const input: HTMLInputElement = screen.getByLabelText(l10n.cellSizeLabel);
@@ -37,7 +40,9 @@ describe("FieldCellSize tests", () => {
       it(`cellSize: ${value}`, async () => {
         const onChange = jest.fn();
 
-        render(<FieldCellSize value={"30"} onChange={onChange} />);
+        render(<FieldCellSize value={"30"} onChange={onChange} />, {
+          preloadedState: {},
+        });
 
         const input: HTMLInputElement = screen.getByLabelText(
           l10n.cellSizeLabel
@@ -63,7 +68,9 @@ describe("FieldCellSize tests", () => {
       it(`cellSize: ${value}`, async () => {
         const onChange = jest.fn();
 
-        render(<FieldCellSize value={"30"} onChange={onChange} />);
+        render(<FieldCellSize value={"30"} onChange={onChange} />, {
+          preloadedState: {},
+        });
 
         const input: HTMLInputElement = screen.getByLabelText(
           l10n.cellSizeLabel
