@@ -79,7 +79,7 @@ export const FieldMaxWidth: React.FC<IFieldProps> = (props) => {
 
   const onBlur = onDirtyBlurHandler((value) => {
     onChangeDebounced.clear();
-    onBlurHandler(props.onChange, maxWidthValidator)(value);
+    onBlurHandler(props.onChange, [maxWidthValidator, cellsAmountValidator])(value);
   });
 
   return (

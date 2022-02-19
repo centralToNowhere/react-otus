@@ -81,7 +81,7 @@ export const FieldMaxHeight: React.FC<IFieldProps> = (props) => {
 
   const onBlur = onDirtyBlurHandler((value) => {
     onChangeDebounced.clear();
-    onBlurHandler(props.onChange, maxHeightValidator)(value);
+    onBlurHandler(props.onChange, [maxHeightValidator, cellsAmountValidator])(value);
   });
 
   return (
