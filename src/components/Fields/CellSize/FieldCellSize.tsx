@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { l10n } from "@/l10n/ru";
 import {
   InputField,
@@ -14,13 +14,16 @@ import {
   mergeErrorMessages,
 } from "@/components/Fields/FieldError/FieldError";
 import { FormContainer, IFieldProps } from "@/components/Form";
-import { useDebounce, isValidCellSizeString } from "@/utils";
+import {
+  useDebounce,
+  isValidCellSizeString,
+  isValidCellsAmount,
+} from "@/utils";
 import {
   onDirtyBlurHandler,
   onDirtyChangeHandler,
 } from "@/components/Fields/FieldHandlers";
 import { useSelector } from "react-redux";
-import { isValidCellsAmount } from "@/utils/Validators";
 import { maxCellsAmount } from "@/Cell/Cell";
 import { RootState } from "@/store/redux/store";
 
@@ -43,23 +46,29 @@ export const FieldCellSize: React.FC<IFieldProps> = (props) => {
     msg: `Maximum cells amount - ${maxCellsAmount}`,
   });
 
-  const cellSizeValidator: FieldValidator = {
-    validator: (value: unknown): boolean => isValidCellSizeString(value),
-    setError: setCellSizeError,
-  };
+  const cellSizeValidator: FieldValidator = useMemo(
+    () => ({
+      validator: (value: unknown): boolean => isValidCellSizeString(value),
+      setError: setCellSizeError,
+    }),
+    []
+  );
 
-  const cellsAmountValidator: FieldValidator = {
-    validator: (value: string) =>
-      isValidCellsAmount(Number(value), fieldMaxWidth, fieldMaxHeight),
-    setError: setCellsAmountError,
-  };
+  const cellsAmountValidator: FieldValidator = useMemo(
+    () => ({
+      validator: (value: string) =>
+        isValidCellsAmount(Number(value), fieldMaxWidth, fieldMaxHeight),
+      setError: setCellsAmountError,
+    }),
+    [fieldMaxWidth, fieldMaxHeight]
+  );
 
   const onChangeDebounced = useDebounce<string>(
     useOnChangeHandler(
       props.onChange,
       useMemo(
         () => [cellSizeValidator, cellsAmountValidator],
-        [fieldMaxHeight, fieldMaxWidth]
+        [cellSizeValidator, cellsAmountValidator]
       ),
       setCellSizeString
     ),
@@ -77,6 +86,12 @@ export const FieldCellSize: React.FC<IFieldProps> = (props) => {
       value
     );
   });
+
+  useEffect(() => {
+    return () => {
+      onChangeDebounced.clear();
+    };
+  }, [onChangeDebounced]);
 
   return (
     <FormField>

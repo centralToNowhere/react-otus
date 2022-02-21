@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { l10n } from "@/l10n/ru";
 import {
   FieldValidator,
@@ -46,6 +46,12 @@ export const FieldSpeed: React.FC<IFieldProps> = (props) => {
     onChangeDebounced.clear();
     onBlurHandler(props.onChange, speedValidator)(value);
   });
+
+  useEffect(() => {
+    return () => {
+      onChangeDebounced.clear();
+    };
+  }, [onChangeDebounced]);
 
   return (
     <FormField>

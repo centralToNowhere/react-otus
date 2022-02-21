@@ -3,6 +3,7 @@ import {
   isValidCellSizeString,
   isValidNonNegativeNumericString,
   isValidPositiveNumericString,
+  isValidCellsAmount,
 } from "@/utils/Validators";
 
 describe("Validators tests", () => {
@@ -30,5 +31,10 @@ describe("Validators tests", () => {
     expect(isValidNonNegativeNumericString("1")).toBe(true);
     expect(isValidNonNegativeNumericString("0")).toBe(true);
     expect(isValidNonNegativeNumericString("-1")).toBe(false);
+  });
+
+  it("isValidCellsAmount", () => {
+    expect(isValidCellsAmount(40, 100, 100)).toBe(true);
+    expect(isValidCellsAmount(1, 1000, 1000)).toBe(false);
   });
 });

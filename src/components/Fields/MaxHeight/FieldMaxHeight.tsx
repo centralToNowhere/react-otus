@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { l10n } from "@/l10n/ru";
 import {
   FieldValidator,
@@ -14,7 +14,11 @@ import {
   mergeErrorMessages,
 } from "@/components/Fields/FieldError/FieldError";
 import { FormContainer, IFieldProps } from "@/components/Form";
-import { useDebounce, isValidNonNegativeNumericString } from "@/utils";
+import {
+  useDebounce,
+  isValidNonNegativeNumericString,
+  isValidCellsAmount,
+} from "@/utils";
 import {
   onDirtyBlurHandler,
   onDirtyChangeHandler,
@@ -22,7 +26,6 @@ import {
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/redux/store";
 import { maxCellsAmount } from "@/Cell/Cell";
-import { isValidCellsAmount } from "@/utils/Validators";
 
 export const FieldMaxHeight: React.FC<IFieldProps> = (props) => {
   const [maxFieldHeightString, setMaxFieldHeightString] = useState<string>(
@@ -56,18 +59,21 @@ export const FieldMaxHeight: React.FC<IFieldProps> = (props) => {
     []
   );
 
-  const cellsAmountValidator: FieldValidator = {
-    validator: (value: string) =>
-      isValidCellsAmount(cellSize, fieldMaxWidth, Number(value)),
-    setError: setCellsAmountError,
-  };
+  const cellsAmountValidator: FieldValidator = useMemo(
+    () => ({
+      validator: (value: string) =>
+        isValidCellsAmount(cellSize, fieldMaxWidth, Number(value)),
+      setError: setCellsAmountError,
+    }),
+    [fieldMaxWidth, cellSize]
+  );
 
   const onChangeDebounced = useDebounce<string>(
     useOnChangeHandler(
       props.onChange,
       useMemo(
         () => [maxHeightValidator, cellsAmountValidator],
-        [fieldMaxWidth, cellSize]
+        [maxHeightValidator, cellsAmountValidator]
       ),
       setMaxFieldHeightString
     ),
@@ -81,8 +87,16 @@ export const FieldMaxHeight: React.FC<IFieldProps> = (props) => {
 
   const onBlur = onDirtyBlurHandler((value) => {
     onChangeDebounced.clear();
-    onBlurHandler(props.onChange, [maxHeightValidator, cellsAmountValidator])(value);
+    onBlurHandler(props.onChange, [maxHeightValidator, cellsAmountValidator])(
+      value
+    );
   });
+
+  useEffect(() => {
+    return () => {
+      onChangeDebounced.clear();
+    };
+  }, [onChangeDebounced]);
 
   return (
     <FormField>
