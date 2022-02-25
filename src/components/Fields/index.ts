@@ -11,7 +11,11 @@ export {
   resetFieldControls,
   defaultFieldControlState,
 } from "./slice";
-export { selectCellsInRow, selectCellsInCol } from "./selectors";
+export {
+  selectCellsInRow,
+  selectCellsInCol,
+  selectGameCycleDelay,
+} from "./selectors";
 export { FieldMaxWidth } from "./MaxWidth";
 export { FieldMaxHeight } from "./MaxHeight";
 export { FieldCapacity } from "./Capacity";

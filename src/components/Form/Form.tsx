@@ -21,7 +21,7 @@ export interface IFormProps {
   setMaxFieldWidth: (value: string) => void;
   setMaxFieldHeight: (value: string) => void;
   setCapacity: (value: string) => void;
-  onSpeedChange: (value: string) => void;
+  setSpeed: (value: string) => void;
   onButtonClickFn: (e: React.SyntheticEvent<HTMLButtonElement>) => void;
   gameInProgress: boolean;
 }
@@ -58,7 +58,7 @@ export class Form extends React.Component<IFormProps> {
 
           <FieldSpeed
             value={String(this.props.speed)}
-            onChange={this.props.onSpeedChange}
+            onChange={this.props.setSpeed}
           />
         </FormGroup>
 

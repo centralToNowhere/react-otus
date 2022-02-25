@@ -6,14 +6,13 @@ import {
   setMaxFieldWidth,
   setMaxFieldHeight,
   setCapacity,
+  setSpeed,
 } from "@/components/Fields";
 import { Form } from "@/components/Form";
 import { RootState } from "@/store/redux/store";
 
-export type ControlCallback<T = void> = (value: T) => void;
 export type Callback<E, T> = (e: E) => T;
 export type FormOwnProps = {
-  onSpeedChange?: ControlCallback<string>;
   onButtonClickFn?: (e: React.SyntheticEvent<HTMLButtonElement>) => void;
 };
 
@@ -55,6 +54,9 @@ const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({
   setCapacity: (value: string) => {
     dispatch(setCapacity(Number(value)));
   },
+  setSpeed: (value: string) => {
+    dispatch(setSpeed(Number(value)));
+  },
 });
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
@@ -70,9 +72,6 @@ class Main extends React.Component<FormContainerProps> {
 
   render() {
     const {
-      onSpeedChange = () => {
-        /** empty **/
-      },
       onButtonClickFn = () => {
         /** empty **/
       },
@@ -89,7 +88,7 @@ class Main extends React.Component<FormContainerProps> {
         setMaxFieldWidth={this.props.setMaxFieldWidth}
         setMaxFieldHeight={this.props.setMaxFieldHeight}
         setCapacity={this.props.setCapacity}
-        onSpeedChange={onSpeedChange}
+        setSpeed={this.props.setSpeed}
         onButtonClickFn={onButtonClickFn}
         gameInProgress={this.props.gameInProgress}
       />

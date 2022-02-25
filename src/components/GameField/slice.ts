@@ -57,6 +57,9 @@ export const gameFieldSlice = createSlice({
     stopGame: (state) => {
       state.gameInProgress = false;
     },
+    generateRandom: (state) => {
+      return state;
+    },
   },
 });
 
@@ -67,4 +70,5 @@ export const {
   resetCells,
   startGame,
   stopGame,
+  generateRandom,
 } = gameFieldSlice.actions;

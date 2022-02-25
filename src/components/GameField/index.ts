@@ -7,6 +7,7 @@ export {
   resetCells,
   startGame,
   stopGame,
+  generateRandom,
   defaultGameFieldState,
 } from "./slice";
 export { selectIndexedCells, getIndexedCells } from "./selectors";

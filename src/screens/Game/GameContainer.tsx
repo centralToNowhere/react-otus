@@ -1,54 +1,22 @@
 import React, { Dispatch } from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { AnyAction } from "redux";
-import { RootState } from "@/store/redux/store";
 import { Game } from "@/screens/Game";
-import {
-  setActiveCells,
-  resetCells,
-  selectIndexedCells,
-} from "@/components/GameField";
-import { ICell } from "@/Cell/Cell";
-import { getNextGeneration, getRandomCells } from "@/utils/CellGenerator";
-import {
-  setSpeed,
-  resetFieldControls,
-  selectCellsInRow,
-  selectCellsInCol,
-} from "@/components/Fields";
-import { startGame, stopGame } from "@/components/GameField";
-
-export const getGameCycleTimeout = (speed: number): number => {
-  return 1000 / speed;
-};
+import { resetCells } from "@/components/GameField";
+import { resetFieldControls } from "@/components/Fields";
+import { startGame, stopGame, generateRandom } from "@/components/GameField";
 
 export const createFormKey = (): number => {
   return Math.round(Math.random() * 10000);
 };
 
-const mapStateToProps = (state: RootState) => {
-  return {
-    cellsInRow: selectCellsInRow(state),
-    cellsInCol: selectCellsInCol(state),
-    capacity: state.fieldControl.capacity,
-    speed: state.fieldControl.speed,
-    indexedCells: selectIndexedCells(state),
-  };
-};
-
 const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => {
   return {
-    setActiveCells: (cells: ICell[]) => {
-      dispatch(setActiveCells(cells));
-    },
     resetCells: () => {
       dispatch(resetCells());
     },
     resetFieldControls: () => {
       dispatch(resetFieldControls());
-    },
-    setSpeed: (value: string) => {
-      dispatch(setSpeed(Number(value)));
     },
     startGame: () => {
       dispatch(startGame());
@@ -56,73 +24,29 @@ const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => {
     stopGame: () => {
       dispatch(stopGame());
     },
+    generateRandom: () => {
+      dispatch(generateRandom());
+    },
   };
 };
 
-const connector = connect(mapStateToProps, mapDispatchToProps);
+const connector = connect(null, mapDispatchToProps);
 export type GameContainerProps = ConnectedProps<typeof connector>;
+type GameContainerState = {
+  formKey: number;
+};
 
-class Main extends React.Component<GameContainerProps> {
-  private gameCycleInterval: ReturnType<typeof setInterval> | null;
-  private formKey: number;
-  private rafTimeout: number | null;
-
+class Main extends React.Component<GameContainerProps, GameContainerState> {
   constructor(props: GameContainerProps) {
     super(props);
 
-    this.gameCycleInterval = null;
-    this.formKey = createFormKey();
-    this.rafTimeout = null;
+    this.state = {
+      formKey: createFormKey(),
+    };
   }
 
-  onSpeedChange = (value: string): void => {
-    if (this.gameCycleInterval !== null) {
-      this.onStop();
-      setTimeout(() => {
-        this.onStart();
-      }, 0);
-    }
-
-    this.props.setSpeed(value);
-  };
-
-  onStart = (): void => {
-    if (this.gameCycleInterval === null) {
-      this.props.startGame();
-      this.gameCycleInterval = setInterval(() => {
-        this.rafTimeout = requestAnimationFrame(() => {
-          const cells = getNextGeneration(
-            this.props.cellsInRow,
-            this.props.cellsInCol,
-            this.props.indexedCells
-          );
-
-          this.props.setActiveCells(cells);
-        });
-      }, getGameCycleTimeout(this.props.speed));
-    }
-  };
-
-  onStop = (): void => {
-    this.props.stopGame();
-    this.clear();
-  };
-
-  onReset = (): void => {
-    this.onStop();
-    this.props.resetCells();
-    this.props.resetFieldControls();
-    this.formKey = createFormKey();
-  };
-
   onGenerateRandom = (): void => {
-    const cells = getRandomCells(
-      this.props.cellsInRow,
-      this.props.cellsInCol,
-      this.props.capacity / 100
-    );
-
-    this.props.setActiveCells(cells);
+    this.props.generateRandom();
   };
 
   onButtonClickFn = (e: React.SyntheticEvent<HTMLButtonElement>): void => {
@@ -130,39 +54,28 @@ class Main extends React.Component<GameContainerProps> {
 
     switch (target.getAttribute("name")) {
       case "startButton":
-        this.onStart();
+        this.props.startGame();
         break;
       case "stopButton":
-        this.onStop();
+        this.props.stopGame();
         break;
       case "resetButton":
-        this.onReset();
+        this.props.resetCells();
+        this.props.resetFieldControls();
+        this.setState({
+          formKey: createFormKey(),
+        });
         break;
       case "generateRandomButton":
-        this.onGenerateRandom();
+        this.props.generateRandom();
         break;
     }
   };
-
-  clear = (): void => {
-    if (this.gameCycleInterval !== null) {
-      clearInterval(this.gameCycleInterval);
-      this.gameCycleInterval = null;
-    }
-    if (this.rafTimeout) {
-      cancelAnimationFrame(this.rafTimeout);
-    }
-  };
-
-  componentWillUnmount() {
-    this.onStop();
-  }
 
   render() {
     return (
       <Game
-        formKey={this.formKey}
-        onSpeedChange={this.onSpeedChange}
+        formKey={this.state.formKey}
         onButtonClickFn={this.onButtonClickFn}
       />
     );

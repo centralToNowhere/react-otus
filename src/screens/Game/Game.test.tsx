@@ -2,12 +2,7 @@
 import React from "react";
 import { render, screen, waitFor } from "@/utils/test-utils";
 import userEvent from "@testing-library/user-event/dist";
-import {
-  Game,
-  GameContainer,
-  getGameCycleTimeout,
-  createFormKey,
-} from "@/screens/Game/index";
+import { Game, GameContainer } from "@/screens/Game/index";
 import { COLORS } from "@/styles/ui-styled";
 import { l10n } from "@/l10n/ru";
 import {
@@ -19,6 +14,10 @@ import {
   defaultFieldControlState,
   IFieldControlState,
 } from "@/components/Fields";
+
+const getGameCycleTimeout = (speed: number) => {
+  return 1000 / speed;
+};
 
 const getMockedCells = jest.fn().mockReturnValue([
   {
@@ -100,11 +99,6 @@ describe("Game tests", () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it("createFormKey should return number with value from 0 to 10000", () => {
-    expect(createFormKey()).toBeGreaterThan(0);
-    expect(createFormKey()).toBeLessThan(10000);
-  });
-
   it("should render 100 cells with numbers", () => {
     render(<Game />, {
       preloadedState: initialState,
@@ -114,10 +108,6 @@ describe("Game tests", () => {
       selector: "[data-testid=cell]",
     });
     expect(cells).toHaveLength(100);
-  });
-
-  it("getGameCycleTimeout should return valid number", () => {
-    expect(getGameCycleTimeout(50)).toBe(20);
   });
 
   it("should start game cycle", async () => {

@@ -8,6 +8,7 @@ import { initialStateAll } from "@/store/redux/store";
 import createSagaMiddleware from "redux-saga";
 import { fork } from "redux-saga/effects";
 import { gameFieldSlice } from "@/components/GameField";
+import { gameSaga } from "@/screens/Game/saga";
 
 function render(
   ui: ReactElement,
@@ -23,6 +24,7 @@ function render(
   const rootSaga = function* () {
     yield fork(fieldControlSaga);
     yield fork(authSaga);
+    yield fork(gameSaga);
   };
 
   const store = configureStore({

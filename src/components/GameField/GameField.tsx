@@ -30,7 +30,7 @@ const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({
 const connector = connect(mapStateToProps, mapDispatchToProps);
 export type IGameFieldProps = ConnectedProps<typeof connector>;
 
-export class Main extends React.Component<IGameFieldProps> {
+export class Main extends React.PureComponent<IGameFieldProps> {
   private readonly gameFieldRef: MutableRefObject<HTMLDivElement | null>;
 
   constructor(props: IGameFieldProps) {

@@ -6,7 +6,6 @@ import { GameField } from "@/components/GameField";
 import { PlayerBlockContainer } from "@/components/PlayerBlock";
 
 export interface IGameProps {
-  onSpeedChange?: (value: string) => void;
   onButtonClickFn?: (e: React.SyntheticEvent<HTMLButtonElement>) => void;
   formKey?: number;
 }
@@ -23,7 +22,6 @@ export class Game extends React.Component<IGameProps> {
         <ControlContainer>
           <FormContainer
             key={this.props.formKey}
-            onSpeedChange={this.props.onSpeedChange}
             onButtonClickFn={this.props.onButtonClickFn}
           />
           <PlayerBlockContainer />
