@@ -12,7 +12,7 @@ export const FormElement = styled.form`
   label,
   button,
   p {
-    line-height: 1.2;
+    line-height: 1.5;
   }
 
   .field-error-msg {
