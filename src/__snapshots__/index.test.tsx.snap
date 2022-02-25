@@ -183,7 +183,7 @@ exports[`index tests should render App 1`] = `
 .emotion-15 label,
 .emotion-15 button,
 .emotion-15 p {
-  line-height: 1.2;
+  line-height: 1.5;
 }
 
 @media screen and (max-width: 480px) {

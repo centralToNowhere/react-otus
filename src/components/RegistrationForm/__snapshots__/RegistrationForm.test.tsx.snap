@@ -26,7 +26,7 @@ exports[`PlayerRegistrationForm tests should render player registration form 1`]
 .emotion-0 label,
 .emotion-0 button,
 .emotion-0 p {
-  line-height: 1.2;
+  line-height: 1.5;
 }
 
 @media screen and (max-width: 480px) {
