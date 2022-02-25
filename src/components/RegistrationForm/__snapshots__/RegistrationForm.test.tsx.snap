@@ -18,7 +18,7 @@ exports[`PlayerRegistrationForm tests should render player registration form 1`]
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin: 0 0 20px 0;
 }
 
@@ -162,6 +162,7 @@ exports[`PlayerRegistrationForm tests should render player registration form 1`]
           Введите имя игрока
         </label>
         <input
+          autocomplete="off"
           class="emotion-7 emotion-8"
           id="register-player-input"
           name="playerName"

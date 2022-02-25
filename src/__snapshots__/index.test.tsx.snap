@@ -26,6 +26,7 @@ exports[`index tests should render App 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   font-size: 1.25rem;
+  line-height: 1.5;
 }
 
 .emotion-2 p {
@@ -174,7 +175,7 @@ exports[`index tests should render App 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin: 0 0 20px 0;
 }
 
@@ -407,6 +408,7 @@ exports[`index tests should render App 1`] = `
                   Введите имя игрока
                 </label>
                 <input
+                  autocomplete="off"
                   class="emotion-22 emotion-23"
                   id="register-player-input"
                   name="playerName"

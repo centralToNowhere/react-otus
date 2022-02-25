@@ -11,6 +11,7 @@ exports[`Registration screen tests should render registration screen 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   font-size: 1.25rem;
+  line-height: 1.5;
 }
 
 .emotion-0 p {
@@ -159,7 +160,7 @@ exports[`Registration screen tests should render registration screen 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin: 0 0 20px 0;
 }
 
@@ -388,6 +389,7 @@ exports[`Registration screen tests should render registration screen 1`] = `
                 Введите имя игрока
               </label>
               <input
+                autocomplete="off"
                 class="emotion-20 emotion-21"
                 id="register-player-input"
                 name="playerName"
