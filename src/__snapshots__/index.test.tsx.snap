@@ -5,6 +5,7 @@ exports[`index tests should render App 1`] = `
   .emotion-0 {
   min-height: 100vh;
   background: #e8d5f0;
+  line-height: 1;
 }
 
 .emotion-0 p {
@@ -20,6 +21,7 @@ exports[`index tests should render App 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   font-size: 1.25rem;
+  line-height: 1.5;
 }
 
 .emotion-2 p {
@@ -108,7 +110,7 @@ exports[`index tests should render App 1`] = `
   -ms-flex-align: initial;
   align-items: initial;
   padding: 0 2rem;
-  background: #79799d;
+  background: rgb(144, 131, 230);
 }
 
 @media screen and (max-width: 992px) {
@@ -168,15 +170,20 @@ exports[`index tests should render App 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin: 0 0 20px 0;
 }
 
 .emotion-15 input,
 .emotion-15 label,
-.emotion-15 button,
 .emotion-15 p {
-  line-height: 1.2;
+  line-height: 1;
+}
+
+@media screen and (max-width: 480px) {
+  .emotion-15 .field-error-msg {
+    position: static;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -251,18 +258,19 @@ exports[`index tests should render App 1`] = `
 }
 
 .emotion-22:focus {
-  border-bottom: 2px solid #5b6da7;
+  border-bottom: 2px solid rgb(255, 33, 92);
 }
 
 .emotion-24 {
   background: inherit;
   margin: 20px auto;
   border-color: #6a6d75;
+  line-height: 1.5;
   margin-right: auto!important;
 }
 
 .emotion-24:focus {
-  outline: 2px solid #5b6da7!important;
+  outline: 2px solid rgb(255, 33, 92)!important;
   border: 2px solid transparent;
 }
 
@@ -281,7 +289,7 @@ exports[`index tests should render App 1`] = `
 }
 
 .emotion-28 {
-  color: #5b6da7;
+  color: rgb(255, 33, 92);
   visibility: hidden;
   margin: 20px 20px 0 20px;
 }
@@ -397,6 +405,7 @@ exports[`index tests should render App 1`] = `
                   Введите имя игрока
                 </label>
                 <input
+                  autocomplete="off"
                   class="emotion-22 emotion-23"
                   id="register-player-input"
                   name="playerName"

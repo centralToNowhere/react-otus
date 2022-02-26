@@ -1,6 +1,7 @@
-import React, { useCallback, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { l10n } from "@/l10n/ru";
 import {
+  FieldValidator,
   InputPatterns,
   onBlurHandler,
   useOnChangeHandler,
@@ -22,12 +23,17 @@ export const FieldSpeed: React.FC<IFieldProps> = (props) => {
     msg: "Expected positive number",
   });
 
-  const validateSpeed = useCallback((value: unknown): boolean => {
-    return isValidPositiveNumericString(value);
-  }, []);
+  const speedValidator: FieldValidator = useMemo(
+    () => ({
+      validator: (value: unknown): boolean =>
+        isValidPositiveNumericString(value),
+      setError,
+    }),
+    []
+  );
 
   const onChangeDebounced = useDebounce<string>(
-    useOnChangeHandler(props.onChange, validateSpeed, setSpeedString, setError),
+    useOnChangeHandler(props.onChange, speedValidator, setSpeedString),
     FormContainer.inputDelay
   );
 
@@ -38,8 +44,14 @@ export const FieldSpeed: React.FC<IFieldProps> = (props) => {
 
   const onBlur = onDirtyBlurHandler((value: string) => {
     onChangeDebounced.clear();
-    onBlurHandler(props.onChange, validateSpeed, setError)(value);
+    onBlurHandler(props.onChange, speedValidator)(value);
   });
+
+  useEffect(() => {
+    return () => {
+      onChangeDebounced.clear();
+    };
+  }, [onChangeDebounced]);
 
   return (
     <FormField>

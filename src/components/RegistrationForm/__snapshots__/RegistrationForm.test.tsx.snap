@@ -18,15 +18,20 @@ exports[`PlayerRegistrationForm tests should render player registration form 1`]
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin: 0 0 20px 0;
 }
 
 .emotion-0 input,
 .emotion-0 label,
-.emotion-0 button,
 .emotion-0 p {
-  line-height: 1.2;
+  line-height: 1;
+}
+
+@media screen and (max-width: 480px) {
+  .emotion-0 .field-error-msg {
+    position: static;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -101,18 +106,19 @@ exports[`PlayerRegistrationForm tests should render player registration form 1`]
 }
 
 .emotion-7:focus {
-  border-bottom: 2px solid #5b6da7;
+  border-bottom: 2px solid rgb(255, 33, 92);
 }
 
 .emotion-9 {
   background: inherit;
   margin: 20px auto;
   border-color: #6a6d75;
+  line-height: 1.5;
   margin-right: auto!important;
 }
 
 .emotion-9:focus {
-  outline: 2px solid #5b6da7!important;
+  outline: 2px solid rgb(255, 33, 92)!important;
   border: 2px solid transparent;
 }
 
@@ -131,7 +137,7 @@ exports[`PlayerRegistrationForm tests should render player registration form 1`]
 }
 
 .emotion-13 {
-  color: #5b6da7;
+  color: rgb(255, 33, 92);
   visibility: hidden;
   margin: 20px 20px 0 20px;
 }
@@ -158,6 +164,7 @@ exports[`PlayerRegistrationForm tests should render player registration form 1`]
           Введите имя игрока
         </label>
         <input
+          autocomplete="off"
           class="emotion-7 emotion-8"
           id="register-player-input"
           name="playerName"

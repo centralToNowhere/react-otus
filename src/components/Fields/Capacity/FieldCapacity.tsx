@@ -1,6 +1,7 @@
-import React, { useCallback, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { l10n } from "@/l10n/ru";
 import {
+  FieldValidator,
   InputField,
   LabelField,
   onBlurHandler,
@@ -23,17 +24,17 @@ export const FieldCapacity: React.FC<IFieldProps> = (props) => {
     msg: "Expected non-negative number",
   });
 
-  const validateCapacity = useCallback((value: unknown): boolean => {
-    return isValidNonNegativeNumericString(value);
-  }, []);
+  const capacityValidator: FieldValidator = useMemo(
+    () => ({
+      validator: (value: unknown): boolean =>
+        isValidNonNegativeNumericString(value),
+      setError,
+    }),
+    []
+  );
 
   const onChangeDebounced = useDebounce<string>(
-    useOnChangeHandler(
-      props.onChange,
-      validateCapacity,
-      setCapacityString,
-      setError
-    ),
+    useOnChangeHandler(props.onChange, capacityValidator, setCapacityString),
     FormContainer.inputDelay
   );
 
@@ -44,8 +45,14 @@ export const FieldCapacity: React.FC<IFieldProps> = (props) => {
 
   const onBlur = onDirtyBlurHandler((value) => {
     onChangeDebounced.clear();
-    onBlurHandler(props.onChange, validateCapacity, setError)(value);
+    onBlurHandler(props.onChange, capacityValidator)(value);
   });
+
+  useEffect(() => {
+    return () => {
+      onChangeDebounced.clear();
+    };
+  }, [onChangeDebounced]);
 
   return (
     <FormField>

@@ -1,9 +1,8 @@
 import React, { FC, useEffect, useState } from "react";
 import styled from "@emotion/styled";
-import arrowDownUp from "@/components/FocusableSeparator/assets/arrow-down-up.svg";
 import { BREAKPOINTS, COLORS } from "@/styles/ui-styled";
 
-const resizerSize = 20;
+const resizerSize = 30;
 
 export const FocusableSeparator: FC = () => {
   const [valueNow, setValueNow] = useState(50);
@@ -115,7 +114,7 @@ export const FocusableSeparator: FC = () => {
       role="separator"
       aria-valuenow={valueNow}
     >
-      <img src={arrowDownUp} alt="arrow down/up" />
+      <div className={"handle-icon"} />
     </StyledResizerLine>
   );
 };
@@ -127,17 +126,18 @@ const StyledResizerLine = styled.div`
   user-select: none;
   overflow: hidden;
   border-top: 2px solid ${COLORS.border};
-  border-bottom: 2px solid ${COLORS.border};
 
   &:hover {
     opacity: 0.7;
   }
 
-  img {
+  .handle-icon {
     display: block;
-    width: 100%;
-    padding: 2px 0;
-    height: 16px;
+    background: ${COLORS.border};
+    width: 50px;
+    margin: 10px auto 0 auto;
+    height: 6px;
+    border-radius: 10px;
   }
 
   @media screen and (max-width: ${BREAKPOINTS.xl}) {

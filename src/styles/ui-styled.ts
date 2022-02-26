@@ -1,8 +1,9 @@
 export const COLORS = {
-  primary: "#79799d",
+  primary: "rgb(144, 131, 230)",
   secondary: "#e8d5f0",
-  accent: "#5b6da7",
-  activeCellBg: "#b5b5cc",
+  accent: "rgb(255, 33, 92)",
+  activeCellBg: "rgb(144, 131, 230)",
+  cellBg: "rgb(193,184,244)",
   border: "#6a6d75",
 };
 

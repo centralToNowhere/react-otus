@@ -4,8 +4,8 @@ import { FocusableSeparator } from "@/components/FocusableSeparator/FocusableSep
 import { css } from "@emotion/react";
 
 const parentBox = {
-  bottom: 120,
-  height: 120,
+  bottom: 130,
+  height: 130,
   left: 0,
   right: 100,
   top: 0,
@@ -16,7 +16,7 @@ const parentBox = {
 
 const handleBox = {
   bottom: 70,
-  height: 20,
+  height: 30,
   left: 0,
   right: 100,
   top: 50,

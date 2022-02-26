@@ -1,10 +1,22 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { BREAKPOINTS } from "@/styles/ui-styled";
 
 export interface IFieldErrorProps {
   show: boolean;
   msg: string;
 }
+
+export const mergeErrorMessages = (
+  errors: Array<{
+    show: boolean;
+    msg: string;
+  }>
+): string => {
+  return errors.reduce((msg, error) => {
+    return error.show ? `${msg}${error.msg}\n` : msg;
+  }, "");
+};
 
 export const FieldError: React.FC<IFieldErrorProps> = ({
   show = false,
@@ -14,9 +26,9 @@ export const FieldError: React.FC<IFieldErrorProps> = ({
     <>
       {show && (
         <ErrorContainer>
-          <p role="alert" className="error-msg">
+          <span role="alert" className="field-error-msg">
             {msg}
-          </p>
+          </span>
         </ErrorContainer>
       )}
     </>
@@ -26,10 +38,11 @@ export const FieldError: React.FC<IFieldErrorProps> = ({
 const ErrorContainer = styled.div`
   position: relative;
 
-  p.error-msg {
-    position: absolute;
-    line-height: 1em;
-    font-size: 1em;
+  .field-error-msg {
     color: red;
+
+    @media screen and (min-width: ${BREAKPOINTS.mobileEnd}) {
+      position: absolute;
+    }
   }
 `;

@@ -14,6 +14,7 @@
     "storybook": "start-storybook -s public -p 6006",
     "build-storybook": "build-storybook",
     "serve": "webpack serve --config ./webpack-dev.config.js  --entry ./src/index.tsx",
+    "serve:prod": "webpack serve --config ./webpack-prod.config.js  --entry ./src/index.tsx",
     "loki:test": "npm run build-storybook && npx loki --requireReference --reactUri file:./storybook-static",
     "loki:update": "npm run build-storybook && npx loki update --requireReference --reactUri file:./storybook-static",
     "loki:approve": "npx loki approve"
@@ -88,7 +89,7 @@
     "postcss-loader": "^6.2.0",
     "prettier": "^2.4.1",
     "redux-saga-test-plan": "^4.0.4",
-    "typescript": "^4.4.4",
+    "typescript": "^4.5.5",
     "webpack": "^5.59.1",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.3.1"

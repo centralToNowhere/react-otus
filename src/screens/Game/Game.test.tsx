@@ -2,22 +2,22 @@
 import React from "react";
 import { render, screen, waitFor } from "@/utils/test-utils";
 import userEvent from "@testing-library/user-event/dist";
-import {
-  Game,
-  GameContainer,
-  getGameCycleTimeout,
-  createFormKey,
-} from "@/screens/Game/index";
+import { Game, GameContainer } from "@/screens/Game/index";
 import { COLORS } from "@/styles/ui-styled";
 import { l10n } from "@/l10n/ru";
 import {
   // @ts-ignore
   __RewireAPI__ as CellGeneratorRewire,
+  getInitialCells,
 } from "@/utils/CellGenerator";
 import {
   defaultFieldControlState,
   IFieldControlState,
 } from "@/components/Fields";
+
+const getGameCycleTimeout = (speed: number) => {
+  return 1000 / speed;
+};
 
 const getMockedCells = jest.fn().mockReturnValue([
   {
@@ -70,6 +70,10 @@ const initialState = {
     capacity: 50,
     speed: 2,
   },
+  gameField: {
+    activeCells: getInitialCells(100, 100, 10),
+    gameInProgress: false,
+  },
 };
 
 beforeEach(() => {
@@ -82,11 +86,9 @@ afterEach(() => {
 
 describe("Game tests", () => {
   it("should correctly render field and form", async () => {
-    jest.spyOn(global.Math, "random").mockReturnValue(0);
     const { asFragment } = render(<Game />, {
       preloadedState: {},
     });
-    jest.spyOn(global.Math, "random").mockRestore();
 
     const field = screen.getByTestId("field");
     expect(field).toBeInTheDocument();
@@ -95,11 +97,6 @@ describe("Game tests", () => {
     expect(form).toBeInTheDocument();
 
     expect(asFragment()).toMatchSnapshot();
-  });
-
-  it("createFormKey should return number with value from 0 to 10000", () => {
-    expect(createFormKey()).toBeGreaterThan(0);
-    expect(createFormKey()).toBeLessThan(10000);
   });
 
   it("should render 100 cells with numbers", () => {
@@ -111,10 +108,6 @@ describe("Game tests", () => {
       selector: "[data-testid=cell]",
     });
     expect(cells).toHaveLength(100);
-  });
-
-  it("getGameCycleTimeout should return valid number", () => {
-    expect(getGameCycleTimeout(50)).toBe(20);
   });
 
   it("should start game cycle", async () => {

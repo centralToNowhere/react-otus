@@ -5,8 +5,9 @@ import {
   setActiveCells,
   startGame,
   stopGame,
+  generateRandom,
 } from "@/components/GameField";
-import { ICell } from "@/components/Cell";
+import { ICell } from "@/Cell/Cell";
 
 describe("GameFieldSlice actions tests", () => {
   it("setActiveCells", () => {
@@ -90,5 +91,22 @@ describe("GameFieldSlice actions tests", () => {
         gameInProgress: false,
       })
     );
+  });
+
+  it("generateRandom", () => {
+    const initialState = {
+      ...defaultGameFieldState,
+      gameInProgress: true,
+    };
+
+    const resultState = gameFieldSlice.reducer(
+      {
+        ...defaultGameFieldState,
+        gameInProgress: true,
+      },
+      generateRandom()
+    );
+
+    expect(resultState).toEqual(initialState);
   });
 });

@@ -17,9 +17,14 @@ exports[`PlayerContainer tests should render PlayerContainer 1`] = `
 
 .emotion-0 input,
 .emotion-0 label,
-.emotion-0 button,
 .emotion-0 p {
-  line-height: 1.2;
+  line-height: 1;
+}
+
+@media screen and (max-width: 480px) {
+  .emotion-0 .field-error-msg {
+    position: static;
+  }
 }
 
 .emotion-2 {
@@ -62,7 +67,7 @@ exports[`PlayerContainer tests should render PlayerContainer 1`] = `
   font-size: 1.2rem;
   font-weight: bold;
   margin: 0;
-  border-bottom: 2px solid #5b6da7;
+  border-bottom: 2px solid rgb(255, 33, 92);
 }
 
 .emotion-2 div.player-stats-container {
@@ -85,11 +90,12 @@ exports[`PlayerContainer tests should render PlayerContainer 1`] = `
   background: inherit;
   margin: 20px auto;
   border-color: #6a6d75;
+  line-height: 1.5;
   text-align: center;
 }
 
 .emotion-4:focus {
-  outline: 2px solid #5b6da7!important;
+  outline: 2px solid rgb(255, 33, 92)!important;
   border: 2px solid transparent;
 }
 

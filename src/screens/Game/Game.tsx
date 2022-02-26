@@ -8,7 +8,6 @@ import { FocusableSeparator } from "@/components/FocusableSeparator/FocusableSep
 import { isTouchDevice } from "@/utils/TouchDeviceDetection";
 
 export interface IGameProps {
-  onSpeedChange?: (value: string) => void;
   onButtonClickFn?: (e: React.SyntheticEvent<HTMLButtonElement>) => void;
   formKey?: number;
 }
@@ -28,7 +27,6 @@ export class Game extends React.Component<IGameProps> {
         <ControlContainer>
           <FormContainer
             key={this.props.formKey}
-            onSpeedChange={this.props.onSpeedChange}
             onButtonClickFn={this.props.onButtonClickFn}
           />
           <PlayerBlockContainer />
@@ -51,7 +49,7 @@ const Container = styled.div`
 
 const GameFieldContainer = styled.div`
   @media screen and (min-width: ${BREAKPOINTS.xl}) {
-    overflow: auto;
+    overflow: hidden;
     max-width: 100%;
     height: 50vh;
   }

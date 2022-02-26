@@ -72,14 +72,13 @@ describe("FieldCapacity tests", () => {
         userEvent.clear(input);
         userEvent.type(input, value);
 
-        await waitFor(
-          () => {
-            expect(onChange).toHaveBeenCalledTimes(0);
-          },
-          {
-            timeout: FormContainer.inputDelay + 100,
-          }
-        );
+        await new Promise<void>((resolve) => {
+          setTimeout(() => {
+            resolve();
+          }, FormContainer.inputDelay + 100);
+        });
+
+        expect(onChange).not.toHaveBeenCalled();
       });
     });
   });

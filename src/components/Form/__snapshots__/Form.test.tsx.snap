@@ -17,9 +17,14 @@ exports[`form tests should render form 1`] = `
 
 .emotion-0 input,
 .emotion-0 label,
-.emotion-0 button,
 .emotion-0 p {
-  line-height: 1.2;
+  line-height: 1;
+}
+
+@media screen and (max-width: 480px) {
+  .emotion-0 .field-error-msg {
+    position: static;
+  }
 }
 
 .emotion-2 {
@@ -87,7 +92,7 @@ exports[`form tests should render form 1`] = `
 }
 
 .emotion-8:focus {
-  border-bottom: 2px solid #5b6da7;
+  border-bottom: 2px solid rgb(255, 33, 92);
 }
 
 .emotion-26 {
@@ -102,7 +107,7 @@ exports[`form tests should render form 1`] = `
 }
 
 .emotion-26:focus {
-  border-bottom: 2px solid #5b6da7;
+  border-bottom: 2px solid rgb(255, 33, 92);
 }
 
 .emotion-26:focus {
@@ -117,10 +122,11 @@ exports[`form tests should render form 1`] = `
   background: inherit;
   margin: 20px auto;
   border-color: #6a6d75;
+  line-height: 1.5;
 }
 
 .emotion-40:focus {
-  outline: 2px solid #5b6da7!important;
+  outline: 2px solid rgb(255, 33, 92)!important;
   border: 2px solid transparent;
 }
 

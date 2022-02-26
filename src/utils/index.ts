@@ -3,6 +3,7 @@ export {
   isValidCellSizeString,
   isValidPositiveNumericString,
   isValidNonNegativeNumericString,
+  isValidCellsAmount,
 } from "./Validators";
 export { useDebounce } from "./Debounce";
 export { fieldWidth, fieldHeight } from "./FieldSize";

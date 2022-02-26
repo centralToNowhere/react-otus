@@ -98,6 +98,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   font-size: 1.25rem;
+  line-height: 1.5;
 
   p {
     margin-bottom: 0.5em;

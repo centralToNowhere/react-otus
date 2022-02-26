@@ -1,5 +1,5 @@
-import { getIndexedActiveCells } from "@/components/GameField";
-import { ICell } from "@/components/Cell";
+import { getIndexedCells } from "@/components/GameField";
+import { ICell } from "@/Cell/Cell";
 
 describe("getIndexedCells test", () => {
   const activeCells: ICell[] = [
@@ -26,18 +26,49 @@ describe("getIndexedCells test", () => {
   ];
 
   it("result array should have correct length", () => {
-    expect(getIndexedActiveCells(activeCells)).toHaveLength(5);
-    expect(getIndexedActiveCells(activeCells)[2]).toHaveLength(4);
-    expect(getIndexedActiveCells(activeCells)[3]).toHaveLength(9);
+    expect(getIndexedCells([], 10, 10)).toHaveLength(100);
+    expect(getIndexedCells([], 0, 0)).toHaveLength(0);
+    expect(getIndexedCells([], 0, 10)).toHaveLength(0);
+    expect(getIndexedCells([], 10, 0)).toHaveLength(0);
+    expect(getIndexedCells([], 10, 1)).toHaveLength(10);
+    expect(getIndexedCells([], 1, 10)).toHaveLength(10);
   });
 
-  it("result array should contain values", () => {
-    expect(getIndexedActiveCells(activeCells)[2][3]).toBe(true);
-    expect(getIndexedActiveCells(activeCells)[3][5]).toBe(true);
+  it("result array should contain 1", () => {
+    /**
+    {
+      x: 5,
+      y: 3,
+    }
+     */
+    expect(getIndexedCells(activeCells, 10, 10)[3 * 10 + 5]).toBe(1);
+    /**
+    {
+      x: 8,
+      y: 3,
+    }
+     */
+    expect(getIndexedCells(activeCells, 10, 10)[3 * 10 + 8]).toBe(1);
+    /**
+     {
+      x: 3,
+      y: 2,
+    }
+     */
+    expect(getIndexedCells(activeCells, 10, 10)[2 * 10 + 3]).toBe(1);
+    /**
+     {
+      x: 3,
+      y: 3,
+    }
+     */
+    expect(getIndexedCells(activeCells, 10, 10)[3 * 10 + 3]).toBe(1);
   });
 
-  it("result array should not contain values", () => {
-    expect(getIndexedActiveCells(activeCells)[1]).toBe(undefined);
-    expect(getIndexedActiveCells(activeCells)[3][6]).toBe(undefined);
+  it("result array should contain 0", () => {
+    expect(getIndexedCells(activeCells, 10, 10)[15]).toBe(0);
+    expect(getIndexedCells(activeCells, 10, 10)[32]).toBe(0);
+    expect(getIndexedCells(activeCells, 10, 10)[44]).toBe(0);
+    expect(getIndexedCells(activeCells, 10, 10)[99]).toBe(0);
   });
 });

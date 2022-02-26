@@ -7,8 +7,9 @@ export {
   resetCells,
   startGame,
   stopGame,
+  generateRandom,
   defaultGameFieldState,
 } from "./slice";
-export { selectActiveCellsIndexed, getIndexedActiveCells } from "./selectors";
+export { selectIndexedCells, getIndexedCells } from "./selectors";
 export type { IGameFieldProps } from "./GameField";
 export type { IGameFieldState } from "./slice";

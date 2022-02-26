@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { BREAKPOINTS } from "@/styles/ui-styled";
 import { COLORS } from "@/styles/ui-styled";
 
 export const FormElement = styled.form`
@@ -10,8 +11,13 @@ export const FormElement = styled.form`
 
   input,
   label,
-  button,
   p {
-    line-height: 1.2;
+    line-height: 1;
+  }
+
+  .field-error-msg {
+    @media screen and (max-width: ${BREAKPOINTS.mobileEnd}) {
+      position: static;
+    }
   }
 `;

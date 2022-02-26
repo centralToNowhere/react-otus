@@ -51,7 +51,7 @@ export const RegistrationForm: FC<IRegistrationFormProps> = (props) => {
         width: 100%;
         max-width: 600px;
         flex-direction: row;
-        font-size: 1rem;
+        font-size: 1.2rem;
         margin: 0 0 20px 0;
 
         @media screen and (max-width: ${BREAKPOINTS.mobileEnd}) {
@@ -77,6 +77,7 @@ export const RegistrationForm: FC<IRegistrationFormProps> = (props) => {
             css={css`
               width: 100%;
             `}
+            autoComplete={"off"}
             id={"register-player-input"}
             value={playerName || ""}
             onChange={onPlayerNameChange}

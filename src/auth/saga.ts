@@ -1,4 +1,12 @@
-import { call, put, select, takeEvery } from "redux-saga/effects";
+import {
+  call,
+  put,
+  select,
+  takeEvery,
+  CallEffect,
+  PutEffect,
+  SelectEffect,
+} from "redux-saga/effects";
 import { clearPlayerData, persistPlayer } from "@/storage";
 import { IPlayer } from "@/player/Player";
 import {
@@ -11,8 +19,12 @@ import {
   selectPlayerName,
 } from "@/auth";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const onLogin = function* (): Generator<any, void, any> {
+export const onLogin = function* (): Generator<
+  CallEffect | PutEffect | SelectEffect,
+  void,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  any
+> {
   const playerName: string = yield select(selectPlayerName);
   let player: IPlayer;
 

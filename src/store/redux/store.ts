@@ -5,12 +5,14 @@ import { fork } from "redux-saga/effects";
 import { gameFieldSlice } from "@/components/GameField";
 import { fieldControlSlice, fieldControlSaga } from "@/components/Fields";
 import { authSlice, authSaga } from "@/auth";
+import { gameSaga } from "@/screens/Game/saga";
 
 const sagaMiddleware = createSagaMiddleware();
 
 const rootSaga = function* () {
   yield fork(fieldControlSaga);
   yield fork(authSaga);
+  yield fork(gameSaga);
 };
 
 export const store = configureStore({

@@ -1,7 +1,6 @@
-import { ICell } from "@/components/Cell";
+import { ICell } from "@/Cell/Cell";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getInitialCells } from "@/utils/CellGenerator";
-import { fieldHeight, fieldWidth } from "@/utils";
 import { initialState as FieldControlInitialState } from "@/components/Fields/slice";
 import { getDataFromStorage } from "@/storage";
 
@@ -17,12 +16,19 @@ export const defaultGameFieldState: IGameFieldState = {
 
 const storageData = getDataFromStorage();
 
+const w =
+  storageData?.fieldControl?.maxFieldWidth ||
+  FieldControlInitialState.maxFieldWidth;
+const h =
+  storageData?.fieldControl?.maxFieldHeight ||
+  FieldControlInitialState.maxFieldHeight;
+const cellSize =
+  storageData?.fieldControl?.cellSize || FieldControlInitialState.cellSize;
+
+const initialCells = getInitialCells(w, h, cellSize);
+
 const initialState: IGameFieldState = {
-  activeCells: getInitialCells(
-    storageData?.fieldControl?.maxFieldWidth || fieldWidth,
-    storageData?.fieldControl?.maxFieldHeight || fieldHeight,
-    FieldControlInitialState.cellSize
-  ),
+  activeCells: initialCells,
   gameInProgress: false,
 };
 
@@ -51,6 +57,9 @@ export const gameFieldSlice = createSlice({
     stopGame: (state) => {
       state.gameInProgress = false;
     },
+    generateRandom: (state) => {
+      return state;
+    },
   },
 });
 
@@ -61,4 +70,5 @@ export const {
   resetCells,
   startGame,
   stopGame,
+  generateRandom,
 } = gameFieldSlice.actions;

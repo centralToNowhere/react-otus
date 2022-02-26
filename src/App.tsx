@@ -12,13 +12,15 @@ import { Provider } from "react-redux";
 export const App: FC = () => {
   return (
     <ErrorBoundary>
-      <Provider store={store}>
-        <AppBox data-testid={"react-lifecycle"}>
-          <BrowserRouter basename={basename}>
-            <AppRouter />
-          </BrowserRouter>
-        </AppBox>
-      </Provider>
+      <React.StrictMode>
+        <Provider store={store}>
+          <AppBox data-testid={"react-lifecycle"}>
+            <BrowserRouter basename={basename}>
+              <AppRouter />
+            </BrowserRouter>
+          </AppBox>
+        </Provider>
+      </React.StrictMode>
     </ErrorBoundary>
   );
 };
@@ -26,6 +28,7 @@ export const App: FC = () => {
 export const AppBox = styled.div`
   min-height: 100vh;
   background: ${COLORS.secondary};
+  line-height: 1;
 
   & p {
     margin-bottom: 0;

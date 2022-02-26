@@ -19,3 +19,10 @@ export const selectCellsInCol = createSelector(
     return Math.floor(fieldControl.maxFieldHeight / fieldControl.cellSize);
   }
 );
+
+export const selectGameCycleDelay = createSelector(
+  selectFieldControl,
+  (fieldControl: IFieldControlState) => {
+    return 1000 / fieldControl.speed;
+  }
+);

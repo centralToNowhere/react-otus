@@ -9,6 +9,7 @@ export const useDebounce = <T>(
   callback: (value: T) => void,
   delay = 1000
 ): Debounced<T> => {
+  // useMemo for preventing timeout clearing on every character input
   return useMemo<Debounced<T>>(() => {
     let timeout: ReturnType<typeof window.setTimeout> | null = null;
 
