@@ -67,12 +67,6 @@ describe("FieldMaxWidth tests", () => {
         cellSize: 100,
         maxCellsAmount: 10,
       },
-      {
-        maxFieldWidth: "0",
-        maxFieldHeight: 100,
-        cellSize: 100,
-        maxCellsAmount: 100,
-      },
     ].forEach((settings) => {
       it(`width: ${settings.maxFieldWidth},
       height: ${settings.maxFieldHeight},
@@ -136,6 +130,18 @@ describe("FieldMaxWidth tests", () => {
         maxFieldWidth: "300",
         maxFieldHeight: 100,
         cellSize: 5,
+        maxCellsAmount: 100,
+      },
+      {
+        maxFieldWidth: "0",
+        maxFieldHeight: 100,
+        cellSize: 100,
+        maxCellsAmount: 100,
+      },
+      {
+        maxFieldWidth: "99",
+        maxFieldHeight: 100,
+        cellSize: 100,
         maxCellsAmount: 100,
       },
     ].forEach((settings) => {

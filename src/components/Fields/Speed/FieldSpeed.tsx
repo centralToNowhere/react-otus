@@ -20,13 +20,12 @@ export const FieldSpeed: React.FC<IFieldProps> = (props) => {
   const [speedString, setSpeedString] = useState<string>(props.value);
   const [error, setError] = useState({
     show: false,
-    msg: "Expected positive number",
+    msg: "",
   });
 
   const speedValidator: FieldValidator = useMemo(
     () => ({
-      validator: (value: unknown): boolean =>
-        isValidPositiveNumericString(value),
+      validator: (value: unknown) => isValidPositiveNumericString(value),
       setError,
     }),
     []
