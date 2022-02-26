@@ -66,12 +66,12 @@ export const gameCycle = function* (): Generator<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   any
 > {
-  const gameCycleDelay: number = yield select(selectGameCycleDelay);
+  while (true) {
+    const gameCycleDelay: number = yield select(selectGameCycleDelay);
 
-  yield call(setNewGeneration);
-  yield delay(gameCycleDelay);
-
-  yield call(gameCycle);
+    yield call(setNewGeneration);
+    yield delay(gameCycleDelay);
+  }
 };
 
 export const gameSaga = function* () {
