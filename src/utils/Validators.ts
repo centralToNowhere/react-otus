@@ -10,30 +10,56 @@ export const isValidNumericString = (
   );
 };
 
-export const isValidCellSizeString = (cellSizeString: unknown): boolean => {
+export const isValidCellSizeString = (
+  cellSizeString: unknown
+): string | true => {
   return (
-    isValidNumericString(cellSizeString) &&
-    Number(cellSizeString) % 1 === 0 &&
-    Number(cellSizeString) > 0
+    (isValidNumericString(cellSizeString) === true &&
+      Number(cellSizeString) % 1 === 0 &&
+      Number(cellSizeString) > 0) ||
+    "Expected positive number."
   );
 };
 
-export const isValidCellsAmount = (
+export const isValidCellsAmountMax = (
   cellSize: number,
   fieldMaxWidth: number,
   fieldMaxHeight: number
-) => {
+): string | true => {
   const cellsAmount =
     Math.floor(fieldMaxWidth / cellSize) *
     Math.floor(fieldMaxHeight / cellSize);
 
-  return cellsAmount <= maxCellsAmount;
+  return (
+    cellsAmount <= maxCellsAmount ||
+    `Maximum cells amount exceeded - ${maxCellsAmount}.`
+  );
 };
 
-export const isValidPositiveNumericString = (str: unknown): boolean => {
-  return isValidNumericString(str) && Number(str) > 0;
+export const isAtLeastOneCellDisplayed = (
+  cellSize: number,
+  fieldMaxWidth: number,
+  fieldMaxHeight: number
+): string | true => {
+  const cellsAmount =
+    Math.floor(fieldMaxWidth / cellSize) *
+    Math.floor(fieldMaxHeight / cellSize);
+
+  return cellsAmount > 0 || "At least one cell should be displayed.";
 };
 
-export const isValidNonNegativeNumericString = (str: unknown): boolean => {
-  return isValidNumericString(str) && Number(str) >= 0;
+export const isValidPositiveNumericString = (str: unknown): string | true => {
+  return (
+    (isValidNumericString(str) && Number(str) > 0) ||
+    "Expected positive number."
+  );
+};
+
+export const isValidNonNegativeNumericString = (
+  str: unknown
+): string | true => {
+  return (
+    (isValidNumericString(str) && Number(str) >= 0) ||
+    "Expected non-negative number."
+  );
 };

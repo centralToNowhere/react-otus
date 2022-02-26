@@ -1,11 +1,15 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { BREAKPOINTS } from "@/styles/ui-styled";
 
 export interface IFieldErrorProps {
   show: boolean;
   msg: string;
 }
+
+export const initialErrorProps = {
+  show: false,
+  msg: "",
+};
 
 export const mergeErrorMessages = (
   errors: Array<{
@@ -39,10 +43,7 @@ const ErrorContainer = styled.div`
   position: relative;
 
   .field-error-msg {
+    white-space: pre-wrap;
     color: red;
-
-    @media screen and (min-width: ${BREAKPOINTS.mobileEnd}) {
-      position: absolute;
-    }
   }
 `;

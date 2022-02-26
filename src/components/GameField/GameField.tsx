@@ -134,11 +134,12 @@ const StyledGameField = styled.div<IFieldStyledContainerProps>`
       props.cellsInRow * props.cellsInCol < 1000
         ? "0.5s ease background"
         : "none"};
-    width: ${(props) => (props.cellSize - 2 ? props.cellSize : 10)}px;
-    height: ${(props) => (props.cellSize - 2 ? props.cellSize : 10)}px;
+    width: ${(props) => (props.cellSize ? props.cellSize : 10)}px;
+    height: ${(props) => (props.cellSize ? props.cellSize : 10)}px;
     line-height: ${(props) => props.cellSize}px;
     text-align: center;
-    border: 1px solid ${COLORS.secondary};
+    border: ${(props) =>
+      props.cellSize > 2 ? `1px solid ${COLORS.secondary}` : "none"};
   }
 
   .cell-active {

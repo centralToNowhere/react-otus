@@ -2,7 +2,7 @@ import { Callback } from "@/components/Form/FormContainer";
 import React, { useCallback } from "react";
 
 export interface FieldValidator {
-  validator: (value: string) => boolean;
+  validator: (value: string) => string | true;
   setError: React.Dispatch<
     React.SetStateAction<{ show: boolean; msg: string }>
   >;
@@ -35,19 +35,21 @@ const validate = (
   let validatorsSucceeded = 0;
 
   fieldValidators.forEach((fieldValidator) => {
-    if (fieldValidator.validator(value)) {
+    const validationResult = fieldValidator.validator(value);
+
+    if (validationResult === true) {
       validatorsSucceeded++;
-      fieldValidator.setError((prevState) => {
+      fieldValidator.setError(() => {
         return {
-          ...prevState,
           show: false,
+          msg: "",
         };
       });
     } else {
-      fieldValidator.setError((prevState) => {
+      fieldValidator.setError(() => {
         return {
-          ...prevState,
           show: true,
+          msg: validationResult,
         };
       });
     }

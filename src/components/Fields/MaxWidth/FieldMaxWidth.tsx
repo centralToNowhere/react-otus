@@ -9,13 +9,15 @@ import {
 } from "@/components/Fields";
 import {
   FieldError,
+  initialErrorProps,
   mergeErrorMessages,
 } from "@/components/Fields/FieldError/FieldError";
 import { FormContainer, IFieldProps } from "@/components/Form";
 import {
   useDebounce,
   isValidNonNegativeNumericString,
-  isValidCellsAmount,
+  isValidCellsAmountMax,
+  isAtLeastOneCellDisplayed,
 } from "@/utils";
 import {
   onDirtyBlurHandler,
@@ -23,7 +25,6 @@ import {
 } from "@/components/Fields/FieldHandlers";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/redux/store";
-import { maxCellsAmount } from "@/Cell/Cell";
 
 export const FieldMaxWidth: React.FC<IFieldProps> = (props) => {
   const [maxFieldWidthString, setMaxFieldWidthString] = useState<string>(
@@ -38,29 +39,39 @@ export const FieldMaxWidth: React.FC<IFieldProps> = (props) => {
   );
 
   const [notNonNegativeError, setNonNegativeError] = useState({
-    show: false,
-    msg: "Expected non-negative number",
+    ...initialErrorProps,
   });
 
-  const [cellsAmountError, setCellsAmountError] = useState({
-    show: false,
-    msg: `Maximum cells amount - ${maxCellsAmount}`,
+  const [cellsAmountMaxError, setCellsAmountMaxError] = useState({
+    ...initialErrorProps,
+  });
+
+  const [cellsAmountMinError, setCellsAmountMinError] = useState({
+    ...initialErrorProps,
   });
 
   const maxWidthValidator: FieldValidator = useMemo(
     () => ({
-      validator: (value: unknown): boolean =>
-        isValidNonNegativeNumericString(value),
+      validator: (value: unknown) => isValidNonNegativeNumericString(value),
       setError: setNonNegativeError,
     }),
     []
   );
 
-  const cellsAmountValidator: FieldValidator = useMemo(
+  const cellsAmountMaxValidator: FieldValidator = useMemo(
     () => ({
       validator: (value: string) =>
-        isValidCellsAmount(cellSize, Number(value), fieldMaxHeight),
-      setError: setCellsAmountError,
+        isValidCellsAmountMax(cellSize, Number(value), fieldMaxHeight),
+      setError: setCellsAmountMaxError,
+    }),
+    [fieldMaxHeight, cellSize]
+  );
+
+  const cellsAmountMinValidator: FieldValidator = useMemo(
+    () => ({
+      validator: (value: string) =>
+        isAtLeastOneCellDisplayed(cellSize, Number(value), fieldMaxHeight),
+      setError: setCellsAmountMinError,
     }),
     [fieldMaxHeight, cellSize]
   );
@@ -69,8 +80,12 @@ export const FieldMaxWidth: React.FC<IFieldProps> = (props) => {
     useOnChangeHandler(
       props.onChange,
       useMemo(
-        () => [maxWidthValidator, cellsAmountValidator],
-        [maxWidthValidator, cellsAmountValidator]
+        () => [
+          maxWidthValidator,
+          cellsAmountMinValidator,
+          cellsAmountMaxValidator,
+        ],
+        [maxWidthValidator, cellsAmountMinValidator, cellsAmountMaxValidator]
       ),
       setMaxFieldWidthString
     ),
@@ -84,9 +99,11 @@ export const FieldMaxWidth: React.FC<IFieldProps> = (props) => {
 
   const onBlur = onDirtyBlurHandler((value) => {
     onChangeDebounced.clear();
-    onBlurHandler(props.onChange, [maxWidthValidator, cellsAmountValidator])(
-      value
-    );
+    onBlurHandler(props.onChange, [
+      maxWidthValidator,
+      cellsAmountMinValidator,
+      cellsAmountMaxValidator,
+    ])(value);
   });
 
   useEffect(() => {
@@ -111,8 +128,16 @@ export const FieldMaxWidth: React.FC<IFieldProps> = (props) => {
         onBlur={onBlur}
       />
       <FieldError
-        show={notNonNegativeError.show || cellsAmountError.show}
-        msg={mergeErrorMessages([notNonNegativeError, cellsAmountError])}
+        show={
+          notNonNegativeError.show ||
+          cellsAmountMinError.show ||
+          cellsAmountMaxError.show
+        }
+        msg={mergeErrorMessages([
+          notNonNegativeError,
+          cellsAmountMinError,
+          cellsAmountMaxError,
+        ])}
       />
     </FormField>
   );

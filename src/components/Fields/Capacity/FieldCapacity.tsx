@@ -21,13 +21,12 @@ export const FieldCapacity: React.FC<IFieldProps> = (props) => {
   const [capacityString, setCapacityString] = useState<string>(props.value);
   const [error, setError] = useState({
     show: false,
-    msg: "Expected non-negative number",
+    msg: "",
   });
 
   const capacityValidator: FieldValidator = useMemo(
     () => ({
-      validator: (value: unknown): boolean =>
-        isValidNonNegativeNumericString(value),
+      validator: (value: unknown) => isValidNonNegativeNumericString(value),
       setError,
     }),
     []
