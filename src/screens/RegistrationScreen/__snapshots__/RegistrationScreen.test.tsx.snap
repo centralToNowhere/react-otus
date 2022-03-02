@@ -170,10 +170,8 @@ exports[`Registration screen tests should render registration screen 1`] = `
   line-height: 1;
 }
 
-@media screen and (max-width: 480px) {
-  .emotion-13 .field-error-msg {
-    position: static;
-  }
+.emotion-13.game-settings-form .field-error-msg {
+  background: #e8d5f0;
 }
 
 @media screen and (max-width: 480px) {
@@ -216,17 +214,6 @@ exports[`Registration screen tests should render registration screen 1`] = `
   min-width: 100px;
 }
 
-.emotion-15 div.error-container {
-  position: relative;
-}
-
-.emotion-15 p.error-msg {
-  position: absolute;
-  line-height: 1em;
-  font-size: 1em;
-  color: red;
-}
-
 .emotion-17 {
   margin-bottom: 20px;
 }
@@ -237,9 +224,8 @@ exports[`Registration screen tests should render registration screen 1`] = `
 
 .emotion-20 {
   background: inherit;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
+  border: 0;
+  border-bottom: 2px solid;
   border-color: #6a6d75;
   display: block;
   outline: 0;

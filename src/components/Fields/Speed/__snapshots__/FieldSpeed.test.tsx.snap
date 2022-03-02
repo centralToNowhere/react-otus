@@ -26,26 +26,14 @@ exports[`FieldSpeed tests should render speed input 1`] = `
   min-width: 100px;
 }
 
-.emotion-0 div.error-container {
-  position: relative;
-}
-
-.emotion-0 p.error-msg {
-  position: absolute;
-  line-height: 1em;
-  font-size: 1em;
-  color: red;
-}
-
 .emotion-2 {
   display: inline;
 }
 
 .emotion-4 {
   background: inherit;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
+  border: 0;
+  border-bottom: 2px solid;
   border-color: #6a6d75;
   display: block;
   outline: 0;
@@ -70,10 +58,9 @@ exports[`FieldSpeed tests should render speed input 1`] = `
       class="emotion-4 emotion-5"
       id="speed-change"
       name="speedChange"
-      pattern="([0-9]*[.])?[0-9]+"
       step="0.1"
       type="number"
-      value="2"
+      value="4"
     />
   </div>
 </DocumentFragment>

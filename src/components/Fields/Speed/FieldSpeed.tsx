@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from "react";
 import { l10n } from "@/l10n/ru";
 import {
   FieldValidator,
-  InputPatterns,
   onBlurHandler,
   useOnChangeHandler,
 } from "@/components/Fields";
@@ -12,12 +11,16 @@ import { FieldError } from "@/components/Fields/FieldError/FieldError";
 import { FormContainer, IFieldProps } from "@/components/Form";
 import { useDebounce, isValidPositiveNumericString } from "@/utils";
 import {
-  onDirtyBlurHandler,
-  onDirtyChangeHandler,
+  onRawBlurHandler,
+  onRawChangeHandler,
+  preventNegativeNumbers,
 } from "@/components/Fields/FieldHandlers";
 
-export const FieldSpeed: React.FC<IFieldProps> = (props) => {
-  const [speedString, setSpeedString] = useState<string>(props.value);
+export const FieldSpeed: React.FC<
+  IFieldProps<{
+    rawSpeed: string;
+  }>
+> = (props) => {
   const [error, setError] = useState({
     show: false,
     msg: "",
@@ -32,16 +35,16 @@ export const FieldSpeed: React.FC<IFieldProps> = (props) => {
   );
 
   const onChangeDebounced = useDebounce<string>(
-    useOnChangeHandler(props.onChange, speedValidator, setSpeedString),
+    useOnChangeHandler(props.onChange, speedValidator, props.onRawChange),
     FormContainer.inputDelay
   );
 
-  const onChange = onDirtyChangeHandler((value: string) => {
-    setSpeedString(value);
+  const onChange = onRawChangeHandler((value: string) => {
+    props.onRawChange(value);
     onChangeDebounced(value);
   });
 
-  const onBlur = onDirtyBlurHandler((value: string) => {
+  const onBlur = onRawBlurHandler((value: string) => {
     onChangeDebounced.clear();
     onBlurHandler(props.onChange, speedValidator)(value);
   });
@@ -58,12 +61,12 @@ export const FieldSpeed: React.FC<IFieldProps> = (props) => {
       <InputField
         id="speed-change"
         type="number"
-        pattern={InputPatterns.float}
         step="0.1"
         name="speedChange"
-        value={speedString}
+        value={props.formRawData.rawSpeed}
         autoComplete="off"
         onChange={onChange}
+        onKeyDown={preventNegativeNumbers}
         onBlur={onBlur}
       />
       <FieldError show={error.show} msg={error.msg} />

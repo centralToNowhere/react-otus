@@ -7,14 +7,23 @@ export default {
   title: "Components/FieldSpeed",
   component: FieldSpeed,
   args: {
-    value: "2",
+    formRawData: {
+      rawSpeed: "2",
+    },
+    onRawChange: () => {
+      // empty function
+    },
     onChange: () => {
       // empty function
     },
   },
 } as Meta;
 
-const Template: Story<IFieldProps> = (args: IFieldProps) => {
+const Template: Story<
+  IFieldProps<{
+    rawSpeed: string;
+  }>
+> = (args) => {
   return <FieldSpeed {...args} />;
 };
 

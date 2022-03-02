@@ -9,14 +9,29 @@ export default {
   title: "Components/FieldCellSize",
   component: FieldCellSize,
   args: {
-    value: "40",
+    formRawData: {
+      rawMaxWidth: "500",
+      rawMaxHeight: "500",
+      rawCellSize: "40",
+      highlight: false,
+    },
+    onRawChange: () => {
+      // empty function
+    },
     onChange: () => {
       // empty function
     },
   },
 } as Meta;
 
-const Template: Story<IFieldProps> = (args: IFieldProps) => {
+const Template: Story<
+  IFieldProps<{
+    rawMaxWidth: string;
+    rawMaxHeight: string;
+    rawCellSize: string;
+    highlight: boolean;
+  }>
+> = (args) => {
   return (
     <Provider store={store}>
       <FieldCellSize {...args} />

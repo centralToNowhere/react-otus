@@ -7,14 +7,23 @@ export default {
   title: "Components/FieldCapacity",
   component: FieldCapacity,
   args: {
-    value: "50",
+    formRawData: {
+      rawCapacity: "50",
+    },
+    onRawChange: () => {
+      // empty function
+    },
     onChange: () => {
       // empty function
     },
   },
 } as Meta;
 
-const Template: Story<IFieldProps> = (args: IFieldProps) => {
+const Template: Story<
+  IFieldProps<{
+    rawCapacity: string;
+  }>
+> = (args) => {
   return <FieldCapacity {...args} />;
 };
 

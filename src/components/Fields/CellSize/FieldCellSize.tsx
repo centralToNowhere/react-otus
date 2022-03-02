@@ -8,44 +8,27 @@ import {
   FieldValidator,
 } from "@/components/Fields";
 import { FormField } from "@/components/Form/FormField";
-import { InputPatterns } from "@/components/Fields";
 import {
   FieldError,
   initialErrorProps,
-  mergeErrorMessages,
 } from "@/components/Fields/FieldError/FieldError";
 import { FormContainer, IFieldProps } from "@/components/Form";
+import { useDebounce, isValidCellSizeString } from "@/utils";
 import {
-  useDebounce,
-  isValidCellSizeString,
-  isValidCellsAmountMax,
-  isAtLeastOneCellDisplayed,
-} from "@/utils";
-import {
-  onDirtyBlurHandler,
-  onDirtyChangeHandler,
+  onRawBlurHandler,
+  onRawChangeHandler,
+  preventNegativeNumbers,
 } from "@/components/Fields/FieldHandlers";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store/redux/store";
 
-export const FieldCellSize: React.FC<IFieldProps> = (props) => {
-  const [cellSizeString, setCellSizeString] = useState<string>(props.value);
-  const fieldMaxWidth = useSelector(
-    (state: RootState) => state.fieldControl.maxFieldWidth
-  );
-  const fieldMaxHeight = useSelector(
-    (state: RootState) => state.fieldControl.maxFieldHeight
-  );
-
+export const FieldCellSize: React.FC<
+  IFieldProps<{
+    rawMaxWidth: string;
+    rawMaxHeight: string;
+    rawCellSize: string;
+    highlight: boolean;
+  }>
+> = (props) => {
   const [cellSizeError, setCellSizeError] = useState({
-    ...initialErrorProps,
-  });
-
-  const [cellsAmountMaxError, setCellsAmountMaxError] = useState({
-    ...initialErrorProps,
-  });
-
-  const [cellsAmountMinError, setCellsAmountMinError] = useState({
     ...initialErrorProps,
   });
 
@@ -57,52 +40,39 @@ export const FieldCellSize: React.FC<IFieldProps> = (props) => {
     []
   );
 
-  const cellsAmountMaxValidator: FieldValidator = useMemo(
-    () => ({
-      validator: (value: string) =>
-        isValidCellsAmountMax(Number(value), fieldMaxWidth, fieldMaxHeight),
-      setError: setCellsAmountMaxError,
-    }),
-    [fieldMaxWidth, fieldMaxHeight]
-  );
+  const formValidator = props.formValidator;
 
-  const cellsAmountMinValidator: FieldValidator = useMemo(
+  const cellsAmountValidator: FieldValidator = useMemo(
     () => ({
-      validator: (value: string) =>
-        isAtLeastOneCellDisplayed(Number(value), fieldMaxWidth, fieldMaxHeight),
-      setError: setCellsAmountMinError,
+      validator: () => {
+        return formValidator ? formValidator() || "" : "";
+      },
     }),
-    [fieldMaxWidth, fieldMaxHeight]
+    [formValidator]
   );
 
   const onChangeDebounced = useDebounce<string>(
     useOnChangeHandler(
       props.onChange,
       useMemo(
-        () => [
-          cellSizeValidator,
-          cellsAmountMinValidator,
-          cellsAmountMaxValidator,
-        ],
-        [cellSizeValidator, cellsAmountMinValidator, cellsAmountMaxValidator]
+        () => [cellSizeValidator, cellsAmountValidator],
+        [cellSizeValidator, cellsAmountValidator]
       ),
-      setCellSizeString
+      props.onRawChange
     ),
     FormContainer.inputDelay
   );
 
-  const onChange = onDirtyChangeHandler((value) => {
-    setCellSizeString(value);
+  const onChange = onRawChangeHandler((value) => {
+    props.onRawChange(value);
     onChangeDebounced(value);
   });
 
-  const onBlur = onDirtyBlurHandler((value) => {
+  const onBlur = onRawBlurHandler((value) => {
     onChangeDebounced.clear();
-    onBlurHandler(props.onChange, [
-      cellSizeValidator,
-      cellsAmountMinValidator,
-      cellsAmountMaxValidator,
-    ])(value);
+    onBlurHandler(props.onChange, [cellSizeValidator, cellsAmountValidator])(
+      value
+    );
   });
 
   useEffect(() => {
@@ -117,26 +87,16 @@ export const FieldCellSize: React.FC<IFieldProps> = (props) => {
       <InputField
         id="cell-size"
         type="number"
-        pattern={InputPatterns.number}
         step="1"
         name="cellSize"
-        value={cellSizeString}
+        value={props.formRawData.rawCellSize}
         autoComplete="off"
         onChange={onChange}
+        onKeyDown={preventNegativeNumbers}
         onBlur={onBlur}
+        highlight={props.formRawData.highlight}
       />
-      <FieldError
-        show={
-          cellSizeError.show ||
-          cellsAmountMinError.show ||
-          cellsAmountMaxError.show
-        }
-        msg={mergeErrorMessages([
-          cellSizeError,
-          cellsAmountMinError,
-          cellsAmountMaxError,
-        ])}
-      />
+      <FieldError show={cellSizeError.show} msg={cellSizeError.msg} />
     </FormField>
   );
 };

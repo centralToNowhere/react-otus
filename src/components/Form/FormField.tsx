@@ -12,15 +12,4 @@ export const FormField = styled.div`
     margin: 5px 0 0 0;
     min-width: 100px;
   }
-
-  div.error-container {
-    position: relative;
-  }
-
-  p.error-msg {
-    position: absolute;
-    line-height: 1em;
-    font-size: 1em;
-    color: red;
-  }
 `;

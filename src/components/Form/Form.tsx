@@ -1,29 +1,13 @@
 import React from "react";
 import { FormElement } from "@/components/Form/FormElement";
 import { FormGroup } from "@/components/Form/FormGroup";
-import {
-  FieldCapacity,
-  FieldCellSize,
-  FieldMaxHeight,
-  FieldMaxWidth,
-  FieldSpeed,
-} from "@/components/Fields";
-import { ButtonGameControl } from "@/components/Buttons";
-import { l10n } from "@/l10n/ru";
+import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
+import { FormError } from "@/components/Form/FormError";
 
 export interface IFormProps {
-  maxFieldWidth: number;
-  maxFieldHeight: number;
-  capacity: number;
-  speed: number;
-  cellSize: number;
-  setCellSize: (value: string) => void;
-  setMaxFieldWidth: (value: string) => void;
-  setMaxFieldHeight: (value: string) => void;
-  setCapacity: (value: string) => void;
-  setSpeed: (value: string) => void;
-  onButtonClickFn: (e: React.SyntheticEvent<HTMLButtonElement>) => void;
-  gameInProgress: boolean;
+  fields: ReactJSXElement;
+  buttons: ReactJSXElement;
+  error: ReactJSXElement | null;
 }
 
 export class Form extends React.Component<IFormProps> {
@@ -35,63 +19,9 @@ export class Form extends React.Component<IFormProps> {
     return (
       <FormElement className="game-settings-form" data-testid={"field-form"}>
         <input autoComplete="off" hidden />
-        <FormGroup>
-          <FieldMaxWidth
-            value={String(this.props.maxFieldWidth)}
-            onChange={this.props.setMaxFieldWidth}
-          />
-
-          <FieldMaxHeight
-            value={String(this.props.maxFieldHeight)}
-            onChange={this.props.setMaxFieldHeight}
-          />
-
-          <FieldCellSize
-            value={String(this.props.cellSize)}
-            onChange={this.props.setCellSize}
-          />
-
-          <FieldCapacity
-            value={String(this.props.capacity)}
-            onChange={this.props.setCapacity}
-          />
-
-          <FieldSpeed
-            value={String(this.props.speed)}
-            onChange={this.props.setSpeed}
-          />
-        </FormGroup>
-
-        <FormGroup>
-          <ButtonGameControl
-            type={"button"}
-            onClick={this.props.onButtonClickFn}
-            name={"startButton"}
-            content={l10n.buttonStart}
-            disabled={this.props.gameInProgress}
-          />
-
-          <ButtonGameControl
-            type={"button"}
-            onClick={this.props.onButtonClickFn}
-            name={"stopButton"}
-            content={l10n.buttonStop}
-          />
-
-          <ButtonGameControl
-            type={"reset"}
-            onClick={this.props.onButtonClickFn}
-            name={"resetButton"}
-            content={l10n.buttonReset}
-          />
-
-          <ButtonGameControl
-            type={"button"}
-            onClick={this.props.onButtonClickFn}
-            name={"generateRandomButton"}
-            content={l10n.buttonGenerateRandom}
-          />
-        </FormGroup>
+        {this.props.error && <FormError>{this.props.error}</FormError>}
+        <FormGroup>{this.props.fields}</FormGroup>
+        <FormGroup>{this.props.buttons}</FormGroup>
       </FormElement>
     );
   }

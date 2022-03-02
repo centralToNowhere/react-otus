@@ -180,10 +180,8 @@ exports[`index tests should render App 1`] = `
   line-height: 1;
 }
 
-@media screen and (max-width: 480px) {
-  .emotion-15 .field-error-msg {
-    position: static;
-  }
+.emotion-15.game-settings-form .field-error-msg {
+  background: #e8d5f0;
 }
 
 @media screen and (max-width: 480px) {
@@ -226,17 +224,6 @@ exports[`index tests should render App 1`] = `
   min-width: 100px;
 }
 
-.emotion-17 div.error-container {
-  position: relative;
-}
-
-.emotion-17 p.error-msg {
-  position: absolute;
-  line-height: 1em;
-  font-size: 1em;
-  color: red;
-}
-
 .emotion-19 {
   margin-bottom: 20px;
 }
@@ -247,9 +234,8 @@ exports[`index tests should render App 1`] = `
 
 .emotion-22 {
   background: inherit;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
+  border: 0;
+  border-bottom: 2px solid;
   border-color: #6a6d75;
   display: block;
   outline: 0;
