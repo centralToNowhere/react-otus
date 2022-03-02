@@ -45,5 +45,6 @@ const ErrorContainer = styled.div`
   .field-error-msg {
     white-space: pre-wrap;
     color: red;
+    position: absolute;
   }
 `;

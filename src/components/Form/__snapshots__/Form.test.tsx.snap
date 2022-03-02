@@ -21,10 +21,8 @@ exports[`form tests should render form 1`] = `
   line-height: 1;
 }
 
-@media screen and (max-width: 480px) {
-  .emotion-0 .field-error-msg {
-    position: static;
-  }
+.emotion-0.game-settings-form .field-error-msg {
+  background: #e8d5f0;
 }
 
 .emotion-2 {
@@ -65,26 +63,14 @@ exports[`form tests should render form 1`] = `
   min-width: 100px;
 }
 
-.emotion-4 div.error-container {
-  position: relative;
-}
-
-.emotion-4 p.error-msg {
-  position: absolute;
-  line-height: 1em;
-  font-size: 1em;
-  color: red;
-}
-
 .emotion-6 {
   display: inline;
 }
 
 .emotion-8 {
   background: inherit;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
+  border: 0;
+  border-bottom: 2px solid;
   border-color: #6a6d75;
   display: block;
   outline: 0;
@@ -97,9 +83,8 @@ exports[`form tests should render form 1`] = `
 
 .emotion-26 {
   background: inherit;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
+  border: 0;
+  border-bottom: 2px solid;
   border-color: #6a6d75;
   display: block;
   outline: 0;
@@ -155,10 +140,9 @@ exports[`form tests should render form 1`] = `
           class="emotion-8 emotion-9"
           id="field-width"
           name="fieldWidth"
-          pattern="([0-9]*[.])?[0-9]+"
           step="1"
           type="number"
-          value="600"
+          value="1920"
         />
       </div>
       <div
@@ -175,10 +159,9 @@ exports[`form tests should render form 1`] = `
           class="emotion-8 emotion-9"
           id="field-height"
           name="fieldHeight"
-          pattern="([0-9]*[.])?[0-9]+"
           step="1"
           type="number"
-          value="400"
+          value="474"
         />
       </div>
       <div
@@ -195,7 +178,6 @@ exports[`form tests should render form 1`] = `
           class="emotion-8 emotion-9"
           id="cell-size"
           name="cellSize"
-          pattern="[0-9]*"
           step="1"
           type="number"
           value="40"
@@ -239,7 +221,6 @@ exports[`form tests should render form 1`] = `
           class="emotion-8 emotion-9"
           id="speed-change"
           name="speedChange"
-          pattern="([0-9]*[.])?[0-9]+"
           step="0.1"
           type="number"
           value="1"

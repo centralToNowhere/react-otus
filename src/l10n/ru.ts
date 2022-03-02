@@ -43,4 +43,10 @@ export const l10n = {
   statistics: "Статистика",
   score: "Очки:",
   clicksCount: "Количество кликов:",
+
+  // Ошибки
+  minCellsAmount: "Размер игрового поля меньше размера ячейки.",
+  maxCellsAmount: "Превышено максимальное количество ячеек",
+  positiveNumber: "Ожидается положительное число.",
+  nonNegativeNumber: "Ожидается неотрицательное число.",
 };

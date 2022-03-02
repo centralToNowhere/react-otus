@@ -9,6 +9,7 @@ exports[`error field tests should show error 1`] = `
 .emotion-0 .field-error-msg {
   white-space: pre-wrap;
   color: red;
+  position: absolute;
 }
 
 <div

@@ -12,13 +12,16 @@ import { FieldError } from "@/components/Fields/FieldError/FieldError";
 import { FormContainer, IFieldProps } from "@/components/Form";
 import { useDebounce, isValidNonNegativeNumericString } from "@/utils";
 import {
-  onDirtyBlurHandler,
-  onDirtyChangeHandler,
+  onRawBlurHandler,
+  onRawChangeHandler,
 } from "@/components/Fields/FieldHandlers";
 import styled from "@emotion/styled";
 
-export const FieldCapacity: React.FC<IFieldProps> = (props) => {
-  const [capacityString, setCapacityString] = useState<string>(props.value);
+export const FieldCapacity: React.FC<
+  IFieldProps<{
+    rawCapacity: string;
+  }>
+> = (props) => {
   const [error, setError] = useState({
     show: false,
     msg: "",
@@ -33,16 +36,16 @@ export const FieldCapacity: React.FC<IFieldProps> = (props) => {
   );
 
   const onChangeDebounced = useDebounce<string>(
-    useOnChangeHandler(props.onChange, capacityValidator, setCapacityString),
+    useOnChangeHandler(props.onChange, capacityValidator, props.onRawChange),
     FormContainer.inputDelay
   );
 
-  const onChange = onDirtyChangeHandler((value) => {
-    setCapacityString(value);
+  const onChange = onRawChangeHandler((value) => {
+    props.onRawChange(value);
     onChangeDebounced(value);
   });
 
-  const onBlur = onDirtyBlurHandler((value) => {
+  const onBlur = onRawBlurHandler((value) => {
     onChangeDebounced.clear();
     onBlurHandler(props.onChange, capacityValidator)(value);
   });
@@ -58,7 +61,7 @@ export const FieldCapacity: React.FC<IFieldProps> = (props) => {
       <LabelField htmlFor="capacity-percentage">
         {l10n.capacityLabel}
       </LabelField>
-      <p>{capacityString} %</p>
+      <p>{props.formRawData.rawCapacity} %</p>
       <InputFieldCapacity
         id="capacity-percentage"
         type="range"
@@ -66,7 +69,7 @@ export const FieldCapacity: React.FC<IFieldProps> = (props) => {
         min="0"
         step="1"
         name="capacityPercentage"
-        value={capacityString}
+        value={props.formRawData.rawCapacity}
         autoComplete="off"
         onChange={onChange}
         onBlur={onBlur}

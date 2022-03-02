@@ -1,4 +1,5 @@
 import { maxCellsAmount } from "@/Cell/Cell";
+import { l10n } from "@/l10n/ru";
 
 export const isValidNumericString = (
   inputString: unknown
@@ -17,7 +18,7 @@ export const isValidCellSizeString = (
     (isValidNumericString(cellSizeString) === true &&
       Number(cellSizeString) % 1 === 0 &&
       Number(cellSizeString) > 0) ||
-    "Expected positive number."
+    l10n.positiveNumber
   );
 };
 
@@ -32,7 +33,7 @@ export const isValidCellsAmountMax = (
 
   return (
     cellsAmount <= maxCellsAmount ||
-    `Maximum cells amount exceeded - ${maxCellsAmount}.`
+    `${l10n.maxCellsAmount} (${maxCellsAmount}).`
   );
 };
 
@@ -45,21 +46,17 @@ export const isAtLeastOneCellDisplayed = (
     Math.floor(fieldMaxWidth / cellSize) *
     Math.floor(fieldMaxHeight / cellSize);
 
-  return cellsAmount > 0 || "At least one cell should be displayed.";
+  return cellsAmount > 0 || l10n.minCellsAmount;
 };
 
 export const isValidPositiveNumericString = (str: unknown): string | true => {
-  return (
-    (isValidNumericString(str) && Number(str) > 0) ||
-    "Expected positive number."
-  );
+  return (isValidNumericString(str) && Number(str) > 0) || l10n.positiveNumber;
 };
 
 export const isValidNonNegativeNumericString = (
   str: unknown
 ): string | true => {
   return (
-    (isValidNumericString(str) && Number(str) >= 0) ||
-    "Expected non-negative number."
+    (isValidNumericString(str) && Number(str) >= 0) || l10n.nonNegativeNumber
   );
 };

@@ -3,12 +3,12 @@ import React, { useCallback } from "react";
 
 export interface FieldValidator {
   validator: (value: string) => string | true;
-  setError: React.Dispatch<
+  setError?: React.Dispatch<
     React.SetStateAction<{ show: boolean; msg: string }>
   >;
 }
 
-export const onDirtyChangeHandler = (
+export const onRawChangeHandler = (
   onDirtyChangeCallback: (value: string) => void
 ): Callback<React.ChangeEvent<HTMLInputElement>, void> => {
   return (e) => {
@@ -16,7 +16,7 @@ export const onDirtyChangeHandler = (
   };
 };
 
-export const onDirtyBlurHandler = (
+export const onRawBlurHandler = (
   onDirtyBlurCallback: (value: string) => void
 ): Callback<React.FocusEvent<HTMLInputElement>, void> => {
   return (e) => {
@@ -39,19 +39,24 @@ const validate = (
 
     if (validationResult === true) {
       validatorsSucceeded++;
-      fieldValidator.setError(() => {
-        return {
-          show: false,
-          msg: "",
-        };
-      });
+
+      if (fieldValidator.setError) {
+        fieldValidator.setError(() => {
+          return {
+            show: false,
+            msg: "",
+          };
+        });
+      }
     } else {
-      fieldValidator.setError(() => {
-        return {
-          show: true,
-          msg: validationResult,
-        };
-      });
+      if (fieldValidator.setError) {
+        fieldValidator.setError(() => {
+          return {
+            show: true,
+            msg: validationResult,
+          };
+        });
+      }
     }
   });
 
@@ -61,16 +66,16 @@ const validate = (
 export const useOnChangeHandler = (
   onChange: (value: string) => void,
   fieldValidators: FieldValidator[] | FieldValidator,
-  setFieldString: React.Dispatch<React.SetStateAction<string>>
+  setRawData: (value: string) => void
 ): Callback<string, void> =>
   useCallback(
     (value: string) => {
       if (validate(fieldValidators, value)) {
         onChange(value);
-        setFieldString(value);
+        setRawData(value);
       }
     },
-    [onChange, fieldValidators, setFieldString]
+    [onChange, fieldValidators, setRawData]
   );
 
 export const onBlurHandler =
@@ -83,3 +88,11 @@ export const onBlurHandler =
       onChange(value);
     }
   };
+
+export const preventNegativeNumbers = (
+  e: React.KeyboardEvent<HTMLInputElement>
+) => {
+  if (e.key === "-") {
+    e.preventDefault();
+  }
+};

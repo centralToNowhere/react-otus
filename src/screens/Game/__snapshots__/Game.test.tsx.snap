@@ -146,10 +146,8 @@ exports[`Game tests should correctly render field and form 1`] = `
   line-height: 1;
 }
 
-@media screen and (max-width: 480px) {
-  .emotion-10 .field-error-msg {
-    position: static;
-  }
+.emotion-10.game-settings-form .field-error-msg {
+  background: #e8d5f0;
 }
 
 .emotion-12 {
@@ -190,26 +188,14 @@ exports[`Game tests should correctly render field and form 1`] = `
   min-width: 100px;
 }
 
-.emotion-14 div.error-container {
-  position: relative;
-}
-
-.emotion-14 p.error-msg {
-  position: absolute;
-  line-height: 1em;
-  font-size: 1em;
-  color: red;
-}
-
 .emotion-16 {
   display: inline;
 }
 
 .emotion-18 {
   background: inherit;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
+  border: 0;
+  border-bottom: 2px solid;
   border-color: #6a6d75;
   display: block;
   outline: 0;
@@ -222,9 +208,8 @@ exports[`Game tests should correctly render field and form 1`] = `
 
 .emotion-36 {
   background: inherit;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
+  border: 0;
+  border-bottom: 2px solid;
   border-color: #6a6d75;
   display: block;
   outline: 0;
@@ -278,17 +263,6 @@ exports[`Game tests should correctly render field and form 1`] = `
 .emotion-72 button {
   margin: 5px 0 0 0;
   min-width: 100px;
-}
-
-.emotion-72 div.error-container {
-  position: relative;
-}
-
-.emotion-72 p.error-msg {
-  position: absolute;
-  line-height: 1em;
-  font-size: 1em;
-  color: red;
 }
 
 .emotion-72 h1.player-name {
@@ -1726,7 +1700,6 @@ exports[`Game tests should correctly render field and form 1`] = `
               class="emotion-18 emotion-19"
               id="field-width"
               name="fieldWidth"
-              pattern="([0-9]*[.])?[0-9]+"
               step="1"
               type="number"
               value="1024"
@@ -1746,7 +1719,6 @@ exports[`Game tests should correctly render field and form 1`] = `
               class="emotion-18 emotion-19"
               id="field-height"
               name="fieldHeight"
-              pattern="([0-9]*[.])?[0-9]+"
               step="1"
               type="number"
               value="384"
@@ -1766,7 +1738,6 @@ exports[`Game tests should correctly render field and form 1`] = `
               class="emotion-18 emotion-19"
               id="cell-size"
               name="cellSize"
-              pattern="[0-9]*"
               step="1"
               type="number"
               value="40"
@@ -1810,7 +1781,6 @@ exports[`Game tests should correctly render field and form 1`] = `
               class="emotion-18 emotion-19"
               id="speed-change"
               name="speedChange"
-              pattern="([0-9]*[.])?[0-9]+"
               step="0.1"
               type="number"
               value="2"

@@ -7,6 +7,7 @@ import {
   isAtLeastOneCellDisplayed,
 } from "@/utils/Validators";
 import { maxCellsAmount } from "@/Cell/Cell";
+import { l10n } from "@/l10n/ru";
 
 describe("Validators tests", () => {
   it("isValidNumericString should return valid results", () => {
@@ -18,7 +19,7 @@ describe("Validators tests", () => {
   });
 
   it("isValidCellSizeString", () => {
-    const msg = "Expected positive number.";
+    const msg = l10n.positiveNumber;
 
     expect(isValidCellSizeString("123")).toBe(true);
     expect(isValidCellSizeString("fwe32")).toBe(msg);
@@ -27,7 +28,7 @@ describe("Validators tests", () => {
   });
 
   it("isValidPositiveNumericString", () => {
-    const msg = "Expected positive number.";
+    const msg = l10n.positiveNumber;
 
     expect(isValidPositiveNumericString("1")).toBe(true);
     expect(isValidPositiveNumericString("0")).toBe(msg);
@@ -35,7 +36,7 @@ describe("Validators tests", () => {
   });
 
   it("isValidNonNegativeNumericString", () => {
-    const msg = "Expected non-negative number.";
+    const msg = l10n.nonNegativeNumber;
 
     expect(isValidNonNegativeNumericString("1")).toBe(true);
     expect(isValidNonNegativeNumericString("0")).toBe(true);
@@ -43,14 +44,14 @@ describe("Validators tests", () => {
   });
 
   it("isValidCellsAmount", () => {
-    const msg = `Maximum cells amount exceeded - ${maxCellsAmount}.`;
+    const msg = `${l10n.maxCellsAmount} (${maxCellsAmount}).`;
 
     expect(isValidCellsAmountMax(40, 100, 100)).toBe(true);
     expect(isValidCellsAmountMax(1, 1000, 1000)).toBe(msg);
   });
 
   it("isAtLeastOneCellDisplayed", () => {
-    const msg = "At least one cell should be displayed.";
+    const msg = l10n.minCellsAmount;
 
     expect(isAtLeastOneCellDisplayed(100, 100, 100)).toBe(true);
     expect(isAtLeastOneCellDisplayed(40, 39, 100)).toBe(msg);

@@ -1,14 +1,21 @@
 import React from "react";
 import userEvent from "@testing-library/user-event/dist";
-import { render, screen } from "@/utils/test-utils";
+import { render, screen, waitFor } from "@/utils/test-utils";
 import { FormContainer } from "./FormContainer";
 import { l10n } from "@/l10n/ru";
+
+jest.mock("@/Cell/Cell");
+
+const cellMocks = jest.requireMock("@/Cell/Cell");
+const cellOrigin = jest.requireActual("@/Cell/Cell");
+
+const originalInputDelay = FormContainer.inputDelay;
 
 const initialState = {
   fieldControl: {
     cellSize: 40,
-    maxFieldWidth: 600,
-    maxFieldHeight: 400,
+    maxFieldWidth: 1920,
+    maxFieldHeight: 474,
     capacity: 50,
     speed: 1,
   },
@@ -175,5 +182,414 @@ describe("buttons tests", () => {
     userEvent.click(button);
 
     expect(onGenerateRandom).toHaveBeenCalled();
+  });
+
+  describe("Fields tests", () => {
+    beforeEach(() => {
+      FormContainer.inputDelay = 50;
+    });
+
+    afterEach(() => {
+      FormContainer.inputDelay = originalInputDelay;
+      cellMocks.maxCellsAmount = cellOrigin.maxCellsAmount;
+    });
+
+    describe("GameField size & cell size related fields", () => {
+      [
+        {
+          maxFieldWidth: 1920,
+          maxFieldHeight: 474,
+          cellSize: 7,
+          maxCellsAmount: 20000,
+        },
+        {
+          maxFieldWidth: 10,
+          maxFieldHeight: 10,
+          cellSize: 1,
+          maxCellsAmount: 20000,
+        },
+        {
+          maxFieldWidth: 10000,
+          maxFieldHeight: 1000,
+          cellSize: 1000,
+          maxCellsAmount: 10,
+        },
+        {
+          maxFieldWidth: 100,
+          maxFieldHeight: 100,
+          cellSize: 1,
+          maxCellsAmount: 10000,
+        },
+        {
+          maxFieldWidth: 1,
+          maxFieldHeight: 1,
+          cellSize: 1,
+          maxCellsAmount: 1,
+        },
+      ].forEach((settings) => {
+        it(`SHOULD CHANGE GAME FIELD STATE
+          cellSize: ${settings.cellSize},
+          maxFieldWidth: ${settings.maxFieldWidth},
+          maxFieldHeight: ${settings.maxFieldHeight},
+          maxCellsAmount: ${settings.maxCellsAmount}`, async () => {
+          cellMocks.maxCellsAmount = settings.maxCellsAmount;
+
+          const { store } = render(<FormContainer />, {
+            preloadedState: initialState,
+          });
+
+          const inputCellSize: HTMLInputElement = screen.getByLabelText(
+            l10n.cellSizeLabel
+          );
+
+          const inputMaxFieldWidth: HTMLInputElement = screen.getByLabelText(
+            l10n.maxWidthLabel
+          );
+
+          const inputMaxFieldHeight: HTMLInputElement = screen.getByLabelText(
+            l10n.maxHeightLabel
+          );
+
+          [
+            () => {
+              userEvent.clear(inputMaxFieldWidth);
+              userEvent.type(
+                inputMaxFieldWidth,
+                String(settings.maxFieldWidth)
+              );
+            },
+            () => {
+              userEvent.clear(inputMaxFieldHeight);
+              userEvent.type(
+                inputMaxFieldHeight,
+                String(settings.maxFieldHeight)
+              );
+            },
+            () => {
+              userEvent.clear(inputCellSize);
+              userEvent.type(inputCellSize, String(settings.cellSize));
+            },
+          ]
+            .sort(() => (Math.random() > 0.5 ? -1 : 1))
+            .forEach((fn) => fn());
+
+          await waitFor(
+            () => {
+              expect(store.getState().fieldControl).toEqual(
+                expect.objectContaining({
+                  cellSize: settings.cellSize,
+                  maxFieldWidth: settings.maxFieldWidth,
+                  maxFieldHeight: settings.maxFieldHeight,
+                })
+              );
+            },
+            {
+              timeout: FormContainer.inputDelay + 100,
+            }
+          );
+        });
+      });
+
+      [
+        {
+          maxFieldWidth: 1920,
+          maxFieldHeight: 474,
+          cellSize: 6,
+          maxCellsAmount: 20000,
+        },
+        {
+          maxFieldWidth: 10,
+          maxFieldHeight: 474,
+          cellSize: 40,
+          maxCellsAmount: 20000,
+        },
+        {
+          maxFieldWidth: 10,
+          maxFieldHeight: 10,
+          cellSize: 40,
+          maxCellsAmount: 20000,
+        },
+        {
+          maxFieldWidth: 200,
+          maxFieldHeight: 200,
+          cellSize: 1,
+          maxCellsAmount: 20000,
+        },
+        {
+          maxFieldWidth: 100,
+          maxFieldHeight: 100,
+          cellSize: 0,
+          maxCellsAmount: 10,
+        },
+        {
+          maxFieldWidth: 100,
+          maxFieldHeight: 10,
+          cellSize: 100,
+          maxCellsAmount: 20000,
+        },
+        {
+          maxFieldWidth: 0,
+          maxFieldHeight: 100,
+          cellSize: 1,
+          maxCellsAmount: 20000,
+        },
+        {
+          maxFieldWidth: 0,
+          maxFieldHeight: 0,
+          cellSize: 1,
+          maxCellsAmount: 1,
+        },
+        {
+          maxFieldWidth: -1,
+          maxFieldHeight: -1,
+          cellSize: 2,
+          maxCellsAmount: 2,
+        },
+      ].forEach((settings) => {
+        it(`SHOULD SHOW ERROR MESSAGE
+          cellSize: ${settings.cellSize},
+          maxFieldWidth: ${settings.maxFieldWidth},
+          maxFieldHeight: ${settings.maxFieldHeight},
+          maxCellsAmount: ${settings.maxCellsAmount}`, async () => {
+          cellMocks.maxCellsAmount = settings.maxCellsAmount;
+
+          render(<FormContainer />, {
+            preloadedState: initialState,
+          });
+
+          const inputCellSize: HTMLInputElement = screen.getByLabelText(
+            l10n.cellSizeLabel
+          );
+
+          const inputMaxFieldWidth: HTMLInputElement = screen.getByLabelText(
+            l10n.maxWidthLabel
+          );
+
+          const inputMaxFieldHeight: HTMLInputElement = screen.getByLabelText(
+            l10n.maxHeightLabel
+          );
+
+          [
+            () => {
+              userEvent.clear(inputMaxFieldWidth);
+              userEvent.type(
+                inputMaxFieldWidth,
+                String(settings.maxFieldWidth)
+              );
+            },
+            () => {
+              userEvent.clear(inputMaxFieldHeight);
+              userEvent.type(
+                inputMaxFieldHeight,
+                String(settings.maxFieldHeight)
+              );
+            },
+            () => {
+              userEvent.clear(inputCellSize);
+              userEvent.type(inputCellSize, String(settings.cellSize));
+            },
+          ]
+            .sort(() => (Math.random() > 0.5 ? -1 : 1))
+            .forEach((fn) => fn());
+
+          await waitFor(
+            () => {
+              expect(
+                // eslint-disable-next-line testing-library/prefer-presence-queries
+                screen.queryByText(l10n.maxCellsAmount, { exact: false }) ||
+                  // eslint-disable-next-line testing-library/prefer-presence-queries
+                  screen.queryByText(l10n.minCellsAmount)
+              ).toBeInTheDocument();
+            },
+            {
+              timeout: FormContainer.inputDelay + 100,
+            }
+          );
+        });
+      });
+    });
+
+    describe("maxWidth field", () => {
+      ["-", "", "qwerty", "0"].forEach((value) => {
+        it(`SHOULD SHOW ${l10n.positiveNumber} ERROR`, async () => {
+          render(<FormContainer />, {
+            preloadedState: initialState,
+          });
+
+          const inputMaxFieldWidth: HTMLInputElement = screen.getByLabelText(
+            l10n.maxWidthLabel
+          );
+
+          userEvent.clear(inputMaxFieldWidth);
+          userEvent.type(inputMaxFieldWidth, value);
+
+          await waitFor(() => {
+            expect(screen.getByText(l10n.positiveNumber)).toBeInTheDocument();
+          });
+        });
+      });
+
+      it(`SHOULD SHOW ${l10n.minCellsAmount} ERROR`, async () => {
+        render(<FormContainer />, {
+          preloadedState: initialState,
+        });
+
+        const inputMaxFieldWidth: HTMLInputElement = screen.getByLabelText(
+          l10n.maxWidthLabel
+        );
+
+        userEvent.clear(inputMaxFieldWidth);
+        userEvent.type(inputMaxFieldWidth, "-1");
+
+        await waitFor(() => {
+          expect(screen.getByText(l10n.minCellsAmount)).toBeInTheDocument();
+        });
+      });
+    });
+
+    describe("maxHeight field", () => {
+      ["-", "", "qwerty", "0"].forEach((value) => {
+        it(`SHOULD SHOW ${l10n.positiveNumber} ERROR`, async () => {
+          render(<FormContainer />, {
+            preloadedState: initialState,
+          });
+
+          const inputMaxFieldHeight: HTMLInputElement = screen.getByLabelText(
+            l10n.maxHeightLabel
+          );
+
+          userEvent.clear(inputMaxFieldHeight);
+          userEvent.type(inputMaxFieldHeight, value);
+
+          await waitFor(() => {
+            expect(screen.getByText(l10n.positiveNumber)).toBeInTheDocument();
+          });
+        });
+      });
+
+      it(`SHOULD SHOW ${l10n.minCellsAmount} ERROR`, async () => {
+        render(<FormContainer />, {
+          preloadedState: initialState,
+        });
+        cellMocks.maxCellsAmount = 20000;
+
+        const inputMaxFieldHeight: HTMLInputElement = screen.getByLabelText(
+          l10n.maxHeightLabel
+        );
+
+        userEvent.clear(inputMaxFieldHeight);
+        userEvent.type(inputMaxFieldHeight, "-1");
+
+        await waitFor(() => {
+          expect(screen.getByText(l10n.minCellsAmount)).toBeInTheDocument();
+        });
+      });
+    });
+
+    describe("cellSize field", () => {
+      ["-", "", "qwerty", "0", "40.5"].forEach((value) => {
+        it(`SHOULD SHOW ${l10n.positiveNumber} ERROR`, async () => {
+          render(<FormContainer />, {
+            preloadedState: initialState,
+          });
+
+          const inputCellSize: HTMLInputElement = screen.getByLabelText(
+            l10n.cellSizeLabel
+          );
+
+          userEvent.clear(inputCellSize);
+          userEvent.type(inputCellSize, value);
+
+          await waitFor(() => {
+            expect(screen.getByText(l10n.positiveNumber)).toBeInTheDocument();
+          });
+        });
+      });
+
+      it(`SHOULD SHOW ${l10n.maxCellsAmount} ERROR`, async () => {
+        render(<FormContainer />, {
+          preloadedState: initialState,
+        });
+        cellMocks.maxCellsAmount = 20000;
+
+        const inputCellSize: HTMLInputElement = screen.getByLabelText(
+          l10n.cellSizeLabel
+        );
+
+        userEvent.clear(inputCellSize);
+        userEvent.type(inputCellSize, "-1");
+
+        await waitFor(() => {
+          expect(
+            screen.getByText(l10n.maxCellsAmount, { exact: false })
+          ).toBeInTheDocument();
+        });
+      });
+    });
+
+    describe("Capacity field", () => {
+      ["1", "10", "100", "0"].forEach((value) => {
+        it("SHOULD CHANGE GAME FIELD CAPACITY", async () => {
+          const { store } = render(<FormContainer />, {
+            preloadedState: initialState,
+          });
+
+          const inputCapacity = screen.getByLabelText(l10n.capacityLabel);
+
+          userEvent.clear(inputCapacity);
+          userEvent.type(inputCapacity, value);
+
+          await waitFor(() => {
+            expect(store.getState().fieldControl).toEqual({
+              ...initialState.fieldControl,
+              capacity: Number(value),
+            });
+          });
+        });
+      });
+    });
+
+    describe("Speed field", () => {
+      ["1", "10", "100", "1000", "0.1"].forEach((value) => {
+        it("SHOULD CHANGE GAME SPEED", async () => {
+          const { store } = render(<FormContainer />, {
+            preloadedState: initialState,
+          });
+
+          const inputSpeed: HTMLInputElement = screen.getByLabelText(
+            l10n.speedLabel
+          );
+
+          userEvent.clear(inputSpeed);
+          userEvent.type(inputSpeed, value);
+
+          await waitFor(() => {
+            expect(store.getState().fieldControl).toEqual({
+              ...initialState.fieldControl,
+              speed: Number(value),
+            });
+          });
+        });
+      });
+
+      ["-", "0", "", "qwerty"].forEach((value) => {
+        it(`SHOULD SHOW ${l10n.positiveNumber} ERROR`, async () => {
+          render(<FormContainer />, {
+            preloadedState: initialState,
+          });
+
+          const inputSpeed: HTMLInputElement = screen.getByLabelText(
+            l10n.speedLabel
+          );
+
+          userEvent.clear(inputSpeed);
+          userEvent.type(inputSpeed, value);
+
+          await waitFor(() => {
+            expect(screen.getByText(l10n.positiveNumber)).toBeInTheDocument();
+          });
+        });
+      });
+    });
   });
 });
