@@ -80,6 +80,7 @@ export const FieldCapacity: React.FC<
 };
 
 const InputFieldCapacity = styled(InputField)`
+  border: 0;
   &:focus {
     border-bottom: 0;
   }

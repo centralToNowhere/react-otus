@@ -38,6 +38,7 @@ exports[`FieldCapacity tests should render capacity input 1`] = `
   display: block;
   outline: 0;
   width: 100px;
+  border: 0;
 }
 
 .emotion-4:focus {

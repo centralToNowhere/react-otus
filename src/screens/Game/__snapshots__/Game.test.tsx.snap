@@ -214,6 +214,7 @@ exports[`Game tests should correctly render field and form 1`] = `
   display: block;
   outline: 0;
   width: 100px;
+  border: 0;
 }
 
 .emotion-36:focus {

@@ -174,7 +174,7 @@ describe("Game tests", () => {
 
   it("should change cells 10 times every 100ms and then stop game cycle", async () => {
     const checks = 10;
-    const speed = 50;
+    const speed = 30;
     const gameCycleTimeout = getGameCycleTimeout(speed);
     const setActiveCells = (colNum: number): RegExp => {
       getMockedCells.mockReturnValue(

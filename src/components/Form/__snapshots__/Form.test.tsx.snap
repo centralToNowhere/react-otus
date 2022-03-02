@@ -89,6 +89,7 @@ exports[`form tests should render form 1`] = `
   display: block;
   outline: 0;
   width: 100px;
+  border: 0;
 }
 
 .emotion-26:focus {
