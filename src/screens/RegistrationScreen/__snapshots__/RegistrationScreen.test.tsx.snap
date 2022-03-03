@@ -145,7 +145,6 @@ exports[`Registration screen tests should render registration screen 1`] = `
 }
 
 .emotion-13 {
-  margin: 20px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

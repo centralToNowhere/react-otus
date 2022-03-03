@@ -6,7 +6,7 @@ import { store } from "@/store/redux/store";
 import { Provider } from "react-redux";
 
 export default {
-  title: "Components/FieldCellSize",
+  title: "Components/FormFields/CellSize",
   component: FieldCellSize,
   args: {
     formRawData: {

@@ -1,7 +1,6 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import { PlayerBlock } from "@/components/PlayerBlock";
-import { l10n } from "@/l10n/ru";
 import userEvent from "@testing-library/user-event/dist";
 
 describe("PlayerContainer tests", () => {
@@ -17,14 +16,8 @@ describe("PlayerContainer tests", () => {
     jest.spyOn(global.Math, "random").mockRestore();
 
     const playerNameHeading = screen.getByRole("heading", { level: 1 });
-    const statisticsHeading = screen.getByRole("heading", { level: 2 });
-    const score = screen.getByText(l10n.score, { exact: false });
-    const clicksCount = screen.getByText(l10n.clicksCount, { exact: false });
 
     expect(playerNameHeading).toHaveTextContent("Ivan");
-    expect(statisticsHeading).toHaveTextContent(l10n.statistics);
-    expect(score).toBeInTheDocument();
-    expect(clicksCount).toBeInTheDocument();
     expect(asFragment()).toMatchSnapshot();
   });
 

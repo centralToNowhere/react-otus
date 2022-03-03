@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InfoContainer should render Info 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  padding: 20px;
+  font-size: 1.5em;
+}
+
+<div
+    class="emotion-0 emotion-1"
+  >
+    <p>
+      Поколяние: 5
+    </p>
+  </div>
+</DocumentFragment>
+`;

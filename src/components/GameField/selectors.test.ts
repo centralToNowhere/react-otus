@@ -1,5 +1,7 @@
 import { getIndexedCells } from "@/components/GameField";
 import { ICell } from "@/Cell/Cell";
+import { selectGenerationNumber } from "@/components/GameField/selectors";
+import { initialStateAll } from "@/store/redux/store";
 
 describe("getIndexedCells test", () => {
   const activeCells: ICell[] = [
@@ -70,5 +72,19 @@ describe("getIndexedCells test", () => {
     expect(getIndexedCells(activeCells, 10, 10)[32]).toBe(0);
     expect(getIndexedCells(activeCells, 10, 10)[44]).toBe(0);
     expect(getIndexedCells(activeCells, 10, 10)[99]).toBe(0);
+  });
+});
+
+describe("selectGenerationNumber", () => {
+  it("should increment generation number", () => {
+    expect(
+      selectGenerationNumber({
+        ...initialStateAll,
+        gameField: {
+          ...initialStateAll.gameField,
+          generations: 23,
+        },
+      })
+    ).toBe(23);
   });
 });

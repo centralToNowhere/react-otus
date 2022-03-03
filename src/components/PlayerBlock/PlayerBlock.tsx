@@ -17,6 +17,8 @@ export const PlayerBlock: FC<IPlayerContainerProps> = (props) => {
       <FormField
         css={css`
           display: inline-block;
+          padding: 20px;
+          margin: 0;
 
           h1.player-name {
             font-size: 1.2rem;
@@ -27,14 +29,6 @@ export const PlayerBlock: FC<IPlayerContainerProps> = (props) => {
 
           div.player-stats-container {
             margin: 20px 0;
-
-            & > h2 {
-              font-size: 1.2rem;
-            }
-
-            & > ul {
-              padding-left: 0;
-            }
           }
 
           li {
@@ -43,13 +37,7 @@ export const PlayerBlock: FC<IPlayerContainerProps> = (props) => {
         `}
       >
         <h1 className="player-name">{props.playerName}</h1>
-        <div className="player-stats-container">
-          <h2>{l10n.statistics}</h2>
-          <ul>
-            <li>{l10n.score} 0</li>
-            <li>{l10n.clicksCount} 0</li>
-          </ul>
-        </div>
+        <div className="player-stats-container" />
         <FormButton
           css={css`
             text-align: center;

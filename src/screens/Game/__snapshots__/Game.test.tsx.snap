@@ -87,20 +87,19 @@ exports[`Game tests should correctly render field and form 1`] = `
   border-radius: 10px;
 }
 
-@media screen and (max-width: 1200px) {
-  .emotion-6 {
-    display: none;
-  }
-}
-
 .emotion-8 {
   position: relative;
 }
 
 .emotion-8 .game-settings-form {
+  margin: 20px;
   clear: right;
   float: none;
   max-width: 480px;
+}
+
+.emotion-8 .player-container {
+  border: 0;
 }
 
 @media screen and (min-width: 1200px) {
@@ -112,13 +111,6 @@ exports[`Game tests should correctly render field and form 1`] = `
   .emotion-8 .game-settings-form {
     margin: 20px auto;
   }
-
-  .emotion-8 .player-container {
-    position: absolute;
-    margin: 20px;
-    top: 0;
-    left: 0;
-  }
 }
 
 @media screen and (max-width: 1200px) and (min-width: 768px) {
@@ -128,7 +120,6 @@ exports[`Game tests should correctly render field and form 1`] = `
 }
 
 .emotion-10 {
-  margin: 20px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -241,7 +232,33 @@ exports[`Game tests should correctly render field and form 1`] = `
   border: 2px solid transparent;
 }
 
+.emotion-70 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: 20px;
+  border: 2px solid #6a6d75;
+  border-radius: 10px;
+}
+
+@media screen and (min-width: 1200px) {
+  .emotion-70 {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
 .emotion-72 {
+  padding: 20px;
+  font-size: 1.5em;
+}
+
+.emotion-76 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -258,38 +275,32 @@ exports[`Game tests should correctly render field and form 1`] = `
   -webkit-justify-content: end;
   justify-content: end;
   display: inline-block;
+  padding: 20px;
+  margin: 0;
 }
 
-.emotion-72 input,
-.emotion-72 button {
+.emotion-76 input,
+.emotion-76 button {
   margin: 5px 0 0 0;
   min-width: 100px;
 }
 
-.emotion-72 h1.player-name {
+.emotion-76 h1.player-name {
   font-size: 1.2rem;
   font-weight: bold;
   margin: 0;
   border-bottom: 2px solid rgb(255, 33, 92);
 }
 
-.emotion-72 div.player-stats-container {
+.emotion-76 div.player-stats-container {
   margin: 20px 0;
 }
 
-.emotion-72 div.player-stats-container>h2 {
-  font-size: 1.2rem;
-}
-
-.emotion-72 div.player-stats-container>ul {
-  padding-left: 0;
-}
-
-.emotion-72 li {
+.emotion-76 li {
   margin: 10px 0 10px 20px;
 }
 
-.emotion-74 {
+.emotion-78 {
   background: inherit;
   margin: 20px auto;
   border-color: #6a6d75;
@@ -297,7 +308,7 @@ exports[`Game tests should correctly render field and form 1`] = `
   text-align: center;
 }
 
-.emotion-74:focus {
+.emotion-78:focus {
   outline: 2px solid rgb(255, 33, 92)!important;
   border: 2px solid transparent;
 }
@@ -1853,38 +1864,37 @@ exports[`Game tests should correctly render field and form 1`] = `
           </div>
         </div>
       </form>
-      <form
-        class="player-container emotion-10 emotion-11"
+      <div
+        class="emotion-70 emotion-71"
       >
         <div
-          class="emotion-72 emotion-15"
+          class="emotion-72 emotion-73"
         >
-          <h1
-            class="player-name"
-          />
-          <div
-            class="player-stats-container"
-          >
-            <h2>
-              Статистика
-            </h2>
-            <ul>
-              <li>
-                Очки: 0
-              </li>
-              <li>
-                Количество кликов: 0
-              </li>
-            </ul>
-          </div>
-          <button
-            class="emotion-74 emotion-51"
-            type="button"
-          >
-            Выйти
-          </button>
+          <p>
+            Поколяние: 0
+          </p>
         </div>
-      </form>
+        <form
+          class="player-container emotion-10 emotion-11"
+        >
+          <div
+            class="emotion-76 emotion-15"
+          >
+            <h1
+              class="player-name"
+            />
+            <div
+              class="player-stats-container"
+            />
+            <button
+              class="emotion-78 emotion-51"
+              type="button"
+            >
+              Выйти
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </DocumentFragment>

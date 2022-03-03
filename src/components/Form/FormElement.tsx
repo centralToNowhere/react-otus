@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import { COLORS } from "@/styles/ui-styled";
 
 export const FormElement = styled.form`
-  margin: 20px;
   display: flex;
   flex-direction: column;
   border: 2px solid ${COLORS.border};
@@ -14,7 +13,9 @@ export const FormElement = styled.form`
     line-height: 1;
   }
 
-  &.game-settings-form .field-error-msg {
-    background: ${COLORS.secondary};
+  &.game-settings-form {
+    .field-error-msg {
+      background: ${COLORS.secondary};
+    }
   }
 `;

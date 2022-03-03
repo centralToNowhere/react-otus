@@ -3,7 +3,6 @@
 exports[`PlayerContainer tests should render PlayerContainer 1`] = `
 <DocumentFragment>
   .emotion-0 {
-  margin: 20px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -42,6 +41,8 @@ exports[`PlayerContainer tests should render PlayerContainer 1`] = `
   -webkit-justify-content: end;
   justify-content: end;
   display: inline-block;
+  padding: 20px;
+  margin: 0;
 }
 
 .emotion-2 input,
@@ -59,14 +60,6 @@ exports[`PlayerContainer tests should render PlayerContainer 1`] = `
 
 .emotion-2 div.player-stats-container {
   margin: 20px 0;
-}
-
-.emotion-2 div.player-stats-container>h2 {
-  font-size: 1.2rem;
-}
-
-.emotion-2 div.player-stats-container>ul {
-  padding-left: 0;
 }
 
 .emotion-2 li {
@@ -99,19 +92,7 @@ exports[`PlayerContainer tests should render PlayerContainer 1`] = `
       </h1>
       <div
         class="player-stats-container"
-      >
-        <h2>
-          Статистика
-        </h2>
-        <ul>
-          <li>
-            Очки: 0
-          </li>
-          <li>
-            Количество кликов: 0
-          </li>
-        </ul>
-      </div>
+      />
       <button
         class="emotion-4 emotion-5"
         type="button"

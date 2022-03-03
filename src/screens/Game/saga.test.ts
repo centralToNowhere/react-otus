@@ -7,6 +7,7 @@ import {
   stopGame,
   setActiveCells,
   resetCells,
+  incrementGeneration,
 } from "@/components/GameField";
 import { selectGameField } from "@/components/GameField/selectors";
 import { createMockTask } from "@redux-saga/testing-utils";
@@ -16,6 +17,21 @@ import { combineReducers } from "redux";
 import { getNextGeneration, getRandomCells } from "@/utils/CellGenerator";
 
 describe("Game saga tests", () => {
+  const initialState = {
+    fieldControl: {
+      cellSize: 40,
+      maxFieldWidth: 80,
+      maxFieldHeight: 80,
+      capacity: 50,
+      speed: 2,
+    },
+    gameField: {
+      activeCells: [],
+      gameInProgress: false,
+      generations: 0,
+    },
+  };
+
   it("gameSaga - gameCycle unit", () => {
     const saga = testSaga(gameSaga);
     const mockTask = createMockTask();
@@ -29,7 +45,6 @@ describe("Game saga tests", () => {
       .save("gameStatus")
       .next({
         gameInProgress: false,
-        activeCells: [],
       })
       .take(startGame.type)
       .next()
@@ -40,7 +55,6 @@ describe("Game saga tests", () => {
       .restore("gameStatus")
       .next({
         gameInProgress: true,
-        activeCells: [],
       })
       .take([stopGame.type, resetCells.type])
       .next()
@@ -49,7 +63,6 @@ describe("Game saga tests", () => {
       .restore("gameStatus")
       .next({
         gameInProgress: false,
-        activeCells: [],
       })
       .take(startGame.type)
       .next()
@@ -58,7 +71,6 @@ describe("Game saga tests", () => {
       .select(selectGameField)
       .next({
         gameInProgress: true,
-        activeCells: [],
       })
       .take([stopGame.type, resetCells.type])
       .next()
@@ -69,7 +81,6 @@ describe("Game saga tests", () => {
       .restore("gameStatus")
       .next({
         gameInProgress: false,
-        activeCells: [],
       })
       .take(startGame.type)
       .next()
@@ -78,7 +89,6 @@ describe("Game saga tests", () => {
       .select(selectGameField)
       .next({
         gameInProgress: true,
-        activeCells: [],
       })
       .take([stopGame.type, resetCells.type])
       .next()
@@ -104,21 +114,12 @@ describe("Game saga tests", () => {
           gameField: gameFieldSlice.reducer,
         }),
         {
-          fieldControl: {
-            cellSize: 40,
-            maxFieldWidth: 80,
-            maxFieldHeight: 80,
-            capacity: 50,
-            speed: 2,
-          },
-          gameField: {
-            activeCells: [],
-            gameInProgress: false,
-          },
+          ...initialState,
         }
       )
       .provide([[matchers.call.fn(getNextGeneration), newGeneration]])
       .put(setActiveCells(newGeneration))
+      .put(incrementGeneration())
       .dispatch(startGame())
       .dispatch(stopGame())
       .hasFinalState({
@@ -132,6 +133,7 @@ describe("Game saga tests", () => {
         gameField: {
           activeCells: [...newGeneration],
           gameInProgress: false,
+          generations: 1,
         },
       })
       .run();
@@ -156,17 +158,7 @@ describe("Game saga tests", () => {
           gameField: gameFieldSlice.reducer,
         }),
         {
-          fieldControl: {
-            cellSize: 40,
-            maxFieldWidth: 80,
-            maxFieldHeight: 80,
-            capacity: 50,
-            speed: 2,
-          },
-          gameField: {
-            activeCells: [],
-            gameInProgress: false,
-          },
+          ...initialState,
         }
       )
       .provide([[matchers.call.fn(getRandomCells), randomCells]])
@@ -183,6 +175,7 @@ describe("Game saga tests", () => {
         gameField: {
           activeCells: randomCells,
           gameInProgress: false,
+          generations: 0,
         },
       })
       .run();

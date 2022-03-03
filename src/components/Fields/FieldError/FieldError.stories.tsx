@@ -3,7 +3,7 @@ import { Story, Meta } from "@storybook/react";
 import { FieldError, IFieldErrorProps } from "./FieldError";
 
 export default {
-  title: "Components/FieldError",
+  title: "Components/FormFields/FieldError",
   component: FieldError,
   args: {
     show: true,

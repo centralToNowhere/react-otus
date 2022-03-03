@@ -42,7 +42,7 @@ function render(
     },
   });
 
-  sagaMiddleware.run(rootSaga);
+  const SagaTask = sagaMiddleware.run(rootSaga);
 
   function Wrapper({ children }: { children: React.ReactNode }) {
     return <Provider store={store}>{children}</Provider>;
@@ -51,6 +51,7 @@ function render(
   return {
     ...rtlRender(ui, { wrapper: Wrapper, ...renderOptions }),
     store,
+    SagaTask,
   };
 }
 

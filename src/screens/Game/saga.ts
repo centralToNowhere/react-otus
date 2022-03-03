@@ -19,6 +19,7 @@ import {
   setActiveCells,
   generateRandom,
   resetCells,
+  incrementGeneration,
 } from "@/components/GameField";
 import { selectGameField } from "@/components/GameField/selectors";
 import {
@@ -42,6 +43,7 @@ export const setNewGeneration = function* () {
     indexedCells
   );
   yield put(setActiveCells(newGeneration));
+  yield put(incrementGeneration());
 };
 
 export const setRandom = function* () {

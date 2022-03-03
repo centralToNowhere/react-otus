@@ -6,10 +6,7 @@ export default {
   title: "Components/PlayerBlock",
   component: PlayerBlock,
   args: {
-    player: {
-      registered: true,
-      name: "Player1",
-    },
+    playerName: "Player1",
     onPlayerUnregister: () => {
       //empty
     },
