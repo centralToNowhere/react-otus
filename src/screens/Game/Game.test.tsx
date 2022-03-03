@@ -73,19 +73,12 @@ const initialState = {
   gameField: {
     activeCells: getInitialCells(100, 100, 10),
     gameInProgress: false,
+    generations: 0,
   },
 };
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
-afterEach(() => {
-  jest.restoreAllMocks();
-});
-
 describe("Game tests", () => {
-  it("should correctly render field and form", async () => {
+  it("should correctly render field and form", () => {
     const { asFragment } = render(<Game />, {
       preloadedState: {},
     });
@@ -113,7 +106,7 @@ describe("Game tests", () => {
   it("should start game cycle", async () => {
     CellGeneratorRewire.__Rewire__("getNextGeneration", getMockedCells);
 
-    render(<GameContainer />, {
+    const { SagaTask } = render(<GameContainer />, {
       preloadedState: initialState,
     });
 
@@ -138,6 +131,7 @@ describe("Game tests", () => {
       })
     );
 
+    SagaTask.cancel();
     CellGeneratorRewire.__ResetDependency__("getNextGeneration");
   });
 
@@ -174,7 +168,7 @@ describe("Game tests", () => {
 
   it("should change cells 10 times every 100ms and then stop game cycle", async () => {
     const checks = 10;
-    const speed = 30;
+    const speed = 100;
     const gameCycleTimeout = getGameCycleTimeout(speed);
     const setActiveCells = (colNum: number): RegExp => {
       getMockedCells.mockReturnValue(
@@ -258,10 +252,7 @@ describe("Game tests", () => {
       }, 2 * gameCycleTimeout);
     });
 
-    CellGeneratorRewire.__ResetDependency__(
-      "getNextGeneration",
-      getMockedCells
-    );
+    CellGeneratorRewire.__ResetDependency__("getNextGeneration");
   });
 
   it("should load form values data from state", () => {

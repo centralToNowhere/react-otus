@@ -4,7 +4,7 @@ import { FieldSpeed } from "@/components/Fields/Speed/FieldSpeed";
 import { IFieldProps } from "@/components/Form";
 
 export default {
-  title: "Components/FieldSpeed",
+  title: "Components/FormFields/Speed",
   component: FieldSpeed,
   args: {
     formRawData: {

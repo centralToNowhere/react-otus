@@ -17,6 +17,7 @@ const initialState = {
   gameField: {
     activeCells: getInitialCells(600, 400, 40),
     gameInProgress: false,
+    generations: 0,
   },
 };
 
@@ -59,8 +60,8 @@ describe("GameField tests", () => {
             maxFieldHeight: 40,
           },
           gameField: {
+            ...initialState.gameField,
             activeCells: [],
-            gameInProgress: false,
           },
         },
       });
@@ -87,13 +88,13 @@ describe("GameField tests", () => {
             maxFieldHeight: 40,
           },
           gameField: {
+            ...initialState.gameField,
             activeCells: [
               {
                 x: 0,
                 y: 0,
               },
             ],
-            gameInProgress: false,
           },
         },
       });

@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { store } from "@/store/redux/store";
 
 export default {
-  title: "Components/FieldMaxHeight",
+  title: "Components/FormFields/MaxHeight",
   component: FieldMaxHeight,
   args: {
     formRawData: {

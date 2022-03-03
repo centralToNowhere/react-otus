@@ -6,6 +6,7 @@ import {
   startGame,
   stopGame,
   generateRandom,
+  incrementGeneration,
 } from "@/components/GameField";
 import { ICell } from "@/Cell/Cell";
 
@@ -108,5 +109,21 @@ describe("GameFieldSlice actions tests", () => {
     );
 
     expect(resultState).toEqual(initialState);
+  });
+
+  it("incrementGeneration", () => {
+    const resultState = gameFieldSlice.reducer(
+      {
+        ...defaultGameFieldState,
+        generations: 0,
+      },
+      incrementGeneration()
+    );
+
+    expect(resultState).toEqual(
+      expect.objectContaining({
+        generations: 1,
+      })
+    );
   });
 });

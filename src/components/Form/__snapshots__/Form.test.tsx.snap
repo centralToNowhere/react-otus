@@ -3,7 +3,6 @@
 exports[`form tests should render form 1`] = `
 <DocumentFragment>
   .emotion-0 {
-  margin: 20px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

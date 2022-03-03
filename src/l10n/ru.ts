@@ -40,9 +40,7 @@ export const l10n = {
   // Контейнер игрока
   registerPlayerLabel: "Введите имя игрока",
   logoutButton: "Выйти",
-  statistics: "Статистика",
-  score: "Очки:",
-  clicksCount: "Количество кликов:",
+  generation: "Поколяние",
 
   // Ошибки
   minCellsAmount: "Размер игрового поля меньше размера ячейки.",

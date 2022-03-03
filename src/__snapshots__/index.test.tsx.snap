@@ -155,7 +155,6 @@ exports[`index tests should render App 1`] = `
 }
 
 .emotion-15 {
-  margin: 20px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

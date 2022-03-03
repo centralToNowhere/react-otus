@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import styled from "@emotion/styled";
-import { BREAKPOINTS, COLORS } from "@/styles/ui-styled";
+import { COLORS } from "@/styles/ui-styled";
 
 const resizerSize = 30;
 
@@ -138,9 +138,5 @@ const StyledResizerLine = styled.div`
     margin: 10px auto 0 auto;
     height: 6px;
     border-radius: 10px;
-  }
-
-  @media screen and (max-width: ${BREAKPOINTS.xl}) {
-    display: none;
   }
 `;

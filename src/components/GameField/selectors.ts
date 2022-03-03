@@ -35,3 +35,10 @@ export const selectIndexedCells = createSelector(
     return getIndexedCells(gameField.activeCells, cellsInRow, cellsInCol);
   }
 );
+
+export const selectGenerationNumber = createSelector(
+  selectGameField,
+  (gameField) => {
+    return gameField.generations;
+  }
+);

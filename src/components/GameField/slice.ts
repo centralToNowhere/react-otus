@@ -7,11 +7,13 @@ import { getDataFromStorage } from "@/storage";
 export interface IGameFieldState {
   activeCells: ICell[];
   gameInProgress: boolean;
+  generations: number;
 }
 
 export const defaultGameFieldState: IGameFieldState = {
   activeCells: [],
   gameInProgress: false,
+  generations: 0,
 };
 
 const storageData = getDataFromStorage();
@@ -30,6 +32,7 @@ const initialCells = getInitialCells(w, h, cellSize);
 const initialState: IGameFieldState = {
   activeCells: initialCells,
   gameInProgress: false,
+  generations: 0,
 };
 
 export const gameFieldSlice = createSlice({
@@ -60,6 +63,9 @@ export const gameFieldSlice = createSlice({
     generateRandom: (state) => {
       return state;
     },
+    incrementGeneration: (state) => {
+      state.generations = state.generations + 1;
+    },
   },
 });
 
@@ -71,4 +77,5 @@ export const {
   startGame,
   stopGame,
   generateRandom,
+  incrementGeneration,
 } = gameFieldSlice.actions;

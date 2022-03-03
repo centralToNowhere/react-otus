@@ -4,7 +4,7 @@ import { FieldCapacity } from "./FieldCapacity";
 import { IFieldProps } from "@/components/Form";
 
 export default {
-  title: "Components/FieldCapacity",
+  title: "Components/FormFields/Capacity",
   component: FieldCapacity,
   args: {
     formRawData: {

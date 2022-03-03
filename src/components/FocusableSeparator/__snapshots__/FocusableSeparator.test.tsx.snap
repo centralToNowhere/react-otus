@@ -28,12 +28,6 @@ exports[`focusable separator tests should render focusable separator 1`] = `
   border-radius: 10px;
 }
 
-@media screen and (max-width: 1200px) {
-  .emotion-0 {
-    display: none;
-  }
-}
-
 <div
     aria-valuenow="50"
     class="emotion-0 emotion-1"
