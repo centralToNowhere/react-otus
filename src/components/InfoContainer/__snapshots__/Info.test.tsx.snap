@@ -11,7 +11,7 @@ exports[`InfoContainer should render Info 1`] = `
     class="emotion-0 emotion-1"
   >
     <p>
-      Поколяние: 5
+      Поколение: 5
     </p>
   </div>
 </DocumentFragment>
