@@ -93,23 +93,20 @@ class Main extends React.Component<FormContainerProps, FormContainerState> {
 
   constructor(props: FormContainerProps) {
     super(props);
-
-    this.state = {
-      rawMaxWidth: String(this.props.maxFieldWidth),
-      rawMaxHeight: String(this.props.maxFieldHeight),
-      rawCellSize: String(this.props.cellSize),
-      rawSpeed: String(this.props.speed),
-      rawCapacity: String(this.props.capacity),
-    };
   }
 
+  state = {
+    rawMaxWidth: String(this.props.maxFieldWidth),
+    rawMaxHeight: String(this.props.maxFieldHeight),
+    rawCellSize: String(this.props.cellSize),
+    rawSpeed: String(this.props.speed),
+    rawCapacity: String(this.props.capacity),
+  };
+
   setRawData(property: keyof FormContainerState, value: string) {
-    this.setState((prevState) => {
-      return {
-        ...prevState,
-        [property]: value,
-      };
-    });
+    this.setState({
+      [property]: value,
+    } as Pick<FormContainerState, keyof FormContainerState>);
   }
 
   setRawMaxWidth = (value: string) => {

@@ -4,7 +4,10 @@ node_modules
 dist
 storybook-static
 coverage/*
+reports
 !coverage/badge-branches.svg
 !coverage/badge-functions.svg
 !coverage/badge-lines.svg
 !coverage/badge-statements.svg
+# stryker temp files
+.stryker-tmp

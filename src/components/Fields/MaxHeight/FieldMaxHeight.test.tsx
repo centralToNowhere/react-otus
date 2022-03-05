@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@/utils/test-utils";
+import { render, screen } from "@testing-library/react";
 import { FieldMaxHeight } from "./FieldMaxHeight";
 import { l10n } from "@/l10n/ru";
 
@@ -19,10 +19,7 @@ describe("FieldMaxHeight tests", () => {
         onChange={() => {
           // empty function
         }}
-      />,
-      {
-        preloadedState: {},
-      }
+      />
     );
 
     const input: HTMLInputElement = screen.getByLabelText(l10n.maxHeightLabel);

@@ -9,7 +9,7 @@ import { gameSaga } from "@/screens/Game/saga";
 
 const sagaMiddleware = createSagaMiddleware();
 
-const rootSaga = function* () {
+export const rootSaga = function* () {
   yield fork(fieldControlSaga);
   yield fork(authSaga);
   yield fork(gameSaga);

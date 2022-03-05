@@ -63,11 +63,174 @@ describe("CellGenerator tests", () => {
 
   const sorter = (cells: ICell[]) => {
     return cells.sort((a, b) => {
-      return a.y - b.y;
+      return a.y - b.y !== 0 ? a.y - b.y : a.x - b.x;
     });
   };
 
-  describe("getNextGeneration 3 dot colony", () => {
+  describe("single cell", () => {
+    it("cell", () => {
+      const input = [
+        {
+          x: 3,
+          y: 2,
+        },
+      ];
+
+      expect(getNextGeneration(7, 7, getIndexedCells(input, 7, 7))).toEqual([]);
+    });
+
+    it("top", () => {
+      const input = [
+        {
+          x: 3,
+          y: 0,
+        },
+      ];
+
+      expect(getNextGeneration(7, 7, getIndexedCells(input, 7, 7))).toEqual([]);
+    });
+
+    it("left", () => {
+      const input = [
+        {
+          x: 0,
+          y: 4,
+        },
+      ];
+
+      expect(getNextGeneration(7, 7, getIndexedCells(input, 7, 7))).toEqual([]);
+    });
+
+    it("right", () => {
+      const input = [
+        {
+          x: 6,
+          y: 4,
+        },
+      ];
+
+      expect(getNextGeneration(7, 7, getIndexedCells(input, 7, 7))).toEqual([]);
+    });
+
+    it("bottom", () => {
+      const input = [
+        {
+          x: 4,
+          y: 6,
+        },
+      ];
+
+      expect(getNextGeneration(7, 7, getIndexedCells(input, 7, 7))).toEqual([]);
+    });
+
+    it("top-left", () => {
+      const input = [
+        {
+          x: 0,
+          y: 0,
+        },
+      ];
+
+      expect(getNextGeneration(7, 7, getIndexedCells(input, 7, 7))).toEqual([]);
+    });
+
+    it("top-right", () => {
+      const input = [
+        {
+          x: 6,
+          y: 0,
+        },
+      ];
+
+      expect(getNextGeneration(7, 7, getIndexedCells(input, 7, 7))).toEqual([]);
+    });
+
+    it("bottom-left", () => {
+      const input = [
+        {
+          x: 0,
+          y: 6,
+        },
+      ];
+
+      expect(getNextGeneration(7, 7, getIndexedCells(input, 7, 7))).toEqual([]);
+    });
+
+    it("bottom-left", () => {
+      const input = [
+        {
+          x: 6,
+          y: 6,
+        },
+      ];
+
+      expect(getNextGeneration(7, 7, getIndexedCells(input, 7, 7))).toEqual([]);
+    });
+  });
+
+  describe("2 dot colony", () => {
+    it("left", () => {
+      const input = [
+        {
+          x: 0,
+          y: 3,
+        },
+        {
+          x: 0,
+          y: 4,
+        },
+      ];
+
+      expect(getNextGeneration(7, 7, getIndexedCells(input, 7, 7))).toEqual([]);
+    });
+
+    it("right", () => {
+      const input = [
+        {
+          x: 6,
+          y: 3,
+        },
+        {
+          x: 6,
+          y: 4,
+        },
+      ];
+
+      expect(getNextGeneration(7, 7, getIndexedCells(input, 7, 7))).toEqual([]);
+    });
+
+    it("top", () => {
+      const input = [
+        {
+          x: 3,
+          y: 0,
+        },
+        {
+          x: 4,
+          y: 0,
+        },
+      ];
+
+      expect(getNextGeneration(7, 7, getIndexedCells(input, 7, 7))).toEqual([]);
+    });
+
+    it("bottom", () => {
+      const input = [
+        {
+          x: 3,
+          y: 6,
+        },
+        {
+          x: 4,
+          y: 6,
+        },
+      ];
+
+      expect(getNextGeneration(7, 7, getIndexedCells(input, 7, 7))).toEqual([]);
+    });
+  });
+
+  describe("3 dot colony", () => {
     it("cycle", () => {
       const input = [
         {
@@ -354,6 +517,190 @@ describe("CellGenerator tests", () => {
         sorter(getNextGeneration(7, 7, getIndexedCells(input, 7, 7)))
       ).toEqual(sorter(output));
     });
+
+    describe("with field overflow in next generation", () => {
+      it("left", () => {
+        const input = [
+          {
+            x: 0,
+            y: 0,
+          },
+          {
+            x: 0,
+            y: 1,
+          },
+          {
+            x: 0,
+            y: 2,
+          },
+        ];
+
+        const output = [
+          {
+            x: 0,
+            y: 1,
+          },
+          {
+            x: 1,
+            y: 1,
+          },
+        ];
+
+        expect(
+          sorter(getNextGeneration(7, 7, getIndexedCells(input, 7, 7)))
+        ).toEqual(sorter(output));
+        expect(
+          sorter(getNextGeneration(7, 7, getIndexedCells(output, 7, 7)))
+        ).toEqual([]);
+      });
+
+      it("top", () => {
+        const input = [
+          {
+            x: 0,
+            y: 0,
+          },
+          {
+            x: 1,
+            y: 0,
+          },
+          {
+            x: 2,
+            y: 0,
+          },
+        ];
+
+        const output = [
+          {
+            x: 1,
+            y: 0,
+          },
+          {
+            x: 1,
+            y: 1,
+          },
+        ];
+
+        expect(
+          sorter(getNextGeneration(7, 7, getIndexedCells(input, 7, 7)))
+        ).toEqual(sorter(output));
+        expect(
+          sorter(getNextGeneration(7, 7, getIndexedCells(output, 7, 7)))
+        ).toEqual([]);
+      });
+
+      it("right", () => {
+        const input = [
+          {
+            x: 6,
+            y: 0,
+          },
+          {
+            x: 6,
+            y: 1,
+          },
+          {
+            x: 6,
+            y: 2,
+          },
+        ];
+
+        const output = [
+          {
+            x: 6,
+            y: 1,
+          },
+          {
+            x: 5,
+            y: 1,
+          },
+        ];
+
+        expect(
+          sorter(getNextGeneration(7, 7, getIndexedCells(input, 7, 7)))
+        ).toEqual(sorter(output));
+        expect(
+          sorter(getNextGeneration(7, 7, getIndexedCells(output, 7, 7)))
+        ).toEqual([]);
+      });
+
+      it("bottom", () => {
+        const input = [
+          {
+            x: 6,
+            y: 6,
+          },
+          {
+            x: 5,
+            y: 6,
+          },
+          {
+            x: 4,
+            y: 6,
+          },
+        ];
+
+        const output = [
+          {
+            x: 5,
+            y: 5,
+          },
+          {
+            x: 5,
+            y: 6,
+          },
+        ];
+
+        expect(
+          sorter(getNextGeneration(7, 7, getIndexedCells(input, 7, 7)))
+        ).toEqual(sorter(output));
+        expect(
+          sorter(getNextGeneration(7, 7, getIndexedCells(output, 7, 7)))
+        ).toEqual([]);
+      });
+
+      it("left - neighbours on next row", () => {
+        const input = [
+          {
+            x: 0,
+            y: 3,
+          },
+          {
+            x: 1,
+            y: 3,
+          },
+          {
+            x: 6,
+            y: 2,
+          },
+        ];
+
+        expect(getNextGeneration(7, 7, getIndexedCells(input, 7, 7))).toEqual(
+          []
+        );
+      });
+
+      it("right - neighbours on next row", () => {
+        const input = [
+          {
+            x: 5,
+            y: 4,
+          },
+          {
+            x: 6,
+            y: 4,
+          },
+          {
+            x: 0,
+            y: 5,
+          },
+        ];
+
+        expect(getNextGeneration(7, 7, getIndexedCells(input, 7, 7))).toEqual(
+          []
+        );
+      });
+    });
   });
 
   describe("4 dot", () => {
@@ -380,6 +727,108 @@ describe("CellGenerator tests", () => {
       expect(
         sorter(getNextGeneration(7, 7, getIndexedCells(input, 7, 7)))
       ).toEqual(sorter(input));
+    });
+
+    describe("with field overflow in next generation", () => {
+      it("top-left", () => {
+        const input = [
+          {
+            x: 0,
+            y: 0,
+          },
+          {
+            x: 1,
+            y: 0,
+          },
+          {
+            x: 0,
+            y: 1,
+          },
+          {
+            x: 1,
+            y: 1,
+          },
+        ];
+
+        expect(
+          sorter(getNextGeneration(7, 7, getIndexedCells(input, 7, 7)))
+        ).toEqual(sorter(input));
+      });
+
+      it("top-right", () => {
+        const input = [
+          {
+            x: 6,
+            y: 0,
+          },
+          {
+            x: 5,
+            y: 0,
+          },
+          {
+            x: 6,
+            y: 1,
+          },
+          {
+            x: 5,
+            y: 1,
+          },
+        ];
+
+        expect(
+          sorter(getNextGeneration(7, 7, getIndexedCells(input, 7, 7)))
+        ).toEqual(sorter(input));
+      });
+
+      it("bottom-left", () => {
+        const input = [
+          {
+            x: 0,
+            y: 6,
+          },
+          {
+            x: 0,
+            y: 5,
+          },
+          {
+            x: 1,
+            y: 5,
+          },
+          {
+            x: 1,
+            y: 6,
+          },
+        ];
+
+        expect(
+          sorter(getNextGeneration(7, 7, getIndexedCells(input, 7, 7)))
+        ).toEqual(sorter(input));
+      });
+
+      it("bottom-right", () => {
+        const input = [
+          {
+            x: 6,
+            y: 6,
+          },
+          {
+            x: 5,
+            y: 6,
+          },
+          {
+            x: 5,
+            y: 5,
+          },
+          {
+            x: 6,
+            y: 5,
+          },
+        ];
+
+        expect(
+          sorter(getNextGeneration(7, 7, getIndexedCells(input, 7, 7)))
+        ).toEqual(sorter(input));
+      });
     });
   });
 });

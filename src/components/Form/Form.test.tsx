@@ -195,7 +195,7 @@ describe("buttons tests", () => {
     });
 
     describe("GameField size & cell size related fields", () => {
-      [
+      const shouldChange = [
         {
           maxFieldWidth: 1920,
           maxFieldHeight: 474,
@@ -226,71 +226,9 @@ describe("buttons tests", () => {
           cellSize: 1,
           maxCellsAmount: 1,
         },
-      ].forEach((settings) => {
-        it(`SHOULD CHANGE GAME FIELD STATE
-          cellSize: ${settings.cellSize},
-          maxFieldWidth: ${settings.maxFieldWidth},
-          maxFieldHeight: ${settings.maxFieldHeight},
-          maxCellsAmount: ${settings.maxCellsAmount}`, async () => {
-          cellMocks.maxCellsAmount = settings.maxCellsAmount;
+      ];
 
-          const { store } = render(<FormContainer />, {
-            preloadedState: initialState,
-          });
-
-          const inputCellSize: HTMLInputElement = screen.getByLabelText(
-            l10n.cellSizeLabel
-          );
-
-          const inputMaxFieldWidth: HTMLInputElement = screen.getByLabelText(
-            l10n.maxWidthLabel
-          );
-
-          const inputMaxFieldHeight: HTMLInputElement = screen.getByLabelText(
-            l10n.maxHeightLabel
-          );
-
-          [
-            () => {
-              userEvent.clear(inputMaxFieldWidth);
-              userEvent.type(
-                inputMaxFieldWidth,
-                String(settings.maxFieldWidth)
-              );
-            },
-            () => {
-              userEvent.clear(inputMaxFieldHeight);
-              userEvent.type(
-                inputMaxFieldHeight,
-                String(settings.maxFieldHeight)
-              );
-            },
-            () => {
-              userEvent.clear(inputCellSize);
-              userEvent.type(inputCellSize, String(settings.cellSize));
-            },
-          ]
-            .sort(() => (Math.random() > 0.5 ? -1 : 1))
-            .forEach((fn) => fn());
-
-          await waitFor(
-            () => {
-              expect(store.getState().fieldControl).toEqual(
-                expect.objectContaining({
-                  cellSize: settings.cellSize,
-                  maxFieldWidth: settings.maxFieldWidth,
-                  maxFieldHeight: settings.maxFieldHeight,
-                })
-              );
-            },
-            {
-              timeout: FormContainer.inputDelay + 100,
-            }
-          );
-        });
-      });
-
-      [
+      const shouldNotChange = [
         {
           maxFieldWidth: 1920,
           maxFieldHeight: 474,
@@ -345,67 +283,342 @@ describe("buttons tests", () => {
           cellSize: 2,
           maxCellsAmount: 2,
         },
-      ].forEach((settings) => {
-        it(`SHOULD SHOW ERROR MESSAGE
-          cellSize: ${settings.cellSize},
-          maxFieldWidth: ${settings.maxFieldWidth},
-          maxFieldHeight: ${settings.maxFieldHeight},
-          maxCellsAmount: ${settings.maxCellsAmount}`, async () => {
-          cellMocks.maxCellsAmount = settings.maxCellsAmount;
+      ];
 
-          render(<FormContainer />, {
-            preloadedState: initialState,
+      shouldChange.forEach(
+        ({ cellSize, maxFieldWidth, maxFieldHeight, maxCellsAmount }) => {
+          it(`SHOULD CHANGE GAME FIELD STATE
+          cellSize: ${cellSize},
+          maxFieldWidth: ${maxFieldWidth},
+          maxFieldHeight: ${maxFieldHeight},
+          maxCellsAmount: ${maxCellsAmount}`, async () => {
+            cellMocks.maxCellsAmount = maxCellsAmount;
+
+            const { store } = render(<FormContainer />, {
+              preloadedState: initialState,
+            });
+
+            const inputCellSize: HTMLInputElement = screen.getByLabelText(
+              l10n.cellSizeLabel
+            );
+
+            const inputMaxFieldWidth: HTMLInputElement = screen.getByLabelText(
+              l10n.maxWidthLabel
+            );
+
+            const inputMaxFieldHeight: HTMLInputElement = screen.getByLabelText(
+              l10n.maxHeightLabel
+            );
+
+            userEvent.clear(inputMaxFieldWidth);
+            userEvent.type(inputMaxFieldWidth, String(maxFieldWidth));
+
+            userEvent.clear(inputMaxFieldHeight);
+            userEvent.type(inputMaxFieldHeight, String(maxFieldHeight));
+
+            userEvent.clear(inputCellSize);
+            userEvent.type(inputCellSize, String(cellSize));
+
+            await waitFor(
+              () => {
+                expect(store.getState().fieldControl).toEqual(
+                  expect.objectContaining({
+                    cellSize,
+                    maxFieldWidth,
+                    maxFieldHeight,
+                  })
+                );
+              },
+              {
+                timeout: FormContainer.inputDelay + 100,
+              }
+            );
           });
+        }
+      );
 
-          const inputCellSize: HTMLInputElement = screen.getByLabelText(
-            l10n.cellSizeLabel
-          );
+      shouldNotChange.forEach(
+        ({ cellSize, maxFieldWidth, maxFieldHeight, maxCellsAmount }) => {
+          it(`SHOULD SHOW ERROR MESSAGE
+          cellSize: ${cellSize},
+          maxFieldWidth: ${maxFieldWidth},
+          maxFieldHeight: ${maxFieldHeight},
+          maxCellsAmount: ${maxCellsAmount}`, async () => {
+            cellMocks.maxCellsAmount = maxCellsAmount;
 
-          const inputMaxFieldWidth: HTMLInputElement = screen.getByLabelText(
-            l10n.maxWidthLabel
-          );
+            render(<FormContainer />, {
+              preloadedState: initialState,
+            });
 
-          const inputMaxFieldHeight: HTMLInputElement = screen.getByLabelText(
-            l10n.maxHeightLabel
-          );
+            const inputCellSize: HTMLInputElement = screen.getByLabelText(
+              l10n.cellSizeLabel
+            );
 
-          [
-            () => {
-              userEvent.clear(inputMaxFieldWidth);
-              userEvent.type(
-                inputMaxFieldWidth,
-                String(settings.maxFieldWidth)
-              );
-            },
-            () => {
-              userEvent.clear(inputMaxFieldHeight);
-              userEvent.type(
-                inputMaxFieldHeight,
-                String(settings.maxFieldHeight)
-              );
-            },
-            () => {
-              userEvent.clear(inputCellSize);
-              userEvent.type(inputCellSize, String(settings.cellSize));
-            },
-          ]
-            .sort(() => (Math.random() > 0.5 ? -1 : 1))
-            .forEach((fn) => fn());
+            const inputMaxFieldWidth: HTMLInputElement = screen.getByLabelText(
+              l10n.maxWidthLabel
+            );
 
-          await waitFor(
-            () => {
-              expect(
-                // eslint-disable-next-line testing-library/prefer-presence-queries
-                screen.queryByText(l10n.maxCellsAmount, { exact: false }) ||
+            const inputMaxFieldHeight: HTMLInputElement = screen.getByLabelText(
+              l10n.maxHeightLabel
+            );
+
+            userEvent.clear(inputMaxFieldWidth);
+            userEvent.type(inputMaxFieldWidth, String(maxFieldWidth));
+
+            userEvent.clear(inputMaxFieldHeight);
+            userEvent.type(inputMaxFieldHeight, String(maxFieldHeight));
+
+            userEvent.clear(inputCellSize);
+            userEvent.type(inputCellSize, String(cellSize));
+
+            await waitFor(
+              () => {
+                expect(
                   // eslint-disable-next-line testing-library/prefer-presence-queries
-                  screen.queryByText(l10n.minCellsAmount)
-              ).toBeInTheDocument();
+                  screen.queryByText(l10n.maxCellsAmount, { exact: false }) ||
+                    // eslint-disable-next-line testing-library/prefer-presence-queries
+                    screen.queryByText(l10n.minCellsAmount)
+                ).toBeInTheDocument();
+              },
+              {
+                timeout: FormContainer.inputDelay + 100,
+              }
+            );
+          });
+        }
+      );
+
+      it("should change state only after cellSize field change", async () => {
+        const { store } = render(<FormContainer />, {
+          preloadedState: {
+            ...initialState,
+            fieldControl: {
+              ...initialState.fieldControl,
+              maxFieldWidth: 1920,
+              maxFieldHeight: 474,
+              cellSize: 40,
             },
-            {
-              timeout: FormContainer.inputDelay + 100,
-            }
-          );
+          },
         });
+
+        const inputCellSize: HTMLInputElement = screen.getByLabelText(
+          l10n.cellSizeLabel
+        );
+
+        const inputMaxFieldWidth: HTMLInputElement = screen.getByLabelText(
+          l10n.maxWidthLabel
+        );
+
+        const inputMaxFieldHeight: HTMLInputElement = screen.getByLabelText(
+          l10n.maxHeightLabel
+        );
+
+        userEvent.clear(inputMaxFieldWidth);
+        userEvent.type(inputMaxFieldWidth, "10");
+
+        await waitFor(
+          () => {
+            expect(store.getState().fieldControl.maxFieldWidth).toBe(1920);
+          },
+          {
+            timeout: FormContainer.inputDelay + 100,
+          }
+        );
+
+        userEvent.clear(inputMaxFieldHeight);
+        userEvent.type(inputMaxFieldHeight, "10");
+
+        await waitFor(
+          () => {
+            expect(store.getState().fieldControl).toEqual(
+              expect.objectContaining({
+                maxFieldWidth: 1920,
+                maxFieldHeight: 474,
+              })
+            );
+          },
+          {
+            timeout: FormContainer.inputDelay + 100,
+          }
+        );
+
+        userEvent.clear(inputCellSize);
+        userEvent.type(inputCellSize, "10");
+
+        await waitFor(
+          () => {
+            expect(store.getState().fieldControl).toEqual(
+              expect.objectContaining({
+                maxFieldWidth: 10,
+                maxFieldHeight: 10,
+                cellSize: 10,
+              })
+            );
+          },
+          {
+            timeout: FormContainer.inputDelay + 100,
+          }
+        );
+      });
+
+      it("should change state only after maxFieldWidth change", async () => {
+        const { store } = render(<FormContainer />, {
+          preloadedState: {
+            ...initialState,
+            fieldControl: {
+              ...initialState.fieldControl,
+              maxFieldWidth: 1920,
+              maxFieldHeight: 474,
+              cellSize: 40,
+            },
+          },
+        });
+
+        const inputCellSize: HTMLInputElement = screen.getByLabelText(
+          l10n.cellSizeLabel
+        );
+
+        const inputMaxFieldWidth: HTMLInputElement = screen.getByLabelText(
+          l10n.maxWidthLabel
+        );
+
+        const inputMaxFieldHeight: HTMLInputElement = screen.getByLabelText(
+          l10n.maxHeightLabel
+        );
+
+        userEvent.clear(inputCellSize);
+        userEvent.type(inputCellSize, "1");
+
+        await waitFor(
+          () => {
+            expect(store.getState().fieldControl).toEqual(
+              expect.objectContaining({
+                maxFieldWidth: 1920,
+                maxFieldHeight: 474,
+                cellSize: 40,
+              })
+            );
+          },
+          {
+            timeout: FormContainer.inputDelay + 100,
+          }
+        );
+
+        userEvent.clear(inputMaxFieldHeight);
+        userEvent.type(inputMaxFieldHeight, "100");
+
+        await waitFor(
+          () => {
+            expect(store.getState().fieldControl).toEqual(
+              expect.objectContaining({
+                maxFieldWidth: 1920,
+                maxFieldHeight: 474,
+                cellSize: 40,
+              })
+            );
+          },
+          {
+            timeout: FormContainer.inputDelay + 100,
+          }
+        );
+
+        userEvent.clear(inputMaxFieldWidth);
+        userEvent.type(inputMaxFieldWidth, "1");
+
+        await waitFor(
+          () => {
+            expect(store.getState().fieldControl).toEqual(
+              expect.objectContaining({
+                maxFieldWidth: 1,
+                maxFieldHeight: 100,
+                cellSize: 1,
+              })
+            );
+          },
+          {
+            timeout: FormContainer.inputDelay + 100,
+          }
+        );
+      });
+
+      it("should change state only after maxFieldHeight change", async () => {
+        const { store } = render(<FormContainer />, {
+          preloadedState: {
+            ...initialState,
+            fieldControl: {
+              ...initialState.fieldControl,
+              maxFieldWidth: 1920,
+              maxFieldHeight: 1000,
+              cellSize: 40,
+            },
+          },
+        });
+
+        const inputCellSize: HTMLInputElement = screen.getByLabelText(
+          l10n.cellSizeLabel
+        );
+
+        const inputMaxFieldWidth: HTMLInputElement = screen.getByLabelText(
+          l10n.maxWidthLabel
+        );
+
+        const inputMaxFieldHeight: HTMLInputElement = screen.getByLabelText(
+          l10n.maxHeightLabel
+        );
+
+        userEvent.clear(inputCellSize);
+        userEvent.type(inputCellSize, "1");
+
+        await waitFor(
+          () => {
+            expect(store.getState().fieldControl).toEqual(
+              expect.objectContaining({
+                maxFieldWidth: 1920,
+                maxFieldHeight: 1000,
+                cellSize: 40,
+              })
+            );
+          },
+          {
+            timeout: FormContainer.inputDelay + 100,
+          }
+        );
+
+        userEvent.clear(inputMaxFieldWidth);
+        userEvent.type(inputMaxFieldWidth, "50");
+
+        await waitFor(
+          () => {
+            expect(store.getState().fieldControl).toEqual(
+              expect.objectContaining({
+                maxFieldWidth: 1920,
+                maxFieldHeight: 1000,
+                cellSize: 40,
+              })
+            );
+          },
+          {
+            timeout: FormContainer.inputDelay + 100,
+          }
+        );
+
+        userEvent.clear(inputMaxFieldHeight);
+        userEvent.type(inputMaxFieldHeight, "100");
+
+        await waitFor(
+          () => {
+            expect(store.getState().fieldControl).toEqual(
+              expect.objectContaining({
+                maxFieldWidth: 50,
+                maxFieldHeight: 100,
+                cellSize: 1,
+              })
+            );
+          },
+          {
+            timeout: FormContainer.inputDelay + 100,
+          }
+        );
       });
     });
 

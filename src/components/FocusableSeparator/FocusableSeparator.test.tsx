@@ -1,7 +1,8 @@
 import React, { FC, MutableRefObject } from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { FocusableSeparator } from "@/components/FocusableSeparator/FocusableSeparator";
 import { css } from "@emotion/react";
+import { isTouchDevice } from "@/utils/TouchDeviceDetection";
 
 const parentBox = {
   bottom: 130,
@@ -241,5 +242,147 @@ describe("focusable separator tests", () => {
     expect(handle).toHaveAttribute("aria-valuenow", "50");
     expect(div1).toHaveAttribute("data-testh", "50");
     expect(div2).toHaveAttribute("data-testh", "50");
+  });
+
+  describe("isTouchDevice", () => {
+    beforeEach(() => {
+      jest.restoreAllMocks();
+    });
+
+    it("should return true", () => {
+      let mockedNavigator: Navigator & {
+        msMaxTouchPoints: number;
+      };
+
+      const windowMock = jest.spyOn(window, "window", "get");
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { ontouchstart, ...mockedWindow } = window;
+
+      mockedNavigator = {
+        ...window.navigator,
+        maxTouchPoints: -1,
+        msMaxTouchPoints: 1,
+      };
+
+      windowMock.mockReturnValue({
+        ...mockedWindow,
+        navigator: mockedNavigator as Navigator,
+      } as Window & typeof globalThis);
+
+      expect(isTouchDevice()).toBe(true);
+
+      mockedNavigator = {
+        ...window.navigator,
+        maxTouchPoints: 1,
+        msMaxTouchPoints: -1,
+      };
+
+      windowMock.mockReturnValue({
+        ...mockedWindow,
+        navigator: mockedNavigator as Navigator,
+      } as Window & typeof globalThis);
+
+      expect(isTouchDevice()).toBe(true);
+
+      mockedNavigator = {
+        ...window.navigator,
+        maxTouchPoints: 0,
+        msMaxTouchPoints: 1,
+      };
+
+      windowMock.mockReturnValue({
+        ...mockedWindow,
+        navigator: mockedNavigator as Navigator,
+      } as Window & typeof globalThis);
+
+      expect(isTouchDevice()).toBe(true);
+
+      mockedNavigator = {
+        ...window.navigator,
+        maxTouchPoints: 1,
+        msMaxTouchPoints: 0,
+      };
+
+      windowMock.mockReturnValue({
+        ...mockedWindow,
+        navigator: mockedNavigator as Navigator,
+      } as Window & typeof globalThis);
+
+      expect(isTouchDevice()).toBe(true);
+
+      mockedNavigator = {
+        ...window.navigator,
+        maxTouchPoints: -1,
+        msMaxTouchPoints: -1,
+      };
+
+      windowMock.mockReturnValue({
+        ...window,
+        ontouchstart: () => {
+          // empty
+        },
+        navigator: mockedNavigator as Navigator,
+      } as Window &
+        typeof globalThis & {
+          ontouchstart: () => void;
+        });
+
+      expect(isTouchDevice()).toBe(true);
+
+      mockedNavigator = {
+        ...window.navigator,
+        maxTouchPoints: 0,
+        msMaxTouchPoints: 0,
+      };
+
+      windowMock.mockReturnValue({
+        ...window,
+        ontouchstart: () => {
+          // empty
+        },
+        navigator: mockedNavigator as Navigator,
+      } as Window &
+        typeof globalThis & {
+          ontouchstart: () => void;
+        });
+
+      expect(isTouchDevice()).toBe(true);
+    });
+
+    it("should return false", () => {
+      let mockedNavigator: Navigator & {
+        msMaxTouchPoints: number;
+      };
+
+      const windowMock = jest.spyOn(window, "window", "get");
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { ontouchstart, ...mockedWindow } = window;
+
+      mockedNavigator = {
+        ...window.navigator,
+        maxTouchPoints: -1,
+        msMaxTouchPoints: -1,
+      };
+
+      windowMock.mockReturnValue({
+        ...mockedWindow,
+        navigator: mockedNavigator as Navigator,
+      } as Window & typeof globalThis);
+
+      expect(isTouchDevice()).toBe(false);
+
+      mockedNavigator = {
+        ...window.navigator,
+        maxTouchPoints: 0,
+        msMaxTouchPoints: 0,
+      };
+
+      windowMock.mockReturnValue({
+        ...mockedWindow,
+        navigator: mockedNavigator as Navigator,
+      } as Window & typeof globalThis);
+
+      expect(isTouchDevice()).toBe(false);
+    });
   });
 });
