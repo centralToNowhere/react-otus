@@ -1,4 +1,9 @@
-import React, { createRef, Dispatch, MutableRefObject } from "react";
+import React, {
+  createRef,
+  Dispatch,
+  MouseEventHandler,
+  MutableRefObject,
+} from "react";
 import styled from "@emotion/styled";
 import { COLORS } from "@/styles/ui-styled";
 import { ICell } from "@/Cell/Cell";
@@ -59,14 +64,10 @@ export class Main extends React.PureComponent<IGameFieldProps> {
     );
   }
 
-  onCellToggle = (e: MouseEvent) => {
+  onCellToggle: MouseEventHandler<HTMLDivElement> = (e) => {
     const el = e.target as HTMLDivElement;
-    const state = el.dataset?.state;
+    const state = el.dataset.state;
     const number = Number(el.getAttribute("aria-label"));
-
-    if (isNaN(number) || !state) {
-      return;
-    }
 
     const i = Math.ceil(number / this.props.cellsInRow) - 1;
     const j = number - i * this.props.cellsInRow - 1;
@@ -77,29 +78,16 @@ export class Main extends React.PureComponent<IGameFieldProps> {
 
     if (state === "true") {
       this.props.setInactiveCell(cell);
+      return;
     }
 
-    if (state === "false") {
-      this.props.setActiveCell(cell);
-    }
+    this.props.setActiveCell(cell);
   };
-
-  componentDidMount() {
-    if (this.gameFieldRef.current) {
-      this.gameFieldRef.current.addEventListener("click", this.onCellToggle);
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.gameFieldRef.current) {
-      this.gameFieldRef.current.removeEventListener("click", this.onCellToggle);
-    }
-  }
 
   render() {
     return (
       <StyledGameField
-        ref={this.gameFieldRef}
+        onClick={this.onCellToggle}
         className={"game-field"}
         cellSize={this.props.cellSize}
         cellsInRow={this.props.cellsInRow}

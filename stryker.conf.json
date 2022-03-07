@@ -19,5 +19,5 @@
   "checkers": ["typescript"],
   "tsconfigFile": "tsconfig.json",
   "coverageAnalysis": "perTest",
-  "timeoutMS": 5000
+  "timeoutFactor": 2
 }

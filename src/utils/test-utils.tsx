@@ -47,6 +47,10 @@ function render(
   };
 }
 
+export async function delay(timeMs: number) {
+  return new Promise((resolve) => setTimeout(resolve, timeMs));
+}
+
 // re-export everything
 export * from "@testing-library/react";
 // override render method

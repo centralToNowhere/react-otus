@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from "react";
-import { render, screen, waitFor } from "@/utils/test-utils";
+import { delay, render, screen, waitFor } from "@/utils/test-utils";
 import userEvent from "@testing-library/user-event/dist";
 import { Game, GameContainer } from "@/screens/Game/index";
 import { COLORS } from "@/styles/ui-styled";
@@ -14,6 +14,8 @@ import {
   defaultFieldControlState,
   IFieldControlState,
 } from "@/components/Fields";
+import { act } from "react-dom/test-utils";
+import { FormContainer } from "@/components/Form";
 
 const getGameCycleTimeout = (speed: number) => {
   return 1000 / speed;
@@ -400,6 +402,30 @@ describe("Game tests", () => {
       cellSize: defaultFieldControlState.cellSize,
       capacityPercentage: String(defaultFieldControlState.capacity),
       speedChange: defaultFieldControlState.speed,
+    });
+  });
+
+  describe("should clear form field debounce timeout before player logout", () => {
+    it("max width", async () => {
+      const { store } = render(<GameContainer />, {
+        preloadedState: {
+          ...initialState,
+          fieldControl: {
+            ...initialState.fieldControl,
+            maxFieldWidth: 100,
+          },
+        },
+      });
+
+      const unregisterButton = screen.getByText(l10n.logoutButton);
+
+      userEvent.click(unregisterButton);
+
+      await act(async () => {
+        await delay(FormContainer.inputDelay + 50);
+      });
+
+      expect(store.getState().fieldControl).toEqual(defaultFieldControlState);
     });
   });
 });

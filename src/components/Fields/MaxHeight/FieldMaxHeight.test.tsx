@@ -1,7 +1,8 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { FieldMaxHeight } from "./FieldMaxHeight";
 import { l10n } from "@/l10n/ru";
+import { FieldMaxHeight } from "./FieldMaxHeight";
+import { isValidPositiveNumericString } from "@/utils";
 
 describe("FieldMaxHeight tests", () => {
   it("should render max height input", () => {
@@ -12,6 +13,11 @@ describe("FieldMaxHeight tests", () => {
           rawMaxWidth: "100",
           rawMaxHeight: "100",
           highlight: false,
+        }}
+        formValidators={[isValidPositiveNumericString()]}
+        error={{
+          show: false,
+          msg: "maxHeight error",
         }}
         onRawChange={() => {
           // empty function

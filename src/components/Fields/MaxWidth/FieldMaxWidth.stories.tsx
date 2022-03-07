@@ -4,6 +4,7 @@ import { FieldMaxWidth } from "./FieldMaxWidth";
 import { IFieldProps } from "@/components/Form";
 import { Provider } from "react-redux";
 import { store } from "@/store/redux/store";
+import { isValidPositiveNumericString } from "@/utils";
 
 export default {
   title: "Components/FormFields/MaxWidth",
@@ -20,6 +21,11 @@ export default {
     },
     onChange: () => {
       // empty function
+    },
+    formValidators: [isValidPositiveNumericString()],
+    error: {
+      show: false,
+      msg: "maxWidth error",
     },
   },
 } as Meta;

@@ -12,6 +12,8 @@ import {
   FieldCellSize,
   FieldCapacity,
   FieldSpeed,
+  FieldValidator,
+  OnValidateCallback,
 } from "@/components/Fields";
 import { Form } from "@/components/Form";
 import { RootState } from "@/store/redux/store";
@@ -22,7 +24,10 @@ import {
   isValidCellsAmountMax,
   isValidCellSizeString,
   isValidNonNegativeNumericString,
+  isValidPositiveNumericString,
 } from "@/utils";
+import { IFieldErrorProps } from "@/components/Fields/FieldError";
+import { initialErrorProps } from "@/components/Fields/FieldError/FieldError";
 
 export type Callback<E, T> = (e: E) => T;
 export type FormOwnProps = {
@@ -33,9 +38,10 @@ export interface IFieldProps<T> {
   formRawData: {
     [Property in keyof T]: T[Property];
   };
-  formValidator?: () => boolean;
+  formValidators: FieldValidator[];
   onRawChange: Callback<string, void>;
   onChange: Callback<string, void>;
+  error: IFieldErrorProps;
 }
 
 export interface IButtonProps
@@ -86,6 +92,13 @@ type FormContainerState = {
   rawCellSize: string;
   rawSpeed: string;
   rawCapacity: string;
+  maxWidthError: IFieldErrorProps;
+  maxHeightError: IFieldErrorProps;
+  cellSizeError: IFieldErrorProps;
+  speedError: IFieldErrorProps;
+  capacityError: IFieldErrorProps;
+  highlightRelatedFields: boolean;
+  errorMessageRelatedFields: string;
 };
 
 class Main extends React.Component<FormContainerProps, FormContainerState> {
@@ -101,82 +114,107 @@ class Main extends React.Component<FormContainerProps, FormContainerState> {
     rawCellSize: String(this.props.cellSize),
     rawSpeed: String(this.props.speed),
     rawCapacity: String(this.props.capacity),
+    maxWidthError: { ...initialErrorProps },
+    maxHeightError: { ...initialErrorProps },
+    cellSizeError: { ...initialErrorProps },
+    speedError: { ...initialErrorProps },
+    capacityError: { ...initialErrorProps },
+    highlightRelatedFields: false,
+    errorMessageRelatedFields: "",
   };
 
-  setRawData(property: keyof FormContainerState, value: string) {
+  maxWidthValidators = [
+    isValidPositiveNumericString(this.setStateErrorProperty("maxWidthError")),
+  ];
+  maxHeightValidators = [
+    isValidPositiveNumericString(this.setStateErrorProperty("maxHeightError")),
+  ];
+  cellSizeValidators = [
+    isValidCellSizeString(this.setStateErrorProperty("cellSizeError")),
+  ];
+  speedValidators = [
+    isValidPositiveNumericString(this.setStateErrorProperty("speedError")),
+  ];
+  capacityValidators = [
+    isValidNonNegativeNumericString(
+      this.setStateErrorProperty("capacityError")
+    ),
+  ];
+
+  setRawMaxWidth = this.setStateRawProperty("rawMaxWidth");
+  setRawMaxHeight = this.setStateRawProperty("rawMaxHeight");
+  setRawCellSize = this.setStateRawProperty("rawCellSize");
+  setRawCapacity = this.setStateRawProperty("rawCapacity");
+  setRawSpeed = this.setStateRawProperty("rawSpeed");
+
+  setStateProperty(
+    property: keyof FormContainerState,
+    value: string | IFieldErrorProps | boolean
+  ) {
     this.setState({
       [property]: value,
     } as Pick<FormContainerState, keyof FormContainerState>);
   }
 
-  setRawMaxWidth = (value: string) => {
-    this.setRawData("rawMaxWidth", value);
-  };
-
-  setRawMaxHeight = (value: string) => {
-    this.setRawData("rawMaxHeight", value);
-  };
-
-  setRawCellSize = (value: string) => {
-    this.setRawData("rawCellSize", value);
-  };
-
-  setRawSpeed = (value: string) => {
-    this.setRawData("rawSpeed", value);
-  };
-
-  setRawCapacity = (value: string) => {
-    this.setRawData("rawCapacity", value);
-  };
-
-  getErrorMessage() {
-    const cellsMax = isValidCellsAmountMax(
-      Number(this.state.rawCellSize),
-      Number(this.state.rawMaxWidth),
-      Number(this.state.rawMaxHeight)
-    );
-
-    const cellsMin = isAtLeastOneCellDisplayed(
-      Number(this.state.rawCellSize),
-      Number(this.state.rawMaxWidth),
-      Number(this.state.rawMaxHeight)
-    );
-
-    return cellsMax !== true ? cellsMax : cellsMin !== true ? cellsMin : "";
+  setStateErrorProperty(
+    property: keyof FormContainerState
+  ): OnValidateCallback {
+    return (isValid, msg) => {
+      this.setStateProperty(property, {
+        show: !isValid,
+        msg: msg,
+      });
+    };
   }
 
-  getFormError() {
-    const msg = this.getErrorMessage();
-
-    return msg ? <p>{msg}</p> : null;
+  setStateRawProperty(
+    property: keyof FormContainerState
+  ): (value: string) => void {
+    return (value) => {
+      this.setStateProperty(property, value);
+    };
   }
+
+  getRelatedFieldsErrorMessage = (): string => {
+    const maxValidator = isValidCellsAmountMax();
+    const minValidator = isAtLeastOneCellDisplayed();
+
+    if (
+      !maxValidator.validate(
+        Number(this.state.rawCellSize),
+        Number(this.state.rawMaxWidth),
+        Number(this.state.rawMaxHeight)
+      )
+    ) {
+      return maxValidator.errorMessage;
+    }
+
+    if (
+      !minValidator.validate(
+        Number(this.state.rawCellSize),
+        Number(this.state.rawMaxWidth),
+        Number(this.state.rawMaxHeight)
+      )
+    ) {
+      return minValidator.errorMessage;
+    }
+
+    return "";
+  };
 
   onChangeRelatedFields = () => {
-    this.props.setMaxFieldWidth(this.state.rawMaxWidth);
-    this.props.setMaxFieldHeight(this.state.rawMaxHeight);
-    this.props.setCellSize(this.state.rawCellSize);
-  };
+    const errorMessage = this.getRelatedFieldsErrorMessage();
 
-  cellsAmountValidator = () => {
-    const cellSize = this.state.rawCellSize;
-    const maxHeight = this.state.rawMaxHeight;
-    const maxWidth = this.state.rawMaxWidth;
+    this.setState({
+      highlightRelatedFields: Boolean(errorMessage),
+      errorMessageRelatedFields: errorMessage,
+    });
 
-    return (
-      isValidNonNegativeNumericString(maxWidth) === true &&
-      isValidNonNegativeNumericString(maxHeight) === true &&
-      isValidCellSizeString(cellSize) === true &&
-      isValidCellsAmountMax(
-        Number(cellSize),
-        Number(maxWidth),
-        Number(maxHeight)
-      ) === true &&
-      isAtLeastOneCellDisplayed(
-        Number(cellSize),
-        Number(maxWidth),
-        Number(maxHeight)
-      ) === true
-    );
+    if (!Boolean(errorMessage)) {
+      this.props.setMaxFieldWidth(this.state.rawMaxWidth);
+      this.props.setMaxFieldHeight(this.state.rawMaxHeight);
+      this.props.setCellSize(this.state.rawCellSize);
+    }
   };
 
   render() {
@@ -195,47 +233,54 @@ class Main extends React.Component<FormContainerProps, FormContainerState> {
                 rawMaxWidth: this.state.rawMaxWidth,
                 rawMaxHeight: this.state.rawMaxHeight,
                 rawCellSize: this.state.rawCellSize,
-                highlight: Boolean(this.getErrorMessage()),
+                highlight: this.state.highlightRelatedFields,
               }}
-              formValidator={this.cellsAmountValidator}
+              formValidators={this.maxWidthValidators}
               onRawChange={this.setRawMaxWidth}
               onChange={this.onChangeRelatedFields}
+              error={this.state.maxWidthError}
             />
             <FieldMaxHeight
               formRawData={{
                 rawMaxWidth: this.state.rawMaxWidth,
                 rawMaxHeight: this.state.rawMaxHeight,
                 rawCellSize: this.state.rawCellSize,
-                highlight: Boolean(this.getErrorMessage()),
+                highlight: this.state.highlightRelatedFields,
               }}
-              formValidator={this.cellsAmountValidator}
+              formValidators={this.maxHeightValidators}
               onRawChange={this.setRawMaxHeight}
               onChange={this.onChangeRelatedFields}
+              error={this.state.maxHeightError}
             />
             <FieldCellSize
               formRawData={{
                 rawMaxWidth: this.state.rawMaxWidth,
                 rawMaxHeight: this.state.rawMaxHeight,
                 rawCellSize: this.state.rawCellSize,
-                highlight: Boolean(this.getErrorMessage()),
+                highlight: this.state.highlightRelatedFields,
               }}
-              formValidator={this.cellsAmountValidator}
+              formValidators={this.cellSizeValidators}
               onRawChange={this.setRawCellSize}
               onChange={this.onChangeRelatedFields}
+              error={this.state.cellSizeError}
             />
             <FieldCapacity
               formRawData={{
                 rawCapacity: this.state.rawCapacity,
               }}
+              formValidators={this.capacityValidators}
               onRawChange={this.setRawCapacity}
               onChange={this.props.setCapacity}
+              error={this.state.capacityError}
             />
             <FieldSpeed
               formRawData={{
                 rawSpeed: this.state.rawSpeed,
               }}
+              formValidators={this.speedValidators}
               onRawChange={this.setRawSpeed}
               onChange={this.props.setSpeed}
+              error={this.state.speedError}
             />
           </>
         }
@@ -268,7 +313,11 @@ class Main extends React.Component<FormContainerProps, FormContainerState> {
             />
           </>
         }
-        error={this.getFormError()}
+        error={
+          Boolean(this.state.errorMessageRelatedFields) ? (
+            <p>{this.state.errorMessageRelatedFields}</p>
+          ) : null
+        }
       />
     );
   }

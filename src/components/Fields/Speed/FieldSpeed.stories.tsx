@@ -2,6 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { FieldSpeed } from "@/components/Fields/Speed/FieldSpeed";
 import { IFieldProps } from "@/components/Form";
+import { isValidPositiveNumericString } from "@/utils";
 
 export default {
   title: "Components/FormFields/Speed",
@@ -15,6 +16,11 @@ export default {
     },
     onChange: () => {
       // empty function
+    },
+    formValidators: [isValidPositiveNumericString()],
+    error: {
+      show: false,
+      msg: "speed error",
     },
   },
 } as Meta;

@@ -1,11 +1,20 @@
 import { Callback } from "@/components/Form/FormContainer";
 import React, { useCallback } from "react";
 
+export type OnValidateCallback = (
+  isValid: boolean,
+  errorMessage: string
+) => void;
+
 export interface FieldValidator {
-  validator: (value: string) => string | true;
-  setError?: React.Dispatch<
-    React.SetStateAction<{ show: boolean; msg: string }>
-  >;
+  validate: (...args: string[]) => boolean;
+  errorMessage: string;
+  onValidate: OnValidateCallback;
+}
+
+export interface FieldValidatorNumeric
+  extends Omit<FieldValidator, "validate"> {
+  validate: (...args: number[]) => boolean;
 }
 
 export const onRawChangeHandler = (
@@ -24,7 +33,7 @@ export const onRawBlurHandler = (
   };
 };
 
-const validate = (
+export const validate = (
   fieldValidators: FieldValidator[] | FieldValidator,
   value: string
 ): boolean => {
@@ -35,28 +44,12 @@ const validate = (
   let validatorsSucceeded = 0;
 
   fieldValidators.forEach((fieldValidator) => {
-    const validationResult = fieldValidator.validator(value);
+    const validationResult = fieldValidator.validate(value);
 
-    if (validationResult === true) {
+    fieldValidator.onValidate(validationResult, fieldValidator.errorMessage);
+
+    if (validationResult) {
       validatorsSucceeded++;
-
-      if (fieldValidator.setError) {
-        fieldValidator.setError(() => {
-          return {
-            show: false,
-            msg: "",
-          };
-        });
-      }
-    } else {
-      if (fieldValidator.setError) {
-        fieldValidator.setError(() => {
-          return {
-            show: true,
-            msg: validationResult,
-          };
-        });
-      }
     }
   });
 

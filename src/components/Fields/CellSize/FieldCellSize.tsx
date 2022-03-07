@@ -1,19 +1,15 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect } from "react";
 import { l10n } from "@/l10n/ru";
 import {
   InputField,
   LabelField,
   onBlurHandler,
   useOnChangeHandler,
-  FieldValidator,
 } from "@/components/Fields";
 import { FormField } from "@/components/Form/FormField";
-import {
-  FieldError,
-  initialErrorProps,
-} from "@/components/Fields/FieldError/FieldError";
+import { FieldError } from "@/components/Fields/FieldError/FieldError";
 import { FormContainer, IFieldProps } from "@/components/Form";
-import { useDebounce, isValidCellSizeString } from "@/utils";
+import { useDebounce } from "@/utils";
 import {
   onRawBlurHandler,
   onRawChangeHandler,
@@ -28,38 +24,8 @@ export const FieldCellSize: React.FC<
     highlight: boolean;
   }>
 > = (props) => {
-  const [cellSizeError, setCellSizeError] = useState({
-    ...initialErrorProps,
-  });
-
-  const cellSizeValidator: FieldValidator = useMemo(
-    () => ({
-      validator: (value: unknown) => isValidCellSizeString(value),
-      setError: setCellSizeError,
-    }),
-    []
-  );
-
-  const formValidator = props.formValidator;
-
-  const cellsAmountValidator: FieldValidator = useMemo(
-    () => ({
-      validator: () => {
-        return formValidator ? formValidator() || "" : "";
-      },
-    }),
-    [formValidator]
-  );
-
   const onChangeDebounced = useDebounce<string>(
-    useOnChangeHandler(
-      props.onChange,
-      useMemo(
-        () => [cellSizeValidator, cellsAmountValidator],
-        [cellSizeValidator, cellsAmountValidator]
-      ),
-      props.onRawChange
-    ),
+    useOnChangeHandler(props.onChange, props.formValidators, props.onRawChange),
     FormContainer.inputDelay
   );
 
@@ -70,16 +36,18 @@ export const FieldCellSize: React.FC<
 
   const onBlur = onRawBlurHandler((value) => {
     onChangeDebounced.clear();
-    onBlurHandler(props.onChange, [cellSizeValidator, cellsAmountValidator])(
-      value
-    );
+    onBlurHandler(props.onChange, props.formValidators)(value);
   });
 
-  useEffect(() => {
-    return () => {
-      onChangeDebounced.clear();
-    };
-  }, [onChangeDebounced]);
+  useEffect(
+    () => {
+      return () => {
+        onChangeDebounced.clear();
+      };
+    },
+    // Stryker disable next-line ArrayDeclaration
+    [onChangeDebounced]
+  );
 
   return (
     <FormField>
@@ -96,7 +64,7 @@ export const FieldCellSize: React.FC<
         onBlur={onBlur}
         highlight={props.formRawData.highlight}
       />
-      <FieldError show={cellSizeError.show} msg={cellSizeError.msg} />
+      <FieldError show={props.error.show} msg={props.error.msg} />
     </FormField>
   );
 };

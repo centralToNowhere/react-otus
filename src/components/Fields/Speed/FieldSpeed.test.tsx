@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { FieldSpeed } from "@/components/Fields/Speed/FieldSpeed";
 import { l10n } from "@/l10n/ru";
+import { isValidNonNegativeNumericString } from "@/utils";
 
 describe("FieldSpeed tests", () => {
   it("should render speed input", () => {
@@ -15,6 +16,11 @@ describe("FieldSpeed tests", () => {
         }}
         onChange={() => {
           // empty function
+        }}
+        formValidators={[isValidNonNegativeNumericString()]}
+        error={{
+          show: false,
+          msg: "speed error",
         }}
       />
     );

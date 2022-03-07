@@ -1,5 +1,7 @@
 import { maxCellsAmount } from "@/Cell/Cell";
 import { l10n } from "@/l10n/ru";
+import { FieldValidator, OnValidateCallback } from "@/components/Fields";
+import { FieldValidatorNumeric } from "@/components/Fields/FieldHandlers";
 
 export const isValidNumericString = (
   inputString: unknown
@@ -12,51 +14,100 @@ export const isValidNumericString = (
 };
 
 export const isValidCellSizeString = (
-  cellSizeString: unknown
-): string | true => {
-  return (
-    (isValidNumericString(cellSizeString) === true &&
-      Number(cellSizeString) % 1 === 0 &&
-      Number(cellSizeString) > 0) ||
-    l10n.positiveNumber
-  );
-};
+  callback?: OnValidateCallback
+): FieldValidator => ({
+  validate: (cellSizeString) => {
+    return (
+      isValidPositiveNumericString().validate(cellSizeString) &&
+      Number(cellSizeString) % 1 === 0
+    );
+  },
+  errorMessage: l10n.positiveNumber,
+  onValidate: (isValid, errorMessage) =>
+    callback ? callback(isValid, errorMessage) : null,
+});
 
 export const isValidCellsAmountMax = (
-  cellSize: number,
-  fieldMaxWidth: number,
-  fieldMaxHeight: number
-): string | true => {
-  const cellsAmount =
-    Math.floor(fieldMaxWidth / cellSize) *
-    Math.floor(fieldMaxHeight / cellSize);
-
-  return (
-    cellsAmount <= maxCellsAmount ||
-    `${l10n.maxCellsAmount} (${maxCellsAmount}).`
-  );
-};
+  callback?: OnValidateCallback
+): FieldValidatorNumeric => ({
+  validate: (
+    cellSize: number,
+    fieldMaxWidth: number,
+    fieldMaxHeight: number
+  ) => {
+    return (
+      Math.floor(fieldMaxWidth / cellSize) *
+        Math.floor(fieldMaxHeight / cellSize) <=
+      maxCellsAmount
+    );
+  },
+  errorMessage: `${l10n.maxCellsAmount} (${maxCellsAmount}).`,
+  onValidate: (isValid, errorMessage) =>
+    callback ? callback(isValid, errorMessage) : null,
+});
 
 export const isAtLeastOneCellDisplayed = (
-  cellSize: number,
-  fieldMaxWidth: number,
-  fieldMaxHeight: number
-): string | true => {
-  const cellsAmount =
-    Math.floor(fieldMaxWidth / cellSize) *
-    Math.floor(fieldMaxHeight / cellSize);
+  callback?: OnValidateCallback
+): FieldValidatorNumeric => ({
+  validate: (
+    cellSize: number,
+    fieldMaxWidth: number,
+    fieldMaxHeight: number
+  ) => {
+    return (
+      Math.floor(fieldMaxWidth / cellSize) *
+        Math.floor(fieldMaxHeight / cellSize) >
+      0
+    );
+  },
+  errorMessage: l10n.minCellsAmount,
+  onValidate: (isValid, errorMessage) =>
+    callback ? callback(isValid, errorMessage) : null,
+});
 
-  return cellsAmount > 0 || l10n.minCellsAmount;
-};
-
-export const isValidPositiveNumericString = (str: unknown): string | true => {
-  return (isValidNumericString(str) && Number(str) > 0) || l10n.positiveNumber;
-};
+export const isValidPositiveNumericString = (
+  callback?: OnValidateCallback
+): FieldValidator => ({
+  validate: (value: string) => {
+    return isValidNumericString(value) && Number(value) > 0;
+  },
+  errorMessage: l10n.positiveNumber,
+  onValidate: (isValid, errorMessage) =>
+    callback ? callback(isValid, errorMessage) : null,
+});
 
 export const isValidNonNegativeNumericString = (
-  str: unknown
-): string | true => {
-  return (
-    (isValidNumericString(str) && Number(str) >= 0) || l10n.nonNegativeNumber
-  );
-};
+  callback?: OnValidateCallback
+): FieldValidator => ({
+  validate: (value: string) => {
+    return isValidNumericString(value) && Number(value) >= 0;
+  },
+  errorMessage: l10n.nonNegativeNumber,
+  onValidate: (isValid, errorMessage) =>
+    callback ? callback(isValid, errorMessage) : null,
+});
+
+export const cellsAmountCombinedValidator = (
+  callback?: OnValidateCallback
+): FieldValidator => ({
+  validate: (cellSize: string, maxWidth: string, maxHeight: string) => {
+    return (
+      isValidPositiveNumericString().validate(maxWidth) &&
+      isValidPositiveNumericString().validate(maxHeight) &&
+      isValidCellSizeString().validate(cellSize) &&
+      isValidCellsAmountMax().validate(
+        Number(cellSize),
+        Number(maxWidth),
+        Number(maxHeight)
+      ) &&
+      isAtLeastOneCellDisplayed().validate(
+        Number(cellSize),
+        Number(maxWidth),
+        Number(maxHeight)
+      )
+    );
+  },
+  errorMessage: l10n.fieldConfigurationError,
+  onValidate: (isValid, errorMessage) =>
+    callback ? callback(isValid, errorMessage) : null,
+});
