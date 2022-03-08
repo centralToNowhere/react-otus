@@ -17,7 +17,7 @@
   },
   "overrides": [
     {
-      "files": ["webpack-dev.config.js", "webpack-prod.config.js"],
+      "files": ["webpack-common.config.js", "webpack-dev.config.js", "webpack-prod.config.js"],
       "rules": {
         "@typescript-eslint/no-var-requires": ["off"]
       }
