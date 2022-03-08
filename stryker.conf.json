@@ -16,7 +16,7 @@
   ],
   "dashboard": {
     "project": "github.com/centralToNowhere/react-otus",
-    "version": "lesson15git",
+    "version": "develop",
     "module": "game-of-life",
     "baseUrl": "https://dashboard.stryker-mutator.io/api/reports",
     "reportType": "full"
