@@ -3,14 +3,10 @@
   "_comment": "This config was generated using 'stryker init'. Please take a look at: https://stryker-mutator.io/docs/stryker-js/configuration/ for more information",
   "packageManager": "npm",
   "mutate": [
-    "src/**/*.ts?(x)",
+    "src/components/Fields/CellSize/FieldCellSize.ts?(x)",
     "!src/**/*.test.ts?(x)",
     "!src/**/*.stories.tsx"
   ],
-  "project-info": {
-    "name": "github.com/centralToNowhere/react-otus",
-    "version": "develop"
-  },
   "reporters": [
     "html",
     "clear-text",
@@ -18,6 +14,13 @@
     "json",
     "dashboard"
   ],
+  "dashboard": {
+    "project": "github.com/centralToNowhere/react-otus",
+    "version": "develop",
+    "module": "game-of-life",
+    "baseUrl": "https://dashboard.stryker-mutator.io/api/reports",
+    "reportType": "full"
+  },
   "testRunner": "jest",
   "jest": {
     "projectType": "custom"
