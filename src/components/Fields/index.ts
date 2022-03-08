@@ -21,6 +21,6 @@ export { FieldCapacity } from "./Capacity";
 export { FieldCellSize } from "./CellSize";
 export { FieldSpeed } from "./Speed";
 export type { IFieldControlState } from "./slice";
-export type { FieldValidator } from "./FieldHandlers";
+export type { FieldValidator, OnValidateCallback } from "./FieldHandlers";
 export { useOnChangeHandler, onBlurHandler } from "./FieldHandlers";
 export { fieldControlSaga } from "@/components/Fields/saga";

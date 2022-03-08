@@ -1,7 +1,6 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect } from "react";
 import { l10n } from "@/l10n/ru";
 import {
-  FieldValidator,
   InputField,
   LabelField,
   onBlurHandler,
@@ -10,7 +9,7 @@ import {
 import { FormField } from "@/components/Form/FormField";
 import { FieldError } from "@/components/Fields/FieldError/FieldError";
 import { FormContainer, IFieldProps } from "@/components/Form";
-import { useDebounce, isValidNonNegativeNumericString } from "@/utils";
+import { useDebounce } from "@/utils";
 import {
   onRawBlurHandler,
   onRawChangeHandler,
@@ -22,21 +21,8 @@ export const FieldCapacity: React.FC<
     rawCapacity: string;
   }>
 > = (props) => {
-  const [error, setError] = useState({
-    show: false,
-    msg: "",
-  });
-
-  const capacityValidator: FieldValidator = useMemo(
-    () => ({
-      validator: (value: unknown) => isValidNonNegativeNumericString(value),
-      setError,
-    }),
-    []
-  );
-
   const onChangeDebounced = useDebounce<string>(
-    useOnChangeHandler(props.onChange, capacityValidator, props.onRawChange),
+    useOnChangeHandler(props.onChange, props.formValidators, props.onRawChange),
     FormContainer.inputDelay
   );
 
@@ -47,14 +33,18 @@ export const FieldCapacity: React.FC<
 
   const onBlur = onRawBlurHandler((value) => {
     onChangeDebounced.clear();
-    onBlurHandler(props.onChange, capacityValidator)(value);
+    onBlurHandler(props.onChange, props.formValidators)(value);
   });
 
-  useEffect(() => {
-    return () => {
-      onChangeDebounced.clear();
-    };
-  }, [onChangeDebounced]);
+  useEffect(
+    () => {
+      return () => {
+        onChangeDebounced.clear();
+      };
+    },
+    // Stryker disable next-line ArrayDeclaration
+    [onChangeDebounced]
+  );
 
   return (
     <FormField>
@@ -74,7 +64,7 @@ export const FieldCapacity: React.FC<
         onChange={onChange}
         onBlur={onBlur}
       />
-      <FieldError show={error.show} msg={error.msg} />
+      <FieldError show={props.error.show} msg={props.error.msg} />
     </FormField>
   );
 };

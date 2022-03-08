@@ -4,6 +4,7 @@ import { FieldCellSize } from "@/components/Fields/CellSize/FieldCellSize";
 import { IFieldProps } from "@/components/Form";
 import { store } from "@/store/redux/store";
 import { Provider } from "react-redux";
+import { isValidCellSizeString } from "@/utils";
 
 export default {
   title: "Components/FormFields/CellSize",
@@ -20,6 +21,11 @@ export default {
     },
     onChange: () => {
       // empty function
+    },
+    formValidators: [isValidCellSizeString()],
+    error: {
+      show: false,
+      msg: "cellSize error",
     },
   },
 } as Meta;

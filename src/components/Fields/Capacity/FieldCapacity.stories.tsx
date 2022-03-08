@@ -2,6 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { FieldCapacity } from "./FieldCapacity";
 import { IFieldProps } from "@/components/Form";
+import { isValidNonNegativeNumericString } from "@/utils";
 
 export default {
   title: "Components/FormFields/Capacity",
@@ -15,6 +16,11 @@ export default {
     },
     onChange: () => {
       // empty function
+    },
+    formValidators: [isValidNonNegativeNumericString()],
+    error: {
+      show: false,
+      msg: "capacity error",
     },
   },
 } as Meta;

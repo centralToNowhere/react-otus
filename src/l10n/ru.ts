@@ -47,4 +47,5 @@ export const l10n = {
   maxCellsAmount: "Превышено максимальное количество ячеек",
   positiveNumber: "Ожидается положительное число.",
   nonNegativeNumber: "Ожидается неотрицательное число.",
+  fieldConfigurationError: "Ошибка конфигурации поля.",
 };

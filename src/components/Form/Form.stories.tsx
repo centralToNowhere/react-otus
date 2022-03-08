@@ -13,6 +13,11 @@ import {
 import { ButtonGameControl } from "@/components/Buttons";
 import { l10n } from "@/l10n/ru";
 import { maxCellsAmount } from "@/Cell/Cell";
+import {
+  isValidCellSizeString,
+  isValidNonNegativeNumericString,
+  isValidPositiveNumericString,
+} from "@/utils";
 
 export default {
   title: "Components/SettingsForm",
@@ -22,27 +27,35 @@ export default {
       <>
         <FieldMaxWidth
           formRawData={{
+            rawCellSize: "40",
             rawMaxWidth: "600",
             rawMaxHeight: "400",
-            rawCellSize: "40",
             highlight: false,
           }}
-          formValidator={() => true}
           onRawChange={() => {
             // empty function
           }}
           onChange={() => {
             // empty function
           }}
+          formValidators={[isValidPositiveNumericString()]}
+          error={{
+            show: false,
+            msg: "maxWidth error",
+          }}
         />
         <FieldMaxHeight
           formRawData={{
+            rawCellSize: "40",
             rawMaxWidth: "600",
             rawMaxHeight: "400",
-            rawCellSize: "40",
             highlight: false,
           }}
-          formValidator={() => true}
+          formValidators={[isValidPositiveNumericString()]}
+          error={{
+            show: false,
+            msg: "maxHeight error",
+          }}
           onRawChange={() => {
             // empty function
           }}
@@ -52,28 +65,37 @@ export default {
         />
         <FieldCellSize
           formRawData={{
+            rawCellSize: "40",
             rawMaxWidth: "600",
             rawMaxHeight: "400",
-            rawCellSize: "40",
             highlight: false,
           }}
-          formValidator={() => true}
+          formValidators={[isValidCellSizeString()]}
           onRawChange={() => {
-            // empty function
+            // empty
           }}
           onChange={() => {
-            // empty function
+            // empty
+          }}
+          error={{
+            show: false,
+            msg: "cellSize error",
           }}
         />
         <FieldCapacity
           formRawData={{
             rawCapacity: "40",
           }}
+          formValidators={[isValidNonNegativeNumericString()]}
           onRawChange={() => {
-            // empty function
+            // empty
           }}
           onChange={() => {
-            // empty function
+            // empty
+          }}
+          error={{
+            show: false,
+            msg: "capacity error",
           }}
         />
         <FieldSpeed
@@ -85,6 +107,11 @@ export default {
           }}
           onChange={() => {
             // empty function
+          }}
+          formValidators={[isValidNonNegativeNumericString()]}
+          error={{
+            show: false,
+            msg: "speed error",
           }}
         />
       </>
@@ -144,17 +171,21 @@ FormErrorNoCells.args = {
     <>
       <FieldMaxWidth
         formRawData={{
+          rawCellSize: "40",
           rawMaxWidth: "10",
           rawMaxHeight: "10",
-          rawCellSize: "40",
           highlight: true,
         }}
-        formValidator={() => true}
         onRawChange={() => {
           // empty function
         }}
         onChange={() => {
           // empty function
+        }}
+        formValidators={[isValidPositiveNumericString()]}
+        error={{
+          show: false,
+          msg: "maxWidth error",
         }}
       />
       <FieldMaxHeight
@@ -164,12 +195,16 @@ FormErrorNoCells.args = {
           rawCellSize: "40",
           highlight: true,
         }}
-        formValidator={() => true}
         onRawChange={() => {
           // empty function
         }}
         onChange={() => {
           // empty function
+        }}
+        formValidators={[isValidPositiveNumericString()]}
+        error={{
+          show: false,
+          msg: "maxHeight error",
         }}
       />
       <FieldCellSize
@@ -179,12 +214,16 @@ FormErrorNoCells.args = {
           rawCellSize: "40",
           highlight: true,
         }}
-        formValidator={() => true}
         onRawChange={() => {
           // empty function
         }}
         onChange={() => {
           // empty function
+        }}
+        formValidators={[isValidCellSizeString()]}
+        error={{
+          show: false,
+          msg: "cellSize error",
         }}
       />
       <FieldCapacity
@@ -197,6 +236,11 @@ FormErrorNoCells.args = {
         onChange={() => {
           // empty function
         }}
+        formValidators={[isValidNonNegativeNumericString()]}
+        error={{
+          show: false,
+          msg: "capacity error",
+        }}
       />
       <FieldSpeed
         formRawData={{
@@ -207,6 +251,11 @@ FormErrorNoCells.args = {
         }}
         onChange={() => {
           // empty function
+        }}
+        formValidators={[isValidPositiveNumericString()]}
+        error={{
+          show: false,
+          msg: "speed error",
         }}
       />
     </>
@@ -225,12 +274,16 @@ FormErrorMaxCellsAmountExceeded.args = {
           rawCellSize: "1",
           highlight: true,
         }}
-        formValidator={() => true}
         onRawChange={() => {
           // empty function
         }}
         onChange={() => {
           // empty function
+        }}
+        formValidators={[isValidPositiveNumericString()]}
+        error={{
+          show: false,
+          msg: "maxWidth error",
         }}
       />
       <FieldMaxHeight
@@ -240,12 +293,16 @@ FormErrorMaxCellsAmountExceeded.args = {
           rawCellSize: "1",
           highlight: true,
         }}
-        formValidator={() => true}
         onRawChange={() => {
           // empty function
         }}
         onChange={() => {
           // empty function
+        }}
+        formValidators={[isValidPositiveNumericString()]}
+        error={{
+          show: false,
+          msg: "maxHeight error",
         }}
       />
       <FieldCellSize
@@ -255,12 +312,16 @@ FormErrorMaxCellsAmountExceeded.args = {
           rawCellSize: "1",
           highlight: true,
         }}
-        formValidator={() => true}
         onRawChange={() => {
           // empty function
         }}
         onChange={() => {
           // empty function
+        }}
+        formValidators={[isValidCellSizeString()]}
+        error={{
+          show: false,
+          msg: "cellSize error",
         }}
       />
       <FieldCapacity
@@ -273,6 +334,11 @@ FormErrorMaxCellsAmountExceeded.args = {
         onChange={() => {
           // empty function
         }}
+        formValidators={[isValidNonNegativeNumericString()]}
+        error={{
+          show: false,
+          msg: "capacity error",
+        }}
       />
       <FieldSpeed
         formRawData={{
@@ -283,6 +349,11 @@ FormErrorMaxCellsAmountExceeded.args = {
         }}
         onChange={() => {
           // empty function
+        }}
+        formValidators={[isValidPositiveNumericString()]}
+        error={{
+          show: false,
+          msg: "speed error",
         }}
       />
     </>

@@ -47,61 +47,63 @@ const calculateNeighbours = (
   // Некрасиво, но производительно
 
   // если ячейка находится на границе поля
-  if (
-    (i + 1) % cellsInRow === 0 ||
-    i % cellsInRow === 0 ||
-    i - cellsInRow < 0 ||
-    i + cellsInRow >= indexedCells.length
-  ) {
-    // right
-    if ((i + 1) % cellsInRow !== 0) {
-      neighbours += indexedCells[i + 1];
-    }
-
-    // left
-    if (i % cellsInRow !== 0) {
-      neighbours += indexedCells[i - 1];
-    }
-
-    // top
-    if (i - cellsInRow >= 0) {
-      neighbours += indexedCells[i - cellsInRow];
-
-      // top right
-      if ((i + 1) % cellsInRow !== 0) {
-        neighbours += indexedCells[i + 1 - cellsInRow];
-      }
-
-      // top left
-      if (i % cellsInRow !== 0) {
-        neighbours += indexedCells[i - 1 - cellsInRow];
-      }
-    }
-
-    // bottom
-    if (i + cellsInRow < indexedCells.length) {
-      neighbours += indexedCells[i + cellsInRow];
-
-      // bottom right
-      if ((i + 1) % cellsInRow !== 0) {
-        neighbours += indexedCells[i + 1 + cellsInRow];
-      }
-
-      // bottom left
-      if (i % cellsInRow !== 0) {
-        neighbours += indexedCells[i - 1 + cellsInRow];
-      }
-    }
-  } else {
+  // right
+  if ((i + 1) % cellsInRow !== 0) {
     neighbours += indexedCells[i + 1];
-    neighbours += indexedCells[i - 1];
-    neighbours += indexedCells[i - cellsInRow];
-    neighbours += indexedCells[i + 1 - cellsInRow];
-    neighbours += indexedCells[i - 1 - cellsInRow];
-    neighbours += indexedCells[i + cellsInRow];
-    neighbours += indexedCells[i + 1 + cellsInRow];
-    neighbours += indexedCells[i - 1 + cellsInRow];
   }
+
+  // left
+  if (i % cellsInRow !== 0) {
+    neighbours += indexedCells[i - 1];
+  }
+
+  // top
+  if (i - cellsInRow >= 0) {
+    neighbours += indexedCells[i - cellsInRow];
+
+    // top right
+    if ((i + 1) % cellsInRow !== 0) {
+      neighbours += indexedCells[i + 1 - cellsInRow];
+    }
+
+    // top left
+    if (i % cellsInRow !== 0) {
+      neighbours += indexedCells[i - 1 - cellsInRow];
+    }
+  }
+
+  // bottom
+  if (i + cellsInRow < indexedCells.length) {
+    neighbours += indexedCells[i + cellsInRow];
+
+    // bottom right
+    if ((i + 1) % cellsInRow !== 0) {
+      neighbours += indexedCells[i + 1 + cellsInRow];
+    }
+
+    // bottom left
+    if (i % cellsInRow !== 0) {
+      neighbours += indexedCells[i - 1 + cellsInRow];
+    }
+  }
+  // if (
+  //   (i + 1) % cellsInRow === 0 ||
+  //   i % cellsInRow === 0 ||
+  //   i - cellsInRow < 0 ||
+  //   i + cellsInRow >= indexedCells.length
+  // ) {
+  //
+  //   }
+  // } else {
+  //   neighbours += indexedCells[i + 1];
+  //   neighbours += indexedCells[i - 1];
+  //   neighbours += indexedCells[i - cellsInRow];
+  //   neighbours += indexedCells[i + 1 - cellsInRow];
+  //   neighbours += indexedCells[i - 1 - cellsInRow];
+  //   neighbours += indexedCells[i + cellsInRow];
+  //   neighbours += indexedCells[i + 1 + cellsInRow];
+  //   neighbours += indexedCells[i - 1 + cellsInRow];
+  // }
 
   return neighbours;
 };

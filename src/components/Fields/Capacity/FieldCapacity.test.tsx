@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { FieldCapacity } from "./FieldCapacity";
 import { l10n } from "@/l10n/ru";
+import { isValidNonNegativeNumericString } from "@/utils";
 
 describe("FieldCapacity tests", () => {
   it("should render capacity input", () => {
@@ -10,11 +11,16 @@ describe("FieldCapacity tests", () => {
         formRawData={{
           rawCapacity: "50",
         }}
+        formValidators={[isValidNonNegativeNumericString()]}
         onRawChange={() => {
-          // empty function
+          // empty
         }}
         onChange={() => {
-          // empty function
+          // empty
+        }}
+        error={{
+          show: false,
+          msg: "capacity error",
         }}
       />
     );

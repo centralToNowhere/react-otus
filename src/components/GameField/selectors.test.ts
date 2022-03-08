@@ -73,6 +73,41 @@ describe("getIndexedCells test", () => {
     expect(getIndexedCells(activeCells, 10, 10)[44]).toBe(0);
     expect(getIndexedCells(activeCells, 10, 10)[99]).toBe(0);
   });
+
+  it("cell.x > cellsInRow & cell.y > cellsInCol ", () => {
+    const indexedCells = getIndexedCells(
+      [
+        {
+          x: 5,
+          y: 5,
+        },
+        {
+          x: 4,
+          y: 4,
+        },
+        {
+          x: 3,
+          y: 5,
+        },
+        {
+          x: 5,
+          y: 3,
+        },
+        {
+          x: 3,
+          y: 4,
+        },
+        {
+          x: 4,
+          y: 3,
+        },
+      ],
+      4,
+      4
+    );
+
+    expect(indexedCells.filter((cell) => cell === 1)).toHaveLength(0);
+  });
 });
 
 describe("selectGenerationNumber", () => {

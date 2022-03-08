@@ -1,14 +1,11 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect } from "react";
 import { l10n } from "@/l10n/ru";
-import { FieldValidator, InputField, LabelField } from "@/components/Fields";
+import { InputField, LabelField } from "@/components/Fields";
 import { FormField } from "@/components/Form/FormField";
 import { useOnChangeHandler, onBlurHandler } from "@/components/Fields";
-import {
-  FieldError,
-  initialErrorProps,
-} from "@/components/Fields/FieldError/FieldError";
+import { FieldError } from "@/components/Fields/FieldError/FieldError";
 import { FormContainer, IFieldProps } from "@/components/Form";
-import { useDebounce, isValidPositiveNumericString } from "@/utils";
+import { useDebounce } from "@/utils";
 import {
   onRawBlurHandler,
   onRawChangeHandler,
@@ -23,38 +20,8 @@ export const FieldMaxWidth: React.FC<
     highlight: boolean;
   }>
 > = (props) => {
-  const [notNonNegativeError, setNonNegativeError] = useState({
-    ...initialErrorProps,
-  });
-
-  const maxWidthValidator: FieldValidator = useMemo(
-    () => ({
-      validator: (value: unknown) => isValidPositiveNumericString(value),
-      setError: setNonNegativeError,
-    }),
-    []
-  );
-
-  const formValidator = props.formValidator;
-
-  const cellsAmountValidator: FieldValidator = useMemo(
-    () => ({
-      validator: () => {
-        return formValidator ? formValidator() || "" : "";
-      },
-    }),
-    [formValidator]
-  );
-
   const onChangeDebounced = useDebounce<string>(
-    useOnChangeHandler(
-      props.onChange,
-      useMemo(
-        () => [maxWidthValidator, cellsAmountValidator],
-        [maxWidthValidator, cellsAmountValidator]
-      ),
-      props.onRawChange
-    ),
+    useOnChangeHandler(props.onChange, props.formValidators, props.onRawChange),
     FormContainer.inputDelay
   );
 
@@ -65,16 +32,18 @@ export const FieldMaxWidth: React.FC<
 
   const onBlur = onRawBlurHandler((value) => {
     onChangeDebounced.clear();
-    onBlurHandler(props.onChange, [maxWidthValidator, cellsAmountValidator])(
-      value
-    );
+    onBlurHandler(props.onChange, props.formValidators)(value);
   });
 
-  useEffect(() => {
-    return () => {
-      onChangeDebounced.clear();
-    };
-  }, [onChangeDebounced]);
+  useEffect(
+    () => {
+      return () => {
+        onChangeDebounced.clear();
+      };
+    },
+    // Stryker disable next-line ArrayDeclaration
+    [onChangeDebounced]
+  );
 
   return (
     <FormField>
@@ -92,10 +61,7 @@ export const FieldMaxWidth: React.FC<
         onBlur={onBlur}
         highlight={props.formRawData.highlight}
       />
-      <FieldError
-        show={notNonNegativeError.show}
-        msg={notNonNegativeError.msg}
-      />
+      <FieldError show={props.error.show} msg={props.error.msg} />
     </FormField>
   );
 };

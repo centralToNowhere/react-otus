@@ -10,9 +10,19 @@ module.exports = {
   ],
   setupFilesAfterEnv: ["<rootDir>/src/jest-setup.ts"],
   clearMocks: true,
+
   coverageDirectory: "coverage",
   collectCoverage: true,
-  coverageReporters: ["json-summary", "json", "html"],
+  coverageReporters: ["text", "json-summary", "json", "html"],
+  coverageThreshold: {
+    global: {
+      statements: 95,
+      branches: 90,
+      functions: 95,
+      lines: 95,
+    },
+  },
+
   testEnvironment: "jsdom",
   transform: {
     "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",

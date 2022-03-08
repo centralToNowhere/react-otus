@@ -2,13 +2,11 @@ import React, { ReactElement } from "react";
 import { render as rtlRender } from "@testing-library/react";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import { authSlice, authSaga } from "@/auth";
-import { fieldControlSlice, fieldControlSaga } from "@/components/Fields";
-import { initialStateAll } from "@/store/redux/store";
+import { authSlice } from "@/auth";
+import { fieldControlSlice } from "@/components/Fields";
+import { initialStateAll, rootSaga } from "@/store/redux/store";
 import createSagaMiddleware from "redux-saga";
-import { fork } from "redux-saga/effects";
 import { gameFieldSlice } from "@/components/GameField";
-import { gameSaga } from "@/screens/Game/saga";
 
 function render(
   ui: ReactElement,
@@ -20,12 +18,6 @@ function render(
   }
 ) {
   const sagaMiddleware = createSagaMiddleware();
-
-  const rootSaga = function* () {
-    yield fork(fieldControlSaga);
-    yield fork(authSaga);
-    yield fork(gameSaga);
-  };
 
   const store = configureStore({
     reducer: {
@@ -53,6 +45,10 @@ function render(
     store,
     SagaTask,
   };
+}
+
+export async function delay(timeMs: number) {
+  return new Promise((resolve) => setTimeout(resolve, timeMs));
 }
 
 // re-export everything

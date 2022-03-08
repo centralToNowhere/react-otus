@@ -4,6 +4,7 @@ import { FieldMaxHeight } from "./FieldMaxHeight";
 import { IFieldProps } from "@/components/Form";
 import { Provider } from "react-redux";
 import { store } from "@/store/redux/store";
+import { isValidPositiveNumericString } from "@/utils";
 
 export default {
   title: "Components/FormFields/MaxHeight",
@@ -20,6 +21,11 @@ export default {
     },
     onChange: () => {
       // empty function
+    },
+    formValidators: [isValidPositiveNumericString()],
+    error: {
+      show: false,
+      msg: "maxHeight error",
     },
   },
 } as Meta;

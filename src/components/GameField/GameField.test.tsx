@@ -1,7 +1,6 @@
 import React from "react";
 import { render, screen, waitFor } from "@/utils/test-utils";
 import { GameField } from "@/components/GameField";
-import { Main } from "@/components/GameField/GameField";
 import userEvent from "@testing-library/user-event/dist";
 import { COLORS } from "@/styles/ui-styled";
 import { getInitialCells } from "@/utils/CellGenerator";
@@ -35,7 +34,20 @@ describe("GameField tests", () => {
 
   it("should render 150 inactive cells", () => {
     render(<GameField />, {
-      preloadedState: initialState,
+      preloadedState: {
+        ...initialState,
+        fieldControl: {
+          cellSize: 40,
+          maxFieldWidth: 600,
+          maxFieldHeight: 400,
+          capacity: 50,
+          speed: 2,
+        },
+        gameField: {
+          ...initialState.gameField,
+          activeCells: [],
+        },
+      },
     });
 
     const cells: HTMLElement[] = screen.getAllByTestId("cell");
@@ -43,7 +55,133 @@ describe("GameField tests", () => {
 
     cells.forEach((cell) => {
       expect(cell).not.toHaveStyle({
-        background: "black",
+        background: COLORS.activeCellBg,
+      });
+    });
+  });
+
+  describe("gameField css styles", () => {
+    describe("gameField animation", () => {
+      it("cells amount < 1000 - transition: 0.5s ease background", () => {
+        render(<GameField />, {
+          preloadedState: {
+            ...initialState,
+            fieldControl: {
+              ...initialState.fieldControl,
+              cellSize: 10,
+              maxFieldWidth: 100,
+              maxFieldHeight: 100,
+            },
+          },
+        });
+
+        const cells = screen.getAllByTestId("cell");
+
+        expect(cells[0]).toHaveStyle({
+          transition: "0.5s ease background",
+        });
+      });
+
+      it("cells amount > 1000 - transition: none", () => {
+        render(<GameField />, {
+          preloadedState: {
+            ...initialState,
+            fieldControl: {
+              ...initialState.fieldControl,
+              cellSize: 10,
+              maxFieldWidth: 200,
+              maxFieldHeight: 1000,
+            },
+          },
+        });
+
+        const cells = screen.getAllByTestId("cell");
+
+        expect(cells[0]).toHaveStyle({
+          transition: "none",
+        });
+      });
+
+      it("cells amount === 1000 - transition: none", () => {
+        render(<GameField />, {
+          preloadedState: {
+            ...initialState,
+            fieldControl: {
+              ...initialState.fieldControl,
+              cellSize: 10,
+              maxFieldWidth: 1000,
+              maxFieldHeight: 100,
+            },
+          },
+        });
+
+        const cells = screen.getAllByTestId("cell");
+
+        expect(cells[0]).toHaveStyle({
+          transition: "none",
+        });
+      });
+    });
+
+    describe("gameField border", () => {
+      it(`cells size > 2 - border: 1px solid ${COLORS.secondary}`, () => {
+        render(<GameField />, {
+          preloadedState: {
+            ...initialState,
+            fieldControl: {
+              ...initialState.fieldControl,
+              cellSize: 3,
+              maxFieldWidth: 10,
+              maxFieldHeight: 10,
+            },
+          },
+        });
+
+        const cells = screen.getAllByTestId("cell");
+
+        expect(cells[0]).toHaveStyle({
+          border: `1px solid ${COLORS.secondary}`,
+        });
+      });
+
+      it(`cells size === 2 - border: none`, () => {
+        render(<GameField />, {
+          preloadedState: {
+            ...initialState,
+            fieldControl: {
+              ...initialState.fieldControl,
+              cellSize: 2,
+              maxFieldWidth: 10,
+              maxFieldHeight: 10,
+            },
+          },
+        });
+
+        const cells = screen.getAllByTestId("cell");
+
+        expect(cells[0]).toHaveStyle({
+          border: "none",
+        });
+      });
+
+      it(`cells size < 2 - border: none`, () => {
+        render(<GameField />, {
+          preloadedState: {
+            ...initialState,
+            fieldControl: {
+              ...initialState.fieldControl,
+              cellSize: 1,
+              maxFieldWidth: 10,
+              maxFieldHeight: 10,
+            },
+          },
+        });
+
+        const cells = screen.getAllByTestId("cell");
+
+        expect(cells[0]).toHaveStyle({
+          border: "none",
+        });
       });
     });
   });
@@ -55,9 +193,9 @@ describe("GameField tests", () => {
           ...initialState,
           fieldControl: {
             ...initialState.fieldControl,
-            cellSize: 40,
-            maxFieldWidth: 40,
-            maxFieldHeight: 40,
+            cellSize: 10,
+            maxFieldWidth: 100,
+            maxFieldHeight: 100,
           },
           gameField: {
             ...initialState.gameField,
@@ -66,12 +204,12 @@ describe("GameField tests", () => {
         },
       });
 
-      const cell = screen.getByTestId("cell");
+      const cells = screen.getAllByTestId("cell");
 
-      userEvent.click(cell);
+      userEvent.click(cells[44]);
 
       await waitFor(() => {
-        expect(cell).toHaveStyle({
+        expect(cells[44]).toHaveStyle({
           background: COLORS.activeCellBg,
         });
       });
@@ -83,66 +221,34 @@ describe("GameField tests", () => {
           ...initialState,
           fieldControl: {
             ...initialState.fieldControl,
-            cellSize: 40,
-            maxFieldWidth: 40,
-            maxFieldHeight: 40,
+            cellSize: 10,
+            maxFieldWidth: 100,
+            maxFieldHeight: 100,
           },
           gameField: {
             ...initialState.gameField,
             activeCells: [
               {
-                x: 0,
-                y: 0,
+                x: 4,
+                y: 4,
               },
             ],
           },
         },
       });
 
-      const cell = screen.getByTestId("cell");
+      const cells = screen.getAllByTestId("cell");
 
-      userEvent.click(cell);
+      expect(cells[44]).toHaveStyle({
+        background: COLORS.activeCellBg,
+      });
+
+      userEvent.click(cells[44]);
 
       await waitFor(() => {
-        expect(cell).not.toHaveStyle({
+        expect(cells[44]).not.toHaveStyle({
           background: COLORS.activeCellBg,
         });
-      });
-    });
-  });
-
-  it("should not toggle if cell number not set", async () => {
-    jest
-      .spyOn(Main.prototype, "renderCells")
-      .mockReturnValue([
-        <div
-          className="cell"
-          key={0}
-          data-testid={"cell"}
-          data-state={false}
-          aria-label={String(NaN)}
-        />,
-      ]);
-
-    render(<GameField />, {
-      preloadedState: {
-        ...initialState,
-        fieldControl: {
-          ...initialState.fieldControl,
-          cellSize: 40,
-          maxFieldWidth: 40,
-          maxFieldHeight: 40,
-        },
-      },
-    });
-
-    const cell = screen.getByTestId("cell");
-
-    userEvent.click(cell);
-
-    await waitFor(() => {
-      expect(cell).not.toHaveStyle({
-        background: COLORS.activeCellBg,
       });
     });
   });
