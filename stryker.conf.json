@@ -7,10 +7,16 @@
     "!src/**/*.test.ts?(x)",
     "!src/**/*.stories.tsx"
   ],
+  "project-info": {
+    "name": "github.com/centralToNowhere/react-otus",
+    "version": "develop"
+  },
   "reporters": [
     "html",
     "clear-text",
-    "progress"
+    "progress",
+    "json",
+    "dashboard"
   ],
   "testRunner": "jest",
   "jest": {

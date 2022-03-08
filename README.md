@@ -18,6 +18,8 @@ https://centraltonowhere.github.io/react-otus
 ![Branches](./coverage/badge-functions.svg)
 ![Branches](./coverage/badge-branches.svg)
 
+[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FcentralToNowhere%2Freact-otus%2Fdevelop)](https://dashboard.stryker-mutator.io/reports/github.com/centralToNowhere/react-otus/develop)
+
 `npm run test`
 
 ## Run
