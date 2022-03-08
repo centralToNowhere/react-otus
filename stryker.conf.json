@@ -3,7 +3,7 @@
   "_comment": "This config was generated using 'stryker init'. Please take a look at: https://stryker-mutator.io/docs/stryker-js/configuration/ for more information",
   "packageManager": "npm",
   "mutate": [
-    "src/components/Fields/MaxWidth/FieldWidth.ts?(x)",
+    "src/**/*.ts?(x)",
     "!src/**/*.test.ts?(x)",
     "!src/**/*.stories.tsx"
   ],
@@ -16,7 +16,7 @@
   ],
   "dashboard": {
     "project": "github.com/centralToNowhere/react-otus",
-    "version": "develop",
+    "version": "lesson15git",
     "module": "game-of-life",
     "baseUrl": "https://dashboard.stryker-mutator.io/api/reports",
     "reportType": "full"
