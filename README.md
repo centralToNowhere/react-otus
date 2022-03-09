@@ -19,7 +19,7 @@ https://centraltonowhere.github.io/react-otus
 -----------------------------------|---------|----------|---------|---------|-------------------
 File                               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -----------------------------------|---------|----------|---------|---------|-------------------
-All files                          |   98.92 |     92.3 |    98.2 |   98.92 |                   
+All files                          |   98.93 |    93.06 |   98.21 |   98.92 |                   
  src                               |     100 |      100 |     100 |     100 |                   
   App.tsx                          |     100 |      100 |     100 |     100 |                   
  src/Cell                          |     100 |      100 |     100 |     100 |                   
@@ -38,7 +38,7 @@ All files                          |   98.92 |     92.3 |    98.2 |   98.92 |
   index.ts                         |       0 |        0 |       0 |       0 |                   
  src/components/Error              |     100 |      100 |     100 |     100 |                   
   Error.tsx                        |     100 |      100 |     100 |     100 |                   
- src/components/Fields             |   98.18 |    95.83 |     100 |   98.18 |                   
+ src/components/Fields             |   98.24 |    96.66 |     100 |   98.24 |                   
   FieldHandlers.ts                 |   96.42 |       90 |     100 |   96.42 | 41                
   InputField.tsx                   |     100 |      100 |     100 |     100 |                   
   LabelField.tsx                   |     100 |      100 |     100 |     100 |                   
@@ -64,8 +64,8 @@ All files                          |   98.92 |     92.3 |    98.2 |   98.92 |
  src/components/Fields/Speed       |     100 |      100 |     100 |     100 |                   
   FieldSpeed.tsx                   |     100 |      100 |     100 |     100 |                   
   index.ts                         |       0 |        0 |       0 |       0 |                   
- src/components/FocusableSeparator |   96.77 |    86.36 |     100 |   96.77 |                   
-  FocusableSeparator.tsx           |   96.77 |    86.36 |     100 |   96.77 | 20,96             
+ src/components/FocusableSeparator |   96.77 |    90.47 |     100 |   96.77 |                   
+  FocusableSeparator.tsx           |   96.77 |    90.47 |     100 |   96.77 | 21,97             
  src/components/Form               |     100 |      100 |   94.73 |     100 |                   
   Form.tsx                         |     100 |      100 |     100 |     100 |                   
   FormContainer.tsx                |     100 |      100 |   94.11 |     100 |                   
@@ -127,9 +127,9 @@ All files                          |   98.92 |     92.3 |    98.2 |   98.92 |
   test-utils.tsx                   |     100 |        0 |     100 |     100 | 14                
 -----------------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 32 passed, 32 total
-Tests:       232 passed, 232 total
+Tests:       249 passed, 249 total
 Snapshots:   16 passed, 16 total
-Time:        9.871 s, estimated 14 s
+Time:        10.896 s
 ```
  <!--
 ![Branches](./coverage/badge-statements.svg)
