@@ -3,7 +3,7 @@
   "_comment": "This config was generated using 'stryker init'. Please take a look at: https://stryker-mutator.io/docs/stryker-js/configuration/ for more information",
   "packageManager": "npm",
   "mutate": [
-    "src/components/Fields/FieldHandlers.ts?(x)",
+    "src/**/*.ts?(x)",
     "!src/**/*.test.ts?(x)",
     "!src/**/*.stories.tsx",
     "!src/jest-setup.ts"
