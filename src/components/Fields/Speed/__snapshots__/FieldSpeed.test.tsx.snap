@@ -51,7 +51,7 @@ exports[`FieldSpeed tests should render speed input 1`] = `
       class="emotion-2 emotion-3"
       for="speed-change"
     >
-      Обновлений в секунду:
+      Скорость обновления:
     </label>
     <input
       autocomplete="off"

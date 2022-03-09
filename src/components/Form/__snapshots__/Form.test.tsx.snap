@@ -214,7 +214,7 @@ exports[`form tests should render form 1`] = `
           class="emotion-6 emotion-7"
           for="speed-change"
         >
-          Обновлений в секунду:
+          Скорость обновления:
         </label>
         <input
           autocomplete="off"

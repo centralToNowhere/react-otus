@@ -3,7 +3,7 @@ export const l10n = {
   maxHeightLabel: "Макс. высота:",
   cellSizeLabel: "Размер ячейки:",
   capacityLabel: "Процент заполненности:",
-  speedLabel: "Обновлений в секунду:",
+  speedLabel: "Скорость обновления:",
   buttonStart: "Старт",
   buttonStop: "Стоп",
   buttonReset: "Сброс",
