@@ -6,10 +6,32 @@ import { authSlice } from "@/auth";
 import { Provider } from "react-redux";
 import { basename } from "@/routes";
 import { BrowserRouter } from "react-router-dom";
+import {l10n} from "@/l10n/ru";
 
 export default {
   title: "Components/RegistrationScreen",
   component: RegistrationScreen,
+  args: {
+    rules: [
+      {
+        content: l10n.rule1,
+      },
+      {
+        content: l10n.rule2,
+      },
+      {
+        content: l10n.rule3,
+        items: [
+          {
+            content: l10n.rule3_1,
+          },
+          {
+            content: l10n.rule3_2,
+          },
+        ],
+      }
+    ]
+  }
 } as Meta;
 
 const store = configureStore({

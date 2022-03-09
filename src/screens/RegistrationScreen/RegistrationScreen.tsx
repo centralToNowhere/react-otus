@@ -4,43 +4,33 @@ import { RegistrationFormContainer } from "@/components/RegistrationForm";
 import styled from "@emotion/styled";
 import { BREAKPOINTS, COLORS } from "@/styles/ui-styled";
 import { css } from "@emotion/react";
-import { List } from "@/components/List/List";
+import { IListItem, List } from "@/components/List/List";
 
-const rules = [
-  {
-    content: l10n.rule1,
-  },
-  {
-    content: l10n.rule2,
-  },
-  {
-    content: l10n.rule3,
-    items: [
-      {
-        content: l10n.rule3_1,
-      },
-      {
-        content: l10n.rule3_2,
-      },
-    ],
-  },
-  {
-    content: l10n.rule4,
-    items: [
-      {
-        content: l10n.rule4_1,
-      },
-      {
-        content: l10n.rule4_2,
-      },
-      {
-        content: l10n.rule4_3,
-      },
-    ],
-  },
-];
+interface RegistrationScreenProps {
+  rules?: IListItem[]
+}
 
-export const RegistrationScreen: FC = () => {
+export const RegistrationScreen: FC<RegistrationScreenProps> = (props) => {
+  const rules = props.rules || [
+    {
+      content: l10n.rule1,
+    },
+    {
+      content: l10n.rule2,
+    },
+    {
+      content: l10n.rule3,
+      items: [
+        {
+          content: l10n.rule3_1,
+        },
+        {
+          content: l10n.rule3_2,
+        },
+      ],
+    }
+  ];
+
   return (
     <Container>
       <Column>

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-interface IListItem {
+export interface IListItem {
   content: string;
   items?: IListItem[] | null;
 }
