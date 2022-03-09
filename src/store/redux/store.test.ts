@@ -1,4 +1,8 @@
-import { initialStateAll, rootSaga } from "@/store/redux/store";
+import {
+  initialStateAll,
+  initialStateAllForTests,
+  rootSaga,
+} from "@/store/redux/store";
 import { authSaga, authSlice } from "@/auth";
 import { fieldControlSaga, fieldControlSlice } from "@/components/Fields";
 import { gameFieldSlice } from "@/components/GameField";
@@ -22,6 +26,17 @@ describe("store tests", () => {
       auth: authSlice.getInitialState(),
       fieldControl: fieldControlSlice.getInitialState(),
       gameField: gameFieldSlice.getInitialState(),
+    });
+  });
+
+  it("initialStateAllForTests", () => {
+    expect(initialStateAllForTests).toEqual({
+      ...initialStateAll,
+      fieldControl: {
+        ...initialStateAll.fieldControl,
+        cellSize: 40,
+        speed: 2,
+      },
     });
   });
 });

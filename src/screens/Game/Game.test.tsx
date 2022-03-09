@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from "react";
 import { delay, render, screen, waitFor } from "@/utils/test-utils";
+import { render as renderOrigin } from "@testing-library/react";
 import userEvent from "@testing-library/user-event/dist";
 import { Game, GameContainer } from "@/screens/Game/index";
 import { COLORS } from "@/styles/ui-styled";
@@ -16,6 +17,20 @@ import {
 } from "@/components/Fields";
 import { act } from "react-dom/test-utils";
 import { FormContainer } from "@/components/Form";
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+import { authSlice } from "@/auth";
+import { gameFieldSlice } from "@/components/GameField";
+
+jest.mock("@/utils/FieldSize", () => {
+  return {
+    getFullScreenSize: jest
+      .fn()
+      .mockImplementation(
+        jest.requireActual("@/utils/FieldSize").getFullScreenSize
+      ),
+  };
+});
 
 const getGameCycleTimeout = (speed: number) => {
   return 1000 / speed;
@@ -79,10 +94,14 @@ const initialState = {
   },
 };
 
+beforeEach(() => {
+  jest.resetModules();
+});
+
 describe("Game tests", () => {
   it("should correctly render field and form", () => {
     const { asFragment } = render(<Game />, {
-      preloadedState: {},
+      preloadedState: initialState,
     });
 
     const field = screen.getByTestId("field");
@@ -348,7 +367,24 @@ describe("Game tests", () => {
     const speed = 10;
     const gameCycleTimeout = getGameCycleTimeout(speed);
 
-    render(<GameContainer />, {
+    jest
+      .requireMock("@/utils/FieldSize")
+      .getFullScreenSize.mockImplementation(() => ({
+        width: 100,
+        height: 100,
+      }));
+
+    const {
+      fieldControlSlice,
+      defaultFieldControlState,
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+    } = require("@/components/Fields/slice");
+    const store = configureStore({
+      reducer: {
+        auth: authSlice.reducer,
+        fieldControl: fieldControlSlice.reducer,
+        gameField: gameFieldSlice.reducer,
+      },
       preloadedState: {
         fieldControl: {
           cellSize,
@@ -359,6 +395,12 @@ describe("Game tests", () => {
         },
       },
     });
+
+    renderOrigin(
+      <Provider store={store}>
+        <GameContainer />
+      </Provider>
+    );
 
     const buttonStart = screen.getByText(l10n.buttonStart);
     const buttonReset = screen.getByText(l10n.buttonReset);
@@ -426,6 +468,105 @@ describe("Game tests", () => {
       });
 
       expect(store.getState().fieldControl).toEqual(defaultFieldControlState);
+    });
+  });
+
+  describe("should render game field accordingly to client's screen size", () => {
+    beforeEach(() => {
+      // jest.resetModules();
+    });
+
+    it("cellsAmount > max amount; field w: 300, h: 300, cellSize: 4, cellsAmount: 5625", () => {
+      jest
+        .requireMock("@/utils/FieldSize")
+        .getFullScreenSize.mockImplementation(() => ({
+          width: 4000,
+          height: 4000,
+        }));
+
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const { store } = require("@/store/redux/store");
+
+      renderOrigin(
+        <Provider store={store}>
+          <GameContainer />
+        </Provider>
+      );
+
+      const field = screen.getByTestId("field");
+      const cells = screen.getAllByTestId("cell");
+
+      expect(field).toHaveStyle({
+        width: "300px",
+        height: "300px",
+      });
+      expect(cells.length).toBe(5625);
+      expect(cells[0]).toHaveStyle({
+        width: "4px",
+        height: "4px",
+      });
+    });
+
+    it("cellsAmount < max amount; field w: 600, h: 600, cellSize: 10, cellsAmount: 3600", () => {
+      jest
+        .requireMock("@/utils/FieldSize")
+        .getFullScreenSize.mockImplementation(() => ({
+          width: 600,
+          height: 600,
+        }));
+
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const { store } = require("@/store/redux/store");
+
+      renderOrigin(
+        <Provider store={store}>
+          <GameContainer />
+        </Provider>
+      );
+
+      const field = screen.getByTestId("field");
+      const cells = screen.getAllByTestId("cell");
+
+      expect(field).toHaveStyle({
+        width: "600px",
+        height: "600px",
+      });
+      expect(cells.length).toBe(3600);
+      expect(cells[0]).toHaveStyle({
+        width: "10px",
+        height: "10px",
+      });
+    });
+
+    it("cellsAmount === max amount; field w: 1000, h: 2000, cellSize: 10, cellsAmount: 20000", () => {
+      jest
+        .requireMock("@/utils/FieldSize")
+        .getFullScreenSize.mockImplementation(() => ({
+          width: 1000,
+          height: 2000,
+        }));
+
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const { store } = require("@/store/redux/store");
+
+      renderOrigin(
+        <Provider store={store}>
+          <GameContainer />
+        </Provider>
+      );
+
+      const field = screen.getByTestId("field");
+      const cells = screen.getAllByTestId("cell");
+
+      expect(field).toHaveStyle({
+        width: "1000px",
+        height: "2000px",
+      });
+      expect(cells.length).toBe(20000);
+      expect(cells[0]).toHaveStyle({
+        width: "10px",
+        height: "10px",
+      });
     });
   });
 });

@@ -7,7 +7,7 @@ import { css } from "@emotion/react";
 import { IListItem, List } from "@/components/List/List";
 
 interface RegistrationScreenProps {
-  rules?: IListItem[]
+  rules?: IListItem[];
 }
 
 export const RegistrationScreen: FC<RegistrationScreenProps> = (props) => {
@@ -28,7 +28,7 @@ export const RegistrationScreen: FC<RegistrationScreenProps> = (props) => {
           content: l10n.rule3_2,
         },
       ],
-    }
+    },
   ];
 
   return (

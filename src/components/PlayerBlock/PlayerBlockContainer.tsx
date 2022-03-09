@@ -11,7 +11,6 @@ export const PlayerBlockContainer: FC = () => {
   const onPlayerUnregister = () => {
     dispatch(logout());
     dispatch(resetFieldControls());
-    debugger;
   };
 
   return (

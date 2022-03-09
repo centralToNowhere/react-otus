@@ -34,6 +34,15 @@ export const initialStateAll = {
   gameField: gameFieldSlice.getInitialState(),
 };
 
+export const initialStateAllForTests = {
+  ...initialStateAll,
+  fieldControl: {
+    ...initialStateAll.fieldControl,
+    cellSize: 40,
+    speed: 2,
+  },
+};
+
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export const useAppDispatch = () => useDispatch<AppDispatch>();

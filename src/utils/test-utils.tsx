@@ -4,17 +4,17 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { authSlice } from "@/auth";
 import { fieldControlSlice } from "@/components/Fields";
-import { initialStateAll, rootSaga } from "@/store/redux/store";
+import { initialStateAllForTests, rootSaga } from "@/store/redux/store";
 import createSagaMiddleware from "redux-saga";
 import { gameFieldSlice } from "@/components/GameField";
 
 function render(
   ui: ReactElement,
   {
-    preloadedState = initialStateAll,
+    preloadedState = initialStateAllForTests,
     ...renderOptions
   }: {
-    preloadedState: Partial<typeof initialStateAll>;
+    preloadedState: Partial<typeof initialStateAllForTests>;
   }
 ) {
   const sagaMiddleware = createSagaMiddleware();
@@ -29,7 +29,7 @@ function render(
       return getDefaultMiddleware().concat(sagaMiddleware);
     },
     preloadedState: {
-      ...initialStateAll,
+      ...initialStateAllForTests,
       ...preloadedState,
     },
   });

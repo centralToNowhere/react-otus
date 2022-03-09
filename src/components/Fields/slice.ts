@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fieldHeight, fieldWidth } from "@/utils";
+import { isValidCellsAmountMax } from "@/utils";
+import { getFullScreenSize } from "@/utils/FieldSize";
 import { getDataFromStorage } from "@/storage";
 
 export interface IFieldControlState {
@@ -10,12 +11,19 @@ export interface IFieldControlState {
   speed: number;
 }
 
+const fullScreenSize = getFullScreenSize();
+const fullScreen = isValidCellsAmountMax().validate(
+  10,
+  fullScreenSize.width,
+  fullScreenSize.height
+);
+
 export const defaultFieldControlState: IFieldControlState = {
-  cellSize: 40,
-  maxFieldWidth: fieldWidth,
-  maxFieldHeight: fieldHeight,
+  cellSize: fullScreen ? 10 : 4,
+  maxFieldWidth: fullScreen ? fullScreenSize.width : 300,
+  maxFieldHeight: fullScreen ? fullScreenSize.height : 300,
   capacity: 50,
-  speed: 2,
+  speed: 30,
 };
 
 const storageData = getDataFromStorage()?.fieldControl;

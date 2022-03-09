@@ -1,2 +1,6 @@
-export const fieldWidth = window.innerWidth;
-export const fieldHeight = window.innerHeight / 2;
+export const getFullScreenSize = () => {
+  return {
+    width: window.innerWidth,
+    height: window.innerHeight / 2,
+  };
+};
