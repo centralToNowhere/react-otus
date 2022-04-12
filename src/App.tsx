@@ -29,8 +29,4 @@ export const AppBox = styled.div`
   min-height: 100vh;
   background: ${COLORS.secondary};
   line-height: 1;
-
-  & p {
-    margin-bottom: 0;
-  }
 `;

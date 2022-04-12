@@ -6,7 +6,7 @@ import React, {
 } from "react";
 import styled from "@emotion/styled";
 import { COLORS } from "@/styles/ui-styled";
-import { ICell } from "@/Cell/Cell";
+import { ICell, IndexedCells } from "@/Cell/Cell";
 import { AnyAction } from "redux";
 import { connect, ConnectedProps } from "react-redux";
 import { RootState } from "@/store/redux/store";
@@ -45,7 +45,7 @@ export class Main extends React.PureComponent<IGameFieldProps> {
   }
 
   renderCells() {
-    const cellsArr: Array<1 | 0> = [];
+    const cellsArr: IndexedCells = [];
     cellsArr.length = this.props.cellsInCol * this.props.cellsInRow;
     cellsArr.fill(0);
 

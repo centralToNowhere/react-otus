@@ -5,6 +5,7 @@ import { fork } from "redux-saga/effects";
 import { gameFieldSlice } from "@/components/GameField";
 import { fieldControlSlice, fieldControlSaga } from "@/components/Fields";
 import { authSlice, authSaga } from "@/auth";
+import { figurePaletteSlice } from "@/components/FigurePalette";
 import { gameSaga } from "@/screens/Game/saga";
 
 const sagaMiddleware = createSagaMiddleware();
@@ -15,12 +16,15 @@ export const rootSaga = function* () {
   yield fork(gameSaga);
 };
 
+export const RootReducer = {
+  auth: authSlice.reducer,
+  gameField: gameFieldSlice.reducer,
+  fieldControl: fieldControlSlice.reducer,
+  figurePalette: figurePaletteSlice.reducer,
+};
+
 export const store = configureStore({
-  reducer: {
-    auth: authSlice.reducer,
-    gameField: gameFieldSlice.reducer,
-    fieldControl: fieldControlSlice.reducer,
-  },
+  reducer: RootReducer,
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware().concat(sagaMiddleware);
   },
@@ -32,6 +36,7 @@ export const initialStateAll = {
   auth: authSlice.getInitialState(),
   fieldControl: fieldControlSlice.getInitialState(),
   gameField: gameFieldSlice.getInitialState(),
+  figurePalette: figurePaletteSlice.getInitialState(),
 };
 
 export const initialStateAllForTests = {

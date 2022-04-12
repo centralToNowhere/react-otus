@@ -8,6 +8,7 @@ import { fieldControlSaga, fieldControlSlice } from "@/components/Fields";
 import { gameFieldSlice } from "@/components/GameField";
 import { testSaga } from "redux-saga-test-plan";
 import { gameSaga } from "@/screens/Game/saga";
+import { figurePaletteSlice } from "@/components/FigurePalette";
 
 describe("store tests", () => {
   it("rootSaga", () => {
@@ -26,6 +27,7 @@ describe("store tests", () => {
       auth: authSlice.getInitialState(),
       fieldControl: fieldControlSlice.getInitialState(),
       gameField: gameFieldSlice.getInitialState(),
+      figurePalette: figurePaletteSlice.getInitialState(),
     });
   });
 

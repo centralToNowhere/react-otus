@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from "react";
-import { delay, render, screen, waitFor } from "@/utils/test-utils";
+import { delay, render, screen, waitFor, within } from "@/utils/test-utils";
 import { render as renderOrigin } from "@testing-library/react";
 import userEvent from "@testing-library/user-event/dist";
 import { Game, GameContainer } from "@/screens/Game/index";
@@ -19,8 +19,6 @@ import { act } from "react-dom/test-utils";
 import { FormContainer } from "@/components/Form";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import { authSlice } from "@/auth";
-import { gameFieldSlice } from "@/components/GameField";
 
 jest.mock("@/utils/FieldSize", () => {
   return {
@@ -104,7 +102,8 @@ describe("Game tests", () => {
       preloadedState: initialState,
     });
 
-    const field = screen.getByTestId("field");
+    const fieldContainer = screen.getByTestId("gameFieldContainer");
+    const field = within(fieldContainer).getByTestId("field");
     expect(field).toBeInTheDocument();
 
     const form = screen.getByTestId("field-form");
@@ -118,7 +117,8 @@ describe("Game tests", () => {
       preloadedState: initialState,
     });
 
-    const cells = screen.getAllByLabelText(/[0-9]*/, {
+    const fieldContainer = screen.getByTestId("gameFieldContainer");
+    const cells = within(fieldContainer).getAllByLabelText(/[0-9]*/, {
       selector: "[data-testid=cell]",
     });
     expect(cells).toHaveLength(100);
@@ -131,7 +131,8 @@ describe("Game tests", () => {
       preloadedState: initialState,
     });
 
-    const activeCells = screen.getAllByLabelText(
+    const fieldContainer = screen.getByTestId("gameFieldContainer");
+    const activeCells = within(fieldContainer).getAllByLabelText(
       /^(1|12|23|34|45|56|67|78|89|100)$/,
       {
         selector: "[data-testid=cell]",
@@ -163,7 +164,8 @@ describe("Game tests", () => {
       preloadedState: initialState,
     });
 
-    const activeCells = screen.getAllByLabelText(
+    const fieldContainer = screen.getByTestId("gameFieldContainer");
+    const activeCells = within(fieldContainer).getAllByLabelText(
       /^(1|12|23|34|45|56|67|78|89|100)$/,
       {
         selector: "[data-testid=cell]",
@@ -239,9 +241,13 @@ describe("Game tests", () => {
           return waitFor(() => {
             expect(getMockedCells).toHaveBeenCalled();
           }).then(async (): Promise<void> => {
-            const activeCells = screen.getAllByLabelText(cellsToFindRegExp, {
-              selector: "[data-testid=cell]",
-            });
+            const fieldContainer = screen.getByTestId("gameFieldContainer");
+            const activeCells = within(fieldContainer).getAllByLabelText(
+              cellsToFindRegExp,
+              {
+                selector: "[data-testid=cell]",
+              }
+            );
 
             await Promise.all(
               activeCells.map((cell: HTMLElement): Promise<void> => {
@@ -375,16 +381,15 @@ describe("Game tests", () => {
       }));
 
     const {
-      fieldControlSlice,
       defaultFieldControlState,
       // eslint-disable-next-line @typescript-eslint/no-var-requires
     } = require("@/components/Fields/slice");
+    const {
+      RootReducer,
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+    } = require("@/store/redux/store");
     const store = configureStore({
-      reducer: {
-        auth: authSlice.reducer,
-        fieldControl: fieldControlSlice.reducer,
-        gameField: gameFieldSlice.reducer,
-      },
+      reducer: RootReducer,
       preloadedState: {
         fieldControl: {
           cellSize,
@@ -414,7 +419,8 @@ describe("Game tests", () => {
       }, 3 * gameCycleTimeout);
     });
 
-    const cells = screen.getAllByTestId("cell");
+    const fieldContainer = screen.getByTestId("gameFieldContainer");
+    const cells = within(fieldContainer).getAllByTestId("cell");
 
     await Promise.all(
       cells.map((cell: HTMLElement) => {
@@ -493,8 +499,9 @@ describe("Game tests", () => {
         </Provider>
       );
 
-      const field = screen.getByTestId("field");
-      const cells = screen.getAllByTestId("cell");
+      const fieldContainer = screen.getByTestId("gameFieldContainer");
+      const field = within(fieldContainer).getByTestId("field");
+      const cells = within(field).getAllByTestId("cell");
 
       expect(field).toHaveStyle({
         width: "300px",
@@ -524,8 +531,9 @@ describe("Game tests", () => {
         </Provider>
       );
 
-      const field = screen.getByTestId("field");
-      const cells = screen.getAllByTestId("cell");
+      const fieldContainer = screen.getByTestId("gameFieldContainer");
+      const field = within(fieldContainer).getByTestId("field");
+      const cells = within(field).getAllByTestId("cell");
 
       expect(field).toHaveStyle({
         width: "600px",
@@ -555,8 +563,9 @@ describe("Game tests", () => {
         </Provider>
       );
 
-      const field = screen.getByTestId("field");
-      const cells = screen.getAllByTestId("cell");
+      const fieldContainer = screen.getByTestId("gameFieldContainer");
+      const field = within(fieldContainer).getByTestId("field");
+      const cells = within(field).getAllByTestId("cell");
 
       expect(field).toHaveStyle({
         width: "1000px",

@@ -16,8 +16,8 @@ describe("Routes tests", () => {
       }
     );
 
-    const field = screen.queryByTestId("field");
-    expect(field).not.toBeInTheDocument();
+    const gameFieldContainer = screen.queryByTestId("gameFieldContainer");
+    expect(gameFieldContainer).not.toBeInTheDocument();
 
     const form = screen.queryByTestId("field-form");
     expect(form).not.toBeInTheDocument();
@@ -57,7 +57,7 @@ describe("Routes tests", () => {
     userEvent.type(playerNameInput, "Ivan");
     userEvent.click(gameStartButton);
 
-    await screen.findByTestId("field");
+    await screen.findAllByTestId("field");
     await screen.findByTestId("field-form");
 
     await waitFor(() => {
@@ -92,7 +92,7 @@ describe("Routes tests", () => {
     await screen.findByText(l10n.buttonStartGameAsPlayer);
 
     await waitFor(() => {
-      expect(screen.queryByTestId("field")).toBe(null);
+      expect(screen.queryByTestId("gameFieldContainer")).toBe(null);
     });
   });
 });

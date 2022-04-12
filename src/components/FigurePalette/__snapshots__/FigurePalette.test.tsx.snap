@@ -1,0 +1,297 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FigurePalette tests should render FigurePalette 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  max-width: 600px;
+}
+
+.emotion-2 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.emotion-4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.emotion-6 {
+  width: 1rem;
+  cursor: pointer;
+}
+
+.emotion-6 path {
+  fill: #6a6d75;
+}
+
+.emotion-8 {
+  margin: 1rem 2rem;
+}
+
+.emotion-10 {
+  width: 100px;
+  cursor: pointer;
+  height: 100px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  background: rgb(193,184,244);
+  margin: 0 auto;
+}
+
+.emotion-10 .cell {
+  -webkit-transition: 0.5s ease background;
+  transition: 0.5s ease background;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  border: 1px solid #e8d5f0;
+}
+
+.emotion-10 .cell-active {
+  background: rgb(144, 131, 230);
+}
+
+.emotion-12 {
+  width: 1rem;
+  cursor: pointer;
+}
+
+.emotion-12 path {
+  fill: rgb(255, 33, 92);
+}
+
+.emotion-14 {
+  background: inherit;
+  border-color: #6a6d75;
+  line-height: 1.5;
+}
+
+.emotion-14:focus {
+  outline: 2px solid rgb(255, 33, 92)!important;
+  border: 2px solid transparent;
+}
+
+<div
+    class="emotion-0 emotion-1"
+    data-testid="figurePalette"
+  >
+    <p
+      class="emotion-2 emotion-3"
+    >
+      First figure
+    </p>
+    <div
+      class="emotion-4 emotion-5"
+    >
+      <svg
+        aria-label="prev"
+        class="emotion-6 emotion-7"
+        disabled=""
+        role="button"
+        viewBox="0 0 40 60"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M40 0 L40 60 L0 30 Z"
+        />
+      </svg>
+      <div
+        class="emotion-8 emotion-9"
+      >
+        <div
+          class="game-field emotion-10 emotion-11"
+          data-testid="field"
+        >
+          <div
+            aria-label="1"
+            class="cell cell-active"
+            data-state="true"
+            data-testid="cell"
+          />
+          <div
+            aria-label="2"
+            class="cell"
+            data-state="false"
+            data-testid="cell"
+          />
+          <div
+            aria-label="3"
+            class="cell"
+            data-state="false"
+            data-testid="cell"
+          />
+          <div
+            aria-label="4"
+            class="cell"
+            data-state="false"
+            data-testid="cell"
+          />
+          <div
+            aria-label="5"
+            class="cell cell-active"
+            data-state="true"
+            data-testid="cell"
+          />
+          <div
+            aria-label="6"
+            class="cell"
+            data-state="false"
+            data-testid="cell"
+          />
+          <div
+            aria-label="7"
+            class="cell cell-active"
+            data-state="true"
+            data-testid="cell"
+          />
+          <div
+            aria-label="8"
+            class="cell"
+            data-state="false"
+            data-testid="cell"
+          />
+          <div
+            aria-label="9"
+            class="cell cell-active"
+            data-state="true"
+            data-testid="cell"
+          />
+          <div
+            aria-label="10"
+            class="cell"
+            data-state="false"
+            data-testid="cell"
+          />
+          <div
+            aria-label="11"
+            class="cell"
+            data-state="false"
+            data-testid="cell"
+          />
+          <div
+            aria-label="12"
+            class="cell"
+            data-state="false"
+            data-testid="cell"
+          />
+          <div
+            aria-label="13"
+            class="cell cell-active"
+            data-state="true"
+            data-testid="cell"
+          />
+          <div
+            aria-label="14"
+            class="cell"
+            data-state="false"
+            data-testid="cell"
+          />
+          <div
+            aria-label="15"
+            class="cell"
+            data-state="false"
+            data-testid="cell"
+          />
+          <div
+            aria-label="16"
+            class="cell"
+            data-state="false"
+            data-testid="cell"
+          />
+          <div
+            aria-label="17"
+            class="cell cell-active"
+            data-state="true"
+            data-testid="cell"
+          />
+          <div
+            aria-label="18"
+            class="cell"
+            data-state="false"
+            data-testid="cell"
+          />
+          <div
+            aria-label="19"
+            class="cell cell-active"
+            data-state="true"
+            data-testid="cell"
+          />
+          <div
+            aria-label="20"
+            class="cell"
+            data-state="false"
+            data-testid="cell"
+          />
+          <div
+            aria-label="21"
+            class="cell cell-active"
+            data-state="true"
+            data-testid="cell"
+          />
+          <div
+            aria-label="22"
+            class="cell"
+            data-state="false"
+            data-testid="cell"
+          />
+          <div
+            aria-label="23"
+            class="cell"
+            data-state="false"
+            data-testid="cell"
+          />
+          <div
+            aria-label="24"
+            class="cell"
+            data-state="false"
+            data-testid="cell"
+          />
+          <div
+            aria-label="25"
+            class="cell cell-active"
+            data-state="true"
+            data-testid="cell"
+          />
+        </div>
+      </div>
+      <svg
+        aria-label="next"
+        class="emotion-12 emotion-7"
+        role="button"
+        viewBox="0 0 40 60"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0 L40 30 L0 60 Z"
+        />
+      </svg>
+    </div>
+    <button
+      class="emotion-14 emotion-15"
+    >
+      Выбрать
+    </button>
+  </div>
+</DocumentFragment>
+`;

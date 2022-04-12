@@ -7,6 +7,7 @@ import { fieldControlSlice } from "@/components/Fields";
 import { initialStateAllForTests, rootSaga } from "@/store/redux/store";
 import createSagaMiddleware from "redux-saga";
 import { gameFieldSlice } from "@/components/GameField";
+import { figurePaletteSlice } from "@/components/FigurePalette";
 
 function render(
   ui: ReactElement,
@@ -24,6 +25,7 @@ function render(
       auth: authSlice.reducer,
       gameField: gameFieldSlice.reducer,
       fieldControl: fieldControlSlice.reducer,
+      figurePalette: figurePaletteSlice.reducer,
     },
     middleware: (getDefaultMiddleware) => {
       return getDefaultMiddleware().concat(sagaMiddleware);

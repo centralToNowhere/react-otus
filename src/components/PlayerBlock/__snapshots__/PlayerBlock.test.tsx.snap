@@ -12,6 +12,7 @@ exports[`PlayerContainer tests should render PlayerContainer 1`] = `
   flex-direction: column;
   border: 2px solid #6a6d75;
   border-radius: 10px;
+  border: 0;
 }
 
 .emotion-0 input,
@@ -41,7 +42,6 @@ exports[`PlayerContainer tests should render PlayerContainer 1`] = `
   -webkit-justify-content: end;
   justify-content: end;
   display: inline-block;
-  padding: 20px;
   margin: 0;
 }
 
@@ -68,7 +68,6 @@ exports[`PlayerContainer tests should render PlayerContainer 1`] = `
 
 .emotion-4 {
   background: inherit;
-  margin: 20px auto;
   border-color: #6a6d75;
   line-height: 1.5;
   text-align: center;
@@ -80,7 +79,7 @@ exports[`PlayerContainer tests should render PlayerContainer 1`] = `
 }
 
 <form
-    class="player-container emotion-0 emotion-1"
+    class="emotion-0 emotion-1"
   >
     <div
       class="emotion-2 emotion-3"

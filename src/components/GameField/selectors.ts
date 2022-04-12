@@ -1,7 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { selectCellsInCol, selectCellsInRow } from "@/components/Fields";
 import { RootState } from "@/store/redux/store";
-import { ICell } from "@/Cell/Cell";
+import { ICell, IndexedCells } from "@/Cell/Cell";
 
 export const selectGameField = (state: RootState) => {
   return state.gameField;
@@ -11,13 +11,13 @@ export const getIndexedCells = (
   activeCells: ICell[],
   cellsInRow: number,
   cellsInCol: number
-) => {
-  const indexedCells: Array<1 | 0> = [];
+): IndexedCells => {
+  const indexedCells: IndexedCells = [];
 
   indexedCells.length = cellsInCol * cellsInRow;
   indexedCells.fill(0);
 
-  return activeCells.reduce((indexed: Array<1 | 0>, cell) => {
+  return activeCells.reduce((indexed: IndexedCells, cell) => {
     if (cell.y < cellsInCol && cell.x < cellsInRow) {
       const i = cellsInRow * cell.y + cell.x;
       indexed[i] = 1;
@@ -31,7 +31,7 @@ export const selectIndexedCells = createSelector(
   selectGameField,
   selectCellsInRow,
   selectCellsInCol,
-  (gameField, cellsInRow, cellsInCol): Array<1 | 0> => {
+  (gameField, cellsInRow, cellsInCol): IndexedCells => {
     return getIndexedCells(gameField.activeCells, cellsInRow, cellsInCol);
   }
 );

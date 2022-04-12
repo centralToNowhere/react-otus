@@ -3,12 +3,7 @@ import { Story, Meta } from "@storybook/react";
 import { Game, IGameProps } from "@/screens/Game";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import { authSlice, defaultAuthState } from "@/auth";
-import { defaultGameFieldState, gameFieldSlice } from "@/components/GameField";
-import {
-  defaultFieldControlState,
-  fieldControlSlice,
-} from "@/components/Fields";
+import { initialStateAll, RootReducer } from "@/store/redux/store";
 
 export default {
   title: "Components/Game",
@@ -16,18 +11,12 @@ export default {
 } as Meta;
 
 const initialState = {
-  auth: defaultAuthState,
-  fieldControl: defaultFieldControlState,
-  gameField: defaultGameFieldState,
+  ...initialStateAll,
 };
 
 const TemplateInitial: Story<IGameProps> = () => {
   const store = configureStore({
-    reducer: {
-      auth: authSlice.reducer,
-      gameField: gameFieldSlice.reducer,
-      fieldControl: fieldControlSlice.reducer,
-    },
+    reducer: RootReducer,
     preloadedState: initialState,
   });
 
@@ -40,11 +29,7 @@ const TemplateInitial: Story<IGameProps> = () => {
 
 const TemplatePlayerRegistered: Story<IGameProps> = () => {
   const store = configureStore({
-    reducer: {
-      auth: authSlice.reducer,
-      gameField: gameFieldSlice.reducer,
-      fieldControl: fieldControlSlice.reducer,
-    },
+    reducer: RootReducer,
     preloadedState: {
       ...initialState,
       auth: {

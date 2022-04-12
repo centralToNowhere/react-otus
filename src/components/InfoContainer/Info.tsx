@@ -17,6 +17,5 @@ export const Info: FC<IInfoProps> = ({ generationNumber }) => {
 };
 
 const StyledInfoContainer = styled.div`
-  padding: 20px;
   font-size: 1.5em;
 `;

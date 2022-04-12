@@ -29,12 +29,12 @@ import {
 } from "@/components/Fields";
 import { getNextGeneration, getRandomCells } from "@/utils/CellGenerator";
 import { RootState } from "@/store/redux/store";
-import { ICell } from "@/Cell/Cell";
+import { ICell, IndexedCells } from "@/Cell/Cell";
 
 export const setNewGeneration = function* () {
   const cellsInRow: number = yield select(selectCellsInRow);
   const cellsInCol: number = yield select(selectCellsInCol);
-  const indexedCells: Array<1 | 0> = yield select(selectIndexedCells);
+  const indexedCells: IndexedCells = yield select(selectIndexedCells);
 
   const newGeneration: ICell[] = yield call(
     getNextGeneration,

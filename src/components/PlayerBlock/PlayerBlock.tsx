@@ -13,11 +13,14 @@ export interface IPlayerContainerProps {
 
 export const PlayerBlock: FC<IPlayerContainerProps> = (props) => {
   return (
-    <FormElement className={"player-container"}>
+    <FormElement
+      css={css`
+        border: 0;
+      `}
+    >
       <FormField
         css={css`
           display: inline-block;
-          padding: 20px;
           margin: 0;
 
           h1.player-name {

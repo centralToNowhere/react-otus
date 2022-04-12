@@ -8,10 +8,6 @@ exports[`index tests should render App 1`] = `
   line-height: 1;
 }
 
-.emotion-0 p {
-  margin-bottom: 0;
-}
-
 .emotion-2 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -248,7 +244,6 @@ exports[`index tests should render App 1`] = `
 
 .emotion-24 {
   background: inherit;
-  margin: 20px auto;
   border-color: #6a6d75;
   line-height: 1.5;
   margin-right: auto!important;

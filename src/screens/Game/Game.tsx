@@ -7,6 +7,7 @@ import { PlayerBlockContainer } from "@/components/PlayerBlock";
 import { FocusableSeparator } from "@/components/FocusableSeparator/FocusableSeparator";
 import { isTouchDevice } from "@/utils/TouchDeviceDetection";
 import { InfoContainer } from "@/components/InfoContainer/InfoContainer";
+import { FigurePaletteContainer } from "@/components/FigurePalette";
 
 export interface IGameProps {
   onButtonClickFn?: (e: React.SyntheticEvent<HTMLButtonElement>) => void;
@@ -21,19 +22,22 @@ export class Game extends React.Component<IGameProps> {
   render() {
     return (
       <Container>
-        <GameFieldContainer>
+        <GameFieldContainer data-testid={"gameFieldContainer"}>
           <GameField />
         </GameFieldContainer>
         {isTouchDevice() ? null : <FocusableSeparator />}
         <ControlContainer>
-          <FormContainer
-            key={this.props.formKey}
-            onButtonClickFn={this.props.onButtonClickFn}
-          />
           <LeftSidebar>
             <InfoContainer />
             <PlayerBlockContainer />
           </LeftSidebar>
+          <FormContainer
+            key={this.props.formKey}
+            onButtonClickFn={this.props.onButtonClickFn}
+          />
+          <RightSidebar>
+            <FigurePaletteContainer />
+          </RightSidebar>
         </ControlContainer>
       </Container>
     );
@@ -61,16 +65,13 @@ const GameFieldContainer = styled.div`
 
 const ControlContainer = styled.div`
   position: relative;
+  display: flex;
+  align-items: start;
+  flex-wrap: wrap;
 
   .game-settings-form {
     margin: 20px;
-    clear: right;
-    float: none;
     max-width: 480px;
-  }
-
-  .player-container {
-    border: 0;
   }
 
   @media screen and (min-width: ${BREAKPOINTS.xl}) {
@@ -80,24 +81,15 @@ const ControlContainer = styled.div`
       margin: 20px auto;
     }
   }
-
-  @media screen and (max-width: ${BREAKPOINTS.xl}) and (min-width: ${BREAKPOINTS.md}) {
-    .game-settings-form {
-      float: right;
-    }
-  }
 `;
 
 const LeftSidebar = styled.div`
   display: flex;
   flex-direction: column;
   margin: 20px;
+  padding: 20px;
   border: 2px solid ${COLORS.border};
   border-radius: 10px;
-
-  @media screen and (min-width: ${BREAKPOINTS.xl}) {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
 `;
+
+const RightSidebar = styled(LeftSidebar)``;

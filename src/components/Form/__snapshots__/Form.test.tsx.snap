@@ -105,7 +105,6 @@ exports[`form tests should render form 1`] = `
 
 .emotion-40 {
   background: inherit;
-  margin: 20px auto;
   border-color: #6a6d75;
   line-height: 1.5;
 }

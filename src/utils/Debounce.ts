@@ -24,7 +24,6 @@ export const useDebounce = <T>(
       clearDebounce();
 
       timeout = setTimeout(() => {
-        debugger;
         clearDebounce();
         callback(value);
       }, delay);
