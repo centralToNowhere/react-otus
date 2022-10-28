@@ -110,6 +110,10 @@ exports[`Game tests should correctly render field and form 1`] = `
 
 @media screen and (min-width: 1200px) {
   .emotion-8 {
+    -webkit-box-flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
     overflow: hidden;
     width: 100%;
   }
@@ -124,20 +128,48 @@ exports[`Game tests should correctly render field and form 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  width: 100%;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+}
+
+@media screen and (min-width: 1200px) {
+  .emotion-10 {
+    width: 400px;
+  }
+}
+
+.emotion-12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
   margin: 20px;
   padding: 20px;
   border: 2px solid #6a6d75;
   border-radius: 10px;
 }
 
-.emotion-12 {
-  font-size: 1.5em;
+@media screen and (min-width: 1200px) {
+  .emotion-12 {
+    width: auto;
+  }
 }
 
 .emotion-14 {
+  font-size: 1.5em;
+}
+
+.emotion-16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -150,17 +182,17 @@ exports[`Game tests should correctly render field and form 1`] = `
   border: 0;
 }
 
-.emotion-14 input,
-.emotion-14 label,
-.emotion-14 p {
+.emotion-16 input,
+.emotion-16 label,
+.emotion-16 p {
   line-height: 1;
 }
 
-.emotion-14.game-settings-form .field-error-msg {
+.emotion-16.game-settings-form .field-error-msg {
   background: #e8d5f0;
 }
 
-.emotion-16 {
+.emotion-18 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -180,40 +212,40 @@ exports[`Game tests should correctly render field and form 1`] = `
   margin: 0;
 }
 
-.emotion-16 input,
-.emotion-16 button {
+.emotion-18 input,
+.emotion-18 button {
   margin: 5px 0 0 0;
   min-width: 100px;
 }
 
-.emotion-16 h1.player-name {
+.emotion-18 h1.player-name {
   font-size: 1.2rem;
   font-weight: bold;
   margin: 0;
   border-bottom: 2px solid rgb(255, 33, 92);
 }
 
-.emotion-16 div.player-stats-container {
+.emotion-18 div.player-stats-container {
   margin: 20px 0;
 }
 
-.emotion-16 li {
+.emotion-18 li {
   margin: 10px 0 10px 20px;
 }
 
-.emotion-18 {
+.emotion-20 {
   background: inherit;
   border-color: #6a6d75;
   line-height: 1.5;
   text-align: center;
 }
 
-.emotion-18:focus {
+.emotion-20:focus {
   outline: 2px solid rgb(255, 33, 92)!important;
   border: 2px solid transparent;
 }
 
-.emotion-20 {
+.emotion-22 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -225,17 +257,17 @@ exports[`Game tests should correctly render field and form 1`] = `
   border-radius: 10px;
 }
 
-.emotion-20 input,
-.emotion-20 label,
-.emotion-20 p {
+.emotion-22 input,
+.emotion-22 label,
+.emotion-22 p {
   line-height: 1;
 }
 
-.emotion-20.game-settings-form .field-error-msg {
+.emotion-22.game-settings-form .field-error-msg {
   background: #e8d5f0;
 }
 
-.emotion-22 {
+.emotion-24 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -249,7 +281,7 @@ exports[`Game tests should correctly render field and form 1`] = `
   flex-wrap: wrap;
 }
 
-.emotion-24 {
+.emotion-26 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -267,17 +299,17 @@ exports[`Game tests should correctly render field and form 1`] = `
   justify-content: end;
 }
 
-.emotion-24 input,
-.emotion-24 button {
+.emotion-26 input,
+.emotion-26 button {
   margin: 5px 0 0 0;
   min-width: 100px;
 }
 
-.emotion-26 {
+.emotion-28 {
   display: inline;
 }
 
-.emotion-28 {
+.emotion-30 {
   background: inherit;
   border: 0;
   border-bottom: 2px solid;
@@ -287,11 +319,11 @@ exports[`Game tests should correctly render field and form 1`] = `
   width: 100px;
 }
 
-.emotion-28:focus {
+.emotion-30:focus {
   border-bottom: 2px solid rgb(255, 33, 92);
 }
 
-.emotion-46 {
+.emotion-48 {
   background: inherit;
   border: 0;
   border-bottom: 2px solid;
@@ -302,30 +334,57 @@ exports[`Game tests should correctly render field and form 1`] = `
   border: 0;
 }
 
-.emotion-46:focus {
+.emotion-48:focus {
   border-bottom: 2px solid rgb(255, 33, 92);
 }
 
-.emotion-46:focus {
+.emotion-48:focus {
   border-bottom: 0;
 }
 
-.emotion-58 {
+.emotion-60 {
   display: inline-block;
 }
 
-.emotion-60 {
+.emotion-62 {
   background: inherit;
   border-color: #6a6d75;
   line-height: 1.5;
 }
 
-.emotion-60:focus {
+.emotion-62:focus {
   outline: 2px solid rgb(255, 33, 92)!important;
   border: 2px solid transparent;
 }
 
-.emotion-80 {
+.emotion-82 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+}
+
+@media screen and (min-width: 1200px) {
+  .emotion-82 {
+    width: 400px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .emotion-82 {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+  }
+}
+
+.emotion-84 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -333,13 +392,23 @@ exports[`Game tests should correctly render field and form 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
   margin: 20px;
   padding: 20px;
   border: 2px solid #6a6d75;
   border-radius: 10px;
 }
 
-.emotion-82 {
+@media screen and (min-width: 1200px) {
+  .emotion-84 {
+    width: auto;
+  }
+}
+
+.emotion-86 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -350,12 +419,12 @@ exports[`Game tests should correctly render field and form 1`] = `
   max-width: 600px;
 }
 
-.emotion-84 {
+.emotion-88 {
   margin-bottom: 1rem;
   text-align: center;
 }
 
-.emotion-86 {
+.emotion-90 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -364,22 +433,26 @@ exports[`Game tests should correctly render field and form 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
 }
 
-.emotion-88 {
+.emotion-92 {
   width: 1rem;
   cursor: pointer;
 }
 
-.emotion-88 path {
+.emotion-92 path {
   fill: #6a6d75;
 }
 
-.emotion-90 {
+.emotion-94 {
   margin: 1rem 2rem;
 }
 
-.emotion-92 {
+.emotion-96 {
   width: 100px;
   cursor: pointer;
   height: 100px;
@@ -395,7 +468,7 @@ exports[`Game tests should correctly render field and form 1`] = `
   margin: 0 auto;
 }
 
-.emotion-92 .cell {
+.emotion-96 .cell {
   -webkit-transition: 0.5s ease background;
   transition: 0.5s ease background;
   width: 20px;
@@ -405,16 +478,16 @@ exports[`Game tests should correctly render field and form 1`] = `
   border: 1px solid #e8d5f0;
 }
 
-.emotion-92 .cell-active {
+.emotion-96 .cell-active {
   background: rgb(144, 131, 230);
 }
 
-.emotion-94 {
+.emotion-98 {
   width: 1rem;
   cursor: pointer;
 }
 
-.emotion-94 path {
+.emotion-98 path {
   fill: rgb(255, 33, 92);
 }
 
@@ -1049,33 +1122,37 @@ exports[`Game tests should correctly render field and form 1`] = `
         <div
           class="emotion-12 emotion-13"
         >
-          <p>
-            Поколение: 0
-          </p>
-        </div>
-        <form
-          class="emotion-14 emotion-15"
-        >
           <div
+            class="emotion-14 emotion-15"
+          >
+            <p>
+              Поколение: 0
+            </p>
+          </div>
+          <form
             class="emotion-16 emotion-17"
           >
-            <h1
-              class="player-name"
-            />
             <div
-              class="player-stats-container"
-            />
-            <button
               class="emotion-18 emotion-19"
-              type="button"
             >
-              Выйти
-            </button>
-          </div>
-        </form>
+              <h1
+                class="player-name"
+              />
+              <div
+                class="player-stats-container"
+              />
+              <button
+                class="emotion-20 emotion-21"
+                type="button"
+              >
+                Выйти
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
       <form
-        class="game-settings-form emotion-20 emotion-15"
+        class="game-settings-form emotion-22 emotion-17"
         data-testid="field-form"
       >
         <input
@@ -1083,20 +1160,20 @@ exports[`Game tests should correctly render field and form 1`] = `
           hidden=""
         />
         <div
-          class="emotion-22 emotion-23"
+          class="emotion-24 emotion-25"
         >
           <div
-            class="emotion-24 emotion-17"
+            class="emotion-26 emotion-19"
           >
             <label
-              class="emotion-26 emotion-27"
+              class="emotion-28 emotion-29"
               for="field-width"
             >
               Макс. ширина:
             </label>
             <input
               autocomplete="off"
-              class="emotion-28 emotion-29"
+              class="emotion-30 emotion-31"
               id="field-width"
               name="fieldWidth"
               step="1"
@@ -1105,17 +1182,17 @@ exports[`Game tests should correctly render field and form 1`] = `
             />
           </div>
           <div
-            class="emotion-24 emotion-17"
+            class="emotion-26 emotion-19"
           >
             <label
-              class="emotion-26 emotion-27"
+              class="emotion-28 emotion-29"
               for="field-height"
             >
               Макс. высота:
             </label>
             <input
               autocomplete="off"
-              class="emotion-28 emotion-29"
+              class="emotion-30 emotion-31"
               id="field-height"
               name="fieldHeight"
               step="1"
@@ -1124,17 +1201,17 @@ exports[`Game tests should correctly render field and form 1`] = `
             />
           </div>
           <div
-            class="emotion-24 emotion-17"
+            class="emotion-26 emotion-19"
           >
             <label
-              class="emotion-26 emotion-27"
+              class="emotion-28 emotion-29"
               for="cell-size"
             >
               Размер ячейки:
             </label>
             <input
               autocomplete="off"
-              class="emotion-28 emotion-29"
+              class="emotion-30 emotion-31"
               id="cell-size"
               name="cellSize"
               step="1"
@@ -1143,10 +1220,10 @@ exports[`Game tests should correctly render field and form 1`] = `
             />
           </div>
           <div
-            class="emotion-24 emotion-17"
+            class="emotion-26 emotion-19"
           >
             <label
-              class="emotion-26 emotion-27"
+              class="emotion-28 emotion-29"
               for="capacity-percentage"
             >
               Процент заполненности:
@@ -1156,7 +1233,7 @@ exports[`Game tests should correctly render field and form 1`] = `
             </p>
             <input
               autocomplete="off"
-              class="emotion-46 emotion-47"
+              class="emotion-48 emotion-49"
               id="capacity-percentage"
               max="100"
               min="0"
@@ -1167,17 +1244,17 @@ exports[`Game tests should correctly render field and form 1`] = `
             />
           </div>
           <div
-            class="emotion-24 emotion-17"
+            class="emotion-26 emotion-19"
           >
             <label
-              class="emotion-26 emotion-27"
+              class="emotion-28 emotion-29"
               for="speed-change"
             >
               Скорость обновления:
             </label>
             <input
               autocomplete="off"
-              class="emotion-28 emotion-29"
+              class="emotion-30 emotion-31"
               id="speed-change"
               name="speedChange"
               step="0.1"
@@ -1187,16 +1264,16 @@ exports[`Game tests should correctly render field and form 1`] = `
           </div>
         </div>
         <div
-          class="emotion-22 emotion-23"
+          class="emotion-24 emotion-25"
         >
           <div
-            class="emotion-24 emotion-17"
+            class="emotion-26 emotion-19"
           >
             <div
-              class="emotion-58 emotion-59"
+              class="emotion-60 emotion-61"
             >
               <button
-                class="emotion-60 emotion-19"
+                class="emotion-62 emotion-21"
                 name="startButton"
                 type="button"
               >
@@ -1205,13 +1282,13 @@ exports[`Game tests should correctly render field and form 1`] = `
             </div>
           </div>
           <div
-            class="emotion-24 emotion-17"
+            class="emotion-26 emotion-19"
           >
             <div
-              class="emotion-58 emotion-59"
+              class="emotion-60 emotion-61"
             >
               <button
-                class="emotion-60 emotion-19"
+                class="emotion-62 emotion-21"
                 name="stopButton"
                 type="button"
               >
@@ -1220,13 +1297,13 @@ exports[`Game tests should correctly render field and form 1`] = `
             </div>
           </div>
           <div
-            class="emotion-24 emotion-17"
+            class="emotion-26 emotion-19"
           >
             <div
-              class="emotion-58 emotion-59"
+              class="emotion-60 emotion-61"
             >
               <button
-                class="emotion-60 emotion-19"
+                class="emotion-62 emotion-21"
                 name="resetButton"
                 type="reset"
               >
@@ -1235,13 +1312,13 @@ exports[`Game tests should correctly render field and form 1`] = `
             </div>
           </div>
           <div
-            class="emotion-24 emotion-17"
+            class="emotion-26 emotion-19"
           >
             <div
-              class="emotion-58 emotion-59"
+              class="emotion-60 emotion-61"
             >
               <button
-                class="emotion-60 emotion-19"
+                class="emotion-62 emotion-21"
                 name="generateRandomButton"
                 type="button"
               >
@@ -1252,208 +1329,212 @@ exports[`Game tests should correctly render field and form 1`] = `
         </div>
       </form>
       <div
-        class="emotion-80 emotion-81"
+        class="emotion-82 emotion-83"
       >
         <div
-          class="emotion-82 emotion-83"
-          data-testid="figurePalette"
+          class="emotion-84 emotion-85"
         >
-          <p
-            class="emotion-84 emotion-85"
-          >
-            Figure X
-          </p>
           <div
             class="emotion-86 emotion-87"
+            data-testid="figurePalette"
           >
-            <svg
-              aria-label="prev"
+            <p
               class="emotion-88 emotion-89"
-              disabled=""
-              role="button"
-              viewBox="0 0 40 60"
-              xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M40 0 L40 60 L0 30 Z"
-              />
-            </svg>
+              Figure X
+            </p>
             <div
               class="emotion-90 emotion-91"
             >
+              <svg
+                aria-label="prev"
+                class="emotion-92 emotion-93"
+                disabled=""
+                role="button"
+                viewBox="0 0 40 60"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M40 0 L40 60 L0 30 Z"
+                />
+              </svg>
               <div
-                class="game-field emotion-92 emotion-5"
-                data-testid="field"
+                class="emotion-94 emotion-95"
               >
                 <div
-                  aria-label="1"
-                  class="cell cell-active"
-                  data-state="true"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="2"
-                  class="cell"
-                  data-state="false"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="3"
-                  class="cell"
-                  data-state="false"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="4"
-                  class="cell"
-                  data-state="false"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="5"
-                  class="cell cell-active"
-                  data-state="true"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="6"
-                  class="cell"
-                  data-state="false"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="7"
-                  class="cell cell-active"
-                  data-state="true"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="8"
-                  class="cell"
-                  data-state="false"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="9"
-                  class="cell cell-active"
-                  data-state="true"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="10"
-                  class="cell"
-                  data-state="false"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="11"
-                  class="cell"
-                  data-state="false"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="12"
-                  class="cell"
-                  data-state="false"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="13"
-                  class="cell cell-active"
-                  data-state="true"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="14"
-                  class="cell"
-                  data-state="false"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="15"
-                  class="cell"
-                  data-state="false"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="16"
-                  class="cell"
-                  data-state="false"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="17"
-                  class="cell cell-active"
-                  data-state="true"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="18"
-                  class="cell"
-                  data-state="false"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="19"
-                  class="cell cell-active"
-                  data-state="true"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="20"
-                  class="cell"
-                  data-state="false"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="21"
-                  class="cell cell-active"
-                  data-state="true"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="22"
-                  class="cell"
-                  data-state="false"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="23"
-                  class="cell"
-                  data-state="false"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="24"
-                  class="cell"
-                  data-state="false"
-                  data-testid="cell"
-                />
-                <div
-                  aria-label="25"
-                  class="cell cell-active"
-                  data-state="true"
-                  data-testid="cell"
-                />
+                  class="game-field emotion-96 emotion-5"
+                  data-testid="field"
+                >
+                  <div
+                    aria-label="1"
+                    class="cell cell-active"
+                    data-state="true"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="2"
+                    class="cell"
+                    data-state="false"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="3"
+                    class="cell"
+                    data-state="false"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="4"
+                    class="cell"
+                    data-state="false"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="5"
+                    class="cell cell-active"
+                    data-state="true"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="6"
+                    class="cell"
+                    data-state="false"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="7"
+                    class="cell cell-active"
+                    data-state="true"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="8"
+                    class="cell"
+                    data-state="false"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="9"
+                    class="cell cell-active"
+                    data-state="true"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="10"
+                    class="cell"
+                    data-state="false"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="11"
+                    class="cell"
+                    data-state="false"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="12"
+                    class="cell"
+                    data-state="false"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="13"
+                    class="cell cell-active"
+                    data-state="true"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="14"
+                    class="cell"
+                    data-state="false"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="15"
+                    class="cell"
+                    data-state="false"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="16"
+                    class="cell"
+                    data-state="false"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="17"
+                    class="cell cell-active"
+                    data-state="true"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="18"
+                    class="cell"
+                    data-state="false"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="19"
+                    class="cell cell-active"
+                    data-state="true"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="20"
+                    class="cell"
+                    data-state="false"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="21"
+                    class="cell cell-active"
+                    data-state="true"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="22"
+                    class="cell"
+                    data-state="false"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="23"
+                    class="cell"
+                    data-state="false"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="24"
+                    class="cell"
+                    data-state="false"
+                    data-testid="cell"
+                  />
+                  <div
+                    aria-label="25"
+                    class="cell cell-active"
+                    data-state="true"
+                    data-testid="cell"
+                  />
+                </div>
               </div>
+              <svg
+                aria-label="next"
+                class="emotion-98 emotion-93"
+                role="button"
+                viewBox="0 0 40 60"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 0 L40 30 L0 60 Z"
+                />
+              </svg>
             </div>
-            <svg
-              aria-label="next"
-              class="emotion-94 emotion-89"
-              role="button"
-              viewBox="0 0 40 60"
-              xmlns="http://www.w3.org/2000/svg"
+            <button
+              class="emotion-62 emotion-21"
             >
-              <path
-                d="M0 0 L40 30 L0 60 Z"
-              />
-            </svg>
+              Выбрать
+            </button>
           </div>
-          <button
-            class="emotion-60 emotion-19"
-          >
-            Выбрать
-          </button>
         </div>
       </div>
     </div>

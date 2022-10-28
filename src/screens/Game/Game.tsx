@@ -27,17 +27,21 @@ export class Game extends React.Component<IGameProps> {
         </GameFieldContainer>
         {isTouchDevice() ? null : <FocusableSeparator />}
         <ControlContainer>
-          <LeftSidebar>
-            <InfoContainer />
-            <PlayerBlockContainer />
-          </LeftSidebar>
+          <SidebarContainer>
+            <LeftSidebar>
+              <InfoContainer />
+              <PlayerBlockContainer />
+            </LeftSidebar>
+          </SidebarContainer>
           <FormContainer
             key={this.props.formKey}
             onButtonClickFn={this.props.onButtonClickFn}
           />
-          <RightSidebar>
-            <FigurePaletteContainer />
-          </RightSidebar>
+          <SidebarContainerRight>
+            <RightSidebar>
+              <FigurePaletteContainer />
+            </RightSidebar>
+          </SidebarContainerRight>
         </ControlContainer>
       </Container>
     );
@@ -75,6 +79,7 @@ const ControlContainer = styled.div`
   }
 
   @media screen and (min-width: ${BREAKPOINTS.xl}) {
+    flex-wrap: nowrap;
     overflow: hidden;
     width: 100%;
     .game-settings-form {
@@ -83,13 +88,36 @@ const ControlContainer = styled.div`
   }
 `;
 
-const LeftSidebar = styled.div`
+const SidebarContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+
+  @media screen and (min-width: ${BREAKPOINTS.xl}) {
+    width: 400px;
+  }
+`
+
+const SidebarContainerRight = styled(SidebarContainer)`
+  @media screen and (min-width: ${BREAKPOINTS.xl}) {
+    justify-content: flex-end;
+  }
+`
+
+const Sidebar = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   margin: 20px;
   padding: 20px;
   border: 2px solid ${COLORS.border};
   border-radius: 10px;
+
+  @media screen and (min-width: ${BREAKPOINTS.xl}) {
+    width: auto;
+  }
 `;
 
-const RightSidebar = styled(LeftSidebar)``;
+const LeftSidebar = styled(Sidebar)``;
+
+const RightSidebar = styled(Sidebar)``;
