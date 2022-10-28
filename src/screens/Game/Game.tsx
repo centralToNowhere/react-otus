@@ -96,13 +96,13 @@ const SidebarContainer = styled.div`
   @media screen and (min-width: ${BREAKPOINTS.xl}) {
     width: 400px;
   }
-`
+`;
 
 const SidebarContainerRight = styled(SidebarContainer)`
   @media screen and (min-width: ${BREAKPOINTS.xl}) {
     justify-content: flex-end;
   }
-`
+`;
 
 const Sidebar = styled.div`
   display: flex;
