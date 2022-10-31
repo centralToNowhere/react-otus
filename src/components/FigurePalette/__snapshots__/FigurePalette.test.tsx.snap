@@ -294,7 +294,7 @@ exports[`FigurePalette tests should render FigurePalette 1`] = `
     <button
       class="emotion-14 emotion-15"
     >
-      Выбрать
+      Установка фигуры
     </button>
   </div>
 </DocumentFragment>

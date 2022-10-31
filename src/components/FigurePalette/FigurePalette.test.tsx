@@ -38,6 +38,8 @@ const initialState: {
         cellsInCol: 10,
       },
     ],
+    figurePaletteActive: false,
+    currentFigureIndex: 0,
   },
 };
 
@@ -125,6 +127,8 @@ describe("FigurePalette tests", () => {
               cellsInCol: 5,
             },
           ],
+          currentFigureIndex: 0,
+          figurePaletteActive: false,
         },
       },
     });

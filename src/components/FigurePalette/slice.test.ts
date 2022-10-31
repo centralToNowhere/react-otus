@@ -9,6 +9,8 @@ describe("figurePalette slice tests", () => {
   it("setFigures", () => {
     const initialState: IFigurePaletteState = {
       figures: [],
+      figurePaletteActive: false,
+      currentFigureIndex: 0,
     };
 
     const figures: CellFigure[] = [

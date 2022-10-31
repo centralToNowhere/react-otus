@@ -11,3 +11,17 @@ export const selectFigures = createSelector(
     return figurePalette.figures;
   }
 );
+
+export const selectPaletteActive = createSelector(
+  selectFigurePalette,
+  (figurePalette) => {
+    return figurePalette.figurePaletteActive;
+  }
+);
+
+export const selectPaletteCurrent = createSelector(
+  selectFigurePalette,
+  (figurePalette) => {
+    return figurePalette.currentFigureIndex;
+  }
+);

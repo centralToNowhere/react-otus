@@ -453,9 +453,9 @@ exports[`Game tests should correctly render field and form 1`] = `
 }
 
 .emotion-96 {
-  width: 100px;
+  width: 60px;
   cursor: pointer;
-  height: 100px;
+  height: 60px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1341,7 +1341,7 @@ exports[`Game tests should correctly render field and form 1`] = `
             <p
               class="emotion-88 emotion-89"
             >
-              Figure X
+              Glider
             </p>
             <div
               class="emotion-90 emotion-91"
@@ -1367,14 +1367,14 @@ exports[`Game tests should correctly render field and form 1`] = `
                 >
                   <div
                     aria-label="1"
-                    class="cell cell-active"
-                    data-state="true"
+                    class="cell"
+                    data-state="false"
                     data-testid="cell"
                   />
                   <div
                     aria-label="2"
-                    class="cell"
-                    data-state="false"
+                    class="cell cell-active"
+                    data-state="true"
                     data-testid="cell"
                   />
                   <div
@@ -1391,14 +1391,14 @@ exports[`Game tests should correctly render field and form 1`] = `
                   />
                   <div
                     aria-label="5"
-                    class="cell cell-active"
-                    data-state="true"
+                    class="cell"
+                    data-state="false"
                     data-testid="cell"
                   />
                   <div
                     aria-label="6"
-                    class="cell"
-                    data-state="false"
+                    class="cell cell-active"
+                    data-state="true"
                     data-testid="cell"
                   />
                   <div
@@ -1409,108 +1409,12 @@ exports[`Game tests should correctly render field and form 1`] = `
                   />
                   <div
                     aria-label="8"
-                    class="cell"
-                    data-state="false"
+                    class="cell cell-active"
+                    data-state="true"
                     data-testid="cell"
                   />
                   <div
                     aria-label="9"
-                    class="cell cell-active"
-                    data-state="true"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="10"
-                    class="cell"
-                    data-state="false"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="11"
-                    class="cell"
-                    data-state="false"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="12"
-                    class="cell"
-                    data-state="false"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="13"
-                    class="cell cell-active"
-                    data-state="true"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="14"
-                    class="cell"
-                    data-state="false"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="15"
-                    class="cell"
-                    data-state="false"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="16"
-                    class="cell"
-                    data-state="false"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="17"
-                    class="cell cell-active"
-                    data-state="true"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="18"
-                    class="cell"
-                    data-state="false"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="19"
-                    class="cell cell-active"
-                    data-state="true"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="20"
-                    class="cell"
-                    data-state="false"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="21"
-                    class="cell cell-active"
-                    data-state="true"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="22"
-                    class="cell"
-                    data-state="false"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="23"
-                    class="cell"
-                    data-state="false"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="24"
-                    class="cell"
-                    data-state="false"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="25"
                     class="cell cell-active"
                     data-state="true"
                     data-testid="cell"
@@ -1532,7 +1436,7 @@ exports[`Game tests should correctly render field and form 1`] = `
             <button
               class="emotion-62 emotion-21"
             >
-              Выбрать
+              Установка фигуры
             </button>
           </div>
         </div>

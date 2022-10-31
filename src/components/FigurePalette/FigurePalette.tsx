@@ -1,41 +1,67 @@
-import React, { FC, SVGAttributes, useState } from "react";
+import React, { FC, SVGAttributes, useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { COLORS } from "@/styles/ui-styled";
-import { Main as GameField } from "@/components/GameField/GameField";
+import { Main as NotConnectedGameField } from "@/components/GameField/GameField";
 import { FormButton } from "@/components/Buttons";
 import { CellFigure } from "@/components/FigurePalette";
 
 export interface FigurePaletteProps {
   figures: CellFigure[];
+  paletteActive: boolean;
+  onStartFigurePlacement: () => void;
+  onCancelFigurePlacement: () => void;
+  setCurrentFigureIndex: (index: number) => void;
 }
 
-export const FigurePalette: FC<FigurePaletteProps> = ({ figures }) => {
-  const [currentFigureIndex, setCurrentFigureIndex] = useState<number>(0);
+export const FigurePalette: FC<FigurePaletteProps> = ({
+  figures,
+  paletteActive,
+  onStartFigurePlacement,
+  onCancelFigurePlacement,
+  setCurrentFigureIndex,
+}) => {
+  const [index, setIndex] = useState<number>(0);
+  const currentFigure = figures[index];
+
+  const onCurrentFigureChange = () => {
+    const figure = figures[index];
+
+    if (figure) {
+      setCurrentFigureIndex(index);
+    }
+  };
+
+  useEffect(() => {
+    onCurrentFigureChange();
+  }, [index]);
 
   return (
     <FigurePaletteContainer data-testid={"figurePalette"}>
-      <FigureName>{figures[currentFigureIndex].name}</FigureName>
+      <FigureName>{currentFigure.name}</FigureName>
       <FigureSliderContainer>
         <FigureSliderArrow
           onClick={() => {
-            setCurrentFigureIndex((prev) => {
+            setIndex((prev) => {
               return prev > 0 ? prev - 1 : prev;
             });
           }}
           viewBox="0 0 40 60"
           xmlns="http://www.w3.org/2000/svg"
-          disabled={currentFigureIndex === 0}
+          disabled={index === 0}
           role={"button"}
           aria-label={"prev"}
         >
           <path d="M40 0 L40 60 L0 30 Z" />
         </FigureSliderArrow>
         <PaletteGameField>
-          <GameField
-            cellSize={20}
-            indexedCells={figures[currentFigureIndex].indexedCells}
-            cellsInRow={figures[currentFigureIndex].cellsInRow}
-            cellsInCol={figures[currentFigureIndex].cellsInCol}
+          <NotConnectedGameField
+            cellSize={currentFigure.cellSize || 20}
+            indexedCells={currentFigure.indexedCells}
+            cellsInRow={currentFigure.cellsInRow}
+            cellsInCol={currentFigure.cellsInCol}
+            figurePaletteActive={false}
+            paletteFigures={figures}
+            currentFigureIndex={index}
             setActiveCell={() => {
               // empty
             }}
@@ -46,20 +72,26 @@ export const FigurePalette: FC<FigurePaletteProps> = ({ figures }) => {
         </PaletteGameField>
         <FigureSliderArrow
           onClick={() => {
-            setCurrentFigureIndex((prev) => {
+            setIndex((prev) => {
               return prev !== figures.length - 1 ? prev + 1 : prev;
             });
           }}
           viewBox="0 0 40 60"
           xmlns="http://www.w3.org/2000/svg"
-          disabled={currentFigureIndex === figures.length - 1}
+          disabled={index === figures.length - 1}
           role={"button"}
           aria-label={"next"}
         >
           <path d="M0 0 L40 30 L0 60 Z" />
         </FigureSliderArrow>
       </FigureSliderContainer>
-      <FormButton>Выбрать</FormButton>
+      {paletteActive ? (
+        <FormButton onClick={onCancelFigurePlacement}>Отмена</FormButton>
+      ) : (
+        <FormButton onClick={onStartFigurePlacement}>
+          Установка фигуры
+        </FormButton>
+      )}
     </FigurePaletteContainer>
   );
 };

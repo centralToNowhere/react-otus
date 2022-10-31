@@ -38,6 +38,16 @@ export default {
         cellsInCol: 10,
       },
     ],
+    paletteActive: false,
+    onStartFigurePlacement: () => {
+      // empty
+    },
+    onCancelFigurePlacement: () => {
+      // empty
+    },
+    setCurrentFigureIndex: () => {
+      // empty
+    },
   },
 } as Meta;
 

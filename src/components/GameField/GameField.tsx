@@ -13,6 +13,11 @@ import { RootState } from "@/store/redux/store";
 import { selectCellsInCol, selectCellsInRow } from "@/components/Fields";
 import { selectIndexedCells } from "@/components/GameField/selectors";
 import { setActiveCell, setInactiveCell } from "@/components/GameField/slice";
+import {
+  selectFigures,
+  selectPaletteActive,
+  selectPaletteCurrent,
+} from "@/components/FigurePalette/selectors";
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -20,6 +25,9 @@ const mapStateToProps = (state: RootState) => {
     indexedCells: selectIndexedCells(state),
     cellsInRow: selectCellsInRow(state),
     cellsInCol: selectCellsInCol(state),
+    paletteFigures: selectFigures(state),
+    figurePaletteActive: selectPaletteActive(state),
+    currentFigureIndex: selectPaletteCurrent(state),
   };
 };
 
@@ -64,7 +72,40 @@ export class Main extends React.PureComponent<IGameFieldProps> {
     );
   }
 
-  onCellToggle: MouseEventHandler<HTMLDivElement> = (e) => {
+  onFigurePlacement(topLeft: ICell) {
+    const figureIndex = this.props.currentFigureIndex;
+    const figure = this.props.paletteFigures[figureIndex];
+    const offsetX = topLeft.x;
+    const offsetY = topLeft.y;
+
+    if (figure) {
+      const figureCellsInRow = figure.cellsInRow;
+
+      figure.indexedCells.forEach((cellState, i) => {
+        const cell = {
+          x: (i % figureCellsInRow) + offsetX,
+          y: Math.floor(i / figureCellsInRow) + offsetY,
+        };
+
+        if (cellState) {
+          this.props.setActiveCell(cell);
+        } else {
+          this.props.setInactiveCell(cell);
+        }
+      });
+    }
+  }
+
+  onCellToggle(state: string | undefined, cell: ICell) {
+    if (state === "true") {
+      this.props.setInactiveCell(cell);
+      return;
+    }
+
+    this.props.setActiveCell(cell);
+  }
+
+  onCellClick: MouseEventHandler<HTMLDivElement> = (e) => {
     const el = e.target as HTMLDivElement;
     const state = el.dataset.state;
     const number = Number(el.getAttribute("aria-label"));
@@ -76,18 +117,18 @@ export class Main extends React.PureComponent<IGameFieldProps> {
       y: i,
     };
 
-    if (state === "true") {
-      this.props.setInactiveCell(cell);
+    if (this.props.figurePaletteActive) {
+      this.onFigurePlacement(cell);
       return;
     }
 
-    this.props.setActiveCell(cell);
+    this.onCellToggle(state, cell);
   };
 
   render() {
     return (
       <StyledGameField
-        onClick={this.onCellToggle}
+        onClick={this.onCellClick}
         className={"game-field"}
         cellSize={this.props.cellSize}
         cellsInRow={this.props.cellsInRow}
