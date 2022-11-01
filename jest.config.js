@@ -15,12 +15,12 @@ module.exports = {
   collectCoverage: true,
   coverageReporters: ["text", "json-summary", "json", "html"],
   coverageThreshold: {
-    global: {
-      statements: 95,
-      branches: 90,
-      functions: 95,
-      lines: 95,
-    },
+    // global: {
+    //   statements: 95,
+    //   branches: 90,
+    //   functions: 95,
+    //   lines: 95,
+    // },
   },
 
   testEnvironment: "jsdom",
