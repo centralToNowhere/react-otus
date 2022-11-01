@@ -86,24 +86,6 @@ const calculateNeighbours = (
       neighbours += indexedCells[i - 1 + cellsInRow];
     }
   }
-  // if (
-  //   (i + 1) % cellsInRow === 0 ||
-  //   i % cellsInRow === 0 ||
-  //   i - cellsInRow < 0 ||
-  //   i + cellsInRow >= indexedCells.length
-  // ) {
-  //
-  //   }
-  // } else {
-  //   neighbours += indexedCells[i + 1];
-  //   neighbours += indexedCells[i - 1];
-  //   neighbours += indexedCells[i - cellsInRow];
-  //   neighbours += indexedCells[i + 1 - cellsInRow];
-  //   neighbours += indexedCells[i - 1 - cellsInRow];
-  //   neighbours += indexedCells[i + cellsInRow];
-  //   neighbours += indexedCells[i + 1 + cellsInRow];
-  //   neighbours += indexedCells[i - 1 + cellsInRow];
-  // }
 
   return neighbours;
 };

@@ -43,25 +43,43 @@ const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({
 const connector = connect(mapStateToProps, mapDispatchToProps);
 export type IGameFieldProps = ConnectedProps<typeof connector>;
 
-export class Main extends React.PureComponent<IGameFieldProps> {
-  private readonly gameFieldRef: MutableRefObject<HTMLDivElement | null>;
+type IGameFieldState = {
+  figureAreaCells: number[];
+};
 
+export class Main extends React.PureComponent<
+  IGameFieldProps,
+  IGameFieldState
+> {
   constructor(props: IGameFieldProps) {
     super(props);
-    this.gameFieldRef = createRef<HTMLDivElement | null>();
-    this.renderCells = this.renderCells.bind(this);
   }
 
-  renderCells() {
+  state: IGameFieldState = {
+    figureAreaCells: [],
+  };
+
+  mouseMoveTimeout: ReturnType<typeof setTimeout> | null = null;
+  mouseMoveDelay = 50;
+
+  private readonly gameFieldRef: MutableRefObject<HTMLDivElement | null> =
+    createRef<HTMLDivElement | null>();
+
+  renderCells = () => {
     const cellsArr: IndexedCells = [];
+    const figureAreaCells = this.state.figureAreaCells;
     cellsArr.length = this.props.cellsInCol * this.props.cellsInRow;
     cellsArr.fill(0);
 
     return Object.assign(cellsArr, this.props.indexedCells).map(
       (cellState, i) => {
+        const className = `cell${cellState ? " cell-active" : ""}${
+          figureAreaCells.includes(i) ? " cell-highlight" : ""
+        }`;
+
         return (
           <div
-            className={`cell${cellState ? " cell-active" : ""}`}
+            className={className}
             key={i}
             data-testid="cell"
             data-state={!!cellState}
@@ -70,6 +88,106 @@ export class Main extends React.PureComponent<IGameFieldProps> {
         );
       }
     );
+  };
+
+  componentDidUpdate(prevProps: IGameFieldProps) {
+    if (this.props.figurePaletteActive === prevProps.figurePaletteActive) {
+      return;
+    }
+
+    if (this.props.figurePaletteActive) {
+      this.figurePlacementHighlight();
+    } else {
+      this.figurePlacementRemoveHighlight();
+    }
+  }
+
+  onMouseMove = (e: MouseEvent) => {
+    const el = e.target as HTMLDivElement;
+    const gameFieldEl = this.gameFieldRef.current;
+
+    if (!gameFieldEl) {
+      return;
+    }
+
+    const ariaLabel = el.getAttribute("aria-label");
+
+    if (ariaLabel === null) {
+      return;
+    }
+
+    const index = parseInt(ariaLabel) - 1;
+
+    if (Number.isNaN(index)) {
+      return;
+    }
+
+    this.setState({
+      figureAreaCells: [index],
+    });
+
+    if (this.mouseMoveTimeout) {
+      clearTimeout(this.mouseMoveTimeout);
+    }
+
+    this.mouseMoveTimeout = setTimeout(() => {
+      const figureIndex = this.props.currentFigureIndex;
+      const figure = this.props.paletteFigures[figureIndex];
+
+      let highlightIndex = index - 1;
+      const indexArray = [];
+
+      for (let i = 0; i < figure.cellsInCol; i++) {
+        for (let j = 0; j < figure.cellsInRow; j++) {
+          highlightIndex += 1;
+          indexArray.push(highlightIndex);
+        }
+
+        highlightIndex += this.props.cellsInRow - figure.cellsInRow;
+      }
+
+      this.setState({
+        figureAreaCells: indexArray,
+      });
+
+      gameFieldEl.addEventListener("mouseout", this.onMouseOut, false);
+    }, this.mouseMoveDelay);
+  };
+
+  onMouseOut = () => {
+    if (this.mouseMoveTimeout) {
+      clearTimeout(this.mouseMoveTimeout);
+    }
+
+    this.setState({
+      figureAreaCells: [],
+    });
+  };
+
+  figurePlacementHighlight() {
+    const gameFieldEl = this.gameFieldRef.current;
+
+    if (!gameFieldEl) {
+      return;
+    }
+
+    gameFieldEl.addEventListener("mousemove", this.onMouseMove, false);
+    gameFieldEl.addEventListener("mouseout", this.onMouseOut, false);
+  }
+
+  figurePlacementRemoveHighlight() {
+    const gameFieldEl = this.gameFieldRef.current;
+
+    if (!gameFieldEl) {
+      return;
+    }
+
+    gameFieldEl.removeEventListener("mousemove", this.onMouseMove, false);
+    gameFieldEl.removeEventListener("mouseout", this.onMouseOut, false);
+
+    this.setState({
+      figureAreaCells: [],
+    });
   }
 
   onFigurePlacement(topLeft: ICell) {
@@ -77,23 +195,20 @@ export class Main extends React.PureComponent<IGameFieldProps> {
     const figure = this.props.paletteFigures[figureIndex];
     const offsetX = topLeft.x;
     const offsetY = topLeft.y;
+    const figureCellsInRow = figure.cellsInRow;
 
-    if (figure) {
-      const figureCellsInRow = figure.cellsInRow;
+    figure.indexedCells.forEach((cellState, i) => {
+      const cell = {
+        x: (i % figureCellsInRow) + offsetX,
+        y: Math.floor(i / figureCellsInRow) + offsetY,
+      };
 
-      figure.indexedCells.forEach((cellState, i) => {
-        const cell = {
-          x: (i % figureCellsInRow) + offsetX,
-          y: Math.floor(i / figureCellsInRow) + offsetY,
-        };
-
-        if (cellState) {
-          this.props.setActiveCell(cell);
-        } else {
-          this.props.setInactiveCell(cell);
-        }
-      });
-    }
+      if (cellState) {
+        this.props.setActiveCell(cell);
+      } else {
+        this.props.setInactiveCell(cell);
+      }
+    });
   }
 
   onCellToggle(state: string | undefined, cell: ICell) {
@@ -134,6 +249,7 @@ export class Main extends React.PureComponent<IGameFieldProps> {
         cellsInRow={this.props.cellsInRow}
         cellsInCol={this.props.cellsInCol}
         data-testid={"field"}
+        ref={this.gameFieldRef}
       >
         {this.renderCells()}
       </StyledGameField>
@@ -173,5 +289,9 @@ const StyledGameField = styled.div<IFieldStyledContainerProps>`
 
   .cell-active {
     background: ${COLORS.activeCellBg};
+  }
+
+  .cell-highlight {
+    background: ${COLORS.accent};
   }
 `;

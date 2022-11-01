@@ -61,6 +61,10 @@ exports[`Game tests should correctly render field and form 1`] = `
   background: rgb(144, 131, 230);
 }
 
+.emotion-4 .cell-highlight {
+  background: rgb(255, 33, 92);
+}
+
 .emotion-6 {
   width: 100%;
   height: 30px;
@@ -480,6 +484,10 @@ exports[`Game tests should correctly render field and form 1`] = `
 
 .emotion-96 .cell-active {
   background: rgb(144, 131, 230);
+}
+
+.emotion-96 .cell-highlight {
+  background: rgb(255, 33, 92);
 }
 
 .emotion-98 {

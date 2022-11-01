@@ -76,6 +76,10 @@ exports[`FigurePalette tests should render FigurePalette 1`] = `
   background: rgb(144, 131, 230);
 }
 
+.emotion-10 .cell-highlight {
+  background: rgb(255, 33, 92);
+}
+
 .emotion-12 {
   width: 1rem;
   cursor: pointer;

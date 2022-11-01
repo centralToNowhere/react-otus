@@ -32,6 +32,10 @@ exports[`GameField tests should render game field 1`] = `
   background: rgb(144, 131, 230);
 }
 
+.emotion-0 .cell-highlight {
+  background: rgb(255, 33, 92);
+}
+
 <div
     class="game-field emotion-0 emotion-1"
     data-testid="field"
