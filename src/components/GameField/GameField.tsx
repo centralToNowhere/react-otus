@@ -138,12 +138,18 @@ export class Main extends React.PureComponent<
       const indexArray = [];
 
       for (let i = 0; i < figure.cellsInCol; i++) {
-        for (let j = 0; j < figure.cellsInRow; j++) {
+        let j = 0;
+
+        for (;j < figure.cellsInRow; j++) {
+          if ((highlightIndex + 1) % this.props.cellsInRow === 0) {
+            break;
+          }
+
           highlightIndex += 1;
           indexArray.push(highlightIndex);
         }
 
-        highlightIndex += this.props.cellsInRow - figure.cellsInRow;
+        highlightIndex += this.props.cellsInRow - j;
       }
 
       this.setState({
