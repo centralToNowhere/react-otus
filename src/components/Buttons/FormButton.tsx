@@ -5,6 +5,7 @@ export const FormButton = styled.button`
   background: inherit;
   border-color: ${COLORS.border};
   line-height: 1.5;
+  cursor: pointer;
 
   &:focus {
     outline: 2px solid ${COLORS.accent} !important;

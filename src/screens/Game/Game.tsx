@@ -72,9 +72,14 @@ const ControlContainer = styled.div`
   display: flex;
   align-items: start;
   flex-wrap: wrap;
+  width: 100%;
+  padding: 20px 20px 0 20px;
+
+  & > * {
+    margin-bottom: 20px;
+  }
 
   .game-settings-form {
-    margin: 20px;
     max-width: 480px;
   }
 
@@ -82,9 +87,7 @@ const ControlContainer = styled.div`
     flex-wrap: nowrap;
     overflow: hidden;
     width: 100%;
-    .game-settings-form {
-      margin: 20px auto;
-    }
+    padding-top: 0;
   }
 `;
 
@@ -92,10 +95,6 @@ const SidebarContainer = styled.div`
   display: flex;
   width: 100%;
   justify-content: flex-start;
-
-  @media screen and (min-width: ${BREAKPOINTS.xl}) {
-    width: 400px;
-  }
 `;
 
 const SidebarContainerRight = styled(SidebarContainer)`
@@ -108,12 +107,13 @@ const Sidebar = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 20px;
   padding: 20px;
   border: 2px solid ${COLORS.border};
   border-radius: 10px;
+  min-width: 0;
 
   @media screen and (min-width: ${BREAKPOINTS.xl}) {
+    min-width: auto;
     width: auto;
   }
 `;

@@ -18,6 +18,7 @@ import {
   selectPaletteActive,
   selectPaletteCurrent,
 } from "@/components/FigurePalette/selectors";
+import { isTouchDevice } from "@/utils/TouchDeviceDetection";
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -95,7 +96,7 @@ export class Main extends React.PureComponent<
       return;
     }
 
-    if (this.props.figurePaletteActive) {
+    if (!isTouchDevice() && this.props.figurePaletteActive) {
       this.figurePlacementHighlight();
     } else {
       this.figurePlacementRemoveHighlight();
@@ -103,34 +104,30 @@ export class Main extends React.PureComponent<
   }
 
   onMouseMove = (e: MouseEvent) => {
-    const el = e.target as HTMLDivElement;
-    const gameFieldEl = this.gameFieldRef.current;
-
-    if (!gameFieldEl) {
-      return;
-    }
-
-    const ariaLabel = el.getAttribute("aria-label");
-
-    if (ariaLabel === null) {
-      return;
-    }
-
-    const index = parseInt(ariaLabel) - 1;
-
-    if (Number.isNaN(index)) {
-      return;
-    }
-
-    this.setState({
-      figureAreaCells: [index],
-    });
-
     if (this.mouseMoveTimeout) {
       clearTimeout(this.mouseMoveTimeout);
     }
 
     this.mouseMoveTimeout = setTimeout(() => {
+      const el = e.target as HTMLDivElement;
+      const gameFieldEl = this.gameFieldRef.current;
+
+      if (!gameFieldEl) {
+        return;
+      }
+
+      const ariaLabel = el.getAttribute("aria-label");
+
+      if (ariaLabel === null) {
+        return;
+      }
+
+      const index = parseInt(ariaLabel) - 1;
+
+      if (Number.isNaN(index)) {
+        return;
+      }
+
       const figureIndex = this.props.currentFigureIndex;
       const figure = this.props.paletteFigures[figureIndex];
 
@@ -140,8 +137,11 @@ export class Main extends React.PureComponent<
       for (let i = 0; i < figure.cellsInCol; i++) {
         let j = 0;
 
-        for (;j < figure.cellsInRow; j++) {
-          if ((highlightIndex + 1) % this.props.cellsInRow === 0) {
+        for (; j < figure.cellsInRow; j++) {
+          if (
+            (highlightIndex + 1) % this.props.cellsInRow === 0 &&
+            index % this.props.cellsInRow !== 0
+          ) {
             break;
           }
 
@@ -214,6 +214,10 @@ export class Main extends React.PureComponent<
       } else {
         this.props.setInactiveCell(cell);
       }
+    });
+
+    this.setState({
+      figureAreaCells: [],
     });
   }
 
@@ -291,6 +295,12 @@ const StyledGameField = styled.div<IFieldStyledContainerProps>`
     text-align: center;
     border: ${(props) =>
       props.cellSize > 2 ? `1px solid ${COLORS.secondary}` : "none"};
+
+    @media (hover: hover) {
+      &:hover {
+        background: ${COLORS.accentFade};
+      }
+    }
   }
 
   .cell-active {
@@ -298,6 +308,6 @@ const StyledGameField = styled.div<IFieldStyledContainerProps>`
   }
 
   .cell-highlight {
-    background: ${COLORS.accent};
+    background: ${COLORS.accentFade};
   }
 `;

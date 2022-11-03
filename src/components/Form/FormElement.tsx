@@ -6,6 +6,7 @@ export const FormElement = styled.form`
   flex-direction: column;
   border: 2px solid ${COLORS.border};
   border-radius: 10px;
+  width: 100%;
 
   input,
   label,

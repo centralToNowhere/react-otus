@@ -12,6 +12,7 @@ exports[`form tests should render form 1`] = `
   flex-direction: column;
   border: 2px solid #6a6d75;
   border-radius: 10px;
+  width: 100%;
 }
 
 .emotion-0 input,
@@ -107,6 +108,7 @@ exports[`form tests should render form 1`] = `
   background: inherit;
   border-color: #6a6d75;
   line-height: 1.5;
+  cursor: pointer;
 }
 
 .emotion-40:focus {

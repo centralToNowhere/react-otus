@@ -57,12 +57,18 @@ exports[`Game tests should correctly render field and form 1`] = `
   border: 1px solid #e8d5f0;
 }
 
+@media (hover: hover) {
+  .emotion-4 .cell:hover {
+    background: #E59FB1;
+  }
+}
+
 .emotion-4 .cell-active {
   background: rgb(144, 131, 230);
 }
 
 .emotion-4 .cell-highlight {
-  background: rgb(255, 33, 92);
+  background: #E59FB1;
 }
 
 .emotion-6 {
@@ -105,10 +111,15 @@ exports[`Game tests should correctly render field and form 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  width: 100%;
+  padding: 20px 20px 0 20px;
+}
+
+.emotion-8>* {
+  margin-bottom: 20px;
 }
 
 .emotion-8 .game-settings-form {
-  margin: 20px;
   max-width: 480px;
 }
 
@@ -120,10 +131,7 @@ exports[`Game tests should correctly render field and form 1`] = `
     flex-wrap: nowrap;
     overflow: hidden;
     width: 100%;
-  }
-
-  .emotion-8 .game-settings-form {
-    margin: 20px auto;
+    padding-top: 0;
   }
 }
 
@@ -139,12 +147,6 @@ exports[`Game tests should correctly render field and form 1`] = `
   justify-content: flex-start;
 }
 
-@media screen and (min-width: 1200px) {
-  .emotion-10 {
-    width: 400px;
-  }
-}
-
 .emotion-12 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -157,14 +159,15 @@ exports[`Game tests should correctly render field and form 1`] = `
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
-  margin: 20px;
   padding: 20px;
   border: 2px solid #6a6d75;
   border-radius: 10px;
+  min-width: 0;
 }
 
 @media screen and (min-width: 1200px) {
   .emotion-12 {
+    min-width: auto;
     width: auto;
   }
 }
@@ -183,6 +186,7 @@ exports[`Game tests should correctly render field and form 1`] = `
   flex-direction: column;
   border: 2px solid #6a6d75;
   border-radius: 10px;
+  width: 100%;
   border: 0;
 }
 
@@ -241,6 +245,7 @@ exports[`Game tests should correctly render field and form 1`] = `
   background: inherit;
   border-color: #6a6d75;
   line-height: 1.5;
+  cursor: pointer;
   text-align: center;
 }
 
@@ -259,6 +264,7 @@ exports[`Game tests should correctly render field and form 1`] = `
   flex-direction: column;
   border: 2px solid #6a6d75;
   border-radius: 10px;
+  width: 100%;
 }
 
 .emotion-22 input,
@@ -354,6 +360,7 @@ exports[`Game tests should correctly render field and form 1`] = `
   background: inherit;
   border-color: #6a6d75;
   line-height: 1.5;
+  cursor: pointer;
 }
 
 .emotion-62:focus {
@@ -371,12 +378,6 @@ exports[`Game tests should correctly render field and form 1`] = `
   -ms-flex-pack: start;
   -webkit-justify-content: flex-start;
   justify-content: flex-start;
-}
-
-@media screen and (min-width: 1200px) {
-  .emotion-82 {
-    width: 400px;
-  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -400,14 +401,15 @@ exports[`Game tests should correctly render field and form 1`] = `
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
-  margin: 20px;
   padding: 20px;
   border: 2px solid #6a6d75;
   border-radius: 10px;
+  min-width: 0;
 }
 
 @media screen and (min-width: 1200px) {
   .emotion-84 {
+    min-width: auto;
     width: auto;
   }
 }
@@ -420,7 +422,10 @@ exports[`Game tests should correctly render field and form 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  max-width: 600px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-88 {
@@ -429,6 +434,36 @@ exports[`Game tests should correctly render field and form 1`] = `
 }
 
 .emotion-90 {
+  background: inherit;
+  border-color: #6a6d75;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.emotion-90:focus {
+  outline: 2px solid rgb(255, 33, 92)!important;
+  border: 2px solid transparent;
+}
+
+.emotion-90::after {
+  content: "90°";
+  display: block;
+  float: left;
+  font-size: 0.7rem;
+}
+
+.emotion-92 {
+  display: block;
+  width: 20px;
+  height: 20px;
+  float: left;
+}
+
+.emotion-92 path {
+  fill: rgb(255, 33, 92);
+}
+
+.emotion-94 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -441,22 +476,33 @@ exports[`Game tests should correctly render field and form 1`] = `
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
-}
-
-.emotion-92 {
-  width: 1rem;
-  cursor: pointer;
-}
-
-.emotion-92 path {
-  fill: #6a6d75;
-}
-
-.emotion-94 {
-  margin: 1rem 2rem;
+  max-width: 100%;
 }
 
 .emotion-96 {
+  width: 1rem;
+  cursor: pointer;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.emotion-96 path {
+  fill: #6a6d75;
+}
+
+.emotion-98 {
+  margin: 1rem 2rem;
+  overflow: scroll;
+}
+
+@media screen and (min-width: 1200px) {
+  .emotion-98 {
+    overflow: auto;
+  }
+}
+
+.emotion-100 {
   width: 60px;
   cursor: pointer;
   height: 60px;
@@ -472,7 +518,7 @@ exports[`Game tests should correctly render field and form 1`] = `
   margin: 0 auto;
 }
 
-.emotion-96 .cell {
+.emotion-100 .cell {
   -webkit-transition: 0.5s ease background;
   transition: 0.5s ease background;
   width: 20px;
@@ -482,21 +528,42 @@ exports[`Game tests should correctly render field and form 1`] = `
   border: 1px solid #e8d5f0;
 }
 
-.emotion-96 .cell-active {
+@media (hover: hover) {
+  .emotion-100 .cell:hover {
+    background: #E59FB1;
+  }
+}
+
+.emotion-100 .cell-active {
   background: rgb(144, 131, 230);
 }
 
-.emotion-96 .cell-highlight {
-  background: rgb(255, 33, 92);
+.emotion-100 .cell-highlight {
+  background: #E59FB1;
 }
 
-.emotion-98 {
+.emotion-102 {
   width: 1rem;
+  cursor: pointer;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.emotion-102 path {
+  fill: rgb(255, 33, 92);
+}
+
+.emotion-104 {
+  background: inherit;
+  border-color: #6a6d75;
+  line-height: 1.5;
   cursor: pointer;
 }
 
-.emotion-98 path {
-  fill: rgb(255, 33, 92);
+.emotion-104:focus {
+  outline: 2px solid rgb(255, 33, 92)!important;
+  border: 2px solid transparent;
 }
 
 <div
@@ -1351,12 +1418,27 @@ exports[`Game tests should correctly render field and form 1`] = `
             >
               Glider
             </p>
-            <div
+            <button
+              aria-label="rotate"
               class="emotion-90 emotion-91"
             >
               <svg
-                aria-label="prev"
                 class="emotion-92 emotion-93"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3.254,6.572c0.008,0.072,0.048,0.123,0.082,0.187c0.036,0.07,0.06,0.137,0.12,0.187C3.47,6.957,3.47,6.978,3.484,6.988c0.048,0.034,0.108,0.018,0.162,0.035c0.057,0.019,0.1,0.066,0.164,0.066c0.004,0,0.01,0,0.015,0l2.934-0.074c0.317-0.007,0.568-0.271,0.56-0.589C7.311,6.113,7.055,5.865,6.744,5.865c-0.005,0-0.01,0-0.015,0L5.074,5.907c2.146-2.118,5.604-2.634,7.971-1.007c2.775,1.912,3.48,5.726,1.57,8.501c-1.912,2.781-5.729,3.486-8.507,1.572c-0.259-0.18-0.618-0.119-0.799,0.146c-0.18,0.262-0.114,0.621,0.148,0.801c1.254,0.863,2.687,1.279,4.106,1.279c2.313,0,4.591-1.1,6.001-3.146c2.268-3.297,1.432-7.829-1.867-10.101c-2.781-1.913-6.816-1.36-9.351,1.058L4.309,3.567C4.303,3.252,4.036,3.069,3.72,3.007C3.402,3.015,3.151,3.279,3.16,3.597l0.075,2.932C3.234,6.547,3.251,6.556,3.254,6.572z"
+                  fill="none"
+                />
+              </svg>
+            </button>
+            <div
+              class="emotion-94 emotion-95"
+            >
+              <svg
+                aria-label="prev"
+                class="emotion-96 emotion-97"
                 disabled=""
                 role="button"
                 viewBox="0 0 40 60"
@@ -1367,10 +1449,10 @@ exports[`Game tests should correctly render field and form 1`] = `
                 />
               </svg>
               <div
-                class="emotion-94 emotion-95"
+                class="emotion-98 emotion-99"
               >
                 <div
-                  class="game-field emotion-96 emotion-5"
+                  class="game-field emotion-100 emotion-5"
                   data-testid="field"
                 >
                   <div
@@ -1431,7 +1513,7 @@ exports[`Game tests should correctly render field and form 1`] = `
               </div>
               <svg
                 aria-label="next"
-                class="emotion-98 emotion-93"
+                class="emotion-102 emotion-97"
                 role="button"
                 viewBox="0 0 40 60"
                 xmlns="http://www.w3.org/2000/svg"
@@ -1442,9 +1524,9 @@ exports[`Game tests should correctly render field and form 1`] = `
               </svg>
             </div>
             <button
-              class="emotion-62 emotion-21"
+              class="emotion-104 emotion-105"
             >
-              Установка фигуры
+              Установить шаблон
             </button>
           </div>
         </div>

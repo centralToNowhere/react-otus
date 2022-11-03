@@ -12,6 +12,7 @@ exports[`PlayerContainer tests should render PlayerContainer 1`] = `
   flex-direction: column;
   border: 2px solid #6a6d75;
   border-radius: 10px;
+  width: 100%;
   border: 0;
 }
 
@@ -70,6 +71,7 @@ exports[`PlayerContainer tests should render PlayerContainer 1`] = `
   background: inherit;
   border-color: #6a6d75;
   line-height: 1.5;
+  cursor: pointer;
   text-align: center;
 }
 

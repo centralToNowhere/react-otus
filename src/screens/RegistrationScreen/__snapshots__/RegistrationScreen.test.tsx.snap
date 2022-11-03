@@ -155,6 +155,7 @@ exports[`Registration screen tests should render registration screen 1`] = `
   border: 2px solid #6a6d75;
   border-radius: 10px;
   width: 100%;
+  width: 100%;
   max-width: 600px;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -240,6 +241,7 @@ exports[`Registration screen tests should render registration screen 1`] = `
   background: inherit;
   border-color: #6a6d75;
   line-height: 1.5;
+  cursor: pointer;
   margin-right: auto!important;
 }
 

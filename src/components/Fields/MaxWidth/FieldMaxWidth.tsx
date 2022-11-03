@@ -11,6 +11,7 @@ import {
   onRawChangeHandler,
   preventNegativeNumbers,
 } from "@/components/Fields/FieldHandlers";
+import { isTouchDevice } from "@/utils/TouchDeviceDetection";
 
 export const FieldMaxWidth: React.FC<
   IFieldProps<{
@@ -53,7 +54,7 @@ export const FieldMaxWidth: React.FC<
         type="number"
         step="1"
         name="fieldWidth"
-        autoFocus={true}
+        autoFocus={!isTouchDevice()}
         value={props.formRawData.rawMaxWidth}
         autoComplete="off"
         onChange={onChange}

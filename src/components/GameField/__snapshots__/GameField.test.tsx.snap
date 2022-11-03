@@ -28,12 +28,18 @@ exports[`GameField tests should render game field 1`] = `
   border: 1px solid #e8d5f0;
 }
 
+@media (hover: hover) {
+  .emotion-0 .cell:hover {
+    background: #E59FB1;
+  }
+}
+
 .emotion-0 .cell-active {
   background: rgb(144, 131, 230);
 }
 
 .emotion-0 .cell-highlight {
-  background: rgb(255, 33, 92);
+  background: #E59FB1;
 }
 
 <div
