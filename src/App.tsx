@@ -3,6 +3,7 @@ import React, { FC } from "react";
 import ErrorBoundary from "@/components/Error/Error";
 import styled from "@emotion/styled";
 import { COLORS } from "@/styles/ui-styled";
+import "@/styles/reset.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AppRouter } from "@/routes/AppRouter";
 import { BrowserRouter } from "react-router-dom";

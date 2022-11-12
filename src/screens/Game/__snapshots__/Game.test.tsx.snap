@@ -125,6 +125,9 @@ exports[`Game tests should correctly render field and form 1`] = `
 
 @media screen and (min-width: 1200px) {
   .emotion-8 {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
     -webkit-box-flex-wrap: nowrap;
     -webkit-flex-wrap: nowrap;
     -ms-flex-wrap: nowrap;
@@ -208,21 +211,25 @@ exports[`Game tests should correctly render field and form 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-flex: 0 0 calc(100% / 3 - 40px);
-  -ms-flex: 0 0 calc(100% / 3 - 40px);
-  flex: 0 0 calc(100% / 3 - 40px);
   margin: 20px;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  -webkit-justify-content: end;
-  justify-content: end;
   display: inline-block;
   margin: 0;
 }
 
+@media (min-width: 576px) {
+  .emotion-18 {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+}
+
+.emotion-18 input {
+  margin: 5px 0 0 0;
+}
+
 .emotion-18 input,
 .emotion-18 button {
-  margin: 5px 0 0 0;
   min-width: 100px;
 }
 
@@ -242,16 +249,27 @@ exports[`Game tests should correctly render field and form 1`] = `
 }
 
 .emotion-20 {
+  position: relative;
+  overflow: hidden;
   background: inherit;
-  border-color: #6a6d75;
   line-height: 1.5;
   cursor: pointer;
+  border-radius: 1.5rem;
+  border: 2px solid #6a6d75;
+  padding: 0.4rem 1.8rem;
   text-align: center;
 }
 
-.emotion-20:focus {
-  outline: 2px solid rgb(255, 33, 92)!important;
-  border: 2px solid transparent;
+.emotion-20 span {
+  display: block;
+  position: absolute;
+}
+
+.emotion-20 .ripple {
+  -webkit-animation: ripple 400ms linear;
+  animation: ripple 400ms linear;
+  background: #E59FB1;
+  border-radius: 50%;
 }
 
 .emotion-22 {
@@ -299,19 +317,23 @@ exports[`Game tests should correctly render field and form 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-flex: 0 0 calc(100% / 3 - 40px);
-  -ms-flex: 0 0 calc(100% / 3 - 40px);
-  flex: 0 0 calc(100% / 3 - 40px);
   margin: 20px;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  -webkit-justify-content: end;
-  justify-content: end;
+}
+
+@media (min-width: 576px) {
+  .emotion-26 {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+}
+
+.emotion-26 input {
+  margin: 5px 0 0 0;
 }
 
 .emotion-26 input,
 .emotion-26 button {
-  margin: 5px 0 0 0;
   min-width: 100px;
 }
 
@@ -352,23 +374,68 @@ exports[`Game tests should correctly render field and form 1`] = `
   border-bottom: 0;
 }
 
+.emotion-56 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 576px) {
+  .emotion-56 {
+    -webkit-box-flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+  }
+}
+
 .emotion-60 {
-  display: inline-block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
 }
 
 .emotion-62 {
+  position: relative;
+  overflow: hidden;
   background: inherit;
-  border-color: #6a6d75;
   line-height: 1.5;
   cursor: pointer;
+  border-radius: 1.5rem;
+  border: 2px solid #6a6d75;
+  padding: 0.4rem 1.8rem;
 }
 
-.emotion-62:focus {
-  outline: 2px solid rgb(255, 33, 92)!important;
-  border: 2px solid transparent;
+.emotion-62 span {
+  display: block;
+  position: absolute;
 }
 
-.emotion-82 {
+.emotion-62 .ripple {
+  -webkit-animation: ripple 400ms linear;
+  animation: ripple 400ms linear;
+  background: #E59FB1;
+  border-radius: 50%;
+}
+
+.emotion-76 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -381,7 +448,7 @@ exports[`Game tests should correctly render field and form 1`] = `
 }
 
 @media screen and (min-width: 1200px) {
-  .emotion-82 {
+  .emotion-76 {
     -webkit-box-pack: end;
     -ms-flex-pack: end;
     -webkit-justify-content: flex-end;
@@ -389,7 +456,7 @@ exports[`Game tests should correctly render field and form 1`] = `
   }
 }
 
-.emotion-84 {
+.emotion-78 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -408,13 +475,13 @@ exports[`Game tests should correctly render field and form 1`] = `
 }
 
 @media screen and (min-width: 1200px) {
-  .emotion-84 {
+  .emotion-78 {
     min-width: auto;
     width: auto;
   }
 }
 
-.emotion-86 {
+.emotion-80 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -428,42 +495,56 @@ exports[`Game tests should correctly render field and form 1`] = `
   align-items: center;
 }
 
-.emotion-88 {
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.emotion-90 {
+.emotion-83 {
+  position: relative;
+  overflow: hidden;
   background: inherit;
-  border-color: #6a6d75;
   line-height: 1.5;
   cursor: pointer;
+  border-radius: 1.5rem;
+  border: 2px solid #6a6d75;
+  padding: 0.4rem 1.8rem;
 }
 
-.emotion-90:focus {
-  outline: 2px solid rgb(255, 33, 92)!important;
-  border: 2px solid transparent;
-}
-
-.emotion-90::after {
-  content: "90°";
+.emotion-83 span {
   display: block;
-  float: left;
-  font-size: 0.7rem;
+  position: absolute;
 }
 
-.emotion-92 {
-  display: block;
-  width: 20px;
-  height: 20px;
-  float: left;
+.emotion-83 .ripple {
+  -webkit-animation: ripple 400ms linear;
+  animation: ripple 400ms linear;
+  background: #E59FB1;
+  border-radius: 50%;
 }
 
-.emotion-92 path {
-  fill: rgb(255, 33, 92);
+.emotion-85 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  width: 100%;
+  margin: 1.25rem 0;
 }
 
-.emotion-94 {
+.emotion-88 {
+  position: relative;
+  overflow: hidden;
+  background: inherit;
+  line-height: 1.5;
+  cursor: pointer;
+  border-radius: 1.5rem;
+  border: 2px solid #6a6d75;
+  padding: 0.4rem 1.8rem;
+  outline: none;
+  border: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -476,10 +557,26 @@ exports[`Game tests should correctly render field and form 1`] = `
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
-  max-width: 100%;
+  padding: 0;
 }
 
-.emotion-96 {
+.emotion-88 span {
+  display: block;
+  position: absolute;
+}
+
+.emotion-88 .ripple {
+  -webkit-animation: ripple 400ms linear;
+  animation: ripple 400ms linear;
+  background: #E59FB1;
+  border-radius: 50%;
+}
+
+.emotion-88 span {
+  display: none;
+}
+
+.emotion-90 {
   width: 1rem;
   cursor: pointer;
   -webkit-flex-shrink: 0;
@@ -487,22 +584,74 @@ exports[`Game tests should correctly render field and form 1`] = `
   flex-shrink: 0;
 }
 
-.emotion-96 path {
+.emotion-90 path {
   fill: #6a6d75;
 }
 
-.emotion-98 {
-  margin: 1rem 2rem;
-  overflow: scroll;
+.emotion-92 {
+  margin-bottom: 0;
+  text-align: center;
 }
 
-@media screen and (min-width: 1200px) {
-  .emotion-98 {
-    overflow: auto;
-  }
+.emotion-97 {
+  width: 1rem;
+  cursor: pointer;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.emotion-97 path {
+  fill: rgb(255, 33, 92);
 }
 
 .emotion-100 {
+  position: relative;
+  overflow: hidden;
+  background: inherit;
+  line-height: 1.5;
+  cursor: pointer;
+  border-radius: 1.5rem;
+  border: 2px solid #6a6d75;
+  padding: 0.4rem 1.8rem;
+}
+
+.emotion-100 span {
+  display: block;
+  position: absolute;
+}
+
+.emotion-100 .ripple {
+  -webkit-animation: ripple 400ms linear;
+  animation: ripple 400ms linear;
+  background: #E59FB1;
+  border-radius: 50%;
+}
+
+.emotion-100::after {
+  content: "90°";
+  display: block;
+  float: left;
+  font-size: 0.7rem;
+}
+
+.emotion-102 {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  float: left;
+}
+
+.emotion-102 path {
+  fill: rgb(255, 33, 92);
+}
+
+.emotion-104 {
+  margin: 1.25rem 2rem 0;
+  overflow: auto;
+}
+
+.emotion-106 {
   width: 60px;
   cursor: pointer;
   height: 60px;
@@ -518,7 +667,7 @@ exports[`Game tests should correctly render field and form 1`] = `
   margin: 0 auto;
 }
 
-.emotion-100 .cell {
+.emotion-106 .cell {
   -webkit-transition: 0.5s ease background;
   transition: 0.5s ease background;
   width: 20px;
@@ -529,41 +678,17 @@ exports[`Game tests should correctly render field and form 1`] = `
 }
 
 @media (hover: hover) {
-  .emotion-100 .cell:hover {
+  .emotion-106 .cell:hover {
     background: #E59FB1;
   }
 }
 
-.emotion-100 .cell-active {
+.emotion-106 .cell-active {
   background: rgb(144, 131, 230);
 }
 
-.emotion-100 .cell-highlight {
+.emotion-106 .cell-highlight {
   background: #E59FB1;
-}
-
-.emotion-102 {
-  width: 1rem;
-  cursor: pointer;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.emotion-102 path {
-  fill: rgb(255, 33, 92);
-}
-
-.emotion-104 {
-  background: inherit;
-  border-color: #6a6d75;
-  line-height: 1.5;
-  cursor: pointer;
-}
-
-.emotion-104:focus {
-  outline: 2px solid rgb(255, 33, 92)!important;
-  border: 2px solid transparent;
 }
 
 <div
@@ -579,8 +704,8 @@ exports[`Game tests should correctly render field and form 1`] = `
       >
         <div
           aria-label="1"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -603,8 +728,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="5"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -627,8 +752,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="9"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -645,8 +770,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="12"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -657,8 +782,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="14"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -669,8 +794,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="16"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -681,8 +806,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="18"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -693,8 +818,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="20"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -711,8 +836,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="23"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -735,8 +860,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="27"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -765,8 +890,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="32"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -777,8 +902,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="34"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -789,8 +914,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="36"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -801,8 +926,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="38"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -813,14 +938,14 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="40"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
           aria-label="41"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -843,8 +968,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="45"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -867,8 +992,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="49"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -885,8 +1010,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="52"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -897,8 +1022,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="54"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -909,8 +1034,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="56"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -921,8 +1046,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="58"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -933,8 +1058,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="60"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -951,8 +1076,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="63"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -975,8 +1100,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="67"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -1005,8 +1130,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="72"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -1017,8 +1142,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="74"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -1029,8 +1154,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="76"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -1041,8 +1166,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="78"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -1053,14 +1178,14 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="80"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
           aria-label="81"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -1083,8 +1208,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="85"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -1107,8 +1232,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="89"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -1125,8 +1250,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="92"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -1137,8 +1262,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="94"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -1149,8 +1274,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="96"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -1161,8 +1286,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="98"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
         <div
@@ -1173,8 +1298,8 @@ exports[`Game tests should correctly render field and form 1`] = `
         />
         <div
           aria-label="100"
-          class="cell cell-active"
-          data-state="true"
+          class="cell"
+          data-state="false"
           data-testid="cell"
         />
       </div>
@@ -1220,6 +1345,7 @@ exports[`Game tests should correctly render field and form 1`] = `
                 class="emotion-20 emotion-21"
                 type="button"
               >
+                <span />
                 Выйти
               </button>
             </div>
@@ -1303,9 +1429,6 @@ exports[`Game tests should correctly render field and form 1`] = `
             >
               Процент заполненности:
             </label>
-            <p>
-              50 %
-            </p>
             <input
               autocomplete="off"
               class="emotion-48 emotion-49"
@@ -1331,15 +1454,17 @@ exports[`Game tests should correctly render field and form 1`] = `
               autocomplete="off"
               class="emotion-30 emotion-31"
               id="speed-change"
+              max="100"
+              min="0"
               name="speedChange"
-              step="0.1"
-              type="number"
+              step="2"
+              type="range"
               value="2"
             />
           </div>
         </div>
         <div
-          class="emotion-24 emotion-25"
+          class="emotion-56 emotion-57"
         >
           <div
             class="emotion-26 emotion-19"
@@ -1352,22 +1477,8 @@ exports[`Game tests should correctly render field and form 1`] = `
                 name="startButton"
                 type="button"
               >
+                <span />
                 Старт
-              </button>
-            </div>
-          </div>
-          <div
-            class="emotion-26 emotion-19"
-          >
-            <div
-              class="emotion-60 emotion-61"
-            >
-              <button
-                class="emotion-62 emotion-21"
-                name="stopButton"
-                type="button"
-              >
-                Стоп
               </button>
             </div>
           </div>
@@ -1382,6 +1493,7 @@ exports[`Game tests should correctly render field and form 1`] = `
                 name="resetButton"
                 type="reset"
               >
+                <span />
                 Сброс
               </button>
             </div>
@@ -1397,6 +1509,7 @@ exports[`Game tests should correctly render field and form 1`] = `
                 name="generateRandomButton"
                 type="button"
               >
+                <span />
                 Создать
               </button>
             </div>
@@ -1404,26 +1517,69 @@ exports[`Game tests should correctly render field and form 1`] = `
         </div>
       </form>
       <div
-        class="emotion-82 emotion-83"
+        class="emotion-76 emotion-77"
       >
         <div
-          class="emotion-84 emotion-85"
+          class="emotion-78 emotion-79"
         >
           <div
-            class="emotion-86 emotion-87"
+            class="emotion-80 emotion-81"
             data-testid="figurePalette"
           >
-            <p
-              class="emotion-88 emotion-89"
+            <button
+              class="emotion-82 emotion-83 emotion-21"
             >
-              Glider
-            </p>
+              <span />
+              Установка шаблонов
+            </button>
+            <div
+              class="emotion-85 emotion-86"
+            >
+              <button
+                aria-label="prev"
+                class="emotion-87 emotion-88 emotion-21"
+                disabled=""
+              >
+                <span />
+                <svg
+                  class="emotion-90 emotion-91"
+                  disabled=""
+                  viewBox="0 0 40 60"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M40 0 L40 60 L0 30 Z"
+                  />
+                </svg>
+              </button>
+              <p
+                class="emotion-92 emotion-93"
+              >
+                Glider
+              </p>
+              <button
+                aria-label="next"
+                class="emotion-87 emotion-88 emotion-21"
+              >
+                <span />
+                <svg
+                  class="emotion-97 emotion-91"
+                  viewBox="0 0 40 60"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 0 L40 30 L0 60 Z"
+                  />
+                </svg>
+              </button>
+            </div>
             <button
               aria-label="rotate"
-              class="emotion-90 emotion-91"
+              class="emotion-99 emotion-100 emotion-21"
             >
+              <span />
               <svg
-                class="emotion-92 emotion-93"
+                class="emotion-102 emotion-103"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -1434,100 +1590,68 @@ exports[`Game tests should correctly render field and form 1`] = `
               </svg>
             </button>
             <div
-              class="emotion-94 emotion-95"
-            >
-              <svg
-                aria-label="prev"
-                class="emotion-96 emotion-97"
-                disabled=""
-                role="button"
-                viewBox="0 0 40 60"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M40 0 L40 60 L0 30 Z"
-                />
-              </svg>
-              <div
-                class="emotion-98 emotion-99"
-              >
-                <div
-                  class="game-field emotion-100 emotion-5"
-                  data-testid="field"
-                >
-                  <div
-                    aria-label="1"
-                    class="cell"
-                    data-state="false"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="2"
-                    class="cell cell-active"
-                    data-state="true"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="3"
-                    class="cell"
-                    data-state="false"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="4"
-                    class="cell"
-                    data-state="false"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="5"
-                    class="cell"
-                    data-state="false"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="6"
-                    class="cell cell-active"
-                    data-state="true"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="7"
-                    class="cell cell-active"
-                    data-state="true"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="8"
-                    class="cell cell-active"
-                    data-state="true"
-                    data-testid="cell"
-                  />
-                  <div
-                    aria-label="9"
-                    class="cell cell-active"
-                    data-state="true"
-                    data-testid="cell"
-                  />
-                </div>
-              </div>
-              <svg
-                aria-label="next"
-                class="emotion-102 emotion-97"
-                role="button"
-                viewBox="0 0 40 60"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M0 0 L40 30 L0 60 Z"
-                />
-              </svg>
-            </div>
-            <button
               class="emotion-104 emotion-105"
             >
-              Установить шаблон
-            </button>
+              <div
+                class="game-field emotion-106 emotion-5"
+                data-testid="field"
+              >
+                <div
+                  aria-label="1"
+                  class="cell"
+                  data-state="false"
+                  data-testid="cell"
+                />
+                <div
+                  aria-label="2"
+                  class="cell cell-active"
+                  data-state="true"
+                  data-testid="cell"
+                />
+                <div
+                  aria-label="3"
+                  class="cell"
+                  data-state="false"
+                  data-testid="cell"
+                />
+                <div
+                  aria-label="4"
+                  class="cell"
+                  data-state="false"
+                  data-testid="cell"
+                />
+                <div
+                  aria-label="5"
+                  class="cell"
+                  data-state="false"
+                  data-testid="cell"
+                />
+                <div
+                  aria-label="6"
+                  class="cell cell-active"
+                  data-state="true"
+                  data-testid="cell"
+                />
+                <div
+                  aria-label="7"
+                  class="cell cell-active"
+                  data-state="true"
+                  data-testid="cell"
+                />
+                <div
+                  aria-label="8"
+                  class="cell cell-active"
+                  data-state="true"
+                  data-testid="cell"
+                />
+                <div
+                  aria-label="9"
+                  class="cell cell-active"
+                  data-state="true"
+                  data-testid="cell"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>

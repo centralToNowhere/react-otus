@@ -217,6 +217,31 @@ class Main extends React.Component<FormContainerProps, FormContainerState> {
     }
   };
 
+  renderGameProgressButton = (
+    onButtonClickFn: Exclude<FormOwnProps["onButtonClickFn"], undefined>
+  ) => {
+    return (
+      <>
+        {this.props.gameInProgress ? (
+          <ButtonGameControl
+            type={"button"}
+            onClick={onButtonClickFn}
+            name={"stopButton"}
+            content={l10n.buttonStop}
+          />
+        ) : (
+          <ButtonGameControl
+            type={"button"}
+            onClick={onButtonClickFn}
+            name={"startButton"}
+            content={l10n.buttonStart}
+            disabled={this.props.gameInProgress}
+          />
+        )}
+      </>
+    );
+  };
+
   render() {
     const {
       onButtonClickFn = () => {
@@ -286,19 +311,7 @@ class Main extends React.Component<FormContainerProps, FormContainerState> {
         }
         buttons={
           <>
-            <ButtonGameControl
-              type={"button"}
-              onClick={onButtonClickFn}
-              name={"startButton"}
-              content={l10n.buttonStart}
-              disabled={this.props.gameInProgress}
-            />
-            <ButtonGameControl
-              type={"button"}
-              onClick={onButtonClickFn}
-              name={"stopButton"}
-              content={l10n.buttonStop}
-            />
+            {this.renderGameProgressButton(onButtonClickFn)}
             <ButtonGameControl
               type={"reset"}
               onClick={onButtonClickFn}

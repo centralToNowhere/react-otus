@@ -115,17 +115,12 @@ export const getInitialCells = (
   return getAllCells(
     Math.floor(colHeight / cellSize),
     Math.floor(rowWidth / cellSize),
-    (x: number, y: number) => {
-      if ((x - y) % 4 === 0 || (x + y) % 4 === 0) {
-        return {
-          x,
-          y,
-        };
-      }
-
-      return null;
-    }
+    getCellOrNullDefault
   );
+};
+
+const getCellOrNullDefault = () => {
+  return null;
 };
 
 const getAllCells = (

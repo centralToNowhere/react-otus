@@ -196,14 +196,7 @@ exports[`index tests should render App 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-flex: 0 0 calc(100% / 3 - 40px);
-  -ms-flex: 0 0 calc(100% / 3 - 40px);
-  flex: 0 0 calc(100% / 3 - 40px);
   margin: 20px;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  -webkit-justify-content: end;
-  justify-content: end;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -214,9 +207,20 @@ exports[`index tests should render App 1`] = `
   flex-grow: 10;
 }
 
+@media (min-width: 576px) {
+  .emotion-17 {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+}
+
+.emotion-17 input {
+  margin: 5px 0 0 0;
+}
+
 .emotion-17 input,
 .emotion-17 button {
-  margin: 5px 0 0 0;
   min-width: 100px;
 }
 
@@ -244,16 +248,27 @@ exports[`index tests should render App 1`] = `
 }
 
 .emotion-24 {
+  position: relative;
+  overflow: hidden;
   background: inherit;
-  border-color: #6a6d75;
   line-height: 1.5;
   cursor: pointer;
+  border-radius: 1.5rem;
+  border: 2px solid #6a6d75;
+  padding: 0.4rem 1.8rem;
   margin-right: auto!important;
 }
 
-.emotion-24:focus {
-  outline: 2px solid rgb(255, 33, 92)!important;
-  border: 2px solid transparent;
+.emotion-24 span {
+  display: block;
+  position: absolute;
+}
+
+.emotion-24 .ripple {
+  -webkit-animation: ripple 400ms linear;
+  animation: ripple 400ms linear;
+  background: #E59FB1;
+  border-radius: 50%;
 }
 
 .emotion-26 {
@@ -385,6 +400,7 @@ exports[`index tests should render App 1`] = `
                 name="startGameAsPlayer"
                 type="button"
               >
+                <span />
                 Начать игру
               </button>
             </div>

@@ -19,6 +19,8 @@ import { act } from "react-dom/test-utils";
 import { FormContainer } from "@/components/Form";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
+import { initialStateAllForTests } from "@/store/redux/store";
+import { paletteActiveText } from "@/components/FigurePalette";
 
 jest.mock("@/utils/FieldSize", () => {
   return {
@@ -77,7 +79,8 @@ const getMockedCells = jest.fn().mockReturnValue([
   },
 ]);
 
-const initialState = {
+const initialState: typeof initialStateAllForTests = {
+  ...initialStateAllForTests,
   fieldControl: {
     cellSize: 10,
     maxFieldWidth: 100,
@@ -89,6 +92,11 @@ const initialState = {
     activeCells: getInitialCells(100, 100, 10),
     gameInProgress: false,
     generations: 0,
+  },
+  figurePalette: {
+    ...initialStateAllForTests.figurePalette,
+    figurePaletteActive: false,
+    currentFigureIndex: 0,
   },
 };
 
@@ -224,13 +232,12 @@ describe("Game tests", () => {
       },
     });
 
-    const buttonStart = screen.getByText(l10n.buttonStart);
-    const buttonStop = screen.getByText(l10n.buttonStop);
+    const buttonStartStop = screen.getByText(l10n.buttonStart);
 
-    userEvent.click(buttonStart);
+    userEvent.click(buttonStartStop);
 
     await waitFor(() => {
-      expect(buttonStart).toBeDisabled();
+      expect(buttonStartStop).toHaveTextContent(l10n.buttonStop);
     });
 
     await [...Array(checks).keys()].reduce(
@@ -264,10 +271,12 @@ describe("Game tests", () => {
       Promise.resolve()
     );
 
+    const buttonStop = screen.getByText(l10n.buttonStop);
+
     userEvent.click(buttonStop);
 
     await waitFor(() => {
-      expect(buttonStart).toBeEnabled();
+      expect(buttonStartStop).toHaveTextContent(l10n.buttonStart);
     });
 
     const currentTicks: number = getMockedCells.mock.calls.length;
@@ -308,7 +317,7 @@ describe("Game tests", () => {
       fieldHeight: maxFieldHeight,
       cellSize: cellSize,
       capacityPercentage: String(capacity),
-      speedChange: speed,
+      speedChange: String(speed),
     });
   });
 
@@ -449,7 +458,7 @@ describe("Game tests", () => {
       fieldHeight: defaultFieldControlState.maxFieldHeight,
       cellSize: defaultFieldControlState.cellSize,
       capacityPercentage: String(defaultFieldControlState.capacity),
-      speedChange: defaultFieldControlState.speed,
+      speedChange: String(defaultFieldControlState.speed),
     });
   });
 
@@ -576,6 +585,60 @@ describe("Game tests", () => {
         width: "10px",
         height: "10px",
       });
+    });
+  });
+
+  describe("palette figure placement", () => {
+    it("should place figure from palette", async () => {
+      const figureCells: Array<1 | 0> = [
+        0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0,
+        0, 0, 0, 1, 0, 0,
+      ];
+
+      render(<Game />, {
+        preloadedState: {
+          ...initialState,
+          fieldControl: {
+            ...initialState.fieldControl,
+            maxFieldWidth: 100,
+            maxFieldHeight: 30,
+            cellSize: 10,
+          },
+          figurePalette: {
+            ...initialState.figurePalette,
+            figures: [
+              {
+                name: "Penta-decathlon",
+                indexedCells: figureCells,
+                cellsInRow: 10,
+                cellsInCol: 3,
+              },
+            ],
+          },
+        },
+      });
+
+      const paletteActiveButton = screen.getByText(paletteActiveText);
+
+      userEvent.click(paletteActiveButton);
+
+      const fieldContainer = screen.getByTestId("gameFieldContainer");
+      const field = within(fieldContainer).getByTestId("field");
+      const cells = within(field).getAllByTestId("cell");
+
+      userEvent.click(cells[0]);
+
+      await Promise.all(
+        cells.map((cell, i) => {
+          return waitFor(() => {
+            if (figureCells[i] === 1) {
+              expect(cell).toHaveStyle({
+                background: COLORS.activeCellBg,
+              });
+            }
+          });
+        })
+      );
     });
   });
 });

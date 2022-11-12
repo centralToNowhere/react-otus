@@ -84,6 +84,7 @@ const ControlContainer = styled.div`
   }
 
   @media screen and (min-width: ${BREAKPOINTS.xl}) {
+    flex: 1;
     flex-wrap: nowrap;
     overflow: hidden;
     width: 100%;

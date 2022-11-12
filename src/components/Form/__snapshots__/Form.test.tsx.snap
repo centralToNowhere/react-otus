@@ -47,19 +47,23 @@ exports[`form tests should render form 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-flex: 0 0 calc(100% / 3 - 40px);
-  -ms-flex: 0 0 calc(100% / 3 - 40px);
-  flex: 0 0 calc(100% / 3 - 40px);
   margin: 20px;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  -webkit-justify-content: end;
-  justify-content: end;
+}
+
+@media (min-width: 576px) {
+  .emotion-4 {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+}
+
+.emotion-4 input {
+  margin: 5px 0 0 0;
 }
 
 .emotion-4 input,
 .emotion-4 button {
-  margin: 5px 0 0 0;
   min-width: 100px;
 }
 
@@ -100,20 +104,65 @@ exports[`form tests should render form 1`] = `
   border-bottom: 0;
 }
 
+.emotion-34 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 576px) {
+  .emotion-34 {
+    -webkit-box-flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+  }
+}
+
 .emotion-38 {
-  display: inline-block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
 }
 
 .emotion-40 {
+  position: relative;
+  overflow: hidden;
   background: inherit;
-  border-color: #6a6d75;
   line-height: 1.5;
   cursor: pointer;
+  border-radius: 1.5rem;
+  border: 2px solid #6a6d75;
+  padding: 0.4rem 1.8rem;
 }
 
-.emotion-40:focus {
-  outline: 2px solid rgb(255, 33, 92)!important;
-  border: 2px solid transparent;
+.emotion-40 span {
+  display: block;
+  position: absolute;
+}
+
+.emotion-40 .ripple {
+  -webkit-animation: ripple 400ms linear;
+  animation: ripple 400ms linear;
+  background: #E59FB1;
+  border-radius: 50%;
 }
 
 <form
@@ -193,9 +242,6 @@ exports[`form tests should render form 1`] = `
         >
           Процент заполненности:
         </label>
-        <p>
-          50 %
-        </p>
         <input
           autocomplete="off"
           class="emotion-26 emotion-27"
@@ -221,15 +267,17 @@ exports[`form tests should render form 1`] = `
           autocomplete="off"
           class="emotion-8 emotion-9"
           id="speed-change"
+          max="100"
+          min="0"
           name="speedChange"
-          step="0.1"
-          type="number"
-          value="1"
+          step="2"
+          type="range"
+          value="10"
         />
       </div>
     </div>
     <div
-      class="emotion-2 emotion-3"
+      class="emotion-34 emotion-35"
     >
       <div
         class="emotion-4 emotion-5"
@@ -242,22 +290,8 @@ exports[`form tests should render form 1`] = `
             name="startButton"
             type="button"
           >
+            <span />
             Старт
-          </button>
-        </div>
-      </div>
-      <div
-        class="emotion-4 emotion-5"
-      >
-        <div
-          class="emotion-38 emotion-39"
-        >
-          <button
-            class="emotion-40 emotion-41"
-            name="stopButton"
-            type="button"
-          >
-            Стоп
           </button>
         </div>
       </div>
@@ -272,6 +306,7 @@ exports[`form tests should render form 1`] = `
             name="resetButton"
             type="reset"
           >
+            <span />
             Сброс
           </button>
         </div>
@@ -287,6 +322,7 @@ exports[`form tests should render form 1`] = `
             name="generateRandomButton"
             type="button"
           >
+            <span />
             Создать
           </button>
         </div>

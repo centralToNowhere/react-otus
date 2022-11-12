@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { FormElement } from "@/components/Form";
 import { css } from "@emotion/react";
 import { FormField } from "@/components/Form";
-import { FormButton } from "@/components/Buttons";
+import { Button } from "@/components/Buttons";
 import { l10n } from "@/l10n/ru";
 import { COLORS } from "@/styles/ui-styled";
 
@@ -41,7 +41,7 @@ export const PlayerBlock: FC<IPlayerContainerProps> = (props) => {
       >
         <h1 className="player-name">{props.playerName}</h1>
         <div className="player-stats-container" />
-        <FormButton
+        <Button
           css={css`
             text-align: center;
           `}
@@ -49,7 +49,7 @@ export const PlayerBlock: FC<IPlayerContainerProps> = (props) => {
           onClick={props.onPlayerUnregister}
         >
           {l10n.logoutButton}
-        </FormButton>
+        </Button>
       </FormField>
     </FormElement>
   );

@@ -1,15 +1,21 @@
 import styled from "@emotion/styled";
+import { BREAKPOINTS } from "@/styles/ui-styled";
 
 export const FormField = styled.div`
   display: inline-flex;
   flex-direction: column;
-  flex: 0 0 calc(100% / 3 - 40px);
   margin: 20px;
-  justify-content: end;
+
+  @media (min-width: ${BREAKPOINTS.sm}) {
+    flex: 1;
+  }
+
+  input {
+    margin: 5px 0 0 0;
+  }
 
   input,
   button {
-    margin: 5px 0 0 0;
     min-width: 100px;
   }
 `;

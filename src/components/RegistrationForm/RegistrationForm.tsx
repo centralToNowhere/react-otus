@@ -10,7 +10,7 @@ import { FormField } from "@/components/Form/FormField";
 import { FormElement } from "@/components/Form";
 import { css } from "@emotion/react";
 import { InputField, LabelField } from "@/components/Fields";
-import { FormButton } from "@/components/Buttons";
+import { Button } from "@/components/Buttons";
 import { BREAKPOINTS, COLORS } from "@/styles/ui-styled";
 import styled from "@emotion/styled";
 import { Spinner } from "react-bootstrap";
@@ -87,7 +87,7 @@ export const RegistrationForm: FC<IRegistrationFormProps> = (props) => {
           />
           <FieldError show={Boolean(props.loginError)} msg={props.loginError} />
         </div>
-        <FormButton
+        <Button
           type="button"
           css={css`
             margin-right: auto !important;
@@ -96,7 +96,7 @@ export const RegistrationForm: FC<IRegistrationFormProps> = (props) => {
           onClick={registerPlayer}
         >
           {l10n.buttonStartGameAsPlayer}
-        </FormButton>
+        </Button>
       </FormField>
       <SpinnerContainer>
         <Spinner

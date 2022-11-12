@@ -18,7 +18,7 @@ const initialState = {
     maxFieldWidth: 1920,
     maxFieldHeight: 474,
     capacity: 50,
-    speed: 1,
+    speed: 10,
   },
 };
 describe("form tests", () => {
@@ -95,7 +95,14 @@ describe("form tests", () => {
 
   it("should render stop button", () => {
     render(<FormContainer />, {
-      preloadedState: initialState,
+      preloadedState: {
+        ...initialState,
+        gameField: {
+          activeCells: [],
+          generations: 1,
+          gameInProgress: true,
+        },
+      },
     });
 
     const button: HTMLButtonElement = screen.getByText(l10n.buttonStop);
@@ -145,7 +152,14 @@ describe("buttons tests", () => {
     const onStop = jest.fn();
 
     render(<FormContainer onButtonClickFn={onStop} />, {
-      preloadedState: initialState,
+      preloadedState: {
+        ...initialState,
+        gameField: {
+          activeCells: [],
+          generations: 1,
+          gameInProgress: true,
+        },
+      },
     });
 
     const buttonStop: HTMLButtonElement = screen.getByText(l10n.buttonStop);
@@ -1459,7 +1473,7 @@ describe("buttons tests", () => {
     });
 
     describe("Speed field", () => {
-      ["1", "10", "100", "1000", "0.1"].forEach((value) => {
+      ["1", "10", "100", "1"].forEach((value) => {
         it("SHOULD CHANGE GAME SPEED", async () => {
           const { store } = render(<FormContainer />, {
             preloadedState: initialState,
@@ -1477,25 +1491,6 @@ describe("buttons tests", () => {
               ...initialState.fieldControl,
               speed: Number(value),
             });
-          });
-        });
-      });
-
-      ["-", "0", "", "qwerty"].forEach((value) => {
-        it(`SHOULD SHOW ${l10n.positiveNumber} ERROR`, async () => {
-          render(<FormContainer />, {
-            preloadedState: initialState,
-          });
-
-          const inputSpeed: HTMLInputElement = screen.getByLabelText(
-            l10n.speedLabel
-          );
-
-          userEvent.clear(inputSpeed);
-          userEvent.type(inputSpeed, value);
-
-          await waitFor(() => {
-            expect(screen.getByText(l10n.positiveNumber)).toBeInTheDocument();
           });
         });
       });

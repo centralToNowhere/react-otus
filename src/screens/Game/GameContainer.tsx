@@ -50,7 +50,7 @@ class Main extends React.Component<GameContainerProps, GameContainerState> {
   };
 
   onButtonClickFn = (e: React.SyntheticEvent<HTMLButtonElement>): void => {
-    const target = e.target as HTMLButtonElement;
+    const target = e.currentTarget as HTMLButtonElement;
 
     switch (target.getAttribute("name")) {
       case "startButton":

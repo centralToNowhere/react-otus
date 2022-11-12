@@ -1,6 +1,6 @@
 import React from "react";
 import { FormElement } from "@/components/Form/FormElement";
-import { FormGroup } from "@/components/Form/FormGroup";
+import { FormGroup, FormGroupButtons } from "@/components/Form/FormGroup";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import { FormError } from "@/components/Form/FormError";
 
@@ -21,7 +21,7 @@ export class Form extends React.Component<IFormProps> {
         <input autoComplete="off" hidden />
         {this.props.error && <FormError>{this.props.error}</FormError>}
         <FormGroup>{this.props.fields}</FormGroup>
-        <FormGroup>{this.props.buttons}</FormGroup>
+        <FormGroupButtons>{this.props.buttons}</FormGroupButtons>
       </FormElement>
     );
   }

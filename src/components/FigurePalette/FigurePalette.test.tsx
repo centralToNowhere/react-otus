@@ -1,6 +1,10 @@
 import React from "react";
-import { FigurePaletteContainer } from "@/components/FigurePalette";
-import { render, screen, within } from "@/utils/test-utils";
+import {
+  FigurePaletteContainer,
+  paletteActiveCancelText,
+  paletteActiveText,
+} from "@/components/FigurePalette";
+import { render, screen, within, waitFor } from "@/utils/test-utils";
 import { IFigurePaletteState } from "@/components/FigurePalette/slice";
 import { COLORS } from "@/styles/ui-styled";
 import userEvent from "@testing-library/user-event/dist";
@@ -51,6 +55,8 @@ describe("FigurePalette tests", () => {
 
     const PaletteContainer = screen.getByTestId("figurePalette");
     const FigureName = screen.getByText("First figure");
+    const PaletteStateButton = screen.getByText(paletteActiveText);
+    const RotationButton = screen.getByLabelText("rotate");
     const PaletteGameField = within(PaletteContainer).getByTestId("field");
     const PrevArrow = within(PaletteContainer).getByLabelText("prev");
     const NextArrow = within(PaletteContainer).getByLabelText("next");
@@ -58,6 +64,8 @@ describe("FigurePalette tests", () => {
     expect(asFragment()).toMatchSnapshot();
     expect(PaletteContainer).toBeInTheDocument();
     expect(FigureName).toBeInTheDocument();
+    expect(PaletteStateButton).toBeInTheDocument();
+    expect(RotationButton).toBeInTheDocument();
     expect(PaletteGameField).toBeInTheDocument();
     expect(PrevArrow).toBeInTheDocument();
     expect(NextArrow).toBeInTheDocument();
@@ -217,5 +225,85 @@ describe("FigurePalette tests", () => {
     });
 
     expect(within(PaletteGameField).getAllByTestId("cell").length).toBe(25);
+  });
+
+  it("should change palette button text to cancel state", () => {
+    render(<FigurePaletteContainer />, {
+      preloadedState: initialState,
+    });
+
+    const paletteStateButton = screen.getByText(paletteActiveText);
+
+    userEvent.click(paletteStateButton);
+
+    expect(paletteStateButton).toHaveTextContent(paletteActiveCancelText);
+  });
+
+  it("should change palette button text to active", () => {
+    render(<FigurePaletteContainer />, {
+      preloadedState: {
+        ...initialState,
+        figurePalette: {
+          ...initialState.figurePalette,
+          figurePaletteActive: true,
+        },
+      },
+    });
+
+    const paletteStateButton = screen.getByText(paletteActiveCancelText);
+
+    userEvent.click(paletteStateButton);
+
+    expect(paletteStateButton).toHaveTextContent(paletteActiveText);
+  });
+
+  it("should rotate figure on rotate button click", async () => {
+    const { store } = render(<FigurePaletteContainer />, {
+      preloadedState: {
+        ...initialState,
+        figurePalette: {
+          ...initialState.figurePalette,
+          figures: [
+            {
+              name: "Figure",
+              indexedCells: [1, 0, 1, 0, 1, 1, 0, 0, 0],
+              cellsInRow: 3,
+              cellsInCol: 3,
+            },
+          ],
+          currentFigureIndex: 0,
+        },
+      },
+    });
+
+    const rotations = [
+      [1, 1, 0, 0, 1, 0, 1, 0, 0],
+      [0, 0, 0, 1, 1, 0, 1, 0, 1],
+      [0, 0, 1, 0, 1, 0, 0, 1, 1],
+      [1, 0, 1, 0, 1, 1, 0, 0, 0],
+    ];
+
+    const rotateButton = screen.getByLabelText("rotate");
+
+    await rotations.reduce((promise, rotation) => {
+      return promise.then(() => {
+        userEvent.click(rotateButton);
+
+        return waitFor(() => {
+          expect(store.getState().figurePalette).toEqual(
+            expect.objectContaining({
+              figures: [
+                {
+                  name: "Figure",
+                  indexedCells: rotation,
+                  cellsInRow: 3,
+                  cellsInCol: 3,
+                },
+              ],
+            })
+          );
+        });
+      });
+    }, Promise.resolve());
   });
 });

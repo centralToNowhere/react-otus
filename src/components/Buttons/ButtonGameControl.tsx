@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { FormField } from "@/components/Form/FormField";
 import { IButtonProps } from "@/components/Form";
-import { FormButton } from "@/components/Buttons";
+import { Button } from "@/components/Buttons";
 
 export const ButtonGameControl: React.FC<IButtonProps> = (
   props: IButtonProps
@@ -10,19 +10,21 @@ export const ButtonGameControl: React.FC<IButtonProps> = (
   return (
     <FormField>
       <FormButtonContainer>
-        <FormButton
+        <Button
           type={props.type}
           onClick={props.onClick}
           name={props.name}
           disabled={props.disabled}
         >
           {props.content}
-        </FormButton>
+        </Button>
       </FormButtonContainer>
     </FormField>
   );
 };
 
 const FormButtonContainer = styled.div`
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

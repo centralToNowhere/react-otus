@@ -48,8 +48,8 @@ exports[`GameField tests should render game field 1`] = `
   >
     <div
       aria-label="1"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -72,8 +72,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="5"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -96,8 +96,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="9"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -120,8 +120,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="13"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -144,8 +144,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="17"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -156,8 +156,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="19"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -168,8 +168,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="21"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -180,8 +180,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="23"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -192,8 +192,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="25"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -204,8 +204,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="27"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -216,8 +216,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="29"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -240,8 +240,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="33"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -264,8 +264,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="37"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -288,8 +288,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="41"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -312,8 +312,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="45"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -324,8 +324,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="47"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -336,8 +336,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="49"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -348,8 +348,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="51"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -360,8 +360,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="53"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -372,8 +372,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="55"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -384,8 +384,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="57"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -396,8 +396,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="59"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -408,8 +408,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="61"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -432,8 +432,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="65"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -456,8 +456,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="69"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -480,8 +480,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="73"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -504,8 +504,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="77"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -516,8 +516,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="79"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -528,8 +528,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="81"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -540,8 +540,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="83"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -552,8 +552,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="85"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -564,8 +564,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="87"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -576,8 +576,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="89"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -600,8 +600,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="93"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -624,8 +624,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="97"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -648,8 +648,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="101"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -672,8 +672,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="105"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -684,8 +684,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="107"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -696,8 +696,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="109"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -708,8 +708,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="111"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -720,8 +720,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="113"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -732,8 +732,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="115"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -744,8 +744,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="117"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -756,8 +756,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="119"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -768,8 +768,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="121"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -792,8 +792,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="125"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -816,8 +816,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="129"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -840,8 +840,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="133"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -864,8 +864,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="137"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -876,8 +876,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="139"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -888,8 +888,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="141"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -900,8 +900,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="143"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -912,8 +912,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="145"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -924,8 +924,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="147"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div
@@ -936,8 +936,8 @@ exports[`GameField tests should render game field 1`] = `
     />
     <div
       aria-label="149"
-      class="cell cell-active"
-      data-state="true"
+      class="cell"
+      data-state="false"
       data-testid="cell"
     />
     <div

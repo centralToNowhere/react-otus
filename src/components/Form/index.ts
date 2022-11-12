@@ -1,7 +1,7 @@
 export { FormContainer } from "./FormContainer";
 export { FormElement } from "./FormElement";
 export { FormField } from "./FormField";
-export { FormGroup } from "./FormGroup";
+export { FormGroup, FormGroupButtons } from "./FormGroup";
 export { Form } from "./Form";
 export type {
   FormContainerProps,

@@ -49,16 +49,8 @@ describe("CellGenerator tests", () => {
     expect(getRandomCells(1, 0, 100)).toHaveLength(0);
   });
 
-  it("getInitialCells should return 150 cells", () => {
-    expect(gen.getInitialCells(150, 100, 10)).toHaveLength(55);
-  });
-
-  it("getInitialCells should return 1 cell", () => {
-    expect(getInitialCells(100, 100, 100)).toHaveLength(1);
-  });
-
-  it("getInitialCells should return 0 cell", () => {
-    expect(getInitialCells(100, 100, 101)).toHaveLength(0);
+  it("getInitialCells should return 0 cells", () => {
+    expect(gen.getInitialCells(150, 100, 10)).toHaveLength(0);
   });
 
   const sorter = (cells: ICell[]) => {

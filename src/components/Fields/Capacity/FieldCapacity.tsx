@@ -51,7 +51,6 @@ export const FieldCapacity: React.FC<
       <LabelField htmlFor="capacity-percentage">
         {l10n.capacityLabel}
       </LabelField>
-      <p>{props.formRawData.rawCapacity} %</p>
       <InputFieldCapacity
         id="capacity-percentage"
         type="range"

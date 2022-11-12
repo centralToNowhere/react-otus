@@ -1,2 +1,2 @@
 export { ButtonGameControl } from "./ButtonGameControl";
-export { FormButton } from "./FormButton";
+export { Button } from "./Button";

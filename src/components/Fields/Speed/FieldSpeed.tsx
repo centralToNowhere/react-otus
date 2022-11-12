@@ -9,7 +9,6 @@ import { useDebounce } from "@/utils";
 import {
   onRawBlurHandler,
   onRawChangeHandler,
-  preventNegativeNumbers,
 } from "@/components/Fields/FieldHandlers";
 
 export const FieldSpeed: React.FC<
@@ -47,13 +46,14 @@ export const FieldSpeed: React.FC<
       <LabelField htmlFor="speed-change">{l10n.speedLabel}</LabelField>
       <InputField
         id="speed-change"
-        type="number"
-        step="0.1"
+        type="range"
+        max="100"
+        min="0"
+        step="2"
         name="speedChange"
         value={props.formRawData.rawSpeed}
         autoComplete="off"
         onChange={onChange}
-        onKeyDown={preventNegativeNumbers}
         onBlur={onBlur}
       />
       <FieldError show={props.error.show} msg={props.error.msg} />
