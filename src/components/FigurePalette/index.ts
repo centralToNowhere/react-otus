@@ -1,8 +1,4 @@
-export {
-  FigurePalette,
-  paletteActiveCancelText,
-  paletteActiveText,
-} from "./FigurePalette";
+export { FigurePalette } from "./FigurePalette";
 export { FigurePaletteContainer } from "./FigurePaletteContainer";
 export {
   figurePaletteSlice,

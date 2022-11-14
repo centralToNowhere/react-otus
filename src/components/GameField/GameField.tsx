@@ -91,6 +91,12 @@ export class Main extends React.PureComponent<
     );
   };
 
+  componentDidMount() {
+    if (!isTouchDevice() && this.props.figurePaletteActive) {
+      this.figurePlacementHighlight();
+    }
+  }
+
   componentDidUpdate(prevProps: IGameFieldProps) {
     if (this.props.figurePaletteActive === prevProps.figurePaletteActive) {
       return;

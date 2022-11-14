@@ -42,4 +42,8 @@ export const l10n = {
   positiveNumber: "Ожидается положительное число.",
   nonNegativeNumber: "Ожидается неотрицательное число.",
   fieldConfigurationError: "Ошибка конфигурации поля.",
+
+  // Палитра
+  paletteActiveCancelText: "Отмена",
+  paletteActiveText: "Установка шаблонов",
 };

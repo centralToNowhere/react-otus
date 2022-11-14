@@ -20,7 +20,6 @@ import { FormContainer } from "@/components/Form";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { initialStateAllForTests } from "@/store/redux/store";
-import { paletteActiveText } from "@/components/FigurePalette";
 
 jest.mock("@/utils/FieldSize", () => {
   return {
@@ -618,7 +617,7 @@ describe("Game tests", () => {
         },
       });
 
-      const paletteActiveButton = screen.getByText(paletteActiveText);
+      const paletteActiveButton = screen.getByText(l10n.paletteActiveText);
 
       userEvent.click(paletteActiveButton);
 

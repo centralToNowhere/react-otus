@@ -4,8 +4,12 @@ import { GameField } from "@/components/GameField";
 import userEvent from "@testing-library/user-event/dist";
 import { COLORS } from "@/styles/ui-styled";
 import { getInitialCells } from "@/utils/CellGenerator";
+import { initialStateAllForTests } from "@/store/redux/store";
+import { l10n } from "@/l10n/ru";
+import { GameContainer } from "@/screens/Game";
 
 const initialState = {
+  ...initialStateAllForTests,
   fieldControl: {
     cellSize: 40,
     maxFieldWidth: 600,
@@ -186,7 +190,7 @@ describe("GameField tests", () => {
     });
   });
 
-  describe("cell toggle tests", () => {
+  describe("cell state tests", () => {
     it("should toggle cell inactive -> active", async () => {
       render(<GameField />, {
         preloadedState: {
@@ -249,6 +253,145 @@ describe("GameField tests", () => {
         expect(cells[44]).not.toHaveStyle({
           background: COLORS.activeCellBg,
         });
+      });
+    });
+
+    it("should highlight figure cells on cell hover", async () => {
+      render(<GameField />, {
+        preloadedState: {
+          ...initialState,
+          figurePalette: {
+            ...initialState.figurePalette,
+            figures: [
+              {
+                name: "Figure",
+                indexedCells: [1, 0, 1, 0, 1, 1, 0, 0, 0],
+                cellsInRow: 3,
+                cellsInCol: 3,
+              },
+            ],
+            figurePaletteActive: true,
+          },
+          fieldControl: {
+            ...initialState.fieldControl,
+            cellSize: 10,
+            maxFieldWidth: 30,
+            maxFieldHeight: 30,
+          },
+        },
+      });
+
+      const cells = screen.getAllByTestId("cell");
+
+      userEvent.hover(cells[0]);
+
+      await waitFor(() => {
+        expect(cells[0]).toHaveStyle({
+          background: COLORS.accentFade,
+        });
+      });
+
+      cells.forEach((cell) => {
+        expect(cell).toHaveClass("cell-highlight");
+      });
+    });
+
+    it("should remove figure cells highlight on cell unhover", async () => {
+      render(<GameField />, {
+        preloadedState: {
+          ...initialState,
+          figurePalette: {
+            ...initialState.figurePalette,
+            figures: [
+              {
+                name: "Figure",
+                indexedCells: [1, 0, 1, 0, 1, 1, 0, 0, 0],
+                cellsInRow: 3,
+                cellsInCol: 3,
+              },
+            ],
+            figurePaletteActive: true,
+          },
+          fieldControl: {
+            ...initialState.fieldControl,
+            cellSize: 10,
+            maxFieldWidth: 30,
+            maxFieldHeight: 30,
+          },
+        },
+      });
+
+      const field = screen.getByTestId("field");
+      const cells = screen.getAllByTestId("cell");
+
+      userEvent.hover(cells[0]);
+
+      await waitFor(() => {
+        expect(cells[0]).toHaveStyle({
+          background: COLORS.accentFade,
+        });
+      });
+
+      userEvent.unhover(field);
+
+      await waitFor(() => {
+        expect(cells[0]).not.toHaveStyle({
+          background: COLORS.accentFade,
+        });
+      });
+
+      cells.forEach((cell) => {
+        expect(cell).not.toHaveClass("cell-highlight");
+      });
+    });
+
+    it("should remove figure cells highlight on figurePaletteActive: false", async () => {
+      render(<GameContainer />, {
+        preloadedState: {
+          ...initialState,
+          figurePalette: {
+            ...initialState.figurePalette,
+            figures: [
+              {
+                name: "Figure",
+                indexedCells: [1, 0, 1, 0, 1, 1, 0, 0, 0],
+                cellsInRow: 3,
+                cellsInCol: 3,
+              },
+            ],
+            figurePaletteActive: true,
+          },
+          fieldControl: {
+            ...initialState.fieldControl,
+            cellSize: 10,
+            maxFieldWidth: 30,
+            maxFieldHeight: 30,
+          },
+        },
+      });
+
+      const cells = screen.getAllByTestId("cell");
+
+      userEvent.hover(cells[0]);
+
+      await waitFor(() => {
+        expect(cells[0]).toHaveStyle({
+          background: COLORS.accentFade,
+        });
+      });
+
+      const paletteStateButton = screen.getByText(l10n.paletteActiveCancelText);
+
+      userEvent.click(paletteStateButton);
+
+      await waitFor(() => {
+        expect(cells[0]).not.toHaveStyle({
+          background: COLORS.accentFade,
+        });
+      });
+
+      cells.forEach((cell) => {
+        expect(cell).not.toHaveClass("cell-highlight");
       });
     });
   });

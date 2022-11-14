@@ -4,6 +4,7 @@ import { COLORS } from "@/styles/ui-styled";
 import { Main as NotConnectedGameField } from "@/components/GameField/GameField";
 import { Button } from "@/components/Buttons";
 import { CellFigure } from "@/components/FigurePalette";
+import { l10n } from "@/l10n/ru";
 
 export interface FigurePaletteProps {
   figures: CellFigure[];
@@ -13,9 +14,6 @@ export interface FigurePaletteProps {
   onCancelFigurePlacement: () => void;
   setCurrentFigureIndex: (index: number) => void;
 }
-
-export const paletteActiveCancelText = "Отмена";
-export const paletteActiveText = "Установка шаблонов";
 
 export const FigurePalette: FC<FigurePaletteProps> = ({
   figures,
@@ -87,11 +85,11 @@ export const FigurePalette: FC<FigurePaletteProps> = ({
       <>
         {paletteActive ? (
           <PaletteButton onClick={onCancelFigurePlacement}>
-            {paletteActiveCancelText}
+            {l10n.paletteActiveCancelText}
           </PaletteButton>
         ) : (
           <PaletteButton onClick={onStartFigurePlacement}>
-            {paletteActiveText}
+            {l10n.paletteActiveText}
           </PaletteButton>
         )}
       </>

@@ -1,13 +1,10 @@
 import React from "react";
-import {
-  FigurePaletteContainer,
-  paletteActiveCancelText,
-  paletteActiveText,
-} from "@/components/FigurePalette";
+import { FigurePaletteContainer } from "@/components/FigurePalette";
 import { render, screen, within, waitFor } from "@/utils/test-utils";
 import { IFigurePaletteState } from "@/components/FigurePalette/slice";
 import { COLORS } from "@/styles/ui-styled";
 import userEvent from "@testing-library/user-event/dist";
+import { l10n } from "@/l10n/ru";
 
 const initialState: {
   figurePalette: IFigurePaletteState;
@@ -55,7 +52,7 @@ describe("FigurePalette tests", () => {
 
     const PaletteContainer = screen.getByTestId("figurePalette");
     const FigureName = screen.getByText("First figure");
-    const PaletteStateButton = screen.getByText(paletteActiveText);
+    const PaletteStateButton = screen.getByText(l10n.paletteActiveText);
     const RotationButton = screen.getByLabelText("rotate");
     const PaletteGameField = within(PaletteContainer).getByTestId("field");
     const PrevArrow = within(PaletteContainer).getByLabelText("prev");
@@ -232,11 +229,11 @@ describe("FigurePalette tests", () => {
       preloadedState: initialState,
     });
 
-    const paletteStateButton = screen.getByText(paletteActiveText);
+    const paletteStateButton = screen.getByText(l10n.paletteActiveText);
 
     userEvent.click(paletteStateButton);
 
-    expect(paletteStateButton).toHaveTextContent(paletteActiveCancelText);
+    expect(paletteStateButton).toHaveTextContent(l10n.paletteActiveCancelText);
   });
 
   it("should change palette button text to active", () => {
@@ -250,11 +247,11 @@ describe("FigurePalette tests", () => {
       },
     });
 
-    const paletteStateButton = screen.getByText(paletteActiveCancelText);
+    const paletteStateButton = screen.getByText(l10n.paletteActiveCancelText);
 
     userEvent.click(paletteStateButton);
 
-    expect(paletteStateButton).toHaveTextContent(paletteActiveText);
+    expect(paletteStateButton).toHaveTextContent(l10n.paletteActiveText);
   });
 
   it("should rotate figure on rotate button click", async () => {
