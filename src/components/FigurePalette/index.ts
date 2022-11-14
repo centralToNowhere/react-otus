@@ -9,6 +9,7 @@ export {
   setFigures,
   setFigurePaletteActive,
   setCurrentFigureIndex,
+  resetPalette,
 } from "./slice";
 export { selectFigures } from "./selectors";
 export type { IFigurePaletteState } from "./slice";

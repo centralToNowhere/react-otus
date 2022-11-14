@@ -146,8 +146,16 @@ export const figurePaletteSlice = createSlice({
     setCurrentFigureIndex: (state, action: PayloadAction<number>) => {
       state.currentFigureIndex = action.payload;
     },
+    resetPalette: (state) => {
+      state = initialState;
+      return state;
+    },
   },
 });
 
-export const { setFigures, setFigurePaletteActive, setCurrentFigureIndex } =
-  figurePaletteSlice.actions;
+export const {
+  setFigures,
+  setFigurePaletteActive,
+  setCurrentFigureIndex,
+  resetPalette,
+} = figurePaletteSlice.actions;

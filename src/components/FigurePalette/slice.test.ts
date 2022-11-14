@@ -3,6 +3,7 @@ import {
   setFigures,
   setFigurePaletteActive,
   setCurrentFigureIndex,
+  resetPalette,
   IFigurePaletteState,
   CellFigure,
 } from "@/components/FigurePalette";
@@ -76,5 +77,24 @@ describe("figurePalette slice tests", () => {
     );
 
     expect(resultState.currentFigureIndex).toBe(2);
+  });
+
+  it("resetPalette", () => {
+    const paletteState: IFigurePaletteState = {
+      figures: [],
+      figurePaletteActive: true,
+      currentFigureIndex: 1,
+    };
+
+    const resultState = figurePaletteSlice.reducer(
+      paletteState,
+      resetPalette()
+    );
+
+    expect(resultState).toEqual(
+      expect.objectContaining({
+        ...figurePaletteSlice.getInitialState(),
+      })
+    );
   });
 });

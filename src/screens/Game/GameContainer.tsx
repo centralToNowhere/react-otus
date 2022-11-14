@@ -4,6 +4,7 @@ import { AnyAction } from "redux";
 import { Game } from "@/screens/Game";
 import { resetCells } from "@/components/GameField";
 import { resetFieldControls } from "@/components/Fields";
+import { resetPalette } from "@/components/FigurePalette";
 import { startGame, stopGame, generateRandom } from "@/components/GameField";
 
 export const createFormKey = (): number => {
@@ -26,6 +27,9 @@ const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => {
     },
     generateRandom: () => {
       dispatch(generateRandom());
+    },
+    resetPalette: () => {
+      dispatch(resetPalette());
     },
   };
 };
@@ -62,6 +66,8 @@ class Main extends React.Component<GameContainerProps, GameContainerState> {
       case "resetButton":
         this.props.resetCells();
         this.props.resetFieldControls();
+        this.props.resetPalette();
+
         this.setState({
           formKey: createFormKey(),
         });

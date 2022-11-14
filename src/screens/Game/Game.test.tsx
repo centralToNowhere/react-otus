@@ -588,7 +588,7 @@ describe("Game tests", () => {
     });
   });
 
-  describe("palette figure placement", () => {
+  describe("figure palette", () => {
     it("should place figure from palette", async () => {
       const figureCells: Array<1 | 0> = [
         0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0,
@@ -639,6 +639,37 @@ describe("Game tests", () => {
           });
         })
       );
+    });
+
+    it("should reset palette to initial", async () => {
+      const { store } = render(<GameContainer />, {
+        preloadedState: {
+          ...initialState,
+          figurePalette: {
+            ...initialState.figurePalette,
+            figures: [
+              {
+                name: "Penta-decathlon",
+                indexedCells: [1, 0, 1],
+                cellsInRow: 10,
+                cellsInCol: 3,
+              },
+            ],
+          },
+        },
+      });
+
+      const resetButton = screen.getByText(l10n.buttonReset);
+
+      userEvent.click(resetButton);
+
+      await waitFor(() => {
+        expect(store.getState().figurePalette).toEqual(
+          expect.objectContaining({
+            ...initialStateAllForTests.figurePalette,
+          })
+        );
+      });
     });
   });
 });
